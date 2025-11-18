@@ -1,6 +1,9 @@
 import React from 'react';
+// @ts-ignore
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion as m } from 'framer-motion';
+
+const motion = m as any;
 
 const NotFound: React.FC = () => {
   return (

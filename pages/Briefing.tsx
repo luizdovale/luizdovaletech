@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { SOCIAL_LINKS } from '../constants';
+// @ts-ignore
 import { Link } from 'react-router-dom';
 
 const Briefing: React.FC = () => {

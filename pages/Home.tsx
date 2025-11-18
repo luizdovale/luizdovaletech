@@ -1,9 +1,12 @@
 import React from 'react';
+// @ts-ignore
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion as m } from 'framer-motion';
 import ThreeScene from '../components/ThreeScene';
 import { PROJECTS, SKILLS, SOCIAL_LINKS } from '../constants';
 import { LogoSquare } from '../components/Logos';
+
+const motion = m as any;
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -21,9 +24,10 @@ const staggerContainer = {
 };
 
 const Home: React.FC = () => {
-  // URL do Avatar configurado para parecer com a foto do usuário:
-  // Cabelo curto escuro, barba desenhada, pele clara, camisa preta, fundo azul tech
-  const avatarUrl = "https://api.dicebear.com/9.x/avataaars/svg?top=shortFlat&accessoriesProbability=0&hairColor=2c1b18&facialHair=beardLight&facialHairColor=2c1b18&clothing=collarAndSweater&clothingColor=262e33&skinColor=edb98a&mouth=smile&eyebrows=default&backgroundColor=1d2946";
+  // URL do Avatar configurado:
+  // Cabelo curto castanho (hairColor=2c1b18), barba curta (beardLight),
+  // Óculos (accessories=prescription01), roupa preta, fundo azul tech
+  const avatarUrl = "https://api.dicebear.com/9.x/avataaars/svg?top=shortFlat&accessories=prescription01&accessoriesProbability=100&hairColor=2c1b18&facialHair=beardLight&facialHairColor=2c1b18&clothing=collarAndSweater&clothingColor=262e33&skinColor=edb98a&mouth=smile&eyebrows=default&backgroundColor=1d2946";
 
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault();
