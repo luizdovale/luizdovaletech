@@ -1,10 +1,10 @@
+
 import React from 'react';
 // @ts-ignore
 import { Link } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 import ThreeScene from '../components/ThreeScene';
 import { PROJECTS, SKILLS, SOCIAL_LINKS } from '../constants';
-import { LogoSquare } from '../components/Logos';
 
 const motion = m as any;
 
@@ -24,10 +24,15 @@ const staggerContainer = {
 };
 
 const Home: React.FC = () => {
-  // URL do Avatar configurado:
-  // Cabelo curto castanho (hairColor=2c1b18), barba curta (beardLight),
-  // Óculos (accessories=prescription01), roupa preta, fundo azul tech
-  const avatarUrl = "https://api.dicebear.com/9.x/avataaars/svg?top=shortFlat&accessories=prescription01&accessoriesProbability=100&hairColor=2c1b18&facialHair=beardLight&facialHairColor=2c1b18&clothing=collarAndSweater&clothingColor=262e33&skinColor=edb98a&mouth=smile&eyebrows=default&backgroundColor=1d2946";
+  // ---------------------------------------------------------
+  // INSTRUÇÃO PARA FOTO REAL:
+  // 1. Salve sua foto como 'avatar.png'
+  // 2. Coloque na pasta 'public' do projeto
+  // ---------------------------------------------------------
+  const avatarUrl = "/avatar.png"; 
+  
+  // Caso ainda não tenha a foto, pode descomentar a linha abaixo para usar o avatar temporário:
+  // const avatarUrl = "https://api.dicebear.com/9.x/avataaars/svg?top=shortFlat&accessories=prescription02&accessoriesColor=262e33&accessoriesProbability=100&hairColor=2c1b18&facialHair=beardLight&facialHairColor=2c1b18&clothing=collarAndSweater&clothingColor=262e33&skinColor=edb98a&eyes=default&mouth=smile&eyebrows=default&backgroundColor=1d2946";
 
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -104,211 +109,218 @@ const Home: React.FC = () => {
                     src={avatarUrl}
                     alt="Avatar Luiz" 
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      // Fallback caso a imagem local não exista ainda
+                      e.currentTarget.src = "https://api.dicebear.com/9.x/avataaars/svg?top=shortFlat&accessories=prescription02&accessoriesColor=262e33&accessoriesProbability=100&hairColor=2c1b18&facialHair=beardLight&facialHairColor=2c1b18&clothing=collarAndSweater&clothingColor=262e33&skinColor=edb98a&eyes=default&mouth=smile&eyebrows=default&backgroundColor=1d2946";
+                    }}
                   />
                   
                   {/* Overlay Effect on Hover */}
                   <div className="absolute inset-0 bg-tech-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-
-                {/* Floating Tech Badge */}
-                <motion.div 
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-4 -right-4 z-20 bg-tech-dark border border-tech-gold px-4 py-2 rounded-xl shadow-lg flex items-center gap-2"
-                >
-                   <LogoSquare className="w-6 h-6" />
-                   <span className="text-tech-gold font-bold font-display text-sm">Flutter Expert</span>
-                </motion.div>
              </div>
           </motion.div>
         </div>
-        
+
         {/* Scroll Indicator */}
         <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-tech-gray/50 cursor-pointer"
-          onClick={() => document.getElementById('about')?.scrollIntoView({behavior: 'smooth'})}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-tech-gray"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
         </motion.div>
       </section>
 
       {/* ABOUT SECTION */}
-      <section id="about" className="py-24 bg-tech-dark relative">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="glass-panel p-8 md:p-12 rounded-2xl max-w-4xl mx-auto border-l-4 border-tech-gold"
-          >
-            <h2 className="text-3xl font-display font-bold text-white mb-6">Sobre Mim</h2>
-            <p className="text-tech-gray text-lg leading-relaxed">
-              Sou <span className="text-tech-electric font-bold">luizdovaletech</span>, desenvolvedor Web e Flutter. 
-              Crio soluções digitais modernas, responsivas e de alta performance. Desenvolvo apps completos, 
-              PWAs instaláveis, landing pages e sistemas web personalizados. Meu foco é unir design futurista, 
-              tecnologia de ponta e performance para entregar resultados reais.
-            </p>
-          </motion.div>
-        </div>
+      <section id="about" className="py-20 bg-tech-dark relative">
+         <div className="container mx-auto px-4 md:px-6">
+           <div className="glass-panel p-8 md:p-12 rounded-2xl border border-tech-blue/30 shadow-2xl max-w-4xl mx-auto relative overflow-hidden">
+             {/* Decorative Lines */}
+             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-tech-electric/20 to-transparent"></div>
+             <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-tech-gold/10 to-transparent"></div>
+
+             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-8 relative z-10 flex items-center gap-3">
+               <span className="w-2 h-8 bg-tech-gold rounded-full"></span>
+               Sobre Mim
+             </h2>
+             
+             <p className="text-tech-gray text-lg leading-relaxed relative z-10 text-justify">
+               Sou luizdovaletech, desenvolvedor Web e Flutter. Crio soluções digitais modernas, responsivas e de alta performance. Desenvolvo apps completos, PWAs instaláveis, landing pages e sistemas web personalizados. Meu foco é unir design, tecnologia e performance para entregar resultados reais.
+             </p>
+           </div>
+         </div>
       </section>
 
       {/* SKILLS SECTION */}
-      <section id="skills" className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-tech-dark via-tech-blue/10 to-tech-dark pointer-events-none"></div>
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center font-display text-4xl font-bold text-white mb-16 text-glow"
-          >
-            Arsenal Tecnológico
-          </motion.h2>
+      <section id="skills" className="py-20 relative">
+        <div className="container mx-auto px-4 md:px-6">
+           <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-white mb-16 text-glow">
+             Stack Tecnológico
+           </h2>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            {[
-              { title: "Front-end", skills: SKILLS.frontend, icon: "💻" },
-              { title: "Back-end", skills: SKILLS.backend, icon: "⚙️" },
-              { title: "Ferramentas", skills: SKILLS.tools, icon: "🛠️" },
-            ].map((cat, idx) => (
-              <motion.div 
-                variants={fadeInUp}
-                key={idx} 
-                className="group bg-tech-surface/50 backdrop-blur-sm border border-tech-blue/20 p-8 rounded-2xl hover:border-tech-gold/50 transition-all duration-300 hover:-translate-y-2"
-              >
-                 <div className="text-4xl mb-6">{cat.icon}</div>
-                 <h3 className="text-xl font-display font-bold text-white mb-6 border-b border-tech-gray/20 pb-4 group-hover:text-tech-gold transition-colors">
-                   {cat.title}
-                 </h3>
-                 <div className="flex flex-wrap gap-3">
-                   {cat.skills.map((skill) => (
-                     <span key={skill} className="px-3 py-1 bg-tech-dark border border-tech-blue/30 rounded text-sm text-tech-gray hover:text-white hover:border-tech-electric transition-colors cursor-default">
-                       {skill}
-                     </span>
-                   ))}
-                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+           <div className="grid md:grid-cols-3 gap-8">
+             {/* Frontend */}
+             <motion.div 
+               whileHover={{ y: -10 }}
+               className="glass-panel p-8 rounded-xl border-t-2 border-tech-electric hover:border-tech-gold transition-colors"
+             >
+               <h3 className="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
+                 <svg className="w-6 h-6 text-tech-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                 Front-end & Mobile
+               </h3>
+               <div className="flex flex-wrap gap-3">
+                 {SKILLS.frontend.map((skill, idx) => (
+                   <span key={idx} className="px-3 py-1 bg-tech-blue/30 text-tech-gray text-sm rounded border border-tech-blue/50 hover:text-white hover:border-tech-gold transition-all cursor-default">
+                     {skill}
+                   </span>
+                 ))}
+               </div>
+             </motion.div>
+
+             {/* Backend */}
+             <motion.div 
+               whileHover={{ y: -10 }}
+               className="glass-panel p-8 rounded-xl border-t-2 border-tech-electric hover:border-tech-gold transition-colors"
+             >
+               <h3 className="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
+                 <svg className="w-6 h-6 text-tech-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
+                 Back-end & Cloud
+               </h3>
+               <div className="flex flex-wrap gap-3">
+                 {SKILLS.backend.map((skill, idx) => (
+                   <span key={idx} className="px-3 py-1 bg-tech-blue/30 text-tech-gray text-sm rounded border border-tech-blue/50 hover:text-white hover:border-tech-gold transition-all cursor-default">
+                     {skill}
+                   </span>
+                 ))}
+               </div>
+             </motion.div>
+
+             {/* Tools */}
+             <motion.div 
+               whileHover={{ y: -10 }}
+               className="glass-panel p-8 rounded-xl border-t-2 border-tech-electric hover:border-tech-gold transition-colors"
+             >
+               <h3 className="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
+                 <svg className="w-6 h-6 text-tech-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
+                 Ferramentas
+               </h3>
+               <div className="flex flex-wrap gap-3">
+                 {SKILLS.tools.map((skill, idx) => (
+                   <span key={idx} className="px-3 py-1 bg-tech-blue/30 text-tech-gray text-sm rounded border border-tech-blue/50 hover:text-white hover:border-tech-gold transition-all cursor-default">
+                     {skill}
+                   </span>
+                 ))}
+               </div>
+             </motion.div>
+           </div>
         </div>
       </section>
 
       {/* PROJECTS SECTION */}
-      <section id="projects" className="py-24 bg-tech-dark">
-        <div className="container mx-auto px-6">
-           <motion.h2 
-             initial={{ opacity: 0 }}
-             whileInView={{ opacity: 1 }}
-             viewport={{ once: true }}
-             className="text-center font-display text-4xl font-bold text-white mb-4"
-           >
-            Projetos Recentes
-          </motion.h2>
-          <p className="text-center text-tech-gray mb-16 max-w-2xl mx-auto">
-            Uma seleção de aplicações web, mobile e landing pages desenvolvidas com foco em performance e design.
-          </p>
+      <section id="projects" className="py-20 bg-tech-dark relative">
+         <div className="container mx-auto px-4 md:px-6">
+           <div className="flex justify-between items-end mb-12">
+             <div>
+               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">
+                 Projetos Recentes
+               </h2>
+               <p className="text-tech-gray">Uma seleção de aplicações de alta performance.</p>
+             </div>
+           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {PROJECTS.map((project, index) => (
-              <motion.a 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                key={index}
-                className="group relative block h-[300px] perspective-1000"
-              >
-                <div className="absolute inset-0 bg-tech-surface rounded-2xl border border-tech-blue/20 overflow-hidden transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:shadow-[0_0_30px_rgba(26,102,191,0.3)]">
-                  
-                  {/* Background Image (Dimmed) */}
-                  <div className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-20 transition-opacity" style={{ backgroundImage: `url(${project.image})` }}></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-tech-dark via-tech-dark/80 to-transparent"></div>
+           <div className="grid md:grid-cols-2 gap-8">
+             {PROJECTS.map((project, index) => (
+               <motion.a 
+                 key={index}
+                 href={project.link}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: index * 0.1 }}
+                 whileHover={{ y: -5, scale: 1.01 }}
+                 className="group block bg-tech-surface rounded-xl overflow-hidden border border-tech-blue/30 hover:border-tech-gold/50 transition-all shadow-lg hover:shadow-[0_0_20px_rgba(26,102,191,0.3)]"
+               >
+                  <div className="h-48 bg-tech-blue/20 relative overflow-hidden group-hover:bg-tech-blue/30 transition-colors">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-tech-surface to-transparent"></div>
+                  </div>
 
-                  {/* Content */}
-                  <div className="absolute bottom-0 left-0 w-full p-8">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {project.tags.map(tag => (
-                        <span key={tag} className="text-[10px] font-mono uppercase tracking-wider px-2 py-1 bg-tech-electric/20 text-tech-electric border border-tech-electric/30 rounded">
+                  <div className="p-6 md:p-8">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="font-display text-xl font-bold text-white group-hover:text-tech-gold transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-sm text-tech-electric font-medium uppercase tracking-wider">
+                          {project.subtitle}
+                        </p>
+                      </div>
+                      <svg className="w-5 h-5 text-tech-gray group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </div>
+
+                    <p className="text-tech-gray text-sm mb-6 line-clamp-3">
+                      {project.desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tIdx) => (
+                        <span key={tIdx} className="text-xs px-2 py-1 rounded bg-tech-blue/20 text-slate-300 border border-white/5">
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-2xl font-display font-bold text-white mb-2 group-hover:text-tech-gold transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-tech-gray text-sm mb-4 border-l-2 border-tech-gold pl-3">
-                      {project.desc}
-                    </p>
-                    <span className="text-tech-electric text-sm font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
-                      Visualizar Projeto <span>→</span>
-                    </span>
                   </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
+               </motion.a>
+             ))}
+           </div>
 
-          <div className="mt-16 text-center">
-            <Link to="/briefing" className="inline-block px-10 py-4 bg-transparent border border-tech-gold text-tech-gold font-display font-bold tracking-widest rounded hover:bg-tech-gold hover:text-black transition-all hover:shadow-[0_0_20px_rgba(252,227,0,0.5)]">
-               SOLICITAR ORÇAMENTO
-            </Link>
-          </div>
-        </div>
+           <div className="mt-16 text-center">
+             <Link 
+               to="/briefing" 
+               className="inline-block px-8 py-4 border border-tech-gold text-tech-gold font-bold font-display tracking-widest hover:bg-tech-gold hover:text-tech-dark transition-all rounded"
+             >
+               INICIAR MEU PROJETO
+             </Link>
+           </div>
+         </div>
       </section>
 
-      {/* CONTACT SECTION */}
-      <section id="contact" className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-tech-blue/5 opacity-50"></div>
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto glass-panel rounded-3xl p-8 md:p-12 border border-tech-blue/30"
-          >
-            <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">Vamos Conversar?</h2>
-            
-            <form 
-              action={SOCIAL_LINKS.formAction} 
-              method="POST" 
-              className="space-y-6"
-            >
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://luizdovaletech-portfolio.vercel.app/#/sucesso" />
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-tech-gray uppercase tracking-widest">Nome</label>
-                  <input required type="text" name="name" className="w-full bg-tech-dark/50 border border-tech-blue/30 rounded p-3 text-white focus:border-tech-gold focus:outline-none transition-colors" placeholder="Seu nome" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-tech-gray uppercase tracking-widest">Email</label>
-                  <input required type="email" name="email" className="w-full bg-tech-dark/50 border border-tech-blue/30 rounded p-3 text-white focus:border-tech-gold focus:outline-none transition-colors" placeholder="seu@email.com" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-tech-gray uppercase tracking-widest">Mensagem</label>
-                <textarea required name="message" rows={4} className="w-full bg-tech-dark/50 border border-tech-blue/30 rounded p-3 text-white focus:border-tech-gold focus:outline-none transition-colors" placeholder="Como posso ajudar no seu projeto?"></textarea>
-              </div>
-
-              <button type="submit" className="w-full py-4 bg-tech-gradient rounded text-white font-bold font-display tracking-widest hover:opacity-90 transition-opacity shadow-lg">
-                ENVIAR MENSAGEM
-              </button>
-            </form>
-          </motion.div>
+      {/* CONTACT CTA SECTION */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-tech-gradient opacity-10"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6">
+             Pronto para elevar seu negócio?
+           </h2>
+           <p className="text-tech-gray text-lg mb-8 max-w-2xl mx-auto">
+             Vamos criar algo extraordinário juntos. Solicite um orçamento ou entre em contato direto.
+           </p>
+           <div className="flex flex-col md:flex-row gap-4 justify-center">
+             <a 
+               href={SOCIAL_LINKS.whatsapp}
+               target="_blank"
+               rel="noreferrer"
+               className="px-8 py-4 bg-green-600 text-white font-bold rounded shadow-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2"
+             >
+               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.466c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.68-2.03-.967-.272-.297-.471-.446-.966-.446-.495 0-.867.198-1.313.693-.446.495-1.707 1.671-1.707 4.071s1.746 4.716 1.993 5.063c.248.347 3.438 5.253 8.327 7.366 4.889 2.113 4.889 1.412 5.78 1.336.891-.075 2.894-1.19 3.316-2.338.422-1.149.422-2.133.297-2.338z"/></svg>
+               Falar no WhatsApp
+             </a>
+             <Link 
+               to="/briefing" 
+               className="px-8 py-4 bg-tech-surface border border-tech-blue text-white font-bold rounded hover:bg-tech-blue/30 transition-all"
+             >
+               Preencher Briefing
+             </Link>
+           </div>
         </div>
       </section>
     </div>

@@ -19,7 +19,7 @@ const ParticleBackground: React.FC = () => {
     };
 
     const createParticles = () => {
-      const particleCount = window.innerWidth < 768 ? 30 : 80;
+      const particleCount = window.innerWidth < 768 ? 30 : 60; // Reduzi levemente para performance
       particles = [];
       for (let i = 0; i < particleCount; i++) {
         particles.push({
@@ -37,7 +37,7 @@ const ParticleBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Draw connecting lines
-      ctx.strokeStyle = 'rgba(26, 102, 191, 0.15)';
+      ctx.strokeStyle = 'rgba(26, 102, 191, 0.1)'; // Mais sutil
       ctx.lineWidth = 0.5;
       
       for (let i = 0; i < particles.length; i++) {
@@ -87,7 +87,8 @@ const ParticleBackground: React.FC = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />;
+  // Alterado para fixed e z-[-10] para garantir que fique atrás de tudo
+  return <canvas ref={canvasRef} className="fixed inset-0 -z-10 pointer-events-none bg-tech-dark" />;
 };
 
 export default ParticleBackground;
