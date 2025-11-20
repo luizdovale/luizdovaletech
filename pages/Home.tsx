@@ -24,7 +24,9 @@ const staggerContainer = {
 
 const Home: React.FC = () => {
 
-  const avatarUrl = "/avatar.png";
+  // 🔥 AVATAR ATUALIZADO
+  const avatarUrl =
+    "https://api.dicebear.com/9.x/avataaars/svg?seed=LuizTech&skinColor=f8d9ce&top=shortFlat&hairColor=4a312c&facialHair=beardLight&facialHairColor=4a312c&accessories=prescription02&accessoriesColor=000000&eyes=default&eyebrows=default&mouth=smile&clothing=collarAndSweater&clothingColor=262e33";
 
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -143,7 +145,6 @@ const Home: React.FC = () => {
               Sobre Mim
             </h2>
 
-            {/* TEXTO NOVO — versão humana e aprimorada */}
             <p className="text-tech-gray text-lg leading-relaxed relative z-10 text-justify">
               Meu nome é Luiz Fernando e atuo como desenvolvedor Web & Flutter, especializado na criação de aplicações modernas e escaláveis.  
               Trabalho com PWAs instaláveis, interfaces de alta performance e sistemas construídos sob medida para cada necessidade.  
