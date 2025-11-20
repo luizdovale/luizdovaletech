@@ -1,114 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>luizdovaletech | Dev Web & Flutter</title>
-    
-    <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
-    <meta name="theme-color" content="#0C0F17" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>luizdovaletech | Dev Web & Flutter</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              tech: {
-                dark: '#0C0F17',
-                blue: '#1D2946',
-                electric: '#1A66BF',
-                gold: '#FCE300',
-                gray: '#7A869A',
-                surface: '#121620'
-              }
+  <!-- ======================= -->
+  <!--      FAVICONS FIX       -->
+  <!-- ======================= -->
+
+  <!-- Favicon padrão (navegadores modernos) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fallback PNG (Chrome, Edge, Firefox) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+
+  <!-- iPhone (NÃO aceita SVG!) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- PWA Manifest (opcional, mas recomendado) -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <meta name="theme-color" content="#0C0F17" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            tech: {
+              dark: '#0C0F17',
+              blue: '#1D2946',
+              electric: '#1A66BF',
+              gold: '#FCE300',
+              gray: '#7A869A',
+              surface: '#121620'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Orbitron', 'sans-serif'],
+          },
+          backgroundImage: {
+            'tech-gradient': 'linear-gradient(90deg, #1A66BF, #5A9CFF)',
+            'gold-glow': 'radial-gradient(circle, rgba(252,227,0,0.15) 0%, rgba(0,0,0,0) 70%)',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
             },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Orbitron', 'sans-serif'],
-            },
-            backgroundImage: {
-              'tech-gradient': 'linear-gradient(90deg, #1A66BF, #5A9CFF)',
-              'gold-glow': 'radial-gradient(circle, rgba(252,227,0,0.15) 0%, rgba(0,0,0,0) 70%)',
-            },
-            animation: {
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'glow': 'glow 2s ease-in-out infinite alternate',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              glow: {
-                'from': { boxShadow: '0 0 10px #1A66BF, 0 0 20px #1A66BF' },
-                'to': { boxShadow: '0 0 20px #FCE300, 0 0 30px #FCE300' },
-              }
+            glow: {
+              'from': { boxShadow: '0 0 10px #1A66BF, 0 0 20px #1A66BF' },
+              'to': { boxShadow: '0 0 20px #FCE300, 0 0 30px #FCE300' },
             }
           }
         }
       }
-    </script>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        overflow-x: hidden;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      .glass-panel {
-        background: rgba(29, 41, 70, 0.4);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      
-      .text-glow {
-        text-shadow: 0 0 10px rgba(252, 227, 0, 0.5);
-      }
-      .text-glow-blue {
-        text-shadow: 0 0 15px rgba(26, 102, 191, 0.6);
-      }
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0C0F17;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1D2946;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #1A66BF;
-      }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
-    "three": "https://aistudiocdn.com/three@^0.181.2",
-    "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6"
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .glass-panel {
+      background: rgba(29, 41, 70, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .text-glow {
+      text-shadow: 0 0 10px rgba(252, 227, 0, 0.5);
+    }
+    .text-glow-blue {
+      text-shadow: 0 0 15px rgba(26, 102, 191, 0, 0.6);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0C0F17; }
+    ::-webkit-scrollbar-thumb {
+      background: #1D2946;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #1A66BF;
+    }
+  </style>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+      "three": "https://aistudiocdn.com/three@^0.181.2",
+      "vite": "https://aistudiocdn.com/vite@^7.2.4",
+      "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+      "react/": "https://aistudiocdn.com/react@^19.2.0/",
+      "react": "https://aistudiocdn.com/react@^19.2.0",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+      "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6"
+    }
   }
-}
-</script>
+  </script>
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>
