@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="110" fill="#0C0F17"/>
+  <rect x="32" y="32" width="448" height="448" rx="80" stroke="#1A66BF" stroke-width="32"/>
+  <path d="M150 150V362H362" stroke="#1A66BF" stroke-width="56" stroke-linecap="round"/>
+  <path d="M362 150V240L280 320" stroke="#FCE300" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="362" cy="362" r="32" fill="#FCE300"/>
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+</svg>
