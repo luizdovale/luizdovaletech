@@ -22,20 +22,27 @@ const Briefing: React.FC = () => {
 
         {/* FORM CONFIGURADO */}
         <form
-          action="https://formsubmit.co/luizdovaletech@gmail.com"
-          method="POST"
-          className="space-y-8"
-        >
-          {/* CONFIGURAÇÃO OCULTA */}
-          <input type="hidden" name="_subject" value="📌 NOVO BRIEFING - Luiz Do Vale Tech" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="https://luizdovaletech-portfolio.vercel.app/#/sucesso" />
-          <input 
-            type="hidden" 
-            name="_autoresponse" 
-            value="Olá! Recebi seu briefing e em breve retornarei com uma análise inicial. Obrigado pelo contato! — Luiz do Vale Tech" 
-          />
+  action="https://formsubmit.co/luizdovaletech@gmail.com"
+  method="POST"
+  className="space-y-8"
+>
+  {/* CONFIGURAÇÃO OCULTA */}
+  <input type="hidden" name="_subject" value="📌 NOVO BRIEFING - Luiz Do Vale Tech" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+
+  {/* REDIRECIONA PARA SUA PÁGINA REAL DE SUCESSO */}
+  <input type="hidden" name="_next" value="https://luizdovaletech.vercel.app/#/sucesso" />
+
+  {/* MENSAGEM AUTOMÁTICA EM PORTUGUÊS */}
+  <input 
+    type="hidden" 
+    name="_autoresponse" 
+    value="Olá! Recebi seu briefing e em breve retornarei com uma análise inicial. Obrigado pelo contato! — Luiz do Vale Tech" 
+  />
+
+  {/* PERMITIR REPLY DIRETO PARA O CLIENTE */}
+  <input type="hidden" name="_replyto" value="email" />
 
           {/* SEÇÃO 1: Contato */}
           <div className="glass-panel p-8 rounded-2xl border-t border-tech-electric">
