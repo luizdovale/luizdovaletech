@@ -1,5 +1,3 @@
-essa é a página briefing.tsx
-
 import React, { useEffect } from 'react';
 import { SOCIAL_LINKS } from '../constants';
 // @ts-ignore
