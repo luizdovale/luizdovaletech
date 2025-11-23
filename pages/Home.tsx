@@ -24,9 +24,9 @@ const staggerContainer = {
 
 const Home: React.FC = () => {
 
-  // 🔥 AVATAR ATUALIZADO
-  const avatarUrl =
-    "https://api.dicebear.com/9.x/avataaars/svg?seed=LuizTech&skinColor=f8d9ce&top=shortFlat&hairColor=4a312c&facialHair=beardLight&facialHairColor=4a312c&accessories=prescription02&accessoriesColor=000000&eyes=default&eyebrows=default&mouth=smile&clothing=collarAndSweater&clothingColor=262e33";
+  // CAMINHO DA FOTO DE PERFIL
+  // Adicione seu arquivo 'avatar.png' na pasta 'public' do projeto
+  const avatarUrl = "/avatar.png";
 
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -110,6 +110,12 @@ const Home: React.FC = () => {
                   src={avatarUrl}
                   alt="Avatar Luiz"
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    // Fallback visual caso a imagem não exista ainda
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement!.style.backgroundColor = '#1D2946';
+                    e.currentTarget.parentElement!.innerHTML = '<div class="flex items-center justify-center h-full text-white text-xs text-center p-4">Adicione avatar.png em /public</div>';
+                  }}
                 />
                 <div className="absolute inset-0 bg-tech-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
@@ -146,9 +152,7 @@ const Home: React.FC = () => {
             </h2>
 
             <p className="text-tech-gray text-lg leading-relaxed relative z-10 text-justify">
-              Meu nome é Luiz Fernando e atuo como desenvolvedor Web & Flutter, especializado na criação de aplicações modernas e escaláveis.  
-              Trabalho com PWAs instaláveis, interfaces de alta performance e sistemas construídos sob medida para cada necessidade.  
-              Meu foco é entregar soluções estáveis, rápidas e preparadas para crescer junto com o seu negócio — sempre unindo design, tecnologia e experiência do usuário.
+              Sou luizdovaletech, desenvolvedor Web e Flutter. Crio soluções digitais modernas, responsivas e de alta performance. Desenvolvo apps completos, PWAs instaláveis, landing pages e sistemas web personalizados. Meu foco é unir design, tecnologia e performance para entregar resultados reais.
             </p>
 
           </div>
