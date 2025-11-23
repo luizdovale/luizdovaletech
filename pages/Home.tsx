@@ -149,7 +149,7 @@ const Home: React.FC = () => {
               Sobre Mim
             </h2>
 
-            <p className="text-tech-gray text-lg leading-relaxed relative z-10 text-justify">
+            <p className="text-tech-gray text-lg leading-relaxed relative z-10 text-left break-words">
               Meu nome é Luiz Fernando, desenvolvedor Web e Flutter especializado na criação de aplicações 
               modernas, responsivas e de alta performance. Trabalho com React, TypeScript, Tailwind, Flutter 
               e Dart para entregar soluções digitais eficientes, seguras e alinhadas às necessidades de cada 
@@ -157,6 +157,7 @@ const Home: React.FC = () => {
               priorizando qualidade, usabilidade e boas práticas. Meu foco é transformar projetos em produtos 
               funcionais e profissionais, oferecendo tecnologia que gera resultados reais.
             </p>
+
 
           </div>
         </div>
