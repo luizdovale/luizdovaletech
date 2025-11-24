@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/luizdovale/luizdovaletech/blob/main/public/ImagemReadme.png" width="100%" alt="luizdovaletech banner"/>
+  <img src="./public/ImagemReadme.png" width="100%" alt="luizdovaletech banner"/>
 </div>
 
 ---
