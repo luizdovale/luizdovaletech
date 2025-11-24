@@ -1,10 +1,6 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/luizdovale/luizdovaletech/d216770570f1c9bc4c449347bec5158fc60b5ea9/ImagemReadme.png" width="800" alt="luizdovaletech banner"/><img width="1536" height="1024" alt="ImagemReadme" src="https://github.com/user-attachments/assets/1c3d3f7e-e53f-412d-aa27-4141f329b0ef" />
 
-</p>
+---<img width="1536" height="1024" alt="ImagemReadme" src="https://github.com/user-attachments/assets/578beb2f-c5c9-4054-adc0-e7e39ece7332" />
 
-
----
 
 # 🚀 luizdovaletech — Desenvolvedor Web & Flutter
 
