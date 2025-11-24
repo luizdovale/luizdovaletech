@@ -1,6 +1,7 @@
-<div align="center">
-  <img src="./assets/ImagemReadme.png" width="100%" alt="luizdovaletech banner"/>
-</div>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/luizdovale/luizdovaletech/d216770570f1c9bc4c449347bec5158fc60b5ea9/ImagemReadme.png" width="800" alt="luizdovaletech banner"/>
+</p>
+
 
 ---
 
