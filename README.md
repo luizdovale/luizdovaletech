@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./ImagemReadme.png" width="100%" alt="luizdovaletech banner"/>
+  <img src="./assets/ImagemReadme.png" width="100%" alt="luizdovaletech banner"/>
 </div>
 
 ---
