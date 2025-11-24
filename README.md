@@ -1,6 +1,5 @@
 
-<img width="1536" height="1024" alt="ImagemReadme" src="https://github.com/user-attachments/assets/578beb2f-c5c9-4054-adc0-e7e39ece7332" />
-
+<img width="1536" height="532" alt="ImagemReadme" src="https://github.com/user-attachments/assets/5d760747-ac34-4d63-96da-069de5a6692f" />
 
 # 🚀 luizdovaletech — Desenvolvedor Web & Flutter
 
