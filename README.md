@@ -1,20 +1,67 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img src="https://github.com/luizdovale/luizdovaletech/blob/main/public/ImagemReadme.png" width="100%" alt="luizdovaletech banner"/>
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+# 🚀 luizdovaletech — Desenvolvedor Web & Flutter
 
-View your app in AI Studio: https://ai.studio/apps/drive/1nXSNZKBxh7oN8x5IPCFYGDdnA26mrZg6
+Bem-vindo ao meu portfólio!  
+Aqui você encontra meus projetos, tecnologias usadas e formas de contato.
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## 📌 Sobre Mim
 
+Sou **Luiz Fernando (luizdovaletech)**, desenvolvedor Web e Flutter especializado na criação de aplicações modernas, responsivas e de alta performance.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Trabalho com:
+
+- **React, TypeScript, Vite, Tailwind**
+- **Flutter & Dart**
+- **Firebase, Supabase**
+- **Desenvolvimento de PWAs**
+- **Sistemas completos e interfaces modernas**
+
+Meu foco é entregar produtos funcionais, rápidos e visualmente profissionais.
+
+---
+
+## 🧠 Tecnologias
+
+- **Front-end:** React, Vite, TypeScript, Tailwind  
+- **Mobile:** Flutter (Android & iOS)  
+- **Back-end:** Firebase, Supabase, Node.js  
+- **Outros:** GitHub, Vercel, Figma, UI/UX  
+
+---
+
+## 📂 Projetos Principais
+
+### 🔵 **Jornada360**
+App Web + Flutter para cálculo de jornadas de trabalho e geração de relatórios.  
+🔗 https://jornada360ai-studio-full.vercel.app/
+
+### 🔵 **Gas Calculator**
+Aplicação para cálculos industriais de gases (LIN/LOX/LAR).  
+🔗 https://luizdovale.github.io/gascalculatorflutterweb/
+
+### 🔵 **JPS Auto Peças Diesel**
+Website institucional moderno com foco em vendas e contato rápido.  
+🔗 https://jps-autopecasdiesel.vercel.app/
+
+### 🔵 **Tatiane Nutricionista**
+Landing page personalizada com design clean e elementos visuais profissionais.  
+🔗 https://tatydovalenutri.vercel.app/
+
+---
+
+## 📞 Contato
+
+📧 **Email:** luizdovaletech@gmail.com  
+📱 **WhatsApp:** https://wa.me/5512974033027  
+🌐 **Portfólio:** (em desenvolvimento)
+
+---
+
+### ⭐ Se gostou do projeto, deixe uma estrela no repositório!
