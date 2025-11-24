@@ -26,7 +26,7 @@ export const PROJECTS = [
     title: "JPS Auto Peças",
     subtitle: "Site Institucional",
     desc: "Site profissional com carrossel, mapa, CTA e formulário.",
-    link: "https://jps-autopecasdiesel.vercel.app/",
+    link: "https://jps-auto-pe-as-new.vercel.app/",
     tags: ["React", "Maps", "SEO"],
     image: "https://picsum.photos/id/1073/600/400" // Placeholder
   },
