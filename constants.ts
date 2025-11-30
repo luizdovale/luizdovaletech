@@ -28,7 +28,7 @@ export const PROJECTS = [
     desc: "Site profissional com carrossel, mapa, CTA e formulário.",
     link: "https://jps-auto-pe-as-new.vercel.app/",
     tags: ["React", "Maps", "SEO"],
-    image: "https://picsum.photos/id/1073/600/400" // Placeholder
+    image: "https://lh3.googleusercontent.com/pw/AP1GczP8QmiB-yCVzRAJ4wH-VUv5Am3gauz6UJimM0bDJSQt0njSAatWZjn2im5VS9O2RHqM-t4tdxEkqTZBTkn5iEQcnrIcgbH9HOLfqRoz4SqRBmb_tPuyBTnFDlta8bTJoJ7s83fN3v__8kTm85WLS6w=w977-h607-s-no-gm?authuser=4" // Placeholder
   },
   {
     title: "Tatiane Nutricionista",
