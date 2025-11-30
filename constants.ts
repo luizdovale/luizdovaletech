@@ -20,7 +20,7 @@ export const PROJECTS = [
     desc: "App que realiza cálculos complexos para entrega e distribuição de gases do ar com precisão, facilitando o dia a dia de profissionais da área.",
     link: "https://luizdovale.github.io/gascalculatorflutterweb/",
     tags: ["Dart", "Math", "Industrial"],
-    image: "https://picsum.photos/id/20/600/400" // Placeholder
+    image: "https://lh3.googleusercontent.com/pw/AP1GczMqSExG1zehlIT6hW4_IgNCa7Dbt-Hrt2Uyh8NOmDK8_pV1rIEJWhc5uuI6pn9bXq5xOO4Yw8VvCsWFU2MG4joHs3iYnsEHbSNI8L9bIRXw5GZm7l9UIeleVL4amaqsHB-5vS3HAFgSUpUuV77k9uc=w975-h607-s-no-gm?authuser=4" // Placeholder
   },
   {
     title: "JPS Auto Peças",
