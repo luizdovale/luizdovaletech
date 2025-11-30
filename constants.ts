@@ -12,7 +12,7 @@ export const PROJECTS = [
     desc: "Sistema para funcionários registrarem jornada e horas extras de forma simples e integrada.",
     link: "https://jornada360ai-studio-full.vercel.app/",
     tags: ["Flutter", "Dart", "Web", "PWA"],
-    image: "https://picsum.photos/id/1/600/400" // Placeholder
+    image: "https://photos.fife.usercontent.google.com/pw/AP1GczNu4YGymuaRnLuFhw0y2YDavBWXat_WVoNACJ-AX4JUpHMFKOgxGzg=w969-h595-s-no-gm?authuser=4" // Placeholder
   },
   {
     title: "Gas Calculator",
