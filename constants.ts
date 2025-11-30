@@ -1,5 +1,3 @@
-
-
 export const SOCIAL_LINKS = {
   whatsapp: "https://wa.me/5512974033027?text=Ol%C3%A1%20luizdovaletech,%20vim%20do%20seu%20portf%C3%B3lio.%20Quero%20iniciar%20um%20projeto.",
   formAction: "https://formsubmit.co/luizdovaletech@gmail.com"
