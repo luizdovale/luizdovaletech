@@ -8,7 +8,7 @@ export const PROJECTS = [
     title: "Jornada360",
     subtitle: "App Web e Flutter",
     desc: "Sistema para funcionários registrarem jornada e horas extras de forma simples e integrada.",
-    link: "https://jornada360ai-studio-full.vercel.app/",
+    link: "https://jornada360.vercel.app/",
     tags: ["Flutter", "Dart", "Web", "PWA"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczMc_HmvB2iJ6y8lTk4SgwP9718_4gJD6g8c7HFlTu4j31sgxEii-L6nwpnLzF0pVa2nmL05Ymmkr3_4gq9bYIa1X14xj-DVeI2WvCUyAEowJ-VTFIqOaMYWL76GfMYDKMWpBJB9H3KhNz2unS0p7ic=w969-h595-s-no-gm?authuser=4" // Placeholder
   },
@@ -24,7 +24,7 @@ export const PROJECTS = [
     title: "JPS Auto Peças",
     subtitle: "Site Institucional",
     desc: "Site profissional com carrossel, mapa, CTA e formulário.",
-    link: "https://jps-auto-pe-as-new.vercel.app/",
+    link: "https://jpsautopecas.vercel.app/",
     tags: ["React", "Maps", "SEO"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczP8QmiB-yCVzRAJ4wH-VUv5Am3gauz6UJimM0bDJSQt0njSAatWZjn2im5VS9O2RHqM-t4tdxEkqTZBTkn5iEQcnrIcgbH9HOLfqRoz4SqRBmb_tPuyBTnFDlta8bTJoJ7s83fN3v__8kTm85WLS6w=w977-h607-s-no-gm?authuser=4" // Placeholder
   },
