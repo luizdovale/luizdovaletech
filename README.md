@@ -37,7 +37,7 @@ Meu foco é entregar produtos funcionais, rápidos e visualmente profissionais.
 
 ### 🔵 **Jornada360**
 App Web + Flutter para cálculo de jornadas de trabalho e geração de relatórios.  
-🔗 https://jornada360ai-studio-full.vercel.app/
+🔗 https://jornada360.vercel.app/
 
 ### 🔵 **Gas Calculator**
 Aplicação para cálculos industriais de gases (LIN/LOX/LAR).  
@@ -45,7 +45,7 @@ Aplicação para cálculos industriais de gases (LIN/LOX/LAR).
 
 ### 🔵 **JPS Auto Peças Diesel**
 Website institucional moderno com foco em vendas e contato rápido.  
-🔗 https://jps-autopecasdiesel.vercel.app/
+🔗 https://jpsautopecas.vercel.app/
 
 ### 🔵 **Tatiane Nutricionista**
 Landing page personalizada com design clean e elementos visuais profissionais.  
