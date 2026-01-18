@@ -25,6 +25,7 @@ const staggerContainer = {
 const Home: React.FC = () => {
 
   // CAMINHO DA FOTO DE PERFIL
+  // Adicione seu arquivo 'avatar.png' na pasta 'public' do projeto
   const avatarUrl = "/avatar.png";
 
   const scrollToProjects = (e: React.MouseEvent) => {
@@ -110,6 +111,7 @@ const Home: React.FC = () => {
                   alt="Avatar Luiz"
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   onError={(e) => {
+                    // Fallback visual caso a imagem não exista ainda
                     e.currentTarget.style.display = 'none';
                     e.currentTarget.parentElement!.style.backgroundColor = '#1D2946';
                     e.currentTarget.parentElement!.innerHTML = '<div class="flex items-center justify-center h-full text-white text-xs text-center p-4">Adicione avatar.png em /public</div>';
@@ -149,15 +151,9 @@ const Home: React.FC = () => {
               Sobre Mim
             </h2>
 
-            <p className="text-tech-gray text-lg leading-relaxed relative z-10 text-left break-words">
-              Meu nome é Luiz Fernando, desenvolvedor Web e Flutter especializado na criação de aplicações 
-              modernas, responsivas e de alta performance. Trabalho com React, TypeScript, Tailwind, Flutter 
-              e Dart para entregar soluções digitais eficientes, seguras e alinhadas às necessidades de cada 
-              projeto. Atuo no desenvolvimento de sites, sistemas, PWAs e aplicativos completos, sempre 
-              priorizando qualidade, usabilidade e boas práticas. Meu foco é transformar projetos em produtos 
-              funcionais e profissionais, oferecendo tecnologia que gera resultados reais.
+            <p className="text-tech-gray text-lg leading-relaxed relative z-10 text-justify">
+              Sou luizdovaletech, desenvolvedor Web e Flutter. Crio soluções digitais modernas, responsivas e de alta performance. Desenvolvo apps completos, PWAs instaláveis, landing pages e sistemas web personalizados. Meu foco é unir design, tecnologia e performance para entregar resultados reais.
             </p>
-
 
           </div>
         </div>

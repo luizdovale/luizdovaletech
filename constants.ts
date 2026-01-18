@@ -17,7 +17,7 @@ export const PROJECTS = [
     subtitle: "Cálculo Industrial",
     desc: "App que realiza cálculos complexos para entrega e distribuição de gases do ar com precisão, facilitando o dia a dia de profissionais da área.",
     link: "https://luizdovale.github.io/gascalculatorflutterweb/",
-    tags: ["Dart", "Math", "Industrial"],
+    tags: ["Flutter","Dart", "Math", "Industrial"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczMqSExG1zehlIT6hW4_IgNCa7Dbt-Hrt2Uyh8NOmDK8_pV1rIEJWhc5uuI6pn9bXq5xOO4Yw8VvCsWFU2MG4joHs3iYnsEHbSNI8L9bIRXw5GZm7l9UIeleVL4amaqsHB-5vS3HAFgSUpUuV77k9uc=w975-h607-s-no-gm?authuser=4" // Placeholder
   },
   {
@@ -32,9 +32,17 @@ export const PROJECTS = [
     title: "Tatiane Nutricionista",
     subtitle: "Landing Page",
     desc: "Landing page elegante com blog e imagens profissionais.",
-    link: "https://tatianedovalenutri.vercel.app",
+    link: "https://tatianedo-vale-nutri.vercel.app",
     tags: ["UX/UI", "Marketing", "Landing Page"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczMA1-gJUfmA1hmtV0gRC4uaiEVYcMVUXaGkOjvO4J_t_XGQZ22y1SQt6T1fCEUmwEG_MZtzDdgQF9aqUWfWfljQSQa2MIzLJkD7YIqEl3QWEAeQ41zmOOJbr_cRzTrBEq7AlNkUkiQaA2qwlGwF1QA=w974-h604-s-no-gm?authuser=4" // Placeholder
+  },
+  {
+    title: "Vozza Teleprompter",
+    subtitle: "App Web para Streming ",
+    desc: "Landing page elegante com blog e imagens profissionais.",
+    link: "https://vozzateleprompter.vercel.app/",
+    tags: ["UX/UI", "React", "SEO", "PWA"],
+    image: "https://lh3.googleusercontent.com/pw/AP1GczN8kyzlIZYkQH4Fe7n6iq059Tqek_8WcWvWtCydvVeL74RkZvZV3gzjWmKrO9D18uL0CjOYMGb5qaeLUMjFfk_hwklBdlIxjGwAFDG_RvuYvTbAfqR27c4Z1XERCaCy2WUGcSUDUBQhl2akkfukvD5T=w1140-h641-s-no-gm?authuser=0" // Placeholder
   }
 ];
 
