@@ -32,7 +32,7 @@ export const PROJECTS = [
     title: "Tatiane Nutricionista",
     subtitle: "Landing Page",
     desc: "Landing page elegante com blog e imagens profissionais.",
-    link: "https://tatianedo-vale-nutri.vercel.app",
+    link: "https://tatianedovalenutri.vercel.app",
     tags: ["UX/UI", "Marketing", "Landing Page"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczMA1-gJUfmA1hmtV0gRC4uaiEVYcMVUXaGkOjvO4J_t_XGQZ22y1SQt6T1fCEUmwEG_MZtzDdgQF9aqUWfWfljQSQa2MIzLJkD7YIqEl3QWEAeQ41zmOOJbr_cRzTrBEq7AlNkUkiQaA2qwlGwF1QA=w974-h604-s-no-gm?authuser=4" // Placeholder
   }
