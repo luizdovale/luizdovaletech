@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PROJECTS } from '../../constants';
+import { PROJECTS, SOCIAL_LINKS } from '../../constants';
 
 const ProjectsSection: React.FC = () => {
   return (
