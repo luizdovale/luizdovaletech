@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://jpsautopecas.vercel.app/">
-    <img src="https://lh3.googleusercontent.com/pw/AP1GczOx6aup6rJOQhv9sjPoF8ckgR7nYhdSI7UkdVugATvvTSVLWH0q2h6ZweYKLVQMsVMQAAQsoBLNH6l--qvw7Q33tqj5dfwOkb_SD2d4LP3gazrxpxye0zT9QMyUwaJPYRxCwT1-BpAaq31l-QN1IYs=w1366-h473-s-no-gm?authuser=4" width="100%" />
+  <a href="https://jornada360.vercel.app/">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczPhGnFVCsJDN6QkM968cClyfRPNDGlNa81MhyateI-M4S5CRvcVdFuaMesaeSEn6q6ChfM8pWnPQJKLUXfA2EDta9_GfXeR0nVxp05YsKLhKu5Q1yh-vLv-lstCOVbQiEd6xmD7B7KuI8uDL1x0nj5Q=w1366-h434-s-no-gm?authuser=2" />
   </a>
 </p>
 
@@ -124,8 +124,19 @@ Aberto a:
 
 ---
 
-## 📄 Licença
+---
 
-Este portfólio é de uso demonstrativo e representa projetos desenvolvidos por **Luizdovaletech**.
+## 👨‍💻 Desenvolvido por
+
+**luizdovaletech**
+📧 *[luizdovaletech@gmail.com](mailto:luizdovaletech@gmail.com)*
 
 ---
+## 👨‍💻 Site do Desenvolvedor
+
+Luiz Fernando  
+🌐 https://valetechsolucoes.com.br
+## 📝 Licença
+---
+
+Este projeto está licenciado sob **MIT License**.
