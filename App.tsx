@@ -19,7 +19,12 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <Router>
+    <Router 
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <div className="font-sans bg-tech-dark min-h-screen text-slate-200 selection:bg-tech-electric selection:text-white relative">
         <ParticleBackground />
         <Navbar />

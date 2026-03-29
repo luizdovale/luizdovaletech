@@ -18,14 +18,14 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navClasses = `fixed top-0 w-full z-50 transition-all duration-300 ${
+  const navClasses = `fixed top-0 w-full z-50 transition-all duration-700 ease-in-out ${
     scrolled 
-      ? 'bg-tech-dark/90 backdrop-blur-md border-b border-tech-blue/30 py-3 shadow-lg' 
+      ? 'bg-tech-dark/40 backdrop-blur-xl border-b border-white/5 py-4 shadow-2xl' 
       : 'bg-transparent py-5'
   }`;
 
-  const linkClasses = "font-display text-sm font-medium text-slate-200 hover:text-tech-gold transition-colors tracking-wider uppercase relative group cursor-pointer";
-  const activeHighlight = "absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-gold transition-all group-hover:w-full";
+  const linkClasses = "font-display text-[13px] font-bold text-white/70 hover:text-tech-electric transition-all tracking-[0.15em] uppercase relative group cursor-pointer";
+  const activeHighlight = "absolute -bottom-2 left-0 w-0 h-[2px] bg-tech-electric transition-all group-hover:w-full rounded-full shadow-[0_0_8px_rgba(10,132,255,0.6)]";
 
   // Smooth scroll handler
   const handleScrollTo = (id: string) => {
@@ -50,9 +50,9 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
       className={navClasses}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">

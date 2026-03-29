@@ -22,7 +22,7 @@ const Briefing: React.FC = () => {
 
         {/* FORM CONFIGURADO */}
         <form
-  action="https://formsubmit.co/luizdovaletech@gmail.com"
+  action="https://formsubmit.co/valetechsolucoess@gmail.com"
   method="POST"
   className="space-y-8"
 >
@@ -32,7 +32,7 @@ const Briefing: React.FC = () => {
   <input type="hidden" name="_template" value="table" />
 
   {/* REDIRECIONA PARA SUA PÁGINA REAL DE SUCESSO */}
-  <input type="hidden" name="_next" value="https://luizdovaletech.vercel.app/#/sucesso" />
+  <input type="hidden" name="_next" value="https://valetechsolucoes.com.br/#/sucesso" />
 
   {/* MENSAGEM AUTOMÁTICA EM PORTUGUÊS */}
   <input 

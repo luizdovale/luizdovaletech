@@ -4,14 +4,14 @@
   </a>
 </p>
 
-# 👨‍💻 Luizdovaletech  
-### Desenvolvedor Web • Flutter • React • PWA
+# 👨‍💻 ValeTech Soluções  
+### Desenvolvimento de Software • Engenharia de Software • Design Premium
 
 Bem-vindo ao meu **portfólio profissional**.  
 Aqui você encontra projetos reais, funcionais e publicados, desenvolvidos com foco em **usabilidade, performance e soluções práticas para empresas e profissionais**.
 
 🌐 **Portfolio online:**  
-👉 https://luizdovaletech.vercel.app/
+👉 https://valetechsolucoes.com.br/
 
 ---
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogoFooter } from './Logos';
 
 const Footer: React.FC = () => {
   return (
@@ -6,12 +7,10 @@ const Footer: React.FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-tech-gold/50 blur-[50px]"></div>
       
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-        <div className="mb-6 md:mb-0 text-center md:text-left">
-           <h3 className="font-display text-2xl font-bold text-white mb-2">
-            luizdovale<span className="text-tech-electric">tech</span>
-          </h3>
-          <p className="text-tech-gray text-sm">Transformando código em futuro.</p>
-        </div>
+         <div className="mb-8 md:mb-0 text-center md:text-left">
+            <LogoFooter className="mb-4" />
+           <p className="text-tech-gray text-sm font-light mt-2">Elevando seu negócio ao próximo nível digital.</p>
+         </div>
 
         <div className="flex flex-col items-center md:items-end space-y-4">
             <div className="flex space-x-6">

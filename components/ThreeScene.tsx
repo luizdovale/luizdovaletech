@@ -24,23 +24,14 @@ const ThreeScene: React.FC = () => {
 
     const init = () => {
       try {
-        // 1. Manual Context Check
-        // We try to get the context ourselves first. If this fails or returns null,
-        // we know WebGL is not working, so we abort before Three.js throws a hard error.
-        const contextAttributes = { alpha: true, antialias: true };
-        const gl = canvas.getContext('webgl', contextAttributes) || 
-                   canvas.getContext('experimental-webgl', contextAttributes);
-
-        if (!gl) {
-          throw new Error("WebGL context not available");
-        }
-
-        // 2. Initialize Renderer with existing context
+        // 2. Initialize Renderer
+        // Three.js r150+ defaults to WebGL 2 if available. 
+        // We remove manual context selection to avoid WebGL 1 deprecation warnings.
         renderer = new THREE.WebGLRenderer({ 
           canvas: canvas, 
-          context: gl as WebGLRenderingContext,
           alpha: true, 
-          antialias: true 
+          antialias: true,
+          powerPreference: "high-performance"
         });
         
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -54,7 +45,7 @@ const ThreeScene: React.FC = () => {
         // Main Sphere
         geometry = new THREE.IcosahedronGeometry(2, 1);
         material = new THREE.MeshBasicMaterial({ 
-          color: 0x1A66BF, 
+          color: 0x0A84FF, // Novo Azul ValeTech
           wireframe: true,
           transparent: true,
           opacity: 0.3
@@ -65,7 +56,7 @@ const ThreeScene: React.FC = () => {
         // Inner Core
         coreGeo = new THREE.IcosahedronGeometry(1, 0);
         coreMat = new THREE.MeshBasicMaterial({
-          color: 0xFCE300,
+          color: 0xF5D142, // Novo Ouro ValeTech
           wireframe: true,
           transparent: true,
           opacity: 0.1
