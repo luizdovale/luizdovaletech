@@ -57,8 +57,16 @@ export const PROJECTS = [
     subtitle: "Sistema de Gestão Eclesiástica",
     desc: "Sistema de gestão para igrejas com controle de membros, finanças e eventos.",
     link: "https://churchflowbr.vercel.app/",
-    tags: ["TypeScript", "React", "SEO", "UX/UI", "PWA"],
+    tags: ["TypeScript", "React", "SEO", "UX/UI", "PWA", "SaaS"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczMrFbsJmHOP8YSbUWgZ6BtWVuxNHBMXgs3HmxNmG0TkGKTCepUnNw-FZic2cNodfpRxf4V-hpexh0G8kc7JkosODkLPyttoIvzNt4OFIAGmQvxPtiA6K6mBOLUCgaLh4jxM2Dlz-Tls_ghdc2MvT5dv=w1352-h597-s-no-gm?authuser=2" // Placeholder
+  },
+  {
+    title: "GearTech",
+    subtitle: "Sistema de Gestão para Auto Peças",
+    desc: "Sistema de gestão para auto peças com controle de estoque, vendas e clientes.",
+    link: "https://geartechsystem.vercel.app/",
+    tags: ["TypeScript", "NextJS", "SEO", "UX/UI", "PWA", "SaaS", "ERP", "PostgreSQL", "Supabase", "Tailwind"],
+    image: "https://lh3.googleusercontent.com/pw/AP1GczNLD5LBZvcG6P0aQN6rc0hkdOIv5y7rFpGVaguufloS0PeGe7UWh-IPLHngDCy7flbvehRnCcAQtLhcqb5Vf8ClSE5FykTb13PkATntwYsfBhImdHdU0_LS78HgCyJtf4phLKTWCMQgW__d-AHAUPzK=w1137-h599-s-no-gm?authuser=1" // Placeholder
   }
 ];
 
