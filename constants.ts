@@ -64,7 +64,7 @@ export const PROJECTS = [
     title: "GearTech",
     subtitle: "Sistema de Gestão para Auto Peças",
     desc: "Sistema de gestão para auto peças com controle de estoque, vendas e clientes.",
-    link: "https://geartechsystem.vercel.app/",
+    link: "https://geartechsytem.vercel.app/",
     tags: ["TypeScript", "NextJS", "SEO", "UX/UI", "PWA", "SaaS", "ERP", "PostgreSQL", "Supabase", "Tailwind"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczNLD5LBZvcG6P0aQN6rc0hkdOIv5y7rFpGVaguufloS0PeGe7UWh-IPLHngDCy7flbvehRnCcAQtLhcqb5Vf8ClSE5FykTb13PkATntwYsfBhImdHdU0_LS78HgCyJtf4phLKTWCMQgW__d-AHAUPzK=w1137-h599-s-no-gm?authuser=1" // Placeholder
   }
