@@ -8,6 +8,7 @@ const Briefing: React.FC = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [projectType, setProjectType] = useState("Site Institucional");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -103,7 +104,12 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-3">Tipo de Solução</label>
-                <select name="3. Tipo de Solução" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
+                <select 
+                  name="3. Tipo de Solução" 
+                  value={projectType}
+                  onChange={(e) => setProjectType(e.target.value)}
+                  className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none"
+                >
                   <option value="Site Institucional">Site Institucional</option>
                   <option value="App Mobile (Flutter)">App Mobile (Flutter)</option>
                   <option value="Landing Page">Landing Page (Alta Conversão)</option>
@@ -113,6 +119,19 @@ const Briefing: React.FC = () => {
                   <option value="Consultoria/Outros">Consultoria / Outros</option>
                 </select>
               </div>
+
+              {/* CAMPO DINÂMICO PARA SITE INSTITUCIONAL */}
+              {projectType === "Site Institucional" && (
+                <div className="animate-fadeIn">
+                  <label className="block text-sm text-tech-gray mb-3">Área de Postagem / Blog</label>
+                  <select name="3.1 Gestão de Conteúdo (Blog/Projetos)" className="w-full bg-tech-surface border border-blue-500/50 rounded p-3 text-white focus:border-tech-gold outline-none">
+                    <option value="Não preciso (Fotos fixas)">Não, prefiro que as fotos e textos sejam fixos (eu não pretendo trocar)</option>
+                    <option value="Sim, quero um Blog/Portfólio Dinâmico">Sim, quero uma área (Blog/Projetos) onde eu mesmo possa adicionar/remover fotos e textos</option>
+                    <option value="Não tenho certeza ainda">Ainda não decidi, preciso de orientação</option>
+                  </select>
+                </div>
+              )}
+
               <div>
                 <label className="block text-sm text-tech-gray mb-3">Plataformas Alvo</label>
                 <div className="flex flex-wrap gap-3">
@@ -194,21 +213,68 @@ const Briefing: React.FC = () => {
             </div>
           </div>
 
-          {/* SEÇÃO 4: Fechamento */}
+          {/* SEÇÃO 4: Segurança & Estratégia (NOVA - SENIOR 2026) */}
+          <div className="glass-panel p-8 rounded-2xl border-t border-purple-500">
+            <h3 className="text-xl font-display text-white mb-6 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-sm font-bold">4</span>
+              Segurança & Visão de Futuro
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label className="block text-sm text-tech-gray mb-2">Proteção de Dados e Leis de Privacidade</label>
+                <select name="13. Coleta de Dados Sensíveis (LGPD)" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                  <option value="Não">Não coletaremos dados sensíveis (apenas contato básico)</option>
+                  <option value="Sim">Sim, vamos coletar dados como CPF, endereço ou pagamentos</option>
+                  <option value="Ainda não sei">Não tenho certeza, preciso de ajuda com a legislação</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm text-tech-gray mb-2">Expectativa de Movimento (Servidor)</label>
+                <select name="14. Expectativa de Visitas Mensais" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                  <option value="Até 1.000 (Início)">Até 1.000 pessoasp/mês (Projeto Inicial)</option>
+                  <option value="Entre 1.000 e 50.000 (Médio)">Entre 1.000 e 50.000 pessoas (Escala Média)</option>
+                  <option value="Grande Escala">Acima de 100.000 visitas (Alta Performance)</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label className="block text-sm text-tech-gray mb-2">Cuidados após o Lançamento</label>
+                <select name="15. Manutenção do Site" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                  <option value="Quero suporte Luiz Vale Tech">Quero que você cuide de tudo (Suporte Mensal/Assinatura)</option>
+                  <option value="Eu ou minha equipe vamos cuidar">Eu ou minha equipe interna vamos gerenciar as atualizações</option>
+                  <option value="Ainda não decidi">Ainda não decidi, vamos falar sobre isso</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm text-tech-gray mb-2">Ferramenta ou Hospedagem Específica?</label>
+                <input type="text" name="16. Preferência de Tecnologia/Hospedagem" placeholder="Ex: AWS, Vercel, Hostgator, ou já tenho contratado..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none" />
+              </div>
+            </div>
+
+            <div className="mb-0">
+              <label className="block text-sm text-tech-gray mb-2">O seu Sucesso: O que faria seu investimento valer a pena daqui a 6 meses?</label>
+              <textarea name="17. Meta Principal de Negócio (ROI)" rows={3} placeholder="Ex: Conseguir fechar 10 vendas extras por mês, ou reduzir meu custo operacional com o app..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none"></textarea>
+            </div>
+          </div>
+
+          {/* SEÇÃO 5: Fechamento (Antiga 4) */}
           <div className="glass-panel p-8 rounded-2xl border-t border-tech-electric">
             <h3 className="text-xl font-display text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full bg-tech-electric flex items-center justify-center text-sm font-bold">4</span>
-              Planejamento
+              <span className="w-8 h-8 rounded-full bg-tech-electric flex items-center justify-center text-sm font-bold">5</span>
+              Planejamento Final
             </h3>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Prazo Ideal de Lançamento</label>
-                <input type="text" name="13. Prazo Estimado" placeholder="Ex: Preciso lançar em 30 dias..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                <input type="text" name="18. Prazo Estimado de Lançamento" placeholder="Ex: Preciso lançar em 30 dias..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
               </div>
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Investimento Estimado (Budget)</label>
-                <select name="14. Investimento Pretendido" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                <select name="19. Investimento Pretendido" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
                   <option value="Prefiro discutir após análise">Prefiro discutir após análise</option>
                   <option value="Projeto MVP / Entrada (Baixo Custo)">Projeto MVP / Entrada (Baixo Custo)</option>
                   <option value="Projeto Profissional (Médio Porte)">Projeto Profissional (Médio Porte)</option>
@@ -218,13 +284,13 @@ const Briefing: React.FC = () => {
             </div>
 
             <div className="mt-6">
-              <label className="block text-sm text-tech-gray mb-2">Referências Visuais (Links)</label>
-              <textarea name="15. Referências e Links" rows={2} placeholder="Cole links de sites ou apps que você gosta do design ou funcionalidades." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+              <label className="block text-sm text-tech-gray mb-2">Referências Visuais (Links que você gosta)</label>
+              <textarea name="20. Referências e Links Visuais" rows={2} placeholder="Cole links de sites ou apps que você admira." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
             </div>
 
             <div className="mt-6">
               <label className="block text-sm text-tech-gray mb-2">Observações Finais</label>
-              <textarea name="16. Observações Extras" rows={2} className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+              <textarea name="21. Observações Extras" rows={2} className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
             </div>
           </div>
 
