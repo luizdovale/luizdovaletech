@@ -36,8 +36,8 @@ const Hero: React.FC = () => {
           variants={staggerContainer}
           className="text-center md:text-left order-2 md:order-1"
         >
-          <motion.div 
-            variants={fadeInUp} 
+          <motion.div
+            variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-tech-electric/30 rounded-full bg-tech-electric/10 backdrop-blur-md shadow-[0_0_15px_rgba(26,102,191,0.2)]"
           >
             <span className="relative flex h-2 w-2">
@@ -49,26 +49,26 @@ const Hero: React.FC = () => {
             </span>
           </motion.div>
 
-          <motion.h1 
-            variants={fadeInUp} 
+          <motion.h1
+            variants={fadeInUp}
             className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 tracking-tighter"
           >
-            <span className="block text-white drop-shadow-sm text-balance">valetech<span className="block text-tech-electric">soluções</span></span>
+            <span className="block text-white drop-shadow-sm text-balance">Desenvolvedor de<span className="block text-tech-electric">Software</span></span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-tech-gray via-white/70 to-tech-gray text-lg sm:text-2xl md:text-4xl mt-4 sm:mt-6 font-medium tracking-widest uppercase">
               Dev Web & <span className="text-tech-electric font-bold">Flutter</span>
             </span>
           </motion.h1>
 
-          <motion.p 
-            variants={fadeInUp} 
+          <motion.p
+            variants={fadeInUp}
             className="text-tech-gray text-lg md:text-xl mb-12 max-w-xl mx-auto md:mx-0 font-light leading-relaxed opacity-90"
           >
             Transformo conceitos complexos em experiências digitais impecáveis.
             Especialista em construir aplicações escaláveis com foco absoluto em performance e design.
           </motion.p>
 
-          <motion.div 
-            variants={fadeInUp} 
+          <motion.div
+            variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start"
           >
             <Link
@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 bg-tech-electric/20 rounded-full blur-[100px] animate-pulse-slow"></div>
             <div className="absolute inset-[-40px] rounded-full border border-tech-electric/10 animate-[spin_20s_linear_infinite]"></div>
             <div className="absolute inset-[-20px] rounded-full border border-tech-gold/10 animate-[spin_15s_linear_infinite_reverse]"></div>
-            
+
             {/* Container do Avatar */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-tech-surface shadow-2xl z-10 group transform-gpu">
               <img
@@ -118,16 +118,16 @@ const Hero: React.FC = () => {
                   e.currentTarget.parentElement!.innerHTML = '<div class="text-4xl font-bold text-tech-electric/40 tracking-tighter uppercase p-8 text-center italic leading-none select-none">LUIZ<br/>DOVALE</div>';
                 }}
               />
-              
+
               {/* Overlay Holográfico */}
               <div className="absolute inset-0 bg-gradient-to-tr from-tech-electric/20 via-transparent to-tech-gold/10 opacity-40 group-hover:opacity-20 transition-opacity"></div>
-              
+
               {/* Moldura Glass */}
               <div className="absolute inset-0 border-[16px] border-tech-dark/20 pointer-events-none"></div>
             </div>
 
             {/* Tags Flutuantes */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -top-4 -right-4 z-20 px-6 py-3 bg-tech-surface/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl hidden md:block"
@@ -137,14 +137,14 @@ const Hero: React.FC = () => {
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
               className="absolute -bottom-6 -left-6 z-20 px-6 py-3 bg-tech-surface/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl hidden md:block"
             >
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
-                  {[1,2,3].map(i => (
+                  {[1, 2, 3].map(i => (
                     <div key={i} className="w-6 h-6 rounded-full bg-tech-blue border border-tech-dark"></div>
                   ))}
                 </div>
@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
           </div>
         </motion.div>
       </div>
-      
+
       {/* Indicador de Scroll Minimalista */}
       <motion.div
         initial={{ opacity: 0 }}
