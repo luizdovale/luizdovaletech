@@ -157,19 +157,19 @@ const Briefing: React.FC = () => {
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Identidade Visual (Logo/Cores)</label>
                 <select name="Situacao_do_Design" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
-                  <option value="Tenho logo e manual completo">Já possuo Logotipo e Manual da Marca</option>
-                  <option value="Tenho apenas o logo">Tenho apenas o Logo (preciso expandir)</option>
-                  <option value="Preciso criar do zero">Não tenho, preciso criar do zero</option>
-                  <option value="Redesign">Tenho, mas quero modernizar (Redesign)</option>
+                  <option value="Já possuo Logotipo e Manual da Marca">Já possuo Logotipo e Manual da Marca</option>
+                  <option value="Tenho apenas o Logo (preciso expandir)">Tenho apenas o Logo (preciso expandir)</option>
+                  <option value="Não tenho, preciso criar do zero">Não tenho, preciso criar do zero</option>
+                  <option value="Tenho, mas quero modernizar (Redesign)">Tenho, mas quero modernizar (Redesign)</option>
                 </select>
               </div>
               
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Conteúdo (Textos/Imagens)</label>
                 <select name="Status_do_Conteudo" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
-                  <option value="Tudo pronto">Já tenho todos os textos e fotos prontos</option>
-                  <option value="Em produção">Estou produzindo o conteúdo</option>
-                  <option value="Preciso de ajuda">Não tenho nada, preciso de ajuda para criar</option>
+                  <option value="Já tenho todos os textos e fotos prontos">Já tenho todos os textos e fotos prontos</option>
+                  <option value="Estou produzindo o conteúdo">Estou produzindo o conteúdo</option>
+                  <option value="Não tenho nada, preciso de ajuda para criar">Não tenho nada, preciso de ajuda para criar</option>
                 </select>
               </div>
             </div>
@@ -178,8 +178,8 @@ const Briefing: React.FC = () => {
                 <div>
                   <label className="block text-sm text-tech-gray mb-2">Infraestrutura (Domínio/Hospedagem)</label>
                   <select name="Dominio_Hospedagem" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
-                    <option value="Já possuo">Já tenho Domínio e Hospedagem/Contas nas Lojas</option>
-                    <option value="Não possuo">Não tenho, preciso de orientação para contratar</option>
+                    <option value="Já tenho Domínio e Hospedagem/Contas nas Lojas">Já tenho Domínio e Hospedagem/Contas nas Lojas</option>
+                    <option value="Não tenho, preciso de orientação para contratar">Não tenho, preciso de orientação para contratar</option>
                   </select>
                 </div>
                 <div>
@@ -209,10 +209,10 @@ const Briefing: React.FC = () => {
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Investimento Estimado (Budget)</label>
                 <select name="Orcamento_Investimento" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
-                  <option value="Não definido">Prefiro discutir após análise</option>
-                  <option value="Baixo Custo">Projeto MVP / Entrada (Baixo Custo)</option>
-                  <option value="Médio Porte">Projeto Profissional (Médio Porte)</option>
-                  <option value="Alto Nível">Projeto Robusto / Personalizado (Alto Nível)</option>
+                  <option value="Prefiro discutir após análise">Prefiro discutir após análise</option>
+                  <option value="Projeto MVP / Entrada (Baixo Custo)">Projeto MVP / Entrada (Baixo Custo)</option>
+                  <option value="Projeto Profissional (Médio Porte)">Projeto Profissional (Médio Porte)</option>
+                  <option value="Projeto Robusto / Personalizado (Alto Nível)">Projeto Robusto / Personalizado (Alto Nível)</option>
                 </select>
               </div>
             </div>
