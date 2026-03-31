@@ -1,13 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SOCIAL_LINKS } from '../constants';
 // @ts-ignore
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Briefing: React.FC = () => {
+
+  const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const formData = new FormData(event.currentTarget);
+    
+    // Web3Forms endpoint
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        navigate('/sucesso');
+      } else {
+        setSubmitError("Ocorreu um erro ao enviar. Por favor, tente novamente.");
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      setSubmitError("Erro de conexão. Verifique sua internet e tente novamente.");
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-tech-dark pt-24 pb-12 px-4 md:px-0 relative">
@@ -20,29 +52,24 @@ const Briefing: React.FC = () => {
           <p className="text-tech-gray">Preencha os detalhes abaixo com o máximo de precisão para um orçamento assertivo.</p>
         </div>
 
-        {/* FORM CONFIGURADO */}
         <form
-  action={SOCIAL_LINKS.formAction}
-  method="POST"
-  className="space-y-8"
->
-  {/* CONFIGURAÇÃO OCULTA */}
-  <input type="hidden" name="_subject" value="📌 NOVO BRIEFING DETALHADO - Luiz Do Vale Tech" />
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_template" value="table" />
-
-  {/* REDIRECIONA PARA SUA PÁGINA REAL DE SUCESSO */}
-  <input type="hidden" name="_next" value="https://valetechsolucoes.com.br/#/sucesso" />
-
-  {/* MENSAGEM AUTOMÁTICA EM PORTUGUÊS */}
-  <input 
-    type="hidden" 
-    name="_autoresponse" 
-    value="Olá! Recebi seu briefing detalhado e já estou analisando. Em breve retornarei com uma proposta técnica. Obrigado pelo contato! — Luiz do Vale Tech" 
-  />
-
-  {/* PERMITIR REPLY DIRETO PARA O CLIENTE */}
-  <input type="hidden" name="_replyto" value="email" />
+          onSubmit={handleSubmit}
+          className="space-y-8"
+        >
+          {/* CONFIGURAÇÃO WEB3FORMS */}
+          <input type="hidden" name="access_key" value={SOCIAL_LINKS.web3formsKey} />
+          <input type="hidden" name="subject" value="📌 NOVO BRIEFING DETALHADO - Luiz Do Vale Tech" />
+          <input type="hidden" name="from_name" value="Site Luiz do Vale Tech" />
+          
+          {/* MENSAGEM AUTOMÁTICA (Personalizada via painel Web3Forms) */}
+          <input type="hidden" name="replyto" value="email" />
+          
+          {/* Feedback de Erro */}
+          {submitError && (
+            <div className="p-4 bg-red-500/20 border border-red-500 text-red-200 rounded-lg text-center animate-shake">
+              {submitError}
+            </div>
+          )}
 
           {/* SEÇÃO 1: Contato */}
           <div className="glass-panel p-8 rounded-2xl border-t border-tech-electric">
@@ -201,8 +228,24 @@ const Briefing: React.FC = () => {
             </div>
           </div>
 
-          <button type="submit" className="w-full py-5 bg-tech-gradient text-white font-display text-lg font-bold tracking-widest rounded-lg hover:shadow-[0_0_30px_rgba(26,102,191,0.6)] transition-all transform hover:-translate-y-1 border border-white/10">
-            ENVIAR BRIEFING COMPLETO
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className={`w-full py-5 bg-tech-gradient text-white font-display text-lg font-bold tracking-widest rounded-lg transition-all transform border border-white/10 flex items-center justify-center gap-3
+              ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-[0_0_30px_rgba(26,102,191,0.6)] hover:-translate-y-1'}
+            `}
+          >
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                ENVIANDO...
+              </>
+            ) : (
+              'ENVIAR BRIEFING COMPLETO'
+            )}
           </button>
         </form>
       </div>

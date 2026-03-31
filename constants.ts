@@ -1,6 +1,7 @@
 export const SOCIAL_LINKS = {
   whatsapp: "https://wa.me/5512974033027?text=Olá%20ValeTech%20Soluções,%20vim%20do%20seu%20portfólio.%20Quero%20iniciar%20um%20projeto.",
-  formAction: "https://formsubmit.co/luizdovaletech@gmail.com"
+  formAction: "https://formsubmit.co/luizdovaletech@gmail.com",
+  web3formsKey: "aa00e3e1-13a8-4535-a695-894473969c24"
 };
 
 export const PROJECTS = [
