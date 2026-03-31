@@ -80,7 +80,7 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Nome Completo</label>
-                <input type="text" name="Nome_Cliente" required className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none focus:ring-1 focus:ring-tech-gold transition-all" />
+                <input type="text" name="1. Nome Completo" required className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none focus:ring-1 focus:ring-tech-gold transition-all" />
               </div>
               <div>
                 <label className="block text-sm text-tech-gray mb-2">E-mail Corporativo</label>
@@ -88,7 +88,7 @@ const Briefing: React.FC = () => {
               </div>
               <div className="md:col-span-2">
                 <label className="block text-sm text-tech-gray mb-2">WhatsApp / Telefone</label>
-                <input type="tel" name="WhatsApp" required className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none focus:ring-1 focus:ring-tech-gold transition-all" />
+                <input type="tel" name="2. WhatsApp ou Telefone" required className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none focus:ring-1 focus:ring-tech-gold transition-all" />
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-3">Tipo de Solução</label>
-                <select name="Tipo_de_Projeto" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
+                <select name="3. Tipo de Solução" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
                   <option value="Site Institucional">Site Institucional</option>
                   <option value="App Mobile (Flutter)">App Mobile (Flutter)</option>
                   <option value="Landing Page">Landing Page (Alta Conversão)</option>
@@ -117,13 +117,13 @@ const Briefing: React.FC = () => {
                 <label className="block text-sm text-tech-gray mb-3">Plataformas Alvo</label>
                 <div className="flex flex-wrap gap-3">
                   <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="Plataformas[]" value="Web Desktop" className="accent-tech-gold w-5 h-5" /> <span className="text-white">Web Desktop</span>
+                    <input type="checkbox" name="4. Plataformas Alvo[]" value="Web Desktop" className="accent-tech-gold w-5 h-5" /> <span className="text-white">Web Desktop</span>
                   </label>
                   <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="Plataformas[]" value="Android" className="accent-tech-gold w-5 h-5" /> <span className="text-white">Android</span>
+                    <input type="checkbox" name="4. Plataformas Alvo[]" value="Android" className="accent-tech-gold w-5 h-5" /> <span className="text-white">Android</span>
                   </label>
                   <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="Plataformas[]" value="iOS" className="accent-tech-gold w-5 h-5" /> <span className="text-white">iOS</span>
+                    <input type="checkbox" name="4. Plataformas Alvo[]" value="iOS" className="accent-tech-gold w-5 h-5" /> <span className="text-white">iOS</span>
                   </label>
                 </div>
               </div>
@@ -131,17 +131,17 @@ const Briefing: React.FC = () => {
 
             <div className="mb-6">
               <label className="block text-sm text-tech-gray mb-2">Objetivo Principal do Projeto</label>
-              <input type="text" name="Objetivo_do_Projeto" placeholder="Ex: Aumentar vendas, automatizar processos internos, modernizar marca..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+              <input type="text" name="5. Objetivo do Projeto" placeholder="Ex: Aumentar vendas, automatizar processos internos, modernizar marca..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-6">
                <div>
                   <label className="block text-sm text-tech-gray mb-2">Público-Alvo</label>
-                  <input type="text" name="Publico_Alvo" placeholder="Ex: Jovens de 18-25, Empresas B2B, Donas de casa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                  <input type="text" name="6. Público-Alvo" placeholder="Ex: Jovens de 18-25, Empresas B2B, Donas de casa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
                </div>
                <div>
                   <label className="block text-sm text-tech-gray mb-2">Principais Concorrentes</label>
-                  <input type="text" name="Concorrentes" placeholder="Ex: Site X, App Y (Links são bem-vindos)" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                  <input type="text" name="7. Principais Concorrentes" placeholder="Ex: Site X, App Y (Links são bem-vindos)" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
                </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Identidade Visual (Logo/Cores)</label>
-                <select name="Situacao_do_Design" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
+                <select name="8. Identidade Visual" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
                   <option value="Já possuo Logotipo e Manual da Marca">Já possuo Logotipo e Manual da Marca</option>
                   <option value="Tenho apenas o Logo (preciso expandir)">Tenho apenas o Logo (preciso expandir)</option>
                   <option value="Não tenho, preciso criar do zero">Não tenho, preciso criar do zero</option>
@@ -166,7 +166,7 @@ const Briefing: React.FC = () => {
               
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Conteúdo (Textos/Imagens)</label>
-                <select name="Status_do_Conteudo" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
+                <select name="9. Status do Conteúdo" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
                   <option value="Já tenho todos os textos e fotos prontos">Já tenho todos os textos e fotos prontos</option>
                   <option value="Estou produzindo o conteúdo">Estou produzindo o conteúdo</option>
                   <option value="Não tenho nada, preciso de ajuda para criar">Não tenho nada, preciso de ajuda para criar</option>
@@ -177,20 +177,20 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm text-tech-gray mb-2">Infraestrutura (Domínio/Hospedagem)</label>
-                  <select name="Dominio_Hospedagem" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
+                  <select name="10. Infraestrutura" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
                     <option value="Já tenho Domínio e Hospedagem/Contas nas Lojas">Já tenho Domínio e Hospedagem/Contas nas Lojas</option>
                     <option value="Não tenho, preciso de orientação para contratar">Não tenho, preciso de orientação para contratar</option>
                   </select>
                 </div>
                 <div>
                    <label className="block text-sm text-tech-gray mb-2">Integrações Necessárias</label>
-                   <input type="text" name="Integracoes" placeholder="Ex: PagSeguro, Google Maps, CRM, ERP, API externa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                   <input type="text" name="11. Integrações Necessárias" placeholder="Ex: PagSeguro, Google Maps, CRM, ERP, API externa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
                 </div>
             </div>
             
             <div className="mb-6">
               <label className="block text-sm text-tech-gray mb-2">Funcionalidades Específicas / Requisitos</label>
-              <textarea name="Funcionalidades_Desejadas" rows={4} placeholder="Liste as funções essenciais. Ex: Login social, Área de membros, Chat em tempo real, Calculadora personalizada, Painel administrativo..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none"></textarea>
+              <textarea name="12. Funcionalidades Requisitadas" rows={4} placeholder="Liste as funções essenciais. Ex: Login social, Área de membros, Chat em tempo real, Calculadora personalizada, Painel administrativo..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none"></textarea>
             </div>
           </div>
 
@@ -204,11 +204,11 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Prazo Ideal de Lançamento</label>
-                <input type="text" name="Prazo_Estimado" placeholder="Ex: Preciso lançar em 30 dias..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                <input type="text" name="13. Prazo Estimado" placeholder="Ex: Preciso lançar em 30 dias..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
               </div>
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Investimento Estimado (Budget)</label>
-                <select name="Orcamento_Investimento" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                <select name="14. Investimento Pretendido" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
                   <option value="Prefiro discutir após análise">Prefiro discutir após análise</option>
                   <option value="Projeto MVP / Entrada (Baixo Custo)">Projeto MVP / Entrada (Baixo Custo)</option>
                   <option value="Projeto Profissional (Médio Porte)">Projeto Profissional (Médio Porte)</option>
@@ -219,12 +219,12 @@ const Briefing: React.FC = () => {
 
             <div className="mt-6">
               <label className="block text-sm text-tech-gray mb-2">Referências Visuais (Links)</label>
-              <textarea name="Referencias_e_Links" rows={2} placeholder="Cole links de sites ou apps que você gosta do design ou funcionalidades." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+              <textarea name="15. Referências e Links" rows={2} placeholder="Cole links de sites ou apps que você gosta do design ou funcionalidades." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
             </div>
 
             <div className="mt-6">
               <label className="block text-sm text-tech-gray mb-2">Observações Finais</label>
-              <textarea name="Observacoes_Extras" rows={2} className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+              <textarea name="16. Observações Extras" rows={2} className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
             </div>
           </div>
 
