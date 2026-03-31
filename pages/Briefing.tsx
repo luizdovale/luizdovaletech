@@ -105,7 +105,7 @@ const Briefing: React.FC = () => {
               <div>
                 <label className="block text-sm text-tech-gray mb-3">Tipo de Solução</label>
                 <select 
-                  name="3. Tipo de Solução" 
+                  name="3. Tipo de Solucao" 
                   value={projectType}
                   onChange={(e) => setProjectType(e.target.value)}
                   className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none"
@@ -124,7 +124,7 @@ const Briefing: React.FC = () => {
               {projectType === "Site Institucional" && (
                 <div className="animate-fadeIn">
                   <label className="block text-sm text-tech-gray mb-3">Área de Postagem / Blog</label>
-                  <select name="3.1 Gestão de Conteúdo (Blog/Projetos)" className="w-full bg-tech-surface border border-blue-500/50 rounded p-3 text-white focus:border-tech-gold outline-none">
+                  <select name="3.1 Gestao de Conteudo (Blog/Projetos)" className="w-full bg-tech-surface border border-blue-500/50 rounded p-3 text-white focus:border-tech-gold outline-none">
                     <option value="Não preciso (Fotos fixas)">Não, prefiro que as fotos e textos sejam fixos (eu não pretendo trocar)</option>
                     <option value="Sim, quero um Blog/Portfólio Dinâmico">Sim, quero uma área (Blog/Projetos) onde eu mesmo possa adicionar/remover fotos e textos</option>
                     <option value="Não tenho certeza ainda">Ainda não decidi, preciso de orientação</option>
@@ -156,7 +156,7 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
                <div>
                   <label className="block text-sm text-tech-gray mb-2">Público-Alvo</label>
-                  <input type="text" name="6. Público-Alvo" placeholder="Ex: Jovens de 18-25, Empresas B2B, Donas de casa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                  <input type="text" name="6. Publico-Alvo" placeholder="Ex: Jovens de 18-25, Empresas B2B, Donas de casa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
                </div>
                <div>
                   <label className="block text-sm text-tech-gray mb-2">Principais Concorrentes</label>
@@ -185,7 +185,7 @@ const Briefing: React.FC = () => {
               
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Conteúdo (Textos/Imagens)</label>
-                <select name="9. Status do Conteúdo" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
+                <select name="9. Status do Conteudo" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
                   <option value="Já tenho todos os textos e fotos prontos">Já tenho todos os textos e fotos prontos</option>
                   <option value="Estou produzindo o conteúdo">Estou produzindo o conteúdo</option>
                   <option value="Não tenho nada, preciso de ajuda para criar">Não tenho nada, preciso de ajuda para criar</option>
@@ -203,7 +203,7 @@ const Briefing: React.FC = () => {
                 </div>
                 <div>
                    <label className="block text-sm text-tech-gray mb-2">Integrações Necessárias</label>
-                   <input type="text" name="11. Integrações Necessárias" placeholder="Ex: PagSeguro, Google Maps, CRM, ERP, API externa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                   <input type="text" name="11. Integracoes Necessarias" placeholder="Ex: PagSeguro, Google Maps, CRM, ERP, API externa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
                 </div>
             </div>
             
@@ -223,7 +223,7 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Proteção de Dados e Leis de Privacidade</label>
-                <select name="13. Coleta de Dados Sensíveis (LGPD)" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                <select name="13. Coleta de Dados Sensiveis (LGPD)" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
                   <option value="Não">Não coletaremos dados sensíveis (apenas contato básico)</option>
                   <option value="Sim">Sim, vamos coletar dados como CPF, endereço ou pagamentos</option>
                   <option value="Ainda não sei">Não tenho certeza, preciso de ajuda com a legislação</option>
@@ -242,7 +242,7 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Cuidados após o Lançamento</label>
-                <select name="15. Manutenção do Site" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                <select name="15. Manutencao do Site" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
                   <option value="Quero suporte Luiz Vale Tech">Quero que você cuide de tudo (Suporte Mensal/Assinatura)</option>
                   <option value="Eu ou minha equipe vamos cuidar">Eu ou minha equipe interna vamos gerenciar as atualizações</option>
                   <option value="Ainda não decidi">Ainda não decidi, vamos falar sobre isso</option>
@@ -250,13 +250,13 @@ const Briefing: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Ferramenta ou Hospedagem Específica?</label>
-                <input type="text" name="16. Preferência de Tecnologia/Hospedagem" placeholder="Ex: AWS, Vercel, Hostgator, ou já tenho contratado..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none" />
+                <input type="text" name="16. Preferencia de Tecnologia/Hospedagem" placeholder="Ex: AWS, Vercel, Hostgator, ou já tenho contratado..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none" />
               </div>
             </div>
 
             <div className="mb-0">
               <label className="block text-sm text-tech-gray mb-2">O seu Sucesso: O que faria seu investimento valer a pena daqui a 6 meses?</label>
-              <textarea name="17. Meta Principal de Negócio (ROI)" rows={3} placeholder="Ex: Conseguir fechar 10 vendas extras por mês, ou reduzir meu custo operacional com o app..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none"></textarea>
+              <textarea name="17. Meta Principal de Negocio (ROI)" rows={3} placeholder="Ex: Conseguir fechar 10 vendas extras por mês, ou reduzir meu custo operacional com o app..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none"></textarea>
             </div>
           </div>
 
@@ -270,7 +270,7 @@ const Briefing: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Prazo Ideal de Lançamento</label>
-                <input type="text" name="18. Prazo Estimado de Lançamento" placeholder="Ex: Preciso lançar em 30 dias..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                <input type="text" name="18. Prazo Estimado de Lancamento" placeholder="Ex: Preciso lançar em 30 dias..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
               </div>
               <div>
                 <label className="block text-sm text-tech-gray mb-2">Investimento Estimado (Budget)</label>
@@ -285,12 +285,12 @@ const Briefing: React.FC = () => {
 
             <div className="mt-6">
               <label className="block text-sm text-tech-gray mb-2">Referências Visuais (Links que você gosta)</label>
-              <textarea name="20. Referências e Links Visuais" rows={2} placeholder="Cole links de sites ou apps que você admira." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+              <textarea name="20. Referencias e Links Visuais" rows={2} placeholder="Cole links de sites ou apps que você admira." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
             </div>
 
             <div className="mt-6">
               <label className="block text-sm text-tech-gray mb-2">Observações Finais</label>
-              <textarea name="21. Observações Extras" rows={2} className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+              <textarea name="21. Observacoes Extras" rows={2} className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
             </div>
           </div>
 
