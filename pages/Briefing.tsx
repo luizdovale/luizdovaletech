@@ -22,7 +22,7 @@ const Briefing: React.FC = () => {
 
         {/* FORM CONFIGURADO */}
         <form
-  action="https://formsubmit.co/valetechsolucoess@gmail.com"
+  action={SOCIAL_LINKS.formAction}
   method="POST"
   className="space-y-8"
 >
