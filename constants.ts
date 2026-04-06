@@ -38,12 +38,12 @@ export const PROJECTS = [
     image: "https://lh3.googleusercontent.com/pw/AP1GczMA1-gJUfmA1hmtV0gRC4uaiEVYcMVUXaGkOjvO4J_t_XGQZ22y1SQt6T1fCEUmwEG_MZtzDdgQF9aqUWfWfljQSQa2MIzLJkD7YIqEl3QWEAeQ41zmOOJbr_cRzTrBEq7AlNkUkiQaA2qwlGwF1QA=w974-h604-s-no-gm?authuser=4" // Placeholder
   },
   {
-    title: "Vozza Teleprompter",
-    subtitle: "App Web para Streming ",
-    desc: "Landing page elegante com blog e imagens profissionais.",
-    link: "https://vozzateleprompter.vercel.app/",
+    title: "Studio By Nean",
+    subtitle: "Landing Page",
+    desc: "Landing page para uma academia de danças com imagens profissionais.",
+    link: "https://studiobynean.vercel.app/",
     tags: ["UX/UI", "React", "SEO", "PWA"],
-    image: "https://lh3.googleusercontent.com/pw/AP1GczN8kyzlIZYkQH4Fe7n6iq059Tqek_8WcWvWtCydvVeL74RkZvZV3gzjWmKrO9D18uL0CjOYMGb5qaeLUMjFfk_hwklBdlIxjGwAFDG_RvuYvTbAfqR27c4Z1XERCaCy2WUGcSUDUBQhl2akkfukvD5T=w1140-h641-s-no-gm?authuser=0" // Placeholder
+    image: "https://lh3.googleusercontent.com/pw/AP1GczPeLEMz5VvxtkMzmCGyrQG6iDNUS2yUQKHQqo3EWKxS0slV8ZM5SFHBCK1Vwvt11vWjcy2QIt9V4BDdC6Nz8KL6DHd2TKdfckp-aHJ2BxbOpO94CbMx2hxX-MlWWy21pHJbDHAXRb9iqxyZCeVXlaf7=w1351-h598-s-no-gm?authuser=1" // Placeholder
   },
   {
     title: "Grigoleti Arquitetos",
