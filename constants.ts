@@ -7,10 +7,10 @@ export const SOCIAL_LINKS = {
 export const PROJECTS = [
   {
     title: "Jornada360",
-    subtitle: "App Web e Flutter",
-    desc: "Sistema para funcionários registrarem jornada e horas extras de forma simples e integrada.",
+    subtitle: "App Web e PWA",
+    desc: "Sistema simples e eficiente para gestão de jornada de trabalho e horas extras.",
     link: "https://jornada360.vercel.app/",
-    tags: ["Flutter", "Dart", "Web", "PWA"],
+    tags: ["TypeScript", "React", "PWA"],
     image: "https://lh3.googleusercontent.com/pw/AP1GczMc_HmvB2iJ6y8lTk4SgwP9718_4gJD6g8c7HFlTu4j31sgxEii-L6nwpnLzF0pVa2nmL05Ymmkr3_4gq9bYIa1X14xj-DVeI2WvCUyAEowJ-VTFIqOaMYWL76GfMYDKMWpBJB9H3KhNz2unS0p7ic=w969-h595-s-no-gm?authuser=4" // Placeholder
   },
   {
