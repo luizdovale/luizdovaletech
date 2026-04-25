@@ -107,7 +107,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-[-20px] rounded-full border border-tech-gold/10 animate-[spin_15s_linear_infinite_reverse]"></div>
 
             {/* Container do Avatar */}
-            <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-tech-surface shadow-2xl z-10 group transform-gpu">
+            <div className="relative w-full h-full rounded-full overflow-hidden border border-white/10 bg-tech-surface shadow-2xl z-10 group transform-gpu">
               <img
                 src={avatarUrl}
                 alt="Avatar Luiz"
@@ -123,7 +123,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-tech-electric/20 via-transparent to-tech-gold/10 opacity-40 group-hover:opacity-20 transition-opacity"></div>
 
               {/* Moldura Glass */}
-              <div className="absolute inset-0 border-[16px] border-tech-dark/20 pointer-events-none"></div>
+              <div className="absolute inset-0 border-[16px] border-tech-dark/20 rounded-full pointer-events-none"></div>
             </div>
 
             {/* Tags Flutuantes */}
@@ -148,7 +148,7 @@ const Hero: React.FC = () => {
                     <div key={i} className="w-6 h-6 rounded-full bg-tech-blue border border-tech-dark"></div>
                   ))}
                 </div>
-                <p className="text-tech-gray text-xs font-medium">+10 Projetos Ativos</p>
+                <p className="text-tech-gray text-xs font-medium">+20 Projetos Ativos</p>
               </div>
             </motion.div>
           </div>
