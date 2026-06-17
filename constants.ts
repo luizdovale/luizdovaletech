@@ -23,10 +23,10 @@ export const PROJECTS = [
     title: "Grigoleti Arquitetos",
     subtitle: "Site Institucional",
     desc: "Site institucional premium para escritório de arquitetura com galeria de projetos, blog integrado e imagens profissionais.",
-    link: "https://grigoletiarquitetos.vercel.app/",
+    link: "https://grigoleti.com.br/",
     tags: ["Site Institucional", "Blog", "SEO", "PWA"],
     category: "sites" as ProjectCategory,
-    image: "https://lh3.googleusercontent.com/pw/AP1GczOIpKNdgJ-kSD2ObNR0gpRDTDgXOfMN0EwUP1ExXoA2oTTUKK6LS_q-Me5bJg1LUKNzMS0Y3ArKqP0Fn6N_PZdEgUOmdWtszhpe9FFj0AVWtRcPFZ0Zu9mqOXAUAfX6HNy_g7_WnSZk4OSre1DheYmS=w1345-h599-s-no-gm?authuser=2"
+    image: "https://photos.google.com/u/2/share/AF1QipNwFcp-f1q_nWbfuhwrl18U5VTZpYTb6_nllzfWgLA3H0JOUGi13U7xGVph9lcQ-A/photo/AF1QipPeoGhlR-o2kuUh9KyRvQmTrO43Mg0p28nDczrm?key=YUU2Ujl0ZzRpem1SRkxlTnJXaDM5em5qT2laVE1n"
   },
   {
     title: "Tatiane Nutricionista",
