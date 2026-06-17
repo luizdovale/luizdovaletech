@@ -26,7 +26,7 @@ export const PROJECTS = [
     link: "https://grigoleti.com.br/",
     tags: ["Site Institucional", "Blog", "SEO", "PWA"],
     category: "sites" as ProjectCategory,
-    image: "https://photos.google.com/u/2/share/AF1QipNwFcp-f1q_nWbfuhwrl18U5VTZpYTb6_nllzfWgLA3H0JOUGi13U7xGVph9lcQ-A/photo/AF1QipPeoGhlR-o2kuUh9KyRvQmTrO43Mg0p28nDczrm?key=YUU2Ujl0ZzRpem1SRkxlTnJXaDM5em5qT2laVE1n"
+    image: "https://lh3.googleusercontent.com/pw/AP1GczNW0I5-DESmGJ8Dy9JqwljwFNijUJpX6dAqLBO7Vx_Bi2ZIHG8hDEQYNbDq8ZtlxstxSKv0r7x5B8l5tUYqSFjO7w1IBZ1kIs17JK5MawMEOYHad3Ca-I4TDEh43hIPcrwfm6-676hRAAHZvpYUg50Y=w1363-h597-s-no-gm?authuser=2"
   },
   {
     title: "Tatiane Nutricionista",
