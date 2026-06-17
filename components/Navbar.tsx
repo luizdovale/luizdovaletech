@@ -63,20 +63,23 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8 items-center">
           <button onClick={() => handleScrollTo('about')} className={linkClasses}>
-            Sobre <span className={activeHighlight}></span>
+            Empresa <span className={activeHighlight}></span>
           </button>
-          <button onClick={() => handleScrollTo('skills')} className={linkClasses}>
-            Skills <span className={activeHighlight}></span>
+          <button onClick={() => handleScrollTo('services')} className={linkClasses}>
+            Serviços <span className={activeHighlight}></span>
           </button>
           <button onClick={() => handleScrollTo('projects')} className={linkClasses}>
             Projetos <span className={activeHighlight}></span>
           </button>
+          <Link to="/sobre" className={linkClasses}>
+            Sobre <span className={activeHighlight}></span>
+          </Link>
           
           <Link 
             to="/briefing" 
             className="px-6 py-2 rounded-full bg-tech-gradient text-white font-bold font-display text-xs tracking-widest hover:shadow-[0_0_15px_rgba(26,102,191,0.5)] transition-all transform hover:scale-105 border border-transparent hover:border-tech-gold"
           >
-            INICIAR PROJETO
+            SOLICITAR ORÇAMENTO
           </Link>
         </div>
 
@@ -104,15 +107,16 @@ const Navbar: React.FC = () => {
             className="md:hidden absolute top-full left-0 w-full bg-tech-dark/95 backdrop-blur-xl border-b border-tech-gold/20 overflow-hidden shadow-2xl"
           >
             <div className="p-6 flex flex-col space-y-4">
-              <button className="text-left text-white font-display text-lg" onClick={() => handleScrollTo('about')}>Sobre</button>
-              <button className="text-left text-white font-display text-lg" onClick={() => handleScrollTo('skills')}>Skills</button>
+              <button className="text-left text-white font-display text-lg" onClick={() => handleScrollTo('about')}>Empresa</button>
+              <button className="text-left text-white font-display text-lg" onClick={() => handleScrollTo('services')}>Serviços</button>
               <button className="text-left text-white font-display text-lg" onClick={() => handleScrollTo('projects')}>Projetos</button>
+              <Link to="/sobre" onClick={() => setIsOpen(false)} className="text-left text-white font-display text-lg">Sobre</Link>
               <Link 
                 to="/briefing" 
                 onClick={() => setIsOpen(false)}
                 className="text-center py-3 rounded bg-tech-gradient text-white font-bold font-display tracking-widest shadow-[0_0_10px_rgba(26,102,191,0.4)]"
               >
-                INICIAR PROJETO
+                SOLICITAR ORÇAMENTO
               </Link>
             </div>
           </motion.div>

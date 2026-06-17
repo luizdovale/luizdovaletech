@@ -51,20 +51,23 @@ const Hero: React.FC = () => {
 
           <motion.h1
             variants={fadeInUp}
-            className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 tracking-tighter"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6.5xl font-black leading-[1.15] mb-6 tracking-tighter"
           >
-            <span className="block text-white drop-shadow-sm text-balance">Desenvolvedor de<span className="block text-tech-electric">Software</span></span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-tech-gray via-white/70 to-tech-gray text-lg sm:text-2xl md:text-4xl mt-4 sm:mt-6 font-medium tracking-widest uppercase">
-              Dev Web & <span className="text-tech-electric font-bold">Flutter</span>
-            </span>
+            <span className="block text-white drop-shadow-sm text-balance">Desenvolvimento de Sites, Sistemas Web e <span className="text-tech-electric">Soluções Digitais Sob Medida</span></span>
           </motion.h1>
+
+          <motion.h2
+            variants={fadeInUp}
+            className="text-white/95 text-lg md:text-xl font-semibold mb-4 max-w-xl mx-auto md:mx-0 leading-relaxed font-display"
+          >
+            Ajudo empresas a fortalecer sua presença digital, automatizar processos e crescer com tecnologia.
+          </motion.h2>
 
           <motion.p
             variants={fadeInUp}
-            className="text-tech-gray text-lg md:text-xl mb-12 max-w-xl mx-auto md:mx-0 font-light leading-relaxed opacity-90"
+            className="text-tech-gray text-base md:text-lg mb-10 max-w-xl mx-auto md:mx-0 font-light leading-relaxed opacity-90"
           >
-            Transformo conceitos complexos em experiências digitais impecáveis.
-            Especialista em construir aplicações escaláveis com foco absoluto em performance e design.
+            Sites profissionais, sistemas personalizados e soluções digitais desenvolvidas para gerar resultados reais para o seu negócio.
           </motion.p>
 
           <motion.div
@@ -73,11 +76,11 @@ const Hero: React.FC = () => {
           >
             <Link
               to="/briefing"
-              className="group relative px-10 py-5 bg-tech-electric rounded-xl font-bold font-display tracking-widest text-white overflow-hidden shadow-[0_0_30px_rgba(26,102,191,0.4)] hover:shadow-[0_0_50px_rgba(26,102,191,0.6)] transition-all duration-500"
+              className="group relative px-10 py-5 bg-tech-electric rounded-xl font-bold font-display tracking-widest text-white overflow-hidden shadow-[0_0_30px_rgba(26,102,191,0.4)] hover:shadow-[0_0_50px_rgba(26,102,191,0.6)] transition-all duration-500 text-center"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <span className="relative flex items-center justify-center gap-3">
-                INICIAR PROJETO
+                SOLICITAR ORÇAMENTO
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -86,9 +89,9 @@ const Hero: React.FC = () => {
 
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-10 py-5 border border-white/10 rounded-xl font-display text-white/60 hover:text-white hover:border-tech-electric hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
+              className="px-10 py-5 border border-white/10 rounded-xl font-display text-white/60 hover:text-white hover:border-tech-electric hover:bg-white/5 transition-all duration-300 backdrop-blur-sm tracking-widest font-bold text-xs"
             >
-              VER PORTFÓLIO
+              VER PROJETOS
             </button>
           </motion.div>
         </motion.div>
@@ -137,20 +140,7 @@ const Hero: React.FC = () => {
               </p>
             </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 z-20 px-6 py-3 bg-tech-surface/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl hidden md:block"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="w-6 h-6 rounded-full bg-tech-blue border border-tech-dark"></div>
-                  ))}
-                </div>
-                <p className="text-tech-gray text-xs font-medium">+20 Projetos Ativos</p>
-              </div>
-            </motion.div>
+
           </div>
         </motion.div>
       </div>

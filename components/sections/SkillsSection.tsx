@@ -58,7 +58,7 @@ const SkillsSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="font-display text-2xl font-bold text-white mb-6">Interfaces & Mobile</h3>
+              <h3 className="font-display text-2xl font-bold text-white mb-6">Frontend & Design UI/UX</h3>
               <div className="flex flex-wrap gap-3">
                 {SKILLS.frontend.map((skill, idx) => (
                   <span key={idx} className="px-4 py-2 bg-white/5 text-tech-gray text-sm rounded-xl border border-white/5 group-hover:border-tech-electric/30 group-hover:text-white transition-all cursor-default">
@@ -78,7 +78,7 @@ const SkillsSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                 </svg>
               </div>
-              <h3 className="font-display text-2xl font-bold text-white mb-6">Backend & Cloud</h3>
+              <h3 className="font-display text-2xl font-bold text-white mb-6">Backend & Integrações</h3>
               <div className="flex flex-wrap gap-3">
                 {SKILLS.backend.map((skill, idx) => (
                   <span key={idx} className="px-4 py-2 bg-white/5 text-tech-gray text-sm rounded-xl border border-white/5 group-hover:border-tech-gold/30 group-hover:text-white transition-all cursor-default">
@@ -99,7 +99,7 @@ const SkillsSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="font-display text-2xl font-bold text-white mb-6">Ecossistema</h3>
+              <h3 className="font-display text-2xl font-bold text-white mb-6">Tecnologias & Processos</h3>
               <div className="flex flex-wrap gap-3">
                 {SKILLS.tools.map((skill, idx) => (
                   <span key={idx} className="px-4 py-2 bg-white/5 text-tech-gray text-sm rounded-xl border border-white/5 group-hover:border-white/20 group-hover:text-white transition-all cursor-default">

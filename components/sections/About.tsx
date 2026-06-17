@@ -48,33 +48,36 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 space-y-12"
+            className="flex-1 space-y-10"
           >
             <div className="space-y-6">
               <h2 className="font-display text-4xl md:text-5xl font-black text-white italic leading-none">
-                ValeTech <span className="text-tech-electric underline decoration-2 underline-offset-8">Soluções</span>.
+                Sobre <span className="text-tech-electric underline decoration-2 underline-offset-8">Mim</span>.
               </h2>
               <div className="w-20 h-2 bg-tech-gold rounded-full"></div>
             </div>
 
-            <div className="space-y-10">
-              <p className="text-tech-gray text-xl md:text-2xl font-light leading-relaxed">
-                Nossa missão é simples: <span className="text-white font-medium">transformar sua visão em realidade tecnológica</span>. Com domínio profundo das tecnologias web e mobile modernas, a <span className="text-white font-bold">ValeTech</span> entrega mais que código — entregamos <span className="italic">soluções estratégicas</span>.
+            <div className="space-y-8">
+              <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
+                Sou <span className="text-white font-medium">Luiz Fernando</span>, fundador da <span className="text-white font-bold">ValeTech Soluções</span> e desenvolvedor Full Stack especializado na criação de sites institucionais, sistemas web e soluções digitais personalizadas.
               </p>
 
-              <div className="space-y-8">
-                <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
-                  Trabalho focado em performance absoluta, escalabilidade e uma experiência de usuário (UX) que cativa. Cada linha de código é pensada para impulsionar negócios e facilitar vidas.
-                </p>
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
-                    <div className="w-2 h-2 rounded-full bg-tech-electric"></div>
-                    <span className="text-white/80 text-sm font-bold tracking-tight">Especialista em Flutter</span>
-                  </div>
-                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
-                    <div className="w-2 h-2 rounded-full bg-tech-gold"></div>
-                    <span className="text-white/80 text-sm font-bold tracking-tight">Fullstack Web Sênior</span>
-                  </div>
+              <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
+                Meu objetivo é transformar ideias em ferramentas digitais que ajudem empresas a <span className="text-white font-medium">vender mais, otimizar processos e fortalecer sua presença online</span>.
+              </p>
+
+              <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
+                Trabalho desenvolvendo projetos sob medida, sempre priorizando desempenho, usabilidade, segurança e resultados reais para cada cliente. Cada projeto é desenvolvido com atenção aos detalhes, comunicação transparente e foco total nas necessidades do negócio.
+              </p>
+
+              <div className="flex flex-wrap gap-4 pt-4">
+                <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-tech-electric"></div>
+                  <span className="text-white/80 text-sm font-bold tracking-tight">Criação de Sites & Sistemas</span>
+                </div>
+                <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-tech-gold"></div>
+                  <span className="text-white/80 text-sm font-bold tracking-tight">Desenvolvedor Full Stack</span>
                 </div>
               </div>
             </div>

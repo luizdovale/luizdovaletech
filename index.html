@@ -3,41 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ValeTech Soluções | Engenharia de Software & Design Premium</title>
+  <title>ValeTech Soluções | Criação de Sites, Sistemas Web e Soluções Digitais</title>
+  <link rel="canonical" href="https://luizdovaletech.vercel.app/" />
+
+  <!-- ======================= -->
+  <!--       SEO BÁSICO        -->
+  <!-- ======================= -->
+  <meta name="description" content="Criação de sites institucionais, landing pages, sistemas web e soluções digitais personalizadas para empresas. Desenvolvimento profissional com foco em desempenho, SEO e resultados. São José dos Campos e Vale do Paraíba." />
+  <meta name="author" content="ValeTech Soluções — Luiz Fernando" />
+  <meta name="keywords" content="criação de sites, desenvolvimento de sites, sites institucionais, landing pages, sistemas web, desenvolvimento de sistemas, soluções digitais, automação empresarial, inteligência artificial para empresas, São José dos Campos, Vale do Paraíba" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#090B11" />
 
   <!-- ======================= -->
   <!--       OPEN GRAPH        -->
   <!-- ======================= -->
-  <meta property="og:title" content="ValeTech Soluções — Software Engineer & Flutter Expert" />
-  <meta property="og:description" content="Especialista em criar experiências digitais de alto impacto. Desenvolvimento Web, Flutter e Soluções Escaláveis." />
+  <meta property="og:title" content="ValeTech Soluções | Criação de Sites, Sistemas Web e Soluções Digitais" />
+  <meta property="og:description" content="Criação de sites institucionais, landing pages e sistemas web personalizados para empresas. Desenvolvimento profissional com foco em SEO e resultados reais." />
   <meta property="og:image" content="https://luizdovaletech.vercel.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://luizdovaletech.vercel.app/" />
   <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="ValeTech Soluções" />
 
   <!-- ======================= -->
   <!--      TWITTER CARD       -->
   <!-- ======================= -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ValeTech Soluções — Design & Performance" />
-  <meta name="twitter:description" content="Sistemas de alta performance e apps inovadores. Veja meu portfólio." />
+  <meta name="twitter:title" content="ValeTech Soluções | Sites, Sistemas Web e Soluções Digitais" />
+  <meta name="twitter:description" content="Desenvolvimento profissional de sites, sistemas e soluções digitais para empresas. Resultados reais com tecnologia." />
   <meta name="twitter:image" content="https://luizdovaletech.vercel.app/og-image.png" />
-
-  <!-- ======================= -->
-  <!--      SEO BÁSICO         -->
-  <!-- ======================= -->
-  <meta name="description" content="Portfólio da ValeTech Soluções. Especialistas em Flutter, React e Transformação Digital de Alto Impacto." />
-  <meta name="author" content="ValeTech Soluções" />
 
   <!-- ======================= -->
   <!--      FAVICONS           -->
   <!-- ======================= -->
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png?v=2" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png?v=2" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
   <link rel="manifest" href="/manifest.json?v=2" />
-
-  <meta name="theme-color" content="#090B11" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -59,7 +66,10 @@
               electric: '#0A84FF',
               gold: '#F5D142',
               gray: '#94A3B8',
-              surface: '#0F172A'
+              surface: '#0F172A',
+              purple: '#7C3AED',
+              cyan: '#06B6D4',
+              green: '#10B981'
             }
           },
           fontFamily: {
@@ -123,6 +133,104 @@
       color: white;
     }
   </style>
+
+  <!-- ========================== -->
+  <!--   STRUCTURED DATA JSON-LD  -->
+  <!-- ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://luizdovaletech.vercel.app/#organization",
+        "name": "ValeTech Soluções",
+        "url": "https://luizdovaletech.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://luizdovaletech.vercel.app/apple-touch-icon.png",
+          "width": 180,
+          "height": 180
+        },
+        "description": "Empresa especializada em criação de sites institucionais, landing pages, sistemas web e soluções digitais personalizadas para empresas.",
+        "foundingDate": "2020",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://luizdovaletech.vercel.app/#person",
+          "name": "Luiz Fernando",
+          "jobTitle": "Fundador e Desenvolvedor Full Stack"
+        },
+        "areaServed": ["São José dos Campos", "Vale do Paraíba", "São Paulo", "Brasil"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "vendas",
+          "availableLanguage": "Portuguese"
+        },
+        "sameAs": [
+          "https://github.com/luizdovale",
+          "https://linkedin.com/in/luizdovale",
+          "https://instagram.com/valetechsolucoes"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://luizdovaletech.vercel.app/#person",
+        "name": "Luiz Fernando",
+        "jobTitle": "Desenvolvedor Full Stack e Fundador da ValeTech Soluções",
+        "worksFor": {
+          "@id": "https://luizdovaletech.vercel.app/#organization"
+        },
+        "url": "https://luizdovaletech.vercel.app/sobre",
+        "image": "https://luizdovaletech.vercel.app/avatar.png",
+        "description": "Desenvolvedor Full Stack especializado em criação de sites institucionais, sistemas web e soluções digitais para empresas.",
+        "knowsAbout": ["Desenvolvimento Web", "Sites Institucionais", "Sistemas Web", "Landing Pages", "Inteligência Artificial", "Aplicativos Mobile"]
+      },
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://luizdovaletech.vercel.app/#business",
+        "name": "ValeTech Soluções",
+        "description": "Criação de sites institucionais, landing pages, sistemas web e soluções digitais personalizadas para empresas em São José dos Campos e todo o Brasil.",
+        "url": "https://luizdovaletech.vercel.app/",
+        "image": "https://luizdovaletech.vercel.app/og-image.png",
+        "priceRange": "$$",
+        "areaServed": {
+          "@type": "State",
+          "name": "São Paulo"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São José dos Campos",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://luizdovaletech.vercel.app/#website",
+        "url": "https://luizdovaletech.vercel.app/",
+        "name": "ValeTech Soluções",
+        "description": "Criação de sites, sistemas web e soluções digitais para empresas",
+        "publisher": {
+          "@id": "https://luizdovaletech.vercel.app/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://luizdovaletech.vercel.app/#search?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
 
   <script type="importmap">
   {

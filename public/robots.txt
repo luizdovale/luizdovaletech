@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luizdovaletech.vercel.app/sitemap.xml
