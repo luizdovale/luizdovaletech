@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-32 bg-tech-dark relative overflow-hidden">
+    <section id="about" className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-0 relative z-10">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
 
@@ -15,26 +15,27 @@ const About: React.FC = () => {
             transition={{ duration: 1.2 }}
             className="flex-1 space-y-8 relative"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="h-48 bg-tech-blue/20 rounded-2xl border border-white/5 backdrop-blur-3xl p-8 flex flex-col justify-end">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-6">
+                <div className="h-48 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300">
                   <span className="block text-4xl font-bold text-tech-gold mb-1">+4 anos</span>
                   <span className="text-tech-gray text-xs uppercase tracking-widest font-bold">Experiência</span>
                 </div>
-                <div className="h-64 bg-tech-electric/20 rounded-2xl border border-tech-electric/20 backdrop-blur-3xl p-8 group overflow-hidden relative">
-                  <div className="absolute inset-0 bg-tech-electric/30 mix-blend-overlay group-hover:opacity-0 transition-opacity"></div>
-                  <span className="block text-4xl font-bold text-white mb-1">+30</span>
-                  <span className="text-white/60 text-xs uppercase tracking-widest font-bold">Projetos Entregues</span>
+                <div className="h-64 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-tech-electric/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="block text-4xl font-bold text-white mb-1 relative z-10">+30</span>
+                  <span className="text-tech-gray text-xs uppercase tracking-widest font-bold relative z-10">Projetos Entregues</span>
                 </div>
               </div>
-              <div className="space-y-4 sm:translate-y-8">
-                <div className="h-64 bg-tech-blue/20 rounded-2xl border border-white/5 backdrop-blur-3xl p-8 flex flex-col justify-end">
+              <div className="space-y-6 sm:translate-y-8">
+                <div className="h-64 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300">
                   <span className="block text-4xl font-bold text-white mb-1">100%</span>
                   <span className="text-tech-gray text-xs uppercase tracking-widest font-bold">De Satisfação</span>
                 </div>
-                <div className="h-48 bg-white/5 rounded-2xl border border-white/5 backdrop-blur-3xl p-8 flex flex-col justify-end">
-                  <span className="block text-4xl font-bold text-tech-electric mb-1">∞</span>
-                  <span className="text-tech-gray text-xs uppercase tracking-widest font-bold">Possibilidades</span>
+                <div className="h-48 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-tech-electric/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="block text-4xl font-bold text-tech-electric mb-1 relative z-10">∞</span>
+                  <span className="text-tech-gray text-xs uppercase tracking-widest font-bold relative z-10">Possibilidades</span>
                 </div>
               </div>
             </div>

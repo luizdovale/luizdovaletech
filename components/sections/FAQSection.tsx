@@ -24,7 +24,7 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-32 relative overflow-hidden bg-tech-dark">
+    <section id="faq" className="py-32 relative overflow-hidden">
       {/* Dynamic Schema Injection */}
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
@@ -58,7 +58,7 @@ const FAQSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="glass-panel rounded-2xl border border-white/5 overflow-hidden transition-all duration-300"
+                className="bg-tech-surface rounded-[20px] border border-white/5 overflow-hidden hover:border-white/10 transition-all duration-300"
               >
                 <button
                   onClick={() => toggleFAQ(index)}

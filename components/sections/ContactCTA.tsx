@@ -51,7 +51,7 @@ const ContactCTA: React.FC = () => {
             {/* Briefing Link - Formal e Digital */}
             <Link
               to="/briefing"
-              className="group flex items-center justify-center gap-4 px-12 py-6 bg-tech-surface border border-white/10 text-white font-bold rounded-2xl hover:bg-white/5 transition-all duration-500 shadow-xl border border-tech-electric/30 border-opacity-0 hover:border-opacity-100"
+              className="group flex items-center justify-center gap-4 px-12 py-6 bg-transparent border border-white/10 text-tech-gray font-bold rounded-2xl hover:text-white hover:bg-white/5 transition-all duration-300"
             >
               PREENCHER BRIEFING
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

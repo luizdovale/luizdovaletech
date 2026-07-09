@@ -18,7 +18,7 @@ const ProjectsSection: React.FC = () => {
     : PROJECTS.filter(project => project.category === activeTab);
 
   return (
-    <section id="projects" className="py-32 bg-tech-dark relative">
+    <section id="projects" className="py-32 relative">
       <div className="container mx-auto px-4 md:px-6">
         
         {/* Header */}
@@ -59,7 +59,7 @@ const ProjectsSection: React.FC = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative px-6 py-3 rounded-full font-display text-sm font-bold tracking-wider transition-all duration-300 ${
                   isActive 
-                    ? 'text-white bg-tech-electric shadow-[0_0_20px_rgba(10,132,255,0.4)]' 
+                    ? 'text-white bg-tech-electric shadow-lg shadow-tech-electric/20'
                     : 'text-tech-gray hover:text-white bg-white/5 border border-white/5 hover:border-white/10'
                 }`}
               >
@@ -87,10 +87,10 @@ const ProjectsSection: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="group block relative"
+                className="group block relative bg-tech-surface border border-white/5 rounded-[20px] p-4 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300"
               >
                 {/* Image Card */}
-                <div className="relative aspect-[16/10] bg-tech-blue/20 rounded-3xl overflow-hidden border border-white/5 transition-all duration-700 group-hover:border-tech-electric/30">
+                <div className="relative aspect-[16/10] bg-tech-blue/20 rounded-xl overflow-hidden border border-white/5 transition-all duration-700">
                   <img
                     src={project.image}
                     alt={`Captura de tela do projeto ${project.title} - ValeTech Soluções`}
@@ -101,7 +101,7 @@ const ProjectsSection: React.FC = () => {
                   />
                   
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-tech-dark via-transparent to-transparent opacity-80"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-tech-surface via-transparent to-transparent opacity-80"></div>
                   
                   {/* External Link Icon */}
                   <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500 border border-white/20">
@@ -121,7 +121,7 @@ const ProjectsSection: React.FC = () => {
                 </div>
 
                 {/* Text Content */}
-                <div className="mt-8 space-y-4 px-2">
+                <div className="mt-6 space-y-4 px-2 pb-2">
                   <div className="flex justify-between items-center">
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-white group-hover:text-tech-electric transition-colors duration-300">
                       {project.title}

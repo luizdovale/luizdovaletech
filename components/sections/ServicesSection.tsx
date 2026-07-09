@@ -111,7 +111,7 @@ const ServicesSection: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-32 relative overflow-hidden bg-tech-dark">
+    <section id="services" className="py-32 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-tech-electric/5 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-tech-purple/5 rounded-full blur-[100px] pointer-events-none"></div>
@@ -144,7 +144,7 @@ const ServicesSection: React.FC = () => {
               <motion.div key={service.id} variants={itemVariants} className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-b ${cls.hoverBg} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
                 
-                <div className={`relative glass-panel p-8 md:p-10 rounded-3xl border border-white/5 ${cls.hoverBorder} transition-all duration-500 h-full flex flex-col justify-between`}>
+                <div className={`relative bg-tech-surface p-8 md:p-10 rounded-[20px] border border-white/5 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 ${cls.hoverBorder} transition-all duration-300 h-full flex flex-col justify-between`}>
                   <div>
                     {/* Icon */}
                     <div className={`w-14 h-14 ${cls.bg} rounded-2xl flex items-center justify-center mb-8 ${cls.text} border ${cls.border} group-hover:scale-110 transition-transform duration-500`}>

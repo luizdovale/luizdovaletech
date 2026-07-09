@@ -61,12 +61,12 @@
         extend: {
           colors: {
             tech: {
-              dark: '#090B11',
+              dark: '#09090B',
+              surface: '#161B22',
+              electric: '#2563EB',
+              gold: '#CEAA5B',
               blue: '#131927',
-              electric: '#0A84FF',
-              gold: '#F5D142',
               gray: '#94A3B8',
-              surface: '#0F172A',
               purple: '#7C3AED',
               cyan: '#06B6D4',
               green: '#10B981'
@@ -97,23 +97,24 @@
   <style>
     html { scroll-behavior: smooth; }
     body {
-      background-color: #090B11;
+      background: radial-gradient(circle at top center, rgba(37,99,235,.12), transparent 45%), #09090B;
       color: #F8FAFC;
       overflow-x: hidden;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
     .glass-panel {
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(22, 27, 34, 0.6);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
     .text-glow {
-      text-shadow: 0 0 15px rgba(245, 209, 66, 0.3);
+      text-shadow: 0 0 10px rgba(206, 170, 91, 0.2);
     }
     .text-glow-blue {
-      text-shadow: 0 0 20px rgba(10, 132, 255, 0.4);
+      text-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
     }
 
     /* Scrollbar Premium */

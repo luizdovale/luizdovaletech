@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
 
   const navClasses = `fixed top-0 w-full z-50 transition-all duration-700 ease-in-out ${
     scrolled 
-      ? 'bg-tech-dark/40 backdrop-blur-xl border-b border-white/5 py-4 shadow-2xl' 
+      ? 'bg-[#09090B]/80 backdrop-blur-xl border-b border-white/5 py-4 shadow-2xl' 
       : 'bg-transparent py-5'
   }`;
 
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
           
           <Link 
             to="/briefing" 
-            className="px-6 py-2 rounded-full bg-tech-gradient text-white font-bold font-display text-xs tracking-widest hover:shadow-[0_0_15px_rgba(26,102,191,0.5)] transition-all transform hover:scale-105 border border-transparent hover:border-tech-gold"
+            className="px-6 py-2.5 rounded-full bg-white text-black font-bold font-display text-xs tracking-widest hover:bg-gray-200 transition-all transform hover:scale-105"
           >
             SOLICITAR ORÇAMENTO
           </Link>
@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden absolute top-full left-0 w-full bg-tech-dark/95 backdrop-blur-xl border-b border-tech-gold/20 overflow-hidden shadow-2xl"
+            className="md:hidden absolute top-full left-0 w-full bg-[#09090B]/95 backdrop-blur-xl border-b border-white/10 overflow-hidden shadow-2xl"
           >
             <div className="p-6 flex flex-col space-y-4">
               <button className="text-left text-white font-display text-lg" onClick={() => handleScrollTo('about')}>Empresa</button>
@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
               <Link 
                 to="/briefing" 
                 onClick={() => setIsOpen(false)}
-                className="text-center py-3 rounded bg-tech-gradient text-white font-bold font-display tracking-widest shadow-[0_0_10px_rgba(26,102,191,0.4)]"
+                className="text-center py-3 rounded-full bg-white text-black font-bold font-display tracking-widest hover:bg-gray-200 transition-colors"
               >
                 SOLICITAR ORÇAMENTO
               </Link>

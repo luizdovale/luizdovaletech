@@ -37,8 +37,8 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-tech-dark border-t border-tech-blue/30 py-16 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-tech-gold/50 blur-[50px]"></div>
+    <footer className="border-t border-white/10 py-16 relative overflow-hidden bg-transparent">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-white/20 blur-[50px]"></div>
       
       <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12 items-center md:items-start">
          {/* Branding */}

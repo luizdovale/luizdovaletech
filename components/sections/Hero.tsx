@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 px-4 md:px-0 overflow-hidden bg-tech-dark/50">
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 px-4 md:px-0 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <ThreeScene />
       </div>
@@ -76,20 +76,20 @@ const Hero: React.FC = () => {
           >
             <Link
               to="/briefing"
-              className="group relative px-10 py-5 bg-tech-electric rounded-xl font-bold font-display tracking-widest text-white overflow-hidden shadow-[0_0_30px_rgba(26,102,191,0.4)] hover:shadow-[0_0_50px_rgba(26,102,191,0.6)] transition-all duration-500 text-center"
+              className="group relative px-8 py-4 bg-tech-electric hover:bg-blue-500 rounded-xl font-bold font-display tracking-wide text-white overflow-hidden shadow-lg shadow-tech-electric/20 transition-all duration-300 text-center flex items-center justify-center gap-3"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              <span className="relative flex items-center justify-center gap-3">
+              <span>
                 SOLICITAR ORÇAMENTO
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
               </span>
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </Link>
 
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-10 py-5 border border-white/10 rounded-xl font-display text-white/60 hover:text-white hover:border-tech-electric hover:bg-white/5 transition-all duration-300 backdrop-blur-sm tracking-widest font-bold text-xs"
+              className="px-8 py-4 border border-white/10 rounded-xl font-display text-tech-gray hover:text-white hover:bg-white/5 transition-all duration-300 backdrop-blur-sm tracking-wide font-bold text-sm"
             >
               VER PROJETOS
             </button>
@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
         >
           <div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
             {/* Elementos Decorativos de Fundo */}
-            <div className="absolute inset-0 bg-tech-electric/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+            <div className="absolute inset-0 bg-tech-electric/10 rounded-full blur-[120px]"></div>
             <div className="absolute inset-[-40px] rounded-full border border-tech-electric/10 animate-[spin_20s_linear_infinite]"></div>
             <div className="absolute inset-[-20px] rounded-full border border-tech-gold/10 animate-[spin_15s_linear_infinite_reverse]"></div>
 
@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
               <img
                 src={avatarUrl}
                 alt="Avatar Luiz"
-                className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.parentElement!.classList.add('flex', 'items-center', 'justify-center', 'bg-tech-blue/30');
