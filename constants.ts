@@ -35,7 +35,7 @@ export const PROJECTS = [
     link: "https://tatianedovale.com.br",
     tags: ["Landing Page", "Captação de Leads", "WhatsApp"],
     category: "sites" as ProjectCategory,
-    image: "https://lh3.googleusercontent.com/pw/AP1GczM7M1j743VgFrM2WrmsJ2Dd8VoOhUnWmnbx6WtWev5P-IRRqhPzMG22MfbGHqFoluCJmtsf71Aje9wTa9Y-EPPbzkY1KkF3oNZqmOR4yItufEALwFyL3lGaCxuZNtMSSsg-RJjKU-m4X2RU3-upWciK=w899-h599-s-no-gm?authuser=3"
+    image: "https://lh3.googleusercontent.com/pw/AP1GczNomseUTg1qkHD1wIYQ4nVBwpZIqb49ZkY7MT9y4QpOiUC1_hm1aQqT1Jw1UqSXawVMgr6FGAxkZmc7aClT__AQm5vxt7b-vxeIsmTZwk3x07LmkjS7obqcaHj_VABIO7n1zSMQaznpClNGVklyVHE5=w1141-h599-s-no-gm?authuser=3"
   },
   {
     title: "Studio By Nean",
