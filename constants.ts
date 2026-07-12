@@ -32,10 +32,10 @@ export const PROJECTS = [
     title: "Tatiane Nutricionista",
     subtitle: "Landing Page",
     desc: "Landing page profissional com foco em captação de leads, integração com WhatsApp e design orientado à conversão.",
-    link: "https://tatianedovalenutri.vercel.app",
+    link: "https://tatianedovale.com.br",
     tags: ["Landing Page", "Captação de Leads", "WhatsApp"],
     category: "sites" as ProjectCategory,
-    image: "https://lh3.googleusercontent.com/pw/AP1GczMA1-gJUfmA1hmtV0gRC4uaiEVYcMVUXaGkOjvO4J_t_XGQZ22y1SQt6T1fCEUmwEG_MZtzDdgQF9aqUWfWfljQSQa2MIzLJkD7YIqEl3QWEAeQ41zmOOJbr_cRzTrBEq7AlNkUkiQaA2qwlGwF1QA=w974-h604-s-no-gm?authuser=4"
+    image: "https://lh3.googleusercontent.com/pw/AP1GczM7M1j743VgFrM2WrmsJ2Dd8VoOhUnWmnbx6WtWev5P-IRRqhPzMG22MfbGHqFoluCJmtsf71Aje9wTa9Y-EPPbzkY1KkF3oNZqmOR4yItufEALwFyL3lGaCxuZNtMSSsg-RJjKU-m4X2RU3-upWciK=w899-h599-s-no-gm?authuser=3"
   },
   {
     title: "Studio By Nean",
