@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
+import DigitalPresence from '../components/sections/DigitalPresence';
 import ServicesSection from '../components/sections/ServicesSection';
 import WhyValetech from '../components/sections/WhyValetech';
 import SkillsSection from '../components/sections/SkillsSection';
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
     <div className="relative w-full overflow-hidden bg-tech-dark select-none md:select-auto">
       <Hero />
       <About />
+      <DigitalPresence />
       <ServicesSection />
       <WhyValetech />
       <SkillsSection />

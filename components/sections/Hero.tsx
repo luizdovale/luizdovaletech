@@ -96,52 +96,129 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Lado do Avatar */}
+        {/* Lado do Código (IDE Mockup) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="order-1 md:order-2 flex justify-center relative"
+          className="order-1 md:order-2 w-full max-w-lg mx-auto relative flex justify-center items-center"
         >
-          <div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
-            {/* Elementos Decorativos de Fundo */}
-            <div className="absolute inset-0 bg-tech-electric/10 rounded-full blur-[120px]"></div>
-            <div className="absolute inset-[-40px] rounded-full border border-tech-electric/10 animate-[spin_20s_linear_infinite]"></div>
-            <div className="absolute inset-[-20px] rounded-full border border-tech-gold/10 animate-[spin_15s_linear_infinite_reverse]"></div>
-
-            {/* Container do Avatar */}
-            <div className="relative w-full h-full rounded-full overflow-hidden border border-white/10 bg-tech-surface shadow-2xl z-10 group transform-gpu">
-              <img
-                src={avatarUrl}
-                alt="Avatar Luiz"
-                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.classList.add('flex', 'items-center', 'justify-center', 'bg-tech-blue/30');
-                  e.currentTarget.parentElement!.innerHTML = '<div class="text-4xl font-bold text-tech-electric/40 tracking-tighter uppercase p-8 text-center italic leading-none select-none">LUIZ<br/>DOVALE</div>';
-                }}
-              />
-
-              {/* Overlay Holográfico */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-tech-electric/20 via-transparent to-tech-gold/10 opacity-40 group-hover:opacity-20 transition-opacity"></div>
-
-              {/* Moldura Glass */}
-              <div className="absolute inset-0 border-[16px] border-tech-dark/20 rounded-full pointer-events-none"></div>
+          {/* Elementos Decorativos de Fundo - Blob Orgânico Animado */}
+          <div className="absolute inset-0 bg-tech-electric/20 rounded-full blur-[100px] z-0"></div>
+          <motion.div
+            animate={{ 
+              rotate: [0, 90, 180, 270, 360],
+              borderRadius: ["30% 70% 70% 30% / 30% 30% 70% 70%", "50% 50% 20% 80% / 25% 80% 20% 75%", "70% 30% 30% 70% / 70% 70% 30% 30%", "50% 50% 80% 20% / 75% 20% 80% 25%", "30% 70% 70% 30% / 30% 30% 70% 70%"]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-10 bg-gradient-to-tr from-tech-electric/30 via-tech-blue/20 to-tech-gold/20 blur-[40px] z-0 opacity-70"
+          ></motion.div>
+          
+          <motion.div 
+            animate={{ 
+              y: [-15, 10, -15],
+              rotate: [-2, 1, -2] 
+            }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="w-full relative z-10"
+          >
+            {/* O Editor de Código - Mais arredondado e moderno */}
+            <div className="rounded-[2rem] overflow-hidden bg-[#0F172A]/70 border border-white/15 shadow-[0_20px_60px_rgba(37,99,235,0.2)] backdrop-blur-3xl">
+              {/* Topbar do Editor */}
+              <div className="flex items-center px-6 py-4 border-b border-white/10 bg-[#1E293B]/50">
+                <div className="flex gap-2">
+                  <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-sm"></div>
+                  <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-sm"></div>
+                  <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-sm"></div>
+                </div>
+                <div className="ml-5 text-[13px] text-tech-gray font-mono opacity-60">valetech_solution.tsx</div>
+              </div>
+              
+              {/* Área do Código */}
+              <div className="p-7 text-[13px] md:text-[15px] font-mono leading-[1.8] overflow-x-auto text-left">
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">1</span>
+                  <span><span className="text-[#ff7b72]">import</span> <span className="text-[#d2a8ff]">{'{'}</span> <span className="text-[#c9d1d9]">Innovation</span> <span className="text-[#d2a8ff]">{'}'}</span> <span className="text-[#ff7b72]">from</span> <span className="text-[#a5d6ff]">'@valetech/core'</span><span className="text-[#c9d1d9]">;</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">2</span>
+                  <span className="text-tech-gray/40"></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">3</span>
+                  <span><span className="text-[#ff7b72]">export const</span> <span className="text-[#d2a8ff]">buildDigitalSolution</span> <span className="text-[#ff7b72]">=</span> <span className="text-[#c9d1d9]">()</span> <span className="text-[#ff7b72]">{"=>"}</span> <span className="text-[#c9d1d9]">{"{"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">4</span>
+                  <span className="ml-4"><span className="text-[#ff7b72]">return</span> <span className="text-[#c9d1d9]">(</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">5</span>
+                  <span className="ml-8"><span className="text-[#7ee787]">{"<"}Valetech</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">6</span>
+                  <span className="ml-12"><span className="text-[#79c0ff]">focus</span><span className="text-[#c9d1d9]">={"{["}</span><span className="text-[#a5d6ff]">'Sistemas Web'</span><span className="text-[#c9d1d9]">,</span> <span className="text-[#a5d6ff]">'Automação'</span><span className="text-[#c9d1d9]">{"]}"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">7</span>
+                  <span className="ml-12"><span className="text-[#79c0ff]">quality</span><span className="text-[#c9d1d9]">={"{"}</span><span className="text-[#79c0ff]">Premium</span><span className="text-[#c9d1d9]">{"}"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">8</span>
+                  <span className="ml-12"><span className="text-[#79c0ff]">scalable</span><span className="text-[#c9d1d9]">={"{"}</span><span className="text-[#79c0ff]">true</span><span className="text-[#c9d1d9]">{"}"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">9</span>
+                  <span className="ml-8"><span className="text-[#7ee787]">{">"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">10</span>
+                  <span className="ml-12"><span className="text-[#7ee787]">{"<"}ClientSuccess</span> <span className="text-[#79c0ff]">level</span><span className="text-[#c9d1d9]">={"{"}</span><span className="text-[#79c0ff]">Maximum</span><span className="text-[#c9d1d9]">{"}"}</span> <span className="text-[#7ee787]">{"/>"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">11</span>
+                  <span className="ml-8"><span className="text-[#7ee787]">{"</"}Valetech{">"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">12</span>
+                  <span className="ml-4"><span className="text-[#c9d1d9]">);</span></span>
+                </div>
+                <div className="flex mt-1">
+                  <span className="text-tech-gray/30 select-none pr-5 text-right w-8">13</span>
+                  <span><span className="text-[#c9d1d9]">{"}"};</span></span>
+                  {/* Cursor piscante */}
+                  <motion.div 
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                    className="w-2.5 h-[1.2em] bg-tech-electric inline-block ml-1 align-baseline translate-y-1.5"
+                  ></motion.div>
+                </div>
+              </div>
             </div>
 
-            {/* Tags Flutuantes */}
+            {/* Tags Flutuantes adaptadas (agora mais circulares também) */}
             <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -right-4 z-20 px-6 py-3 bg-tech-surface/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl hidden md:block"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -top-8 -right-8 z-20 px-7 py-3.5 bg-[#0F172A]/70 backdrop-blur-3xl border border-white/15 rounded-full shadow-2xl hidden lg:block"
             >
-              <p className="text-white font-bold text-sm tracking-tight flex items-center gap-2">
-                🚀 <span className="bg-clip-text text-transparent bg-gradient-to-r from-tech-electric to-blue-400">Desenvolvedor Sênior</span>
+              <p className="text-white font-bold text-sm tracking-tight flex items-center gap-2.5">
+                🚀 <span className="bg-clip-text text-transparent bg-gradient-to-r from-tech-electric to-blue-400">Soluções Escaláveis</span>
+              </p>
+            </motion.div>
+            
+            <motion.div
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -bottom-8 -left-8 z-20 px-7 py-3.5 bg-[#0F172A]/70 backdrop-blur-3xl border border-white/15 rounded-full shadow-2xl hidden lg:block"
+            >
+              <p className="text-white font-bold text-sm tracking-tight flex items-center gap-2.5">
+                ⚡ <span className="bg-clip-text text-transparent bg-gradient-to-r from-tech-gold to-yellow-400">Alta Performance</span>
               </p>
             </motion.div>
 
-
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 

@@ -97,7 +97,10 @@
   <style>
     html { scroll-behavior: smooth; }
     body {
-      background: radial-gradient(circle at top center, rgba(37,99,235,.12), transparent 45%), #09090B;
+      background: 
+        radial-gradient(circle at top center, rgba(37,99,235,.18), transparent 70%), 
+        radial-gradient(circle at bottom right, rgba(206,170,91,.08), transparent 60%),
+        #0C1222;
       color: #F8FAFC;
       overflow-x: hidden;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -105,10 +108,11 @@
       min-height: 100vh;
     }
     .glass-panel {
-      background: rgba(22, 27, 34, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(22, 27, 34, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
     .text-glow {
       text-shadow: 0 0 10px rgba(206, 170, 91, 0.2);

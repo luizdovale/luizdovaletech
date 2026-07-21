@@ -5,53 +5,17 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-0 relative z-10">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-
-          {/* Lado Visual / Experiência */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="flex-1 space-y-8 relative"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-6">
-                <div className="h-48 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300">
-                  <span className="block text-4xl font-bold text-tech-gold mb-1">+4 anos</span>
-                  <span className="text-tech-gray text-xs uppercase tracking-widest font-bold">Experiência</span>
-                </div>
-                <div className="h-64 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-tech-electric/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="block text-4xl font-bold text-white mb-1 relative z-10">+30</span>
-                  <span className="text-tech-gray text-xs uppercase tracking-widest font-bold relative z-10">Projetos Entregues</span>
-                </div>
-              </div>
-              <div className="space-y-6 sm:translate-y-8">
-                <div className="h-64 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300">
-                  <span className="block text-4xl font-bold text-white mb-1">100%</span>
-                  <span className="text-tech-gray text-xs uppercase tracking-widest font-bold">De Satisfação</span>
-                </div>
-                <div className="h-48 bg-tech-surface rounded-[20px] border border-white/5 p-8 flex flex-col justify-end hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-tech-electric/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="block text-4xl font-bold text-tech-electric mb-1 relative z-10">∞</span>
-                  <span className="text-tech-gray text-xs uppercase tracking-widest font-bold relative z-10">Possibilidades</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -z-10 -top-20 -left-20 w-80 h-80 bg-tech-electric/10 blur-[130px]"></div>
-          </motion.div>
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
 
           {/* Lado do Texto */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 space-y-10"
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-10 text-center"
           >
-            <div className="space-y-6">
+            <div className="space-y-6 flex flex-col items-center">
               <h2 className="font-display text-4xl md:text-5xl font-black text-white italic leading-none">
                 Sobre <span className="text-tech-electric underline decoration-2 underline-offset-8">Mim</span>.
               </h2>
@@ -71,7 +35,7 @@ const About: React.FC = () => {
                 Trabalho desenvolvendo projetos sob medida, sempre priorizando desempenho, usabilidade, segurança e resultados reais para cada cliente. Cada projeto é desenvolvido com atenção aos detalhes, comunicação transparente e foco total nas necessidades do negócio.
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-4 pt-4 justify-center">
                 <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
                   <div className="w-2 h-2 rounded-full bg-tech-electric"></div>
                   <span className="text-white/80 text-sm font-bold tracking-tight">Criação de Sites & Sistemas</span>
