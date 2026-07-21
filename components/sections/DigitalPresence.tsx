@@ -1,16 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const DigitalPresence: React.FC = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyLink = () => {
-    const url = window.location.origin + window.location.pathname + '#presenca-digital';
-    navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   const cards = [
     {
       icon: "🌐",
@@ -67,21 +58,9 @@ const DigitalPresence: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-display text-3xl md:text-5xl font-black text-white leading-tight group relative inline-flex items-center justify-center gap-4"
+            className="font-display text-3xl md:text-5xl font-black text-white leading-tight"
           >
-            <span>Se a sua empresa não está no Google, <span className="text-transparent bg-clip-text bg-gradient-to-r from-tech-gold to-yellow-400">ela não existe.</span></span>
-            
-            <button 
-              onClick={handleCopyLink}
-              className="opacity-0 group-hover:opacity-100 transition-all duration-300 p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-tech-gray hover:text-white"
-              title="Copiar link para esta seção"
-            >
-              {copied ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-              )}
-            </button>
+            Se a sua empresa não está no Google, <span className="text-transparent bg-clip-text bg-gradient-to-r from-tech-gold to-yellow-400">ela não existe.</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

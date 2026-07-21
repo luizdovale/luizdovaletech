@@ -24,15 +24,15 @@ const About: React.FC = () => {
 
             <div className="space-y-8">
               <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
-                Sou <span className="text-white font-medium">Luiz Fernando</span>, fundador da <span className="text-white font-bold">ValeTech Soluções</span> e desenvolvedor Full Stack especializado na criação de sites institucionais, sistemas web e soluções digitais personalizadas.
+                Transformar ideias em soluções digitais eficientes é o que move o meu trabalho. À frente da <span className="text-white font-bold">ValeTech Soluções</span>, desenvolvo <span className="text-white font-medium">sites institucionais, landing pages, sistemas web e aplicações personalizadas</span> que ajudam empresas a fortalecer sua presença digital, conquistar novos clientes e otimizar seus processos.
               </p>
 
               <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
-                Meu objetivo é transformar ideias em ferramentas digitais que ajudem empresas a <span className="text-white font-medium">vender mais, otimizar processos e fortalecer sua presença online</span>.
+                Com experiência em desenvolvimento <span className="text-white font-medium">Full Stack</span>, cada projeto é planejado de forma estratégica para unir design moderno, alta performance, segurança, responsividade e excelente experiência do usuário. Mais do que criar sites, meu objetivo é entregar ferramentas que gerem valor real para o negócio e contribuam para o crescimento dos meus clientes.
               </p>
 
               <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
-                Trabalho desenvolvendo projetos sob medida, sempre priorizando desempenho, usabilidade, segurança e resultados reais para cada cliente. Cada projeto é desenvolvido com atenção aos detalhes, comunicação transparente e foco total nas necessidades do negócio.
+                Acredito que cada empresa possui necessidades únicas. Por isso, trabalho de forma próxima ao cliente, entendendo seus objetivos e transformando suas ideias em soluções personalizadas, com comunicação transparente, atenção aos detalhes e foco total em resultados.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4 justify-center">
