@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 // @ts-ignore
 import { Link } from 'react-router-dom';
@@ -30,24 +30,24 @@ const Sobre: React.FC = () => {
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Página Inicial",
-        "item": "https://luizdovaletech.vercel.app/"
+        "name": "PÃ¡gina Inicial",
+        "item": "https://valetechsolucoes.com.br/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Sobre a ValeTech",
-        "item": "https://luizdovaletech.vercel.app/#/sobre"
+        "item": "https://valetechsolucoes.com.br/#/sobre"
       }
     ]
   };
 
   const processSteps = [
-    { num: '01', title: 'Diagnóstico & Arquitetura', desc: 'Análise aprofundada dos objetivos de negócio, requisitos técnicos e jornada dos usuários.' },
-    { num: '02', title: 'Design & UX de Alta Fidelidade', desc: 'Prototipação de interfaces limpas, minimalistas e otimizadas para retenção e conversão.' },
-    { num: '03', title: 'Engenharia de Software', desc: 'Desenvolvimento ágil com código limpo, tipagem estrita e segurança em nível de produção.' },
-    { num: '04', title: 'Otimização & QA', desc: 'Testes de carga, validação de Core Web Vitals e auditoria completa de segurança.' },
-    { num: '05', title: 'Implantação & Escala', desc: 'Publicação em infraestrutura global em nuvem (Vercel, AWS) com monitoramento ativo.' }
+    { num: '01', title: 'DiagnÃ³stico & Arquitetura', desc: 'AnÃ¡lise aprofundada dos objetivos de negÃ³cio, requisitos tÃ©cnicos e jornada dos usuÃ¡rios.' },
+    { num: '02', title: 'Design & UX de Alta Fidelidade', desc: 'PrototipaÃ§Ã£o de interfaces limpas, minimalistas e otimizadas para retenÃ§Ã£o e conversÃ£o.' },
+    { num: '03', title: 'Engenharia de Software', desc: 'Desenvolvimento Ã¡gil com cÃ³digo limpo, tipagem estrita e seguranÃ§a em nÃ­vel de produÃ§Ã£o.' },
+    { num: '04', title: 'OtimizaÃ§Ã£o & QA', desc: 'Testes de carga, validaÃ§Ã£o de Core Web Vitals e auditoria completa de seguranÃ§a.' },
+    { num: '05', title: 'ImplantaÃ§Ã£o & Escala', desc: 'PublicaÃ§Ã£o em infraestrutura global em nuvem (Vercel, AWS) com monitoramento ativo.' }
   ];
 
   return (
@@ -71,13 +71,13 @@ const Sobre: React.FC = () => {
         >
           <div className="space-y-4 max-w-3xl">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-              Institucional · ValeTech
+              Institucional Â· ValeTech
             </span>
             <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.1]">
-              ValeTech — <span className="text-zinc-400 font-light">Tecnologia & Inovação</span>
+              ValeTech â€” <span className="text-zinc-400 font-light">Tecnologia & InovaÃ§Ã£o</span>
             </h1>
             <p className="text-zinc-400 text-lg sm:text-xl font-light leading-relaxed">
-              Criamos soluções digitais inteligentes, sistemas personalizados e experiências tecnológicas de alto padrão para empresas que querem evoluir.
+              Criamos soluÃ§Ãµes digitais inteligentes, sistemas personalizados e experiÃªncias tecnolÃ³gicas de alto padrÃ£o para empresas que querem evoluir.
             </p>
           </div>
 
@@ -86,7 +86,7 @@ const Sobre: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Manifesto & Visão */}
+        {/* Manifesto & VisÃ£o */}
         <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-start mb-32">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -96,17 +96,17 @@ const Sobre: React.FC = () => {
             className="md:col-span-7 space-y-6 text-zinc-400 text-base sm:text-lg font-light leading-relaxed"
           >
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Excelência técnica aliada a visão de negócios
+              ExcelÃªncia tÃ©cnica aliada a visÃ£o de negÃ³cios
             </h2>
             <div className="w-12 h-[2px] bg-white"></div>
             <p>
-              A <strong className="text-white font-semibold">{BRAND_INFO.fullName}</strong> foi concebida para preencher a lacuna entre design sofisticado e engenharia de software de missão crítica.
+              A <strong className="text-white font-semibold">{BRAND_INFO.fullName}</strong> foi concebida para preencher a lacuna entre design sofisticado e engenharia de software de missÃ£o crÃ­tica.
             </p>
             <p>
-              Em um mercado saturado de soluções genéricas e templates descartáveis, nosso compromisso é construir ferramentas proprietárias que conferem às empresas uma vantagem competitiva real e duradoura.
+              Em um mercado saturado de soluÃ§Ãµes genÃ©ricas e templates descartÃ¡veis, nosso compromisso Ã© construir ferramentas proprietÃ¡rias que conferem Ã s empresas uma vantagem competitiva real e duradoura.
             </p>
             <p>
-              Desde sistemas corporativos complexos (ERPs, CRMs e painéis administrativos) até plataformas web e aplicativos mobile, cuidamos de cada camada do desenvolvimento para entregar segurança, velocidade e escalabilidade incomparáveis.
+              Desde sistemas corporativos complexos (ERPs, CRMs e painÃ©is administrativos) atÃ© plataformas web e aplicativos mobile, cuidamos de cada camada do desenvolvimento para entregar seguranÃ§a, velocidade e escalabilidade incomparÃ¡veis.
             </p>
           </motion.div>
 
@@ -128,11 +128,11 @@ const Sobre: React.FC = () => {
               </div>
             </div>
             <p className="text-zinc-400 text-sm font-light leading-relaxed italic">
-              "Tecnologia premium não é apenas código elegante: é a capacidade de resolver problemas operacionais complexos e gerar lucro consistente para o seu negócio."
+              "Tecnologia premium nÃ£o Ã© apenas cÃ³digo elegante: Ã© a capacidade de resolver problemas operacionais complexos e gerar lucro consistente para o seu negÃ³cio."
             </p>
             <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-zinc-400">
-              <span>ValeTech · Brasil</span>
-              <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noreferrer" className="text-white hover:underline">LinkedIn →</a>
+              <span>ValeTech Â· Brasil</span>
+              <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noreferrer" className="text-white hover:underline">LinkedIn â†’</a>
             </div>
           </motion.div>
         </div>
@@ -147,7 +147,7 @@ const Sobre: React.FC = () => {
               Como desenvolvemos cada projeto
             </h2>
             <p className="text-zinc-400 text-base font-light max-w-xl mx-auto">
-              Processo estruturado e transparente para garantir previsibilidade de prazos e excelência no resultado.
+              Processo estruturado e transparente para garantir previsibilidade de prazos e excelÃªncia no resultado.
             </p>
           </div>
 
@@ -174,7 +174,7 @@ const Sobre: React.FC = () => {
           </div>
         </div>
 
-        {/* Pilares Técnicos */}
+        {/* Pilares TÃ©cnicos */}
         <div className="grid md:grid-cols-2 gap-10 items-start mb-32">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -184,7 +184,7 @@ const Sobre: React.FC = () => {
           >
             <h3 className="font-display text-xl font-bold text-white">Stack de Engenharia</h3>
             <p className="text-zinc-400 text-sm font-light leading-relaxed">
-              Utilizamos tecnologias consolidadas que garantem estabilidade a longo prazo e facilidade de manutenção para a sua equipe.
+              Utilizamos tecnologias consolidadas que garantem estabilidade a longo prazo e facilidade de manutenÃ§Ã£o para a sua equipe.
             </p>
             <div className="space-y-4">
               <div>
@@ -225,7 +225,7 @@ const Sobre: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Final CTA da Página Sobre */}
+        {/* Final CTA da PÃ¡gina Sobre */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -233,17 +233,17 @@ const Sobre: React.FC = () => {
           className="glass-panel p-10 md:p-16 rounded-3xl text-center space-y-8 max-w-4xl mx-auto"
         >
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Vamos planejar a próxima fase digital da sua empresa?
+            Vamos planejar a prÃ³xima fase digital da sua empresa?
           </h2>
           <p className="text-zinc-400 text-base font-light max-w-xl mx-auto">
-            Envie as especificações do seu projeto para uma proposta técnica sob medida.
+            Envie as especificaÃ§Ãµes do seu projeto para uma proposta tÃ©cnica sob medida.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <Link 
               to="/briefing" 
               className="flex-1 px-8 py-4 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)] text-center"
             >
-              Solicitar Orçamento
+              Solicitar OrÃ§amento
             </Link>
             <a 
               href={SOCIAL_LINKS.whatsapp}
@@ -262,3 +262,4 @@ const Sobre: React.FC = () => {
 };
 
 export default Sobre;
+
