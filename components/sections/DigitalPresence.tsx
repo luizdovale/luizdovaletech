@@ -4,24 +4,24 @@ import { motion } from 'framer-motion';
 const DigitalPresence: React.FC = () => {
   const cards = [
     {
-      icon: "🌐",
-      title: "Credibilidade Automática",
-      desc: "Não ter um site hoje gera desconfiança. Uma página profissional mostra que seu negócio é sério e estabelecido no mercado."
+      number: "01",
+      title: "Autoridade e Credibilidade",
+      desc: "Empresas com plataformas digitais exclusivas e bem arquitetadas transmitem segurança imediata e fecham contratos de maior valor."
     },
     {
-      icon: "🧲",
-      title: "Captação de Clientes 24/7",
-      desc: "Um site ou landing page não dorme. É um 'vendedor' trabalhando o tempo todo para capturar leads enquanto você descansa."
+      number: "02",
+      title: "Captação Ativa 24 Horas",
+      desc: "Sistemas e páginas otimizadas para conversão capturam clientes e qualificam oportunidades ininterruptamente."
     },
     {
-      icon: "🎯",
-      title: "Destaque da Concorrência",
-      desc: "Se o seu cliente procurar pelo seu serviço no Google e não te achar, ele fechará com o concorrente. Esteja onde ele procura."
+      number: "03",
+      title: "Independência de Algoritmos",
+      desc: "Construa sua base de dados, clientes e ferramentas em infraestrutura própria, sem ficar vulnerável a oscilações de redes sociais."
     },
     {
-      icon: "🏰",
-      title: "Seu Terreno Próprio",
-      desc: "Redes sociais mudam algoritmos o tempo todo (terreno alugado). Um site é a SUA casa na internet, onde você dita as regras."
+      number: "04",
+      title: "Eficiência & Automação",
+      desc: "Substitua planilhas manuais e gargalos de atendimento por fluxos automatizados, economizando centenas de horas operacionais."
     }
   ];
 
@@ -29,71 +29,63 @@ const DigitalPresence: React.FC = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
-    <section id="presenca-digital" className="py-24 relative overflow-hidden bg-tech-dark/50">
-      {/* Background Decorativo */}
-      <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-      
-      <div className="container mx-auto px-4 md:px-0 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16 space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tech-electric/10 border border-tech-electric/20 text-tech-electric text-sm font-bold tracking-wide uppercase"
-          >
-            Realidade do Mercado
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-3xl md:text-5xl font-black text-white leading-tight"
-          >
-            Se a sua empresa não está no Google, <span className="text-transparent bg-clip-text bg-gradient-to-r from-tech-gold to-yellow-400">ela não existe.</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-tech-gray text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto"
-          >
-            Depender apenas de boca a boca ou do Instagram já não é suficiente. Veja por que ter um site ou landing page é crucial hoje em dia:
-          </motion.p>
+    <section id="presenca-digital" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
+      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
+        
+        {/* Header da Seção */}
+        <div className="max-w-3xl mb-20 space-y-4">
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+            06 · Impacto Estratégico
+          </span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+            Infraestrutura digital sólida para <span className="text-zinc-400 font-light">empresas que lideram.</span>
+          </h2>
+          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
+            Ter um ecossistema próprio e sob medida é o ativo definitivo para autoridade de marca, automação e escalabilidade.
+          </p>
         </div>
 
+        {/* Grid dos Cards de Impacto */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {cards.map((card, index) => (
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="p-8 rounded-[24px] bg-[#0F172A]/40 border border-white/5 hover:border-tech-electric/30 hover:bg-[#1E293B]/40 transition-all duration-300 group"
+              className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between space-y-6"
             >
-              <div className="w-14 h-14 rounded-2xl bg-tech-electric/10 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-tech-electric/20 transition-transform duration-300">
-                {card.icon}
+              <div className="space-y-4">
+                <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block">
+                  {card.number}
+                </span>
+                <h3 className="font-display text-lg font-bold text-white tracking-tight">
+                  {card.title}
+                </h3>
+                <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                  {card.desc}
+                </p>
               </div>
-              <h3 className="text-white font-bold text-xl mb-3">{card.title}</h3>
-              <p className="text-tech-gray/80 text-sm leading-relaxed">{card.desc}</p>
+
+              <div className="w-full h-[1px] bg-white/[0.06]"></div>
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );

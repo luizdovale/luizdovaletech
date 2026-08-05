@@ -3,12 +3,30 @@ import { SOCIAL_LINKS } from '../constants';
 // @ts-ignore
 import { Link, useNavigate } from 'react-router-dom';
 
-const Briefing: React.FC = () => {
+/* ─── estilos reutilizáveis ─── */
+const inputClass =
+  'w-full bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm font-light placeholder:text-zinc-600 focus:border-white/40 focus:bg-white/[0.05] outline-none transition-all duration-200';
 
+const selectClass =
+  'w-full bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm font-light focus:border-white/40 focus:bg-white/[0.05] outline-none transition-all duration-200 appearance-none cursor-pointer';
+
+const labelClass = 'block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2';
+
+const SectionHeader: React.FC<{ num: string; title: string }> = ({ num, title }) => (
+  <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/[0.06]">
+    <span className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/[0.12] flex items-center justify-center text-xs font-mono font-bold text-white shrink-0">
+      {num}
+    </span>
+    <h3 className="font-display text-lg font-semibold text-white tracking-tight">{title}</h3>
+  </div>
+);
+
+/* ─── componente principal ─── */
+const Briefing: React.FC = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [projectType, setProjectType] = useState("Site Institucional");
+  const [projectType, setProjectType] = useState('Site Institucional');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,95 +38,123 @@ const Briefing: React.FC = () => {
     setSubmitError(null);
 
     const formData = new FormData(event.currentTarget);
-    
-    // Web3Forms endpoint
+
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
       });
-
       const data = await response.json();
-
       if (data.success) {
         navigate('/sucesso');
       } else {
-        setSubmitError("Ocorreu um erro ao enviar. Por favor, tente novamente.");
+        setSubmitError('Ocorreu um erro ao enviar. Por favor, tente novamente.');
         setIsSubmitting(false);
       }
-    } catch (error) {
-      setSubmitError("Erro de conexão. Verifique sua internet e tente novamente.");
+    } catch {
+      setSubmitError('Erro de conexão. Verifique sua internet e tente novamente.');
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-tech-dark pt-24 pb-12 px-4 md:px-0 relative">
-      <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-tech-blue/20 to-transparent pointer-events-none"></div>
+    <div className="min-h-screen bg-black pt-20 pb-24 px-4 md:px-6 relative">
+      {/* luz de fundo */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-white/[0.025] rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="container mx-auto max-w-4xl relative z-10">
-        <div className="mb-10 text-center">
-          <Link to="/" className="text-tech-gray hover:text-tech-gold text-sm mb-4 inline-block">← Voltar para Home</Link>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-2 text-glow">Briefing de Projeto</h1>
-          <p className="text-tech-gray">Preencha os detalhes abaixo com o máximo de precisão para um orçamento assertivo.</p>
+      <div className="container mx-auto max-w-3xl relative z-10">
+
+        {/* ── cabeçalho ── */}
+        <div className="mb-14 text-center space-y-4">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors mb-2"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Voltar para Home
+          </Link>
+
+          <span className="block text-xs font-mono uppercase tracking-[0.25em] text-zinc-500">
+            ValeTech · Briefing de Projeto
+          </span>
+
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+            Briefing{' '}
+            <span className="text-zinc-400 font-light">de Projeto</span>
+          </h1>
+
+          <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
+            Preencha com precisão. Cada detalhe contribui diretamente para a qualidade e agilidade da proposta técnica.
+          </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-8"
-        >
-          {/* CONFIGURAÇÃO WEB3FORMS */}
+        {/* ── formulário ── */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+
+          {/* campos ocultos Web3Forms */}
           <input type="hidden" name="access_key" value={SOCIAL_LINKS.web3formsKey} />
-          <input type="hidden" name="subject" value="📌 NOVO BRIEFING DETALHADO - Luiz Do Vale Tech" />
-          <input type="hidden" name="from_name" value="Site Luiz do Vale Tech" />
-          
-          {/* MENSAGEM AUTOMÁTICA (Personalizada via painel Web3Forms) */}
+          <input type="hidden" name="subject" value="📌 NOVO BRIEFING — ValeTech Tecnologia & Inovação" />
+          <input type="hidden" name="from_name" value="Site ValeTech" />
           <input type="hidden" name="replyto" value="email" />
-          
-          {/* Feedback de Erro */}
+
+          {/* erro de envio */}
           {submitError && (
-            <div className="p-4 bg-red-500/20 border border-red-500 text-red-200 rounded-lg text-center animate-shake">
+            <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl text-sm text-center">
               {submitError}
             </div>
           )}
 
-          {/* SEÇÃO 1: Contato */}
-          <div className="glass-panel p-8 rounded-2xl border-t border-tech-electric">
-            <h3 className="text-xl font-display text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full bg-tech-electric flex items-center justify-center text-sm font-bold">1</span>
-              Seus Dados
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
+          {/* ── SEÇÃO 1: Dados de Contato ── */}
+          <div className="glass-panel p-8 rounded-2xl">
+            <SectionHeader num="01" title="Seus Dados de Contato" />
+            <div className="grid md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm text-tech-gray mb-2">Nome Completo</label>
-                <input type="text" name="1. Nome Completo" required className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none focus:ring-1 focus:ring-tech-gold transition-all" />
+                <label className={labelClass}>Nome Completo</label>
+                <input
+                  type="text"
+                  name="1. Nome Completo"
+                  required
+                  placeholder="Ex: João Silva"
+                  className={inputClass}
+                />
               </div>
               <div>
-                <label className="block text-sm text-tech-gray mb-2">E-mail Corporativo</label>
-                <input type="email" name="email" required className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none focus:ring-1 focus:ring-tech-gold transition-all" />
+                <label className={labelClass}>E-mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="seu@email.com"
+                  className={inputClass}
+                />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm text-tech-gray mb-2">WhatsApp / Telefone</label>
-                <input type="tel" name="2. WhatsApp ou Telefone" required className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none focus:ring-1 focus:ring-tech-gold transition-all" />
+                <label className={labelClass}>WhatsApp / Telefone</label>
+                <input
+                  type="tel"
+                  name="2. WhatsApp ou Telefone"
+                  required
+                  placeholder="+55 (11) 99999-9999"
+                  className={inputClass}
+                />
               </div>
             </div>
           </div>
 
-          {/* SEÇÃO 2: Escopo */}
-          <div className="glass-panel p-8 rounded-2xl border-t border-tech-gold">
-            <h3 className="text-xl font-display text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full bg-tech-gold text-tech-dark flex items-center justify-center text-sm font-bold">2</span>
-              Visão do Projeto
-            </h3>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-6">
-              <div>
-                <label className="block text-sm text-tech-gray mb-3">Tipo de Solução</label>
-                <select 
-                  name="3. Tipo de Solucao" 
+          {/* ── SEÇÃO 2: Visão do Projeto ── */}
+          <div className="glass-panel p-8 rounded-2xl">
+            <SectionHeader num="02" title="Visão do Projeto" />
+
+            <div className="grid md:grid-cols-2 gap-5 mb-5">
+              <div className="relative">
+                <label className={labelClass}>Tipo de Solução</label>
+                <select
+                  name="3. Tipo de Solucao"
                   value={projectType}
                   onChange={(e) => setProjectType(e.target.value)}
-                  className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none"
+                  className={selectClass}
                 >
                   <option value="Site Institucional">Site Institucional</option>
                   <option value="App Mobile (Flutter)">App Mobile (Flutter)</option>
@@ -120,199 +166,261 @@ const Briefing: React.FC = () => {
                 </select>
               </div>
 
-              {/* CAMPO DINÂMICO PARA SITE INSTITUCIONAL */}
-              {projectType === "Site Institucional" && (
-                <div className="animate-fadeIn">
-                  <label className="block text-sm text-tech-gray mb-3">Área de Postagem / Blog</label>
-                  <select name="3.1 Gestao de Conteudo (Blog/Projetos)" className="w-full bg-tech-surface border border-blue-500/50 rounded p-3 text-white focus:border-tech-gold outline-none">
-                    <option value="Não preciso (Fotos fixas)">Não, prefiro que as fotos e textos sejam fixos (eu não pretendo trocar)</option>
-                    <option value="Sim, quero um Blog/Portfólio Dinâmico">Sim, quero uma área (Blog/Projetos) onde eu mesmo possa adicionar/remover fotos e textos</option>
-                    <option value="Não tenho certeza ainda">Ainda não decidi, preciso de orientação</option>
+              {projectType === 'Site Institucional' && (
+                <div>
+                  <label className={labelClass}>Área de Postagem / Blog</label>
+                  <select
+                    name="3.1 Gestao de Conteudo (Blog/Projetos)"
+                    className={selectClass}
+                  >
+                    <option value="Não preciso (Fotos fixas)">Não, conteúdo fixo (sem área de gestão)</option>
+                    <option value="Sim, quero um Blog/Portfólio Dinâmico">Sim, quero Blog/Portfólio gerenciável</option>
+                    <option value="Não tenho certeza ainda">Ainda não decidi</option>
                   </select>
                 </div>
               )}
 
               <div>
-                <label className="block text-sm text-tech-gray mb-3">Plataformas Alvo</label>
-                <div className="flex flex-wrap gap-3">
-                  <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="4. Plataformas Alvo[]" value="Web Desktop" className="accent-tech-gold w-5 h-5" /> <span className="text-white">Web Desktop</span>
-                  </label>
-                  <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="4. Plataformas Alvo[]" value="Android" className="accent-tech-gold w-5 h-5" /> <span className="text-white">Android</span>
-                  </label>
-                  <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" name="4. Plataformas Alvo[]" value="iOS" className="accent-tech-gold w-5 h-5" /> <span className="text-white">iOS</span>
-                  </label>
+                <label className={labelClass}>Plataformas Alvo</label>
+                <div className="flex flex-wrap gap-4 pt-1">
+                  {['Web Desktop', 'Android', 'iOS'].map((p) => (
+                    <label key={p} className="flex items-center gap-2 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        name="4. Plataformas Alvo[]"
+                        value={p}
+                        className="w-4 h-4 rounded border-white/20 bg-white/[0.03] accent-white cursor-pointer"
+                      />
+                      <span className="text-zinc-400 text-sm font-light group-hover:text-white transition-colors">{p}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <div className="mb-6">
-              <label className="block text-sm text-tech-gray mb-2">Objetivo Principal do Projeto</label>
-              <input type="text" name="5. Objetivo do Projeto" placeholder="Ex: Aumentar vendas, automatizar processos internos, modernizar marca..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+            <div className="mb-5">
+              <label className={labelClass}>Objetivo Principal do Projeto</label>
+              <input
+                type="text"
+                name="5. Objetivo do Projeto"
+                placeholder="Ex: Aumentar vendas, automatizar processos, modernizar marca..."
+                className={inputClass}
+              />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-               <div>
-                  <label className="block text-sm text-tech-gray mb-2">Público-Alvo</label>
-                  <input type="text" name="6. Publico-Alvo" placeholder="Ex: Jovens de 18-25, Empresas B2B, Donas de casa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
-               </div>
-               <div>
-                  <label className="block text-sm text-tech-gray mb-2">Principais Concorrentes</label>
-                  <input type="text" name="7. Principais Concorrentes" placeholder="Ex: Site X, App Y (Links são bem-vindos)" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
-               </div>
+            <div className="grid md:grid-cols-2 gap-5">
+              <div>
+                <label className={labelClass}>Público-Alvo</label>
+                <input
+                  type="text"
+                  name="6. Publico-Alvo"
+                  placeholder="Ex: Jovens 18–25, Empresas B2B..."
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label className={labelClass}>Principais Concorrentes</label>
+                <input
+                  type="text"
+                  name="7. Principais Concorrentes"
+                  placeholder="Ex: Site X, App Y (links são bem-vindos)"
+                  className={inputClass}
+                />
+              </div>
             </div>
           </div>
 
-          {/* SEÇÃO 3: Detalhes Técnicos (NOVA) */}
-          <div className="glass-panel p-8 rounded-2xl border-t border-blue-500">
-            <h3 className="text-xl font-display text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold">3</span>
-              Detalhes Técnicos & Conteúdo
-            </h3>
+          {/* ── SEÇÃO 3: Detalhes Técnicos ── */}
+          <div className="glass-panel p-8 rounded-2xl">
+            <SectionHeader num="03" title="Detalhes Técnicos & Conteúdo" />
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid md:grid-cols-2 gap-5 mb-5">
               <div>
-                <label className="block text-sm text-tech-gray mb-2">Identidade Visual (Logo/Cores)</label>
-                <select name="8. Identidade Visual" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
-                  <option value="Já possuo Logotipo e Manual da Marca">Já possuo Logotipo e Manual da Marca</option>
-                  <option value="Tenho apenas o Logo (preciso expandir)">Tenho apenas o Logo (preciso expandir)</option>
-                  <option value="Não tenho, preciso criar do zero">Não tenho, preciso criar do zero</option>
-                  <option value="Tenho, mas quero modernizar (Redesign)">Tenho, mas quero modernizar (Redesign)</option>
+                <label className={labelClass}>Identidade Visual (Logo/Cores)</label>
+                <select name="8. Identidade Visual" className={selectClass}>
+                  <option value="Já possuo Logotipo e Manual da Marca">Tenho logotipo e manual da marca</option>
+                  <option value="Tenho apenas o Logo (preciso expandir)">Tenho apenas o logo (preciso expandir)</option>
+                  <option value="Não tenho, preciso criar do zero">Não tenho, criar do zero</option>
+                  <option value="Tenho, mas quero modernizar (Redesign)">Quero modernizar (Redesign)</option>
                 </select>
               </div>
-              
               <div>
-                <label className="block text-sm text-tech-gray mb-2">Conteúdo (Textos/Imagens)</label>
-                <select name="9. Status do Conteudo" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
-                  <option value="Já tenho todos os textos e fotos prontos">Já tenho todos os textos e fotos prontos</option>
-                  <option value="Estou produzindo o conteúdo">Estou produzindo o conteúdo</option>
-                  <option value="Não tenho nada, preciso de ajuda para criar">Não tenho nada, preciso de ajuda para criar</option>
+                <label className={labelClass}>Conteúdo (Textos / Imagens)</label>
+                <select name="9. Status do Conteudo" className={selectClass}>
+                  <option value="Já tenho todos os textos e fotos prontos">Tenho tudo pronto</option>
+                  <option value="Estou produzindo o conteúdo">Estou produzindo</option>
+                  <option value="Não tenho nada, preciso de ajuda para criar">Preciso de ajuda para criar</option>
                 </select>
+              </div>
+              <div>
+                <label className={labelClass}>Domínio / Hospedagem</label>
+                <select name="10. Infraestrutura" className={selectClass}>
+                  <option value="Já tenho Domínio e Hospedagem/Contas nas Lojas">Já tenho domínio e hospedagem</option>
+                  <option value="Não tenho, preciso de orientação para contratar">Não tenho, preciso de orientação</option>
+                </select>
+              </div>
+              <div>
+                <label className={labelClass}>Integrações Necessárias</label>
+                <input
+                  type="text"
+                  name="11. Integracoes Necessarias"
+                  placeholder="Ex: PagSeguro, Google Maps, CRM, API externa..."
+                  className={inputClass}
+                />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm text-tech-gray mb-2">Infraestrutura (Domínio/Hospedagem)</label>
-                  <select name="10. Infraestrutura" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none">
-                    <option value="Já tenho Domínio e Hospedagem/Contas nas Lojas">Já tenho Domínio e Hospedagem/Contas nas Lojas</option>
-                    <option value="Não tenho, preciso de orientação para contratar">Não tenho, preciso de orientação para contratar</option>
-                  </select>
-                </div>
-                <div>
-                   <label className="block text-sm text-tech-gray mb-2">Integrações Necessárias</label>
-                   <input type="text" name="11. Integracoes Necessarias" placeholder="Ex: PagSeguro, Google Maps, CRM, ERP, API externa..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
-                </div>
-            </div>
-            
-            <div className="mb-6">
-              <label className="block text-sm text-tech-gray mb-2">Funcionalidades Específicas / Requisitos</label>
-              <textarea name="12. Funcionalidades Requisitadas" rows={4} placeholder="Liste as funções essenciais. Ex: Login social, Área de membros, Chat em tempo real, Calculadora personalizada, Painel administrativo..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none"></textarea>
+            <div>
+              <label className={labelClass}>Funcionalidades Específicas / Requisitos</label>
+              <textarea
+                name="12. Funcionalidades Requisitadas"
+                rows={4}
+                placeholder="Ex: Login social, área de membros, chat em tempo real, painel administrativo, calculadora personalizada..."
+                className={inputClass + ' resize-none'}
+              />
             </div>
           </div>
 
-          {/* SEÇÃO 4: Segurança & Estratégia (NOVA - SENIOR 2026) */}
-          <div className="glass-panel p-8 rounded-2xl border-t border-purple-500">
-            <h3 className="text-xl font-display text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-sm font-bold">4</span>
-              Segurança & Visão de Futuro
-            </h3>
+          {/* ── SEÇÃO 4: Segurança & Visão de Futuro ── */}
+          <div className="glass-panel p-8 rounded-2xl">
+            <SectionHeader num="04" title="Segurança & Visão de Futuro" />
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid md:grid-cols-2 gap-5 mb-5">
               <div>
-                <label className="block text-sm text-tech-gray mb-2">Proteção de Dados e Leis de Privacidade</label>
-                <select name="13. Coleta de Dados Sensiveis (LGPD)" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
-                  <option value="Não">Não coletaremos dados sensíveis (apenas contato básico)</option>
-                  <option value="Sim">Sim, vamos coletar dados como CPF, endereço ou pagamentos</option>
-                  <option value="Ainda não sei">Não tenho certeza, preciso de ajuda com a legislação</option>
+                <label className={labelClass}>Proteção de Dados (LGPD)</label>
+                <select name="13. Coleta de Dados Sensiveis (LGPD)" className={selectClass}>
+                  <option value="Não">Não coletaremos dados sensíveis</option>
+                  <option value="Sim">Sim, coletaremos CPF, endereço ou pagamentos</option>
+                  <option value="Ainda não sei">Não tenho certeza</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm text-tech-gray mb-2">Expectativa de Movimento (Servidor)</label>
-                <select name="14. Expectativa de Visitas Mensais" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
-                  <option value="Até 1.000 (Início)">Até 1.000 pessoasp/mês (Projeto Inicial)</option>
-                  <option value="Entre 1.000 e 50.000 (Médio)">Entre 1.000 e 50.000 pessoas (Escala Média)</option>
-                  <option value="Grande Escala">Acima de 100.000 visitas (Alta Performance)</option>
+                <label className={labelClass}>Expectativa de Tráfego Mensal</label>
+                <select name="14. Expectativa de Visitas Mensais" className={selectClass}>
+                  <option value="Até 1.000 (Início)">Até 1.000 pessoas/mês (início)</option>
+                  <option value="Entre 1.000 e 50.000 (Médio)">1.000 a 50.000 pessoas (escala média)</option>
+                  <option value="Grande Escala">Acima de 100.000 visitas (alta performance)</option>
                 </select>
+              </div>
+              <div>
+                <label className={labelClass}>Suporte Pós-Lançamento</label>
+                <select name="15. Manutencao do Site" className={selectClass}>
+                  <option value="Quero suporte Luiz Vale Tech">Quero suporte mensal (ValeTech cuida de tudo)</option>
+                  <option value="Eu ou minha equipe vamos cuidar">Minha equipe vai gerenciar</option>
+                  <option value="Ainda não decidi">Ainda não decidi</option>
+                </select>
+              </div>
+              <div>
+                <label className={labelClass}>Preferência de Tecnologia / Hospedagem</label>
+                <input
+                  type="text"
+                  name="16. Preferencia de Tecnologia/Hospedagem"
+                  placeholder="Ex: AWS, Vercel, Hostgator..."
+                  className={inputClass}
+                />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label className="block text-sm text-tech-gray mb-2">Cuidados após o Lançamento</label>
-                <select name="15. Manutencao do Site" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
-                  <option value="Quero suporte Luiz Vale Tech">Quero que você cuide de tudo (Suporte Mensal/Assinatura)</option>
-                  <option value="Eu ou minha equipe vamos cuidar">Eu ou minha equipe interna vamos gerenciar as atualizações</option>
-                  <option value="Ainda não decidi">Ainda não decidi, vamos falar sobre isso</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm text-tech-gray mb-2">Ferramenta ou Hospedagem Específica?</label>
-                <input type="text" name="16. Preferencia de Tecnologia/Hospedagem" placeholder="Ex: AWS, Vercel, Hostgator, ou já tenho contratado..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none" />
-              </div>
-            </div>
-
-            <div className="mb-0">
-              <label className="block text-sm text-tech-gray mb-2">O seu Sucesso: O que faria seu investimento valer a pena daqui a 6 meses?</label>
-              <textarea name="17. Meta Principal de Negocio (ROI)" rows={3} placeholder="Ex: Conseguir fechar 10 vendas extras por mês, ou reduzir meu custo operacional com o app..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white outline-none"></textarea>
+            <div>
+              <label className={labelClass}>
+                O que faria seu investimento valer a pena em 6 meses?
+              </label>
+              <textarea
+                name="17. Meta Principal de Negocio (ROI)"
+                rows={3}
+                placeholder="Ex: Fechar 10 vendas extras/mês, reduzir custo operacional com o app..."
+                className={inputClass + ' resize-none'}
+              />
             </div>
           </div>
 
-          {/* SEÇÃO 5: Fechamento (Antiga 4) */}
-          <div className="glass-panel p-8 rounded-2xl border-t border-tech-electric">
-            <h3 className="text-xl font-display text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full bg-tech-electric flex items-center justify-center text-sm font-bold">5</span>
-              Planejamento Final
-            </h3>
+          {/* ── SEÇÃO 5: Planejamento Final ── */}
+          <div className="glass-panel p-8 rounded-2xl">
+            <SectionHeader num="05" title="Planejamento Final" />
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-5 mb-5">
               <div>
-                <label className="block text-sm text-tech-gray mb-2">Prazo Ideal de Lançamento</label>
-                <input type="text" name="18. Prazo Estimado de Lancamento" placeholder="Ex: Preciso lançar em 30 dias..." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white focus:border-tech-gold outline-none" />
+                <label className={labelClass}>Prazo Ideal de Lançamento</label>
+                <input
+                  type="text"
+                  name="18. Prazo Estimado de Lancamento"
+                  placeholder="Ex: Preciso lançar em 30 dias..."
+                  className={inputClass}
+                />
               </div>
               <div>
-                <label className="block text-sm text-tech-gray mb-2">Investimento Estimado (Budget)</label>
-                <select name="19. Investimento Pretendido" className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white">
+                <label className={labelClass}>Investimento Estimado (Budget)</label>
+                <select name="19. Investimento Pretendido" className={selectClass}>
                   <option value="Prefiro discutir após análise">Prefiro discutir após análise</option>
-                  <option value="Projeto MVP / Entrada (Baixo Custo)">Projeto MVP / Entrada (Baixo Custo)</option>
-                  <option value="Projeto Profissional (Médio Porte)">Projeto Profissional (Médio Porte)</option>
-                  <option value="Projeto Robusto / Personalizado (Alto Nível)">Projeto Robusto / Personalizado (Alto Nível)</option>
+                  <option value="Projeto MVP / Entrada (Baixo Custo)">MVP / Entrada (baixo custo)</option>
+                  <option value="Projeto Profissional (Médio Porte)">Projeto Profissional (médio porte)</option>
+                  <option value="Projeto Robusto / Personalizado (Alto Nível)">Projeto Robusto / Personalizado (alto nível)</option>
                 </select>
               </div>
             </div>
 
-            <div className="mt-6">
-              <label className="block text-sm text-tech-gray mb-2">Referências Visuais (Links que você gosta)</label>
-              <textarea name="20. Referencias e Links Visuais" rows={2} placeholder="Cole links de sites ou apps que você admira." className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+            <div className="mb-5">
+              <label className={labelClass}>Referências Visuais (links que você admira)</label>
+              <textarea
+                name="20. Referencias e Links Visuais"
+                rows={2}
+                placeholder="Cole links de sites ou apps que você gosta."
+                className={inputClass + ' resize-none'}
+              />
             </div>
 
-            <div className="mt-6">
-              <label className="block text-sm text-tech-gray mb-2">Observações Finais</label>
-              <textarea name="21. Observacoes Extras" rows={2} className="w-full bg-tech-surface border border-tech-gray/30 rounded p-3 text-white"></textarea>
+            <div>
+              <label className={labelClass}>Observações Finais</label>
+              <textarea
+                name="21. Observacoes Extras"
+                rows={3}
+                placeholder="Qualquer informação adicional relevante..."
+                className={inputClass + ' resize-none'}
+              />
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          {/* ── botão de envio ── */}
+          <button
+            type="submit"
             disabled={isSubmitting}
-            className={`w-full py-5 bg-tech-gradient text-white font-display text-lg font-bold tracking-widest rounded-lg transition-all transform border border-white/10 flex items-center justify-center gap-3
-              ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-[0_0_30px_rgba(26,102,191,0.6)] hover:-translate-y-1'}
-            `}
+            className={`w-full py-5 rounded-2xl font-semibold text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 ${
+              isSubmitting
+                ? 'bg-white/10 text-zinc-500 cursor-not-allowed border border-white/[0.06]'
+                : 'bg-white text-black hover:bg-zinc-100 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] active:scale-[0.99]'
+            }`}
           >
             {isSubmitting ? (
               <>
-                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                <svg
+                  className="animate-spin h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
                 </svg>
-                ENVIANDO...
+                Enviando...
               </>
             ) : (
-              'ENVIAR BRIEFING COMPLETO'
+              <>
+                Enviar Briefing Completo
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </>
             )}
           </button>
+
+          {/* rodapé do form */}
+          <p className="text-center text-xs text-zinc-600 font-mono pb-4">
+            Suas informações são confidenciais e utilizadas exclusivamente para elaboração da proposta.
+          </p>
         </form>
       </div>
     </div>

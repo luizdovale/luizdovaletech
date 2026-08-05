@@ -11,7 +11,6 @@ const ThreeScene: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Variables for cleanup
     let renderer: THREE.WebGLRenderer | undefined;
     let animationId: number;
     let scene: THREE.Scene | undefined;
@@ -24,9 +23,6 @@ const ThreeScene: React.FC = () => {
 
     const init = () => {
       try {
-        // 2. Initialize Renderer
-        // Three.js r150+ defaults to WebGL 2 if available. 
-        // We remove manual context selection to avoid WebGL 1 deprecation warnings.
         renderer = new THREE.WebGLRenderer({ 
           canvas: canvas, 
           alpha: true, 
@@ -37,64 +33,63 @@ const ThreeScene: React.FC = () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // 3. Setup Scene
         scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 5;
 
-        // Main Sphere
-        geometry = new THREE.IcosahedronGeometry(2, 1);
+        // Esfera Externa Monocromática
+        geometry = new THREE.IcosahedronGeometry(2.2, 1);
         material = new THREE.MeshBasicMaterial({ 
-          color: 0x0A84FF, // Novo Azul ValeTech
+          color: 0xFFFFFF,
           wireframe: true,
           transparent: true,
-          opacity: 0.3
+          opacity: 0.08
         });
         const sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
 
-        // Inner Core
-        coreGeo = new THREE.IcosahedronGeometry(1, 0);
+        // Núcleo Interno
+        coreGeo = new THREE.IcosahedronGeometry(1.1, 0);
         coreMat = new THREE.MeshBasicMaterial({
-          color: 0xF5D142, // Novo Ouro ValeTech
+          color: 0xFFFFFF,
           wireframe: true,
           transparent: true,
-          opacity: 0.1
+          opacity: 0.04
         });
         const core = new THREE.Mesh(coreGeo, coreMat);
         scene.add(core);
 
-        // Particles
+        // Campo de Partículas Brancas
         particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 700; 
+        const particlesCount = 450; 
         const posArray = new Float32Array(particlesCount * 3);
         for(let i = 0; i < particlesCount * 3; i++) {
           posArray[i] = (Math.random() - 0.5) * 15; 
         }
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
         particlesMaterial = new THREE.PointsMaterial({
-          size: 0.02,
-          color: 0x7A869A,
+          size: 0.018,
+          color: 0xFFFFFF,
           transparent: true,
-          opacity: 0.8,
+          opacity: 0.4,
         });
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
 
-        // Animation
+        // Loop de Animação Suave
         const animate = () => {
           animationId = requestAnimationFrame(animate);
           
           if (sphere) {
-            sphere.rotation.x += 0.001;
-            sphere.rotation.y += 0.002;
+            sphere.rotation.x += 0.0006;
+            sphere.rotation.y += 0.001;
           }
           if (core) {
-            core.rotation.x -= 0.002;
-            core.rotation.y -= 0.001;
+            core.rotation.x -= 0.001;
+            core.rotation.y -= 0.0008;
           }
           if (particlesMesh) {
-            particlesMesh.rotation.y += 0.0005;
+            particlesMesh.rotation.y += 0.0003;
           }
           
           if (renderer && scene && camera) {
@@ -103,7 +98,6 @@ const ThreeScene: React.FC = () => {
         };
         animate();
 
-        // Resize Handler
         const handleResize = () => {
           if (!camera || !renderer) return;
           camera.aspect = window.innerWidth / window.innerHeight;
@@ -139,13 +133,13 @@ const ThreeScene: React.FC = () => {
   }, [isSupported]);
 
   if (!isSupported) {
-    return <div className="absolute inset-0 z-0 opacity-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-tech-blue/20 via-transparent to-transparent" />;
+    return <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />;
   }
 
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 z-0 pointer-events-none opacity-60"
+      className="absolute inset-0 z-0 pointer-events-none opacity-50"
     />
   );
 };

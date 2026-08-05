@@ -1,22 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SERVICES, SOCIAL_LINKS } from '../../constants';
+import { SERVICES } from '../../constants';
+// @ts-ignore
+import { Link } from 'react-router-dom';
 
 const ServicesSection: React.FC = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
+      transition: { staggerChildren: 0.08 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
@@ -24,177 +26,146 @@ const ServicesSection: React.FC = () => {
     switch (icon) {
       case 'globe':
         return (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-          </svg>
-        );
-      case 'target':
-        return (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
+            <path strokeLinecap="round" strokeWidth="1.5" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
           </svg>
         );
       case 'server':
         return (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="7" rx="2" strokeWidth="1.5" />
+            <rect x="2" y="14" width="20" height="7" rx="2" strokeWidth="1.5" />
+            <line x1="6" y1="6.5" x2="6.01" y2="6.5" strokeWidth="2" strokeLinecap="round" />
+            <line x1="6" y1="17.5" x2="6.01" y2="17.5" strokeWidth="2" strokeLinecap="round" />
           </svg>
         );
-      case 'brain':
+      case 'target':
         return (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1.5" />
+            <path d="M3 9h18M9 21V9" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         );
       case 'mobile':
         return (
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="5" y="2" width="14" height="20" rx="3" strokeWidth="1.5" />
+            <line x1="11" y1="18" x2="13" y2="18" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'brain':
+        return (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        );
+      case 'palette':
+        return (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
+            <path strokeLinecap="round" strokeWidth="1.5" d="M12 2a10 10 0 00-2 19.8V16a4 4 0 014-4h2.2A10 10 0 0012 2z" />
           </svg>
         );
       default:
-        return null;
-    }
-  };
-
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case 'electric':
-        return {
-          bg: 'bg-tech-electric/10',
-          border: 'border-tech-electric/30',
-          text: 'text-tech-electric',
-          hoverBg: 'from-tech-electric/10 to-transparent',
-          hoverBorder: 'hover:border-tech-electric/40'
-        };
-      case 'gold':
-        return {
-          bg: 'bg-tech-gold/10',
-          border: 'border-tech-gold/30',
-          text: 'text-tech-gold',
-          hoverBg: 'from-tech-gold/10 to-transparent',
-          hoverBorder: 'hover:border-tech-gold/40'
-        };
-      case 'purple':
-        return {
-          bg: 'bg-tech-purple/10',
-          border: 'border-tech-purple/30',
-          text: 'text-tech-purple',
-          hoverBg: 'from-tech-purple/10 to-transparent',
-          hoverBorder: 'hover:border-tech-purple/40'
-        };
-      case 'cyan':
-        return {
-          bg: 'bg-tech-cyan/10',
-          border: 'border-tech-cyan/30',
-          text: 'text-tech-cyan',
-          hoverBg: 'from-tech-cyan/10 to-transparent',
-          hoverBorder: 'hover:border-tech-cyan/40'
-        };
-      case 'green':
-        return {
-          bg: 'bg-tech-green/10',
-          border: 'border-tech-green/30',
-          text: 'text-tech-green',
-          hoverBg: 'from-tech-green/10 to-transparent',
-          hoverBorder: 'hover:border-tech-green/40'
-        };
-      default:
-        return {
-          bg: 'bg-white/10',
-          border: 'border-white/20',
-          text: 'text-white',
-          hoverBg: 'from-white/10 to-transparent',
-          hoverBorder: 'hover:border-white/30'
-        };
+        return (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        );
     }
   };
 
   return (
-    <section id="services" className="py-32 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-tech-electric/5 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-tech-purple/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <section id="services" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
+      {/* Luz ambiente sutil */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-white/[0.02] rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20 space-y-4"
-        >
-          <h2 className="font-display text-4xl md:text-6xl font-black text-white tracking-tighter">
-            NOSSOS <span className="text-tech-electric">SERVIÇOS</span>
+      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
+        
+        {/* Header da Seção */}
+        <div className="max-w-3xl mb-20 space-y-4">
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+            02 · Nossos Serviços
+          </span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+            Engenharia de software e design <span className="text-zinc-400 font-light">de ponta a ponta.</span>
           </h2>
-          <p className="text-tech-gray text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Desenvolvemos soluções digitais completas e de alta performance focadas em gerar resultados reais para a sua empresa.
+          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
+            Desenvolvemos infraestrutura digital completa com foco em retorno sobre investimento, segurança e escala contínua.
           </p>
-        </motion.div>
+        </div>
 
+        {/* Grid dos Serviços */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {SERVICES.map((service) => {
-            const cls = getColorClasses(service.color);
-            return (
-              <motion.div key={service.id} variants={itemVariants} className="group relative">
-                <div className={`absolute inset-0 bg-gradient-to-b ${cls.hoverBg} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
-                
-                <div className={`relative bg-tech-surface p-8 md:p-10 rounded-[20px] border border-white/5 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 ${cls.hoverBorder} transition-all duration-300 h-full flex flex-col justify-between`}>
-                  <div>
-                    {/* Icon */}
-                    <div className={`w-14 h-14 ${cls.bg} rounded-2xl flex items-center justify-center mb-8 ${cls.text} border ${cls.border} group-hover:scale-110 transition-transform duration-500`}>
-                      {getIcon(service.icon)}
-                    </div>
-                    
-                    {/* Header */}
-                    <span className="text-xs uppercase tracking-widest font-mono text-tech-gray/60 block mb-2">{service.subtitle}</span>
-                    <h3 className="font-display text-2xl font-bold text-white mb-4">{service.title}</h3>
-                    
-                    {/* Desc */}
-                    <p className="text-tech-gray text-sm font-light leading-relaxed mb-6">
-                      {service.desc}
-                    </p>
+          {SERVICES.map((service, index) => (
+            <motion.div 
+              key={service.id} 
+              variants={itemVariants}
+              className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between group h-full"
+            >
+              <div>
+                {/* Cabeçalho do Card */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center text-white group-hover:border-white/30 group-hover:bg-white/[0.08] transition-all duration-300">
+                    {getIcon(service.icon)}
                   </div>
-                  
-                  {/* Service features list */}
-                  <div className="border-t border-white/5 pt-6 mt-auto">
-                    <ul className="space-y-3">
-                      {service.items.map((item, idx) => (
-                        <li key={idx} className="flex items-center gap-3 text-xs text-tech-gray group-hover:text-white/80 transition-colors">
-                          <span className={`w-1.5 h-1.5 rounded-full ${cls.bg} border ${cls.border}`}></span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest">
+                    0{index + 1}
+                  </span>
                 </div>
-              </motion.div>
-            );
-          })}
+
+                <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest block mb-2">
+                  {service.subtitle}
+                </span>
+
+                <h3 className="font-display text-xl font-bold text-white tracking-tight mb-3">
+                  {service.title}
+                </h3>
+
+                <p className="text-zinc-400 text-sm font-light leading-relaxed mb-6">
+                  {service.desc}
+                </p>
+              </div>
+
+              {/* Lista de Features */}
+              <div className="pt-6 border-t border-white/[0.06] space-y-2.5">
+                {service.items.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5 text-xs text-zinc-400 font-sans">
+                    <span className="w-1 h-1 rounded-full bg-white/40 group-hover:bg-white transition-colors"></span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* CTA Link to briefing */}
+        {/* CTA para Briefing */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <a
-            href={SOCIAL_LINKS.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-display text-sm font-bold tracking-wider transition-all"
+          <Link
+            to="/briefing"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_25px_rgba(255,255,255,0.15)]"
           >
-            PRECISA DE UMA SOLUÇÃO PERSONALIZADA?
-            <span className="text-tech-electric group-hover:translate-x-1 transition-transform">FALE COMIGO →</span>
-          </a>
+            <span>Iniciar um Projeto Personalizado</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
         </motion.div>
+
       </div>
     </section>
   );

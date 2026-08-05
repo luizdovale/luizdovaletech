@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+// @ts-ignore
 import { Link } from 'react-router-dom';
-import { SKILLS, WHY_VALETECH } from '../constants';
+import { SKILLS, WHY_VALETECH, SOCIAL_LINKS, BRAND_INFO } from '../constants';
+import { LogoHero } from '../components/Logos';
 
 const Sobre: React.FC = () => {
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 25 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
@@ -22,7 +23,6 @@ const Sobre: React.FC = () => {
     }
   };
 
-  // BreadcrumbList and Person Structured Data JSON-LD
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -36,226 +36,222 @@ const Sobre: React.FC = () => {
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Sobre",
+        "name": "Sobre a ValeTech",
         "item": "https://luizdovaletech.vercel.app/#/sobre"
       }
     ]
   };
 
   const processSteps = [
-    { num: '01', title: 'Briefing e Alinhamento', desc: 'Entendimento profundo do seu modelo de negócio, público-alvo e necessidades técnicas.' },
-    { num: '02', title: 'Design & Prototipagem', desc: 'Criação de interfaces visuais modernas e funcionais com foco na melhor experiência de usuário.' },
-    { num: '03', title: 'Desenvolvimento Ágil', desc: 'Codificação limpa, escalável e segura usando as tecnologias web mais modernas e eficientes.' },
-    { num: '04', title: 'Testes & Garantia', desc: 'Verificação minuciosa de performance, compatibilidade mobile e segurança do projeto.' },
-    { num: '05', title: 'Lançamento e Suporte', desc: 'Publicação profissional em servidores rápidos com acompanhamento e suporte contínuo.' }
+    { num: '01', title: 'Diagnóstico & Arquitetura', desc: 'Análise aprofundada dos objetivos de negócio, requisitos técnicos e jornada dos usuários.' },
+    { num: '02', title: 'Design & UX de Alta Fidelidade', desc: 'Prototipação de interfaces limpas, minimalistas e otimizadas para retenção e conversão.' },
+    { num: '03', title: 'Engenharia de Software', desc: 'Desenvolvimento ágil com código limpo, tipagem estrita e segurança em nível de produção.' },
+    { num: '04', title: 'Otimização & QA', desc: 'Testes de carga, validação de Core Web Vitals e auditoria completa de segurança.' },
+    { num: '05', title: 'Implantação & Escala', desc: 'Publicação em infraestrutura global em nuvem (Vercel, AWS) com monitoramento ativo.' }
   ];
 
   return (
-    <div className="relative w-full overflow-hidden bg-tech-dark pt-32 pb-20">
-      {/* Dynamic Schema Injection */}
+    <div className="relative w-full overflow-hidden bg-black pt-20 pb-28 min-h-screen">
+      {/* Schema.org Breadcrumbs */}
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
       </script>
 
-      {/* Decorative Lights */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-tech-electric/5 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute top-1/2 right-10 w-96 h-96 bg-tech-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+      {/* Luz ambiente sutil */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
+      <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-6xl">
+        
         {/* Header Hero */}
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="text-center md:text-left space-y-6 mb-24"
+          className="space-y-6 mb-24 text-center md:text-left flex flex-col md:flex-row justify-between items-center md:items-end gap-8 border-b border-white/[0.08] pb-16"
         >
-          <motion.h1 
-            variants={fadeInUp}
-            className="font-display text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter"
-          >
-            A Valetech <span className="text-tech-electric italic text-glow-blue">Soluções</span>
-          </motion.h1>
-          <motion.p 
-            variants={fadeInUp}
-            className="text-tech-gray text-xl md:text-2xl font-light max-w-3xl leading-relaxed"
-          >
-            Focados em criar valor de negócios através de tecnologias digitais de ponta.
-          </motion.p>
+          <div className="space-y-4 max-w-3xl">
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+              Institucional · ValeTech
+            </span>
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.1]">
+              ValeTech — <span className="text-zinc-400 font-light">Tecnologia & Inovação</span>
+            </h1>
+            <p className="text-zinc-400 text-lg sm:text-xl font-light leading-relaxed">
+              Criamos soluções digitais inteligentes, sistemas personalizados e experiências tecnológicas de alto padrão para empresas que querem evoluir.
+            </p>
+          </div>
+
+          <div className="hidden lg:block">
+            <LogoHero className="scale-75 origin-right opacity-80" />
+          </div>
         </motion.div>
 
-        {/* História & Apresentação */}
-        <div className="grid md:grid-cols-12 gap-16 items-start mb-32">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-7 space-y-6"
-          >
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-white tracking-tight">
-              Transformando ideias em ferramentas de crescimento
-            </h2>
-            <div className="w-16 h-1 bg-tech-gold rounded-full"></div>
-            <p className="text-tech-gray text-lg font-light leading-relaxed">
-              Fundada por <strong>Luiz Fernando</strong>, desenvolvedor Full Stack com ampla experiência no ecossistema web, a ValeTech Soluções nasceu com a missão de aproximar pequenas, médias e grandes empresas da excelência tecnológica.
-            </p>
-            <p className="text-tech-gray text-lg font-light leading-relaxed">
-              Acreditamos que o código é apenas o meio para atingir um fim estratégico: gerar mais vendas, otimizar fluxos de trabalho cotidianos, reter clientes e estabelecer uma presença de autoridade online.
-            </p>
-            <p className="text-tech-gray text-lg font-light leading-relaxed">
-              Trabalhamos desenvolvendo desde Landing Pages de altíssima conversão até Sistemas Web complexos como ERPs e CRMs customizados. Cada linha de código é escrita sob medida, garantindo que o seu sistema atenda perfeitamente aos processos da sua empresa.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-5 glass-panel p-8 rounded-3xl border border-white/5 space-y-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full overflow-hidden bg-tech-blue border border-tech-electric/30">
-                <img 
-                  src="/avatar.png" 
-                  alt="Luiz Fernando - Fundador da ValeTech"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = '<span class="text-xl font-bold text-tech-electric">LF</span>';
-                    e.currentTarget.parentElement!.classList.add('flex', 'items-center', 'justify-center');
-                  }}
-                />
-              </div>
-              <div>
-                <h3 className="font-display text-lg font-bold text-white">Luiz Fernando</h3>
-                <span className="text-xs text-tech-gray">Fundador & Diretor de Tecnologia</span>
-              </div>
-            </div>
-            <blockquote className="text-tech-gray/80 text-sm font-light italic leading-relaxed">
-              "Para mim, tecnologia premium é aquela que soluciona problemas reais e gera lucros para a sua empresa de forma elegante, segura e simples."
-            </blockquote>
-          </motion.div>
-        </div>
-
-        {/* Processo de Trabalho */}
-        <div className="mb-32">
+        {/* Manifesto & Visão */}
+        <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-start mb-32">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20 space-y-4"
+            transition={{ duration: 0.8 }}
+            className="md:col-span-7 space-y-6 text-zinc-400 text-base sm:text-lg font-light leading-relaxed"
           >
-            <h2 className="font-display text-3xl md:text-5xl font-black text-white tracking-tighter">
-              NOSSO <span className="text-tech-electric">PROCESSO</span> DE TRABALHO
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Excelência técnica aliada a visão de negócios
             </h2>
-            <p className="text-tech-gray text-lg max-w-xl mx-auto font-light leading-relaxed">
-              Como garantimos qualidade de ponta a ponta em cada projeto entregue.
+            <div className="w-12 h-[2px] bg-white"></div>
+            <p>
+              A <strong className="text-white font-semibold">{BRAND_INFO.fullName}</strong> foi concebida para preencher a lacuna entre design sofisticado e engenharia de software de missão crítica.
+            </p>
+            <p>
+              Em um mercado saturado de soluções genéricas e templates descartáveis, nosso compromisso é construir ferramentas proprietárias que conferem às empresas uma vantagem competitiva real e duradoura.
+            </p>
+            <p>
+              Desde sistemas corporativos complexos (ERPs, CRMs e painéis administrativos) até plataformas web e aplicativos mobile, cuidamos de cada camada do desenvolvimento para entregar segurança, velocidade e escalabilidade incomparáveis.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-5 gap-6">
+          {/* Card do Fundador */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="md:col-span-5 glass-panel p-8 rounded-2xl border border-white/[0.08] space-y-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full overflow-hidden bg-neutral-900 border border-white/20 flex items-center justify-center text-white font-display font-bold text-lg">
+                LF
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-bold text-white">Luiz Fernando</h3>
+                <span className="text-xs text-zinc-400 font-mono">Fundador & Arquiteto de Software</span>
+              </div>
+            </div>
+            <p className="text-zinc-400 text-sm font-light leading-relaxed italic">
+              "Tecnologia premium não é apenas código elegante: é a capacidade de resolver problemas operacionais complexos e gerar lucro consistente para o seu negócio."
+            </p>
+            <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-zinc-400">
+              <span>ValeTech · Brasil</span>
+              <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noreferrer" className="text-white hover:underline">LinkedIn →</a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Metodologia de Entrega */}
+        <div className="mb-32">
+          <div className="text-center mb-16 space-y-4">
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+              Metodologia Rigorosa
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Como desenvolvemos cada projeto
+            </h2>
+            <p className="text-zinc-400 text-base font-light max-w-xl mx-auto">
+              Processo estruturado e transparente para garantir previsibilidade de prazos e excelência no resultado.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {processSteps.map((step, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="glass-panel p-6 rounded-2xl border border-white/5 space-y-4 hover:border-tech-electric/20 transition-all duration-300"
+                transition={{ delay: idx * 0.08 }}
+                className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between space-y-6"
               >
-                <span className="font-display text-3xl font-black text-tech-electric/40 block">{step.num}</span>
-                <h3 className="font-display text-base font-bold text-white tracking-tight">{step.title}</h3>
-                <p className="text-tech-gray text-xs font-light leading-relaxed">{step.desc}</p>
+                <span className="text-xs font-mono text-zinc-500 block font-semibold">
+                  {step.num}
+                </span>
+                <div className="space-y-2">
+                  <h3 className="font-display text-base font-bold text-white tracking-tight">{step.title}</h3>
+                  <p className="text-zinc-400 text-xs font-light leading-relaxed">{step.desc}</p>
+                </div>
+                <div className="w-full h-[1px] bg-white/[0.06]"></div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Stack Técnico e Diferenciais */}
-        <div className="grid md:grid-cols-2 gap-12 items-start mb-32">
-          {/* Stack */}
+        {/* Pilares Técnicos */}
+        <div className="grid md:grid-cols-2 gap-10 items-start mb-32">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="glass-panel p-8 rounded-2xl space-y-6"
           >
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-white">
-              Tecnologias Utilizadas
-            </h2>
-            <p className="text-tech-gray text-base font-light leading-relaxed">
-              Selecionamos o arsenal tecnológico ideal para cada tipo de solução, focando sempre em performance de carregamento, facilidade de manutenção e segurança de ponta.
+            <h3 className="font-display text-xl font-bold text-white">Stack de Engenharia</h3>
+            <p className="text-zinc-400 text-sm font-light leading-relaxed">
+              Utilizamos tecnologias consolidadas que garantem estabilidade a longo prazo e facilidade de manutenção para a sua equipe.
             </p>
             <div className="space-y-4">
               <div>
-                <span className="text-xs uppercase tracking-widest text-tech-electric font-bold block mb-2">Frontend</span>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 block mb-2">Frontend & Interfaces</span>
                 <div className="flex flex-wrap gap-2">
                   {SKILLS.frontend.map((item, i) => (
-                    <span key={i} className="px-3 py-1 bg-white/5 text-tech-gray text-xs rounded-lg border border-white/5">{item}</span>
+                    <span key={i} className="px-2.5 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">{item}</span>
                   ))}
                 </div>
               </div>
               <div>
-                <span className="text-xs uppercase tracking-widest text-tech-gold font-bold block mb-2">Backend & Cloud</span>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 block mb-2">Backend & Cloud</span>
                 <div className="flex flex-wrap gap-2">
                   {SKILLS.backend.map((item, i) => (
-                    <span key={i} className="px-3 py-1 bg-white/5 text-tech-gray text-xs rounded-lg border border-white/5">{item}</span>
+                    <span key={i} className="px-2.5 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">{item}</span>
                   ))}
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Diferenciais */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="space-y-6"
+            transition={{ delay: 0.15 }}
+            className="glass-panel p-8 rounded-2xl space-y-6"
           >
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-white">
-              Nossos Diferenciais
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {WHY_VALETECH.slice(0, 4).map((diff, idx) => (
-                <div key={idx} className="glass-panel p-4 rounded-xl border border-white/5 space-y-2">
-                  <span className="text-2xl">{diff.icon}</span>
-                  <h3 className="font-display text-sm font-bold text-white">{diff.title}</h3>
-                  <p className="text-tech-gray text-xs font-light leading-relaxed">{diff.desc}</p>
+            <h3 className="font-display text-xl font-bold text-white">Diferenciais ValeTech</h3>
+            <div className="space-y-4">
+              {WHY_VALETECH.slice(0, 3).map((diff, idx) => (
+                <div key={idx} className="border-b border-white/[0.06] pb-4 last:border-0 last:pb-0 space-y-1">
+                  <h4 className="font-display text-sm font-bold text-white">{diff.title}</h4>
+                  <p className="text-zinc-400 text-xs font-light leading-relaxed">{diff.desc}</p>
                 </div>
               ))}
             </div>
           </motion.div>
         </div>
 
-        {/* Final CTA */}
+        {/* Final CTA da Página Sobre */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-panel p-10 md:p-16 rounded-3xl border border-tech-electric/20 relative overflow-hidden text-center space-y-8"
+          className="glass-panel p-10 md:p-16 rounded-3xl text-center space-y-8 max-w-4xl mx-auto"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-tech-electric/5 to-transparent"></div>
-          <h2 className="font-display text-3xl md:text-5xl font-black text-white relative z-10 leading-tight">
-            Pronto para evoluir o nível digital do seu negócio?
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Vamos planejar a próxima fase digital da sua empresa?
           </h2>
-          <p className="text-tech-gray text-lg max-w-xl mx-auto relative z-10 font-light leading-relaxed">
-            Fale conosco hoje mesmo e agende uma consultoria gratuita para planejar as melhores soluções digitais sob medida.
+          <p className="text-zinc-400 text-base font-light max-w-xl mx-auto">
+            Envie as especificações do seu projeto para uma proposta técnica sob medida.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10 max-w-md mx-auto">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <Link 
               to="/briefing" 
-              className="flex-1 px-8 py-4 bg-tech-electric hover:bg-tech-electric/90 text-white font-bold font-display tracking-widest rounded-xl transition-all shadow-xl"
+              className="flex-1 px-8 py-4 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)] text-center"
             >
-              SOLICITAR ORÇAMENTO
+              Solicitar Orçamento
             </Link>
             <a 
-              href="https://wa.me/5512974033027" 
+              href={SOCIAL_LINKS.whatsapp}
               target="_blank" 
               rel="noreferrer" 
-              className="flex-1 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold font-display tracking-widest rounded-xl transition-all shadow-xl"
+              className="flex-1 px-8 py-4 bg-black/60 text-white border border-white/20 hover:border-white/40 font-semibold text-xs tracking-wider uppercase rounded-full transition-all duration-300 text-center"
             >
-              WHATSAPP
+              Falar no WhatsApp
             </a>
           </div>
         </motion.div>

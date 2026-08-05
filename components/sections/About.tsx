@@ -2,53 +2,101 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
-  return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-0 relative z-10">
-        <div className="max-w-4xl mx-auto flex flex-col items-center">
+  const capabilities = [
+    {
+      title: "Sistemas Personalizados",
+      desc: "ERPs, CRMs e plataformas administrativas desenhadas sob medida para as regras operacionais da sua empresa.",
+      metric: "Arquitetura Sob Medida"
+    },
+    {
+      title: "Aplicações Web de Alta Performance",
+      desc: "Portais institucionais, SaaS e landing pages projetadas com máxima velocidade de carregamento e SEO técnico.",
+      metric: "Core Web Vitals 100%"
+    },
+    {
+      title: "Aplicativos Mobile & PWA",
+      desc: "Experiências móveis fluidas para iOS e Android com suporte a operação offline e sincronização em nuvem.",
+      metric: "Multiplataforma"
+    },
+    {
+      title: "Automação & Inteligência Artificial",
+      desc: "Integração de APIs, processamento inteligente de fluxos e agentes de IA para eliminar tarefas manuais.",
+      metric: "Eficiência Máxima"
+    }
+  ];
 
-          {/* Lado do Texto */}
+  return (
+    <section id="about" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
+      {/* Luz ambiente sutil */}
+      <div className="absolute top-1/2 left-0 w-72 h-72 bg-white/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
+        
+        {/* Header da Seção */}
+        <div className="grid lg:grid-cols-12 gap-12 items-start mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-10 text-center"
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5 space-y-4"
           >
-            <div className="space-y-6 flex flex-col items-center">
-              <h2 className="font-display text-4xl md:text-5xl font-black text-white italic leading-none">
-                Sobre <span className="text-tech-electric underline decoration-2 underline-offset-8">Mim</span>.
-              </h2>
-              <div className="w-20 h-2 bg-tech-gold rounded-full"></div>
-            </div>
-
-            <div className="space-y-8">
-              <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
-                Transformar ideias em soluções digitais eficientes é o que move o meu trabalho. À frente da <span className="text-white font-bold">ValeTech Soluções</span>, desenvolvo <span className="text-white font-medium">sites institucionais, landing pages, sistemas web e aplicações personalizadas</span> que ajudam empresas a fortalecer sua presença digital, conquistar novos clientes e otimizar seus processos.
-              </p>
-
-              <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
-                Com experiência em desenvolvimento <span className="text-white font-medium">Full Stack</span>, cada projeto é planejado de forma estratégica para unir design moderno, alta performance, segurança, responsividade e excelente experiência do usuário. Mais do que criar sites, meu objetivo é entregar ferramentas que gerem valor real para o negócio e contribuam para o crescimento dos meus clientes.
-              </p>
-
-              <p className="text-tech-gray text-lg md:text-xl font-light leading-relaxed">
-                Acredito que cada empresa possui necessidades únicas. Por isso, trabalho de forma próxima ao cliente, entendendo seus objetivos e transformando suas ideias em soluções personalizadas, com comunicação transparente, atenção aos detalhes e foco total em resultados.
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-4 justify-center">
-                <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
-                  <div className="w-2 h-2 rounded-full bg-tech-electric"></div>
-                  <span className="text-white/80 text-sm font-bold tracking-tight">Criação de Sites & Sistemas</span>
-                </div>
-                <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
-                  <div className="w-2 h-2 rounded-full bg-tech-gold"></div>
-                  <span className="text-white/80 text-sm font-bold tracking-tight">Desenvolvedor Full Stack</span>
-                </div>
-              </div>
-            </div>
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+              01 · Sobre a LDV
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+              Transformamos ideias em <span className="text-zinc-400 font-light">soluções digitais.</span>
+            </h2>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="lg:col-span-7 space-y-6 text-zinc-400 text-base sm:text-lg font-light leading-relaxed"
+          >
+            <p>
+              A <strong className="text-white font-semibold">LDV</strong> nasceu para redefinir a forma como empresas utilizam a tecnologia. Desenvolvemos ecossistemas digitais robustos, elegantes e escaláveis que impulsionam o crescimento real dos nossos clientes.
+            </p>
+            <p>
+              Não usamos templates genéricos ou soluções de prateleira que engessam o seu negócio. Cada linha de código é construída sob medida com as melhores práticas da engenharia de software global, garantindo segurança, performance impecável e liberdade total de evolução.
+            </p>
+          </motion.div>
         </div>
+
+        {/* Grid de Capacidades Tecnológicas */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {capabilities.map((cap, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between space-y-8"
+            >
+              <div className="space-y-4">
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block">
+                  0{idx + 1}
+                </span>
+                <h3 className="font-display text-xl font-bold text-white tracking-tight">
+                  {cap.title}
+                </h3>
+                <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                  {cap.desc}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-white/[0.06]">
+                <span className="text-[11px] font-mono text-zinc-300 uppercase tracking-wider block">
+                  {cap.metric}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

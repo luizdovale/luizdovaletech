@@ -7,40 +7,40 @@ const WhyValetech: React.FC = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.05 }
+      transition: { staggerChildren: 0.08 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: 15 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      scale: 1,
       y: 0,
       transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
-    <section id="why-valetech" className="py-32 relative overflow-hidden bg-tech-dark/50">
-      {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-tech-gold/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="why-ldv" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
+      {/* Luz ambiente sutil */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-white/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20 space-y-4"
-        >
-          <h2 className="font-display text-4xl md:text-6xl font-black text-white tracking-tighter">
-            POR QUE ESCOLHER A <span className="text-tech-gold">VALETECH</span>?
+      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
+        
+        {/* Header da Seção */}
+        <div className="max-w-3xl mx-auto text-center mb-20 space-y-4">
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+            04 · Nossos Diferenciais
+          </span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+            Por que escolher a <span className="text-zinc-400 font-light">LDV?</span>
           </h2>
-          <p className="text-tech-gray text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Diferenciais pensados para entregar o máximo de retorno sobre o seu investimento em tecnologia.
+          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
+            Metodologia rigorosa e padrões globais de engenharia para transformar o ecossistema tecnológico do seu negócio.
           </p>
-        </motion.div>
+        </div>
 
+        {/* Grid dos 5 Pilares */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -52,25 +52,29 @@ const WhyValetech: React.FC = () => {
             <motion.div 
               key={idx} 
               variants={itemVariants}
-              className="group relative h-full"
+              className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col items-center text-center justify-between space-y-6 group"
             >
-              {/* Border glow decoration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-tech-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-              
-              <div className="relative glass-panel p-6 rounded-2xl border border-white/5 hover:border-tech-gold/20 hover:bg-tech-blue/20 transition-all duration-500 h-full flex flex-col items-center text-center justify-start">
-                <span className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-500 select-none">
+              <div className="space-y-4 flex flex-col items-center">
+                <span className="text-3xl select-none filter grayscale group-hover:grayscale-0 transition-all duration-300">
                   {item.icon}
                 </span>
-                <h3 className="font-display text-base font-bold text-white mb-2 tracking-tight group-hover:text-tech-gold transition-colors">
+                <h3 className="font-display text-base font-bold text-white tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-tech-gray text-xs leading-relaxed font-light">
+                <p className="text-zinc-400 text-xs leading-relaxed font-light">
                   {item.desc}
                 </p>
+              </div>
+
+              <div className="pt-4 border-t border-white/[0.06] w-full">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">
+                  Pilar 0{idx + 1}
+                </span>
               </div>
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );

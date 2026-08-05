@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 // @ts-ignore
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Sobre from './pages/Sobre';
@@ -25,10 +24,8 @@ const ScrollToTop: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  // Force Dark Mode
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    // Optional: Clear legacy theme preference or enforce dark in storage
     localStorage.setItem('theme', 'dark');
   }, []);
 
@@ -40,9 +37,8 @@ const App: React.FC = () => {
       }}
     >
       <ScrollToTop />
-      <div className="font-sans bg-tech-dark min-h-screen text-slate-200 selection:bg-tech-electric selection:text-white relative">
+      <div className="font-sans bg-black min-h-screen text-zinc-200 selection:bg-white selection:text-black relative">
         <ParticleBackground />
-        <Navbar />
         <main className="relative z-10">
           <Routes>
             <Route path="/" element={<Home />} />

@@ -1,66 +1,85 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PROJECTS, SOCIAL_LINKS } from '../../constants';
+import { PROJECTS, ProjectCategory } from '../../constants';
+// @ts-ignore
+import { Link } from 'react-router-dom';
 
 const ProjectsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('all');
 
   const tabs = [
-    { id: 'all', label: 'Todos' },
-    { id: 'sites', label: 'Sites Institucionais' },
-    { id: 'sistemas', label: 'Sistemas Web' },
-    { id: 'apps', label: 'Aplicativos' },
-    { id: 'empresarial', label: 'Soluções Empresariais' }
+    { id: 'all', label: 'Todos os Projetos' },
+    { id: 'sistemas', label: 'Sistemas & ERPs' },
+    { id: 'web', label: 'Aplicações Web & Portais' },
+    { id: 'apps', label: 'Mobile & Engenharia' }
   ];
 
   const filteredProjects = activeTab === 'all'
     ? PROJECTS
-    : PROJECTS.filter(project => project.category === activeTab);
+    : PROJECTS.filter(project => {
+        if (activeTab === 'sistemas') return project.category === 'sistemas';
+        if (activeTab === 'web') return project.category === 'web';
+        if (activeTab === 'apps') return project.category === 'apps' || project.category === 'solucoes';
+        return true;
+      });
 
   return (
-    <section id="projects" className="py-32 relative">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="projects" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
+      {/* Luz ambiente sutil */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-white/[0.02] rounded-full blur-[150px] pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
         
-        {/* Header */}
+        {/* Header da Seção */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            transition={{ duration: 0.8 }}
+            className="space-y-4 max-w-2xl"
           >
-            <h2 className="font-display text-4xl md:text-6xl font-black text-white">
-              PORTFÓLIO <span className="text-tech-electric italic text-glow-blue">SELECIONADO</span>
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+              03 · Portfólio & Cases
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+              Projetos construídos para <span className="text-zinc-400 font-light">gerar impacto.</span>
             </h2>
-            <p className="text-tech-gray text-xl font-light max-w-xl">
-              Projetos reais desenvolvidos para gerar resultados de negócios e presença digital robusta.
+            <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
+              Explore soluções desenvolvidas pela LDV com arquitetura moderna e experiência refinada.
             </p>
           </motion.div>
           
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
           >
-            <div className="flex items-center gap-6">
-              <div className="h-[1px] w-24 bg-tech-electric/30 hidden md:block"></div>
-              <span className="text-tech-electric font-mono text-sm tracking-[0.3em] uppercase font-bold">Explorar Projetos</span>
-            </div>
+            <Link
+              to="/briefing"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02]"
+            >
+              <span>Solicitar Orçamento</span>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
           </motion.div>
         </div>
 
-        {/* Categories Tabs */}
-        <div className="flex flex-wrap gap-3 mb-16 border-b border-white/5 pb-8">
+        {/* Tabs de Filtro Minimalistas */}
+        <div className="flex flex-wrap gap-2.5 mb-14 border-b border-white/[0.06] pb-6">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative px-6 py-3 rounded-full font-display text-sm font-bold tracking-wider transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full font-sans text-xs tracking-wide transition-all duration-300 cursor-pointer ${
                   isActive 
-                    ? 'text-white bg-tech-electric shadow-lg shadow-tech-electric/20'
-                    : 'text-tech-gray hover:text-white bg-white/5 border border-white/5 hover:border-white/10'
+                    ? 'text-black bg-white font-semibold shadow-[0_0_15px_rgba(255,255,255,0.2)]'
+                    : 'text-zinc-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08]'
                 }`}
               >
                 {tab.label}
@@ -69,10 +88,10 @@ const ProjectsSection: React.FC = () => {
           })}
         </div>
 
-        {/* Projects Grid */}
+        {/* Grid de Projetos Showcase */}
         <motion.div 
           layout
-          className="grid md:grid-cols-2 gap-12 lg:gap-16 min-h-[400px]"
+          className="grid md:grid-cols-2 gap-8 lg:gap-10"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
@@ -82,60 +101,56 @@ const ProjectsSection: React.FC = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="group block relative bg-tech-surface border border-white/5 rounded-[20px] p-4 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="group block glass-panel glass-panel-hover p-4 sm:p-5 rounded-2xl transition-all duration-300"
               >
-                {/* Image Card */}
-                <div className="relative aspect-[16/10] bg-tech-blue/20 rounded-xl overflow-hidden border border-white/5 transition-all duration-700">
+                {/* Imagem do Projeto */}
+                <div className="relative aspect-[16/10] bg-neutral-900 rounded-xl overflow-hidden border border-white/[0.06] mb-6">
                   <img
                     src={project.image}
-                    alt={`Captura de tela do projeto ${project.title} - ValeTech Soluções`}
-                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out"
+                    alt={`Projeto ${project.title} desenvolvido por LDV — Tecnologia & Inovação`}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                     loading="lazy"
                     width="640"
                     height="400"
                   />
                   
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-tech-surface via-transparent to-transparent opacity-80"></div>
+                  {/* Overlay gradiente sutil */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   
-                  {/* External Link Icon */}
-                  <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500 border border-white/20">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  {/* Botão de Link Externo Flutuante */}
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-black/70 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 border border-white/20">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                  </div>
-
-                  {/* Float Tags */}
-                  <div className="absolute bottom-6 left-6 flex flex-wrap gap-2">
-                    {project.tags.slice(0, 2).map((tag, tIdx) => (
-                      <span key={tIdx} className="text-[10px] px-3 py-1 bg-tech-electric/80 backdrop-blur-md text-white font-bold rounded-lg uppercase tracking-wider">
-                        {tag}
-                      </span>
-                    ))}
                   </div>
                 </div>
 
-                {/* Text Content */}
-                <div className="mt-6 space-y-4 px-2 pb-2">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-white group-hover:text-tech-electric transition-colors duration-300">
+                {/* Detalhes do Projeto */}
+                <div className="px-2 pb-2 space-y-3">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-white group-hover:text-zinc-200 transition-colors">
                       {project.title}
                     </h3>
+                    <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider whitespace-nowrap">
+                      {project.category}
+                    </span>
                   </div>
                   
-                  <p className="text-tech-gray text-lg leading-relaxed font-light line-clamp-2 italic">
-                    "{project.desc}"
+                  <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                    {project.desc}
                   </p>
 
-                  <div className="flex flex-wrap gap-3 pt-2">
+                  {/* Tags Tecnológicas */}
+                  <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06]">
                     {project.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="text-xs font-mono text-tech-gray/60 flex items-center gap-1.5">
-                        <span className="w-1 h-1 rounded-full bg-tech-electric"></span>
+                      <span 
+                        key={tIdx} 
+                        className="text-[11px] font-mono text-zinc-400 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06]"
+                      >
                         {tag}
                       </span>
                     ))}
@@ -144,32 +159,6 @@ const ProjectsSection: React.FC = () => {
               </motion.a>
             ))}
           </AnimatePresence>
-
-          {filteredProjects.length === 0 && (
-            <div className="col-span-2 flex flex-col items-center justify-center py-20 text-center space-y-4">
-              <span className="text-4xl">💼</span>
-              <p className="text-tech-gray text-lg font-light">Nenhum projeto nesta categoria disponível no momento.</p>
-              <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="text-tech-electric font-bold hover:underline">
-                Seja o primeiro a contratar esta solução →
-              </a>
-            </div>
-          )}
-        </motion.div>
-
-        {/* Footer CTA */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-32 text-center"
-        >
-          <button 
-            onClick={() => window.open(SOCIAL_LINKS.whatsapp, '_blank')}
-            className="inline-flex items-center gap-4 text-white font-display text-xl border-b-2 border-tech-gold pb-2 hover:text-tech-gold transition-all group"
-          >
-            QUER UM PROJETO PERSONALIZADO COMO ESTES? 
-            <span className="group-hover:translate-x-2 transition-transform">→</span>
-          </button>
         </motion.div>
 
       </div>

@@ -7,36 +7,37 @@ const motion = m as any;
 
 const NotFound: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-tech-dark relative overflow-hidden px-4">
-      {/* Glitch Effect Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden px-6 pt-24 pb-12">
+      {/* Background sutil */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]"></div>
 
-      <div className="text-center z-10">
+      <div className="text-center relative z-10 max-w-md space-y-6">
         <motion.h1 
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, type: "spring" }}
-          className="font-display text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-tech-electric to-tech-gold mb-4 select-none"
+          transition={{ duration: 0.6 }}
+          className="font-mono text-8xl sm:text-9xl font-bold text-white tracking-tighter select-none"
         >
           404
         </motion.h1>
         
-        <h2 className="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6 uppercase tracking-widest">
-          System Failure
-        </h2>
-        
-        <p className="text-slate-600 dark:text-tech-gray text-lg mb-8 max-w-md mx-auto">
-          A página que você procura foi movida para outra dimensão ou não existe neste servidor.
-        </p>
+        <div className="space-y-2">
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+            Página Não Encontrada
+          </span>
+          <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed">
+            O recurso solicitado não existe ou foi realocado na nova arquitetura ValeTech.
+          </p>
+        </div>
 
-        <Link 
-          to="/"
-          className="inline-block px-8 py-3 bg-tech-gradient text-white font-bold font-display rounded hover:shadow-[0_0_20px_rgba(26,102,191,0.5)] transition-all transform hover:-translate-y-1"
-        >
-          REINICIAR SISTEMA
-        </Link>
+        <div>
+          <Link 
+            to="/"
+            className="inline-block px-8 py-3.5 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+          >
+            Retornar ao Início
+          </Link>
+        </div>
       </div>
     </div>
   );

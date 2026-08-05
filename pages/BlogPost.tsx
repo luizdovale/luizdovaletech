@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+// @ts-ignore
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -10,36 +11,37 @@ const BlogPost: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden bg-tech-dark pt-32 pb-20 min-h-[85vh] flex items-center justify-center">
-      <div className="absolute top-20 left-10 w-96 h-96 bg-tech-electric/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div className="relative w-full overflow-hidden bg-black pt-20 pb-28 min-h-[85vh] flex items-center justify-center">
+      {/* Luz ambiente */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-white/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-2xl text-center space-y-8">
-        <span className="text-xs uppercase tracking-widest text-tech-gold font-mono font-bold px-4 py-1.5 border border-tech-gold/20 rounded-full bg-tech-gold/5">
-          Artigo do Blog
+      <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-2xl text-center space-y-8">
+        <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
+          Artigo Técnico · ValeTech
         </span>
 
-        <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight tracking-tighter">
-          Artigo: <span className="text-tech-electric italic">"{slug}"</span>
+        <h1 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
+          Publicação: <span className="text-zinc-400 font-light">"{slug}"</span>
         </h1>
 
-        <p className="text-tech-gray text-lg font-light leading-relaxed">
-          Este artigo está sendo escrito e revisado com dados atualizados do mercado para garantir a melhor informação.
+        <p className="text-zinc-400 text-base font-light leading-relaxed">
+          Este artigo está em fase de revisão técnica e diagramação para publicação em nosso portal.
         </p>
 
-        <div className="glass-panel p-6 rounded-2xl border border-white/5 space-y-4">
-          <span className="text-sm text-white/80 font-bold block">Assuntos a serem abordados:</span>
+        <div className="glass-panel p-6 rounded-2xl space-y-4">
+          <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">Tópicos em Destaque</span>
           <div className="flex flex-wrap gap-2 justify-center">
-            <span className="px-3 py-1 bg-white/5 text-tech-gray text-xs rounded-lg border border-white/5">SEO Técnico</span>
-            <span className="px-3 py-1 bg-white/5 text-tech-gray text-xs rounded-lg border border-white/5">Performance Web</span>
-            <span className="px-3 py-1 bg-white/5 text-tech-gray text-xs rounded-lg border border-white/5">Geração de Leads</span>
-            <span className="px-3 py-1 bg-white/5 text-tech-gray text-xs rounded-lg border border-white/5">Desenvolvimento Web</span>
+            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Arquitetura de Software</span>
+            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Core Web Vitals</span>
+            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Design de Sistemas</span>
+            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Engenharia Web</span>
           </div>
         </div>
 
         <div>
           <Link 
             to="/blog" 
-            className="inline-flex items-center gap-2 text-tech-electric hover:underline text-sm font-bold tracking-wider"
+            className="inline-flex items-center gap-2 text-white hover:text-zinc-300 text-xs font-mono uppercase tracking-wider transition-colors"
           >
             ← Voltar para o Blog
           </Link>

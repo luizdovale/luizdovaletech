@@ -7,13 +7,25 @@ const WhatsAppBtn: React.FC = () => {
       href={SOCIAL_LINKS.whatsapp}
       target="_blank"
       rel="noreferrer"
+      aria-label="Conversar via WhatsApp com a LDV"
       className="fixed bottom-6 right-6 z-50 group"
     >
-      <div className="relative">
-        <div className="absolute inset-0 bg-tech-gold rounded-full blur opacity-40 group-hover:opacity-70 animate-pulse"></div>
-        <button className="relative w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center shadow-lg transition-transform transform group-hover:scale-110 border-2 border-tech-gold">
-          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.466c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.68-2.03-.967-.272-.297-.471-.446-.966-.446-.495 0-.867.198-1.313.693-.446.495-1.707 1.671-1.707 4.071s1.746 4.716 1.993 5.063c.248.347 3.438 5.253 8.327 7.366 4.889 2.113 4.889 1.412 5.78 1.336.891-.075 2.894-1.19 3.316-2.338.422-1.149.422-2.133.297-2.338z"/>
+      <div className="relative flex items-center">
+        {/* Tooltip Monocromático no Hover */}
+        <span className="hidden md:block absolute right-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap px-3 py-1.5 rounded-lg bg-neutral-900/90 text-white text-xs font-sans border border-white/10 shadow-xl">
+          Falar com a LDV
+        </span>
+
+        {/* Efeito Glow Monocromático */}
+        <div className="absolute inset-0 bg-white/20 rounded-full blur-md opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
+
+        {/* Botão Principal Preto & Branco */}
+        <button 
+          className="relative w-13 h-13 sm:w-14 sm:h-14 bg-black/90 hover:bg-black text-white rounded-full flex items-center justify-center shadow-[0_10px_25px_rgba(0,0,0,0.8)] transition-all duration-300 transform group-hover:scale-105 border border-white/20 group-hover:border-white/50"
+          type="button"
+        >
+          <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.466c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-15.680-2.03-.967-.272-.297-.471-.446-.966-.446-.495 0-.867.198-1.313.693-.446.495-1.707 1.671-1.707 4.071s1.746 4.716 1.993 5.063c.248.347 3.438 5.253 8.327 7.366 4.889 2.113 4.889 1.412 5.78 1.336.891-.075 2.894-1.19 3.316-2.338.422-1.149.422-2.133.297-2.338z"/>
           </svg>
         </button>
       </div>

@@ -19,16 +19,16 @@ const ParticleBackground: React.FC = () => {
     };
 
     const createParticles = () => {
-      const particleCount = window.innerWidth < 768 ? 30 : 60; // Reduzi levemente para performance
+      const particleCount = window.innerWidth < 768 ? 25 : 50;
       particles = [];
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          speedX: Math.random() * 0.5 - 0.25,
-          speedY: Math.random() * 0.5 - 0.25,
-          opacity: Math.random() * 0.5 + 0.1
+          size: Math.random() * 1.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+          opacity: Math.random() * 0.35 + 0.05
         });
       }
     };
@@ -36,17 +36,17 @@ const ParticleBackground: React.FC = () => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw connecting lines
-      ctx.strokeStyle = 'rgba(26, 102, 191, 0.1)'; // Mais sutil
+      // Linhas de conexão brancas sutis
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
       ctx.lineWidth = 0.5;
       
       for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
+        for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 100) {
+          if (distance < 120) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -55,11 +55,11 @@ const ParticleBackground: React.FC = () => {
         }
       }
 
-      // Draw particles
+      // Partículas brancas minimalistas
       particles.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(252, 227, 0, ${p.opacity})`; // Gold particles
+        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
         ctx.fill();
 
         p.x += p.speedX;
@@ -76,19 +76,20 @@ const ParticleBackground: React.FC = () => {
     createParticles();
     draw();
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       resize();
       createParticles();
-    });
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  // Alterado para fixed e z-[-10] para garantir que fique atrás de tudo
-  return <canvas ref={canvasRef} className="fixed inset-0 -z-10 pointer-events-none bg-tech-dark" />;
+  return <canvas ref={canvasRef} className="fixed inset-0 -z-10 pointer-events-none bg-black" />;
 };
 
 export default ParticleBackground;
