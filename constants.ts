@@ -78,16 +78,6 @@ export const PROJECTS: ProjectItem[] = [
     image: "https://lh3.googleusercontent.com/pw/AP1GczMrFbsJmHOP8YSbUWgZ6BtWVuxNHBMXgs3HmxNmG0TkGKTCepUnNw-FZic2cNodfpRxf4V-hpexh0G8kc7JkosODkLPyttoIvzNt4OFIAGmQvxPtiA6K6mBOLUCgaLh4jxM2Dlz-Tls_ghdc2MvT5dv=w1352-h597-s-no-gm?authuser=2"
   },
   {
-    id: "acai-beach",
-    title: "Açaí Beach System",
-    subtitle: "PDV & Gestão Operacional para Franquias",
-    desc: "Sistema ágil de ponto de venda, gestão de pedidos por mesas/delivery e controle de fluxo de caixa em tempo real para o setor de alimentação.",
-    link: "https://studiobynean.vercel.app/",
-    tags: ["PDV", "FoodTech", "Interface Touch", "Real-Time"],
-    category: "sistemas",
-    image: "https://lh3.googleusercontent.com/pw/AP1GczPeLEMz5VvxtkMzmCGyrQG6iDNUS2yUQKHQqo3EWKxS0slV8ZM5SFHBCK1Vwvt11vWjcy2QIt9V4BDdC6Nz8KL6DHd2TKdfck-aHJ2BxbOpO94CbMx2hxX-MlWWy21pHJbDHAXRb9iqxyZCeVXlaf7=w1351-h598-s-no-gm?authuser=1"
-  },
-  {
     id: "gas-calculator",
     title: "Gas Calculator",
     subtitle: "Aplicação Industrial de Engenharia",
