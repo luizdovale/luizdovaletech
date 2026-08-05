@@ -46,7 +46,7 @@ const ProjectsSection: React.FC = () => {
               Projetos construídos para <span className="text-zinc-400 font-light">gerar impacto.</span>
             </h2>
             <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-              Explore soluções desenvolvidas pela LDV com arquitetura moderna e experiência refinada.
+              Explore soluções desenvolvidas pela ValeTech com arquitetura moderna e experiência refinada.
             </p>
           </motion.div>
           
@@ -111,7 +111,7 @@ const ProjectsSection: React.FC = () => {
                 <div className="relative aspect-[16/10] bg-neutral-900 rounded-xl overflow-hidden border border-white/[0.06] mb-6">
                   <img
                     src={project.image}
-                    alt={`Projeto ${project.title} desenvolvido por LDV — Tecnologia & Inovação`}
+                    alt={`Projeto ${project.title} desenvolvido por ValeTech — Tecnologia & Inovação`}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                     loading="lazy"
                     width="640"

@@ -7,13 +7,13 @@ const WhatsAppBtn: React.FC = () => {
       href={SOCIAL_LINKS.whatsapp}
       target="_blank"
       rel="noreferrer"
-      aria-label="Conversar via WhatsApp com a LDV"
+      aria-label="Conversar via WhatsApp com a ValeTech"
       className="fixed bottom-6 right-6 z-50 group"
     >
       <div className="relative flex items-center">
         {/* Tooltip Monocromático no Hover */}
         <span className="hidden md:block absolute right-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap px-3 py-1.5 rounded-lg bg-neutral-900/90 text-white text-xs font-sans border border-white/10 shadow-xl">
-          Falar com a LDV
+          Falar com a ValeTech
         </span>
 
         {/* Efeito Glow Monocromático */}

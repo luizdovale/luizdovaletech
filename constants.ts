@@ -231,7 +231,7 @@ export const VALETECH_PILLARS = [
   }
 ];
 
-export const WHY_LDV = VALETECH_PILLARS;
+export const WHY_VALETECH_ALIAS = VALETECH_PILLARS;
 export const WHY_VALETECH = VALETECH_PILLARS.map(p => ({ title: p.title, desc: p.desc, icon: "⚡" }));
 
 export const FAQ_ITEMS = [

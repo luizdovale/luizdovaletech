@@ -27,7 +27,7 @@ const FinalCTA: React.FC = () => {
               Pronto para evoluir o seu <span className="text-zinc-400 font-light">ecossistema digital?</span>
             </h2>
             <p className="text-zinc-400 text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-              Desenvolva um sistema exclusivo, rápido e preparado para a próxima década com a LDV.
+              Desenvolva um sistema exclusivo, rápido e preparado para a próxima década com a ValeTech.
             </p>
           </motion.div>
 

@@ -20,7 +20,7 @@ const ContactCTA: React.FC = () => {
               Pronto para transformar sua <span className="text-zinc-400 font-light">presença digital?</span>
             </h2>
             <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed max-w-xl mx-auto">
-              Desenvolva sistemas, landing pages e plataformas digitais com a LDV.
+              Desenvolva sistemas, landing pages e plataformas digitais com a ValeTech.
             </p>
           </motion.div>
 

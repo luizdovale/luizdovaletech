@@ -42,7 +42,7 @@ const About: React.FC = () => {
             className="lg:col-span-5 space-y-4"
           >
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-              01 · Sobre a LDV
+              01 · Sobre a ValeTech
             </span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
               Transformamos ideias em <span className="text-zinc-400 font-light">soluções digitais.</span>
@@ -57,7 +57,7 @@ const About: React.FC = () => {
             className="lg:col-span-7 space-y-6 text-zinc-400 text-base sm:text-lg font-light leading-relaxed"
           >
             <p>
-              A <strong className="text-white font-semibold">LDV</strong> nasceu para redefinir a forma como empresas utilizam a tecnologia. Desenvolvemos ecossistemas digitais robustos, elegantes e escaláveis que impulsionam o crescimento real dos nossos clientes.
+              A <strong className="text-white font-semibold">ValeTech</strong> nasceu para redefinir a forma como empresas utilizam a tecnologia. Desenvolvemos ecossistemas digitais robustos, elegantes e escaláveis que impulsionam o crescimento real dos nossos clientes.
             </p>
             <p>
               Não usamos templates genéricos ou soluções de prateleira que engessam o seu negócio. Cada linha de código é construída sob medida com as melhores práticas da engenharia de software global, garantindo segurança, performance impecável e liberdade total de evolução.

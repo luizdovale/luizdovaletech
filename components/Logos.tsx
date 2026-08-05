@@ -7,7 +7,7 @@ interface LogoProps {
 }
 
 /**
- * LOGO OFICIAL LDV — Baseada em public/logonova.png
+ * LOGO OFICIAL ValeTech — Baseada em public/logonova.png
  * Proporções perfeitas, otimizada para fundo preto e interfaces minimalistas.
  */
 export const LogoMain: React.FC<LogoProps> = ({ className = "", size = 'md' }) => {
@@ -22,7 +22,7 @@ export const LogoMain: React.FC<LogoProps> = ({ className = "", size = 'md' }) =
   return (
     <img 
       src="/logo.png" 
-      alt="LDV — Tecnologia & Inovação" 
+      alt="ValeTech — Tecnologia & Inovação" 
       className={`${sizeClasses[size]} w-auto object-contain select-none transition-transform duration-300 ${className}`}
       draggable={false}
     />
@@ -53,7 +53,7 @@ export const LogoFooter: React.FC<LogoProps> = ({ className = "" }) => (
 export const LogoIcon: React.FC<LogoProps> = ({ className = "" }) => (
   <img 
     src="/logo.png" 
-    alt="LDV" 
+    alt="ValeTech" 
     className={`w-9 h-9 object-contain select-none ${className}`}
     draggable={false}
   />

@@ -42,9 +42,9 @@ const Footer: React.FC = () => {
           <div className="md:col-span-5 space-y-6">
             <button onClick={handleScrollToTop} className="inline-block cursor-pointer group" aria-label="Voltar ao topo">
               <img
-                src="/logo.png"
-                alt="LDV — Tecnologia & Inovação"
-                className="h-[7.5rem] w-auto object-contain select-none brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                src="/assets/logo.png"
+                alt="ValeTech — Tecnologia & Inovação"
+                className="h-8 md:h-10 w-auto object-contain select-none brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                 draggable={false}
               />
             </button>
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 className="text-zinc-400 hover:text-white text-sm font-light transition-colors text-left cursor-pointer w-fit group flex items-center gap-2"
               >
                 <span className="w-3 h-[1px] bg-white/20 group-hover:w-5 group-hover:bg-white transition-all duration-300" />
-                Sobre a LDV
+                Sobre a ValeTech
               </button>
               <button
                 onClick={() => handleScrollTo('services')}

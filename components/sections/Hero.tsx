@@ -68,14 +68,14 @@ const Hero: React.FC = () => {
             <img
               src="/logo.png"
               alt="ValeTech — Tecnologia & Inovação"
-              className="relative z-10 h-24 sm:h-32 md:h-36 lg:h-44 w-auto object-contain select-none
+              className="relative z-10 h-32 sm:h-40 md:h-48 lg:h-56 w-auto object-contain select-none
                          brightness-0 invert
                          drop-shadow-[0_0_40px_rgba(255,255,255,0.25)]
                          transition-transform duration-500 hover:scale-[1.02] mb-0 sm:mb-1"
               draggable={false}
             />
             <div className="relative z-10 text-center flex flex-col items-center mt-0 w-full">
-              <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 mb-1 sm:mb-2 leading-none w-full">
+              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 mb-1 sm:mb-2 leading-none w-full">
                 VALETECH
               </h1>
               <span className="font-sans text-[10px] sm:text-xs md:text-sm tracking-[0.5em] sm:tracking-[0.7em] md:tracking-[0.9em] uppercase text-zinc-500 font-medium pl-1 sm:pl-2">

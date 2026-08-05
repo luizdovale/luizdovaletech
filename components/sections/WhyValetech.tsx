@@ -33,7 +33,7 @@ const WhyValetech: React.FC = () => {
             04 · Nossos Diferenciais
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-            Por que escolher a <span className="text-zinc-400 font-light">LDV?</span>
+            Por que escolher a <span className="text-zinc-400 font-light">ValeTech?</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
             Metodologia rigorosa e padrões globais de engenharia para transformar o ecossistema tecnológico do seu negócio.
