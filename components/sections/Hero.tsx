@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
             {/* brilho difuso atrás da logo */}
             <div className="absolute inset-0 bg-white/[0.06] rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 scale-150" />
             <img
-              src="/logo.png"
+              src="public\assets\logo hero.png"
               alt="ValeTech — Tecnologia & Inovação"
               className="relative z-10 h-32 sm:h-40 md:h-48 lg:h-56 w-auto object-contain select-none
                          brightness-0 invert
