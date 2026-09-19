@@ -7,23 +7,22 @@ interface LogoProps {
 }
 
 /**
- * LOGO OFICIAL ValeTech — Baseada em public/logonova.png
- * Proporções perfeitas, otimizada para fundo preto e interfaces minimalistas.
+ * LOGO OFICIAL ValeTech — public/assets/logo.png, em branco para fundo preto.
  */
 export const LogoMain: React.FC<LogoProps> = ({ className = "", size = 'md' }) => {
   const sizeClasses = {
     sm: 'h-6 md:h-7',
-    md: 'h-8 md:h-10',
+    md: 'h-8',
     lg: 'h-12 md:h-14',
     xl: 'h-16 md:h-20',
     hero: 'h-20 sm:h-24 md:h-32'
   };
 
   return (
-    <img 
-      src="/logo.png" 
-      alt="ValeTech — Tecnologia & Inovação" 
-      className={`${sizeClasses[size]} w-auto object-contain select-none transition-transform duration-300 ${className}`}
+    <img
+      src="/assets/logo.png"
+      alt="ValeTech Soluções"
+      className={`${sizeClasses[size]} w-auto object-contain select-none brightness-0 invert transition-transform duration-300 ${className}`}
       draggable={false}
     />
   );

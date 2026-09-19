@@ -34,13 +34,13 @@ const FAQSection: React.FC = () => {
         {/* Header da Seção */}
         <div className="text-center mb-16 space-y-4">
           <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-            07 · Dúvidas Frequentes
+            05 · Dúvidas
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-            Perguntas <span className="text-zinc-400 font-light">Frequentes.</span>
+            Perguntas <span className="text-zinc-400 font-light">frequentes.</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed max-w-xl mx-auto">
-            Transparência e clareza em todas as etapas do desenvolvimento de software e consultoria digital.
+            As dúvidas mais comuns de quem está pensando em contratar. Não achou a sua? É só me chamar.
           </p>
         </div>
 

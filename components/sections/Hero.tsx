@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ThreeScene from '../ThreeScene';
+import { SOCIAL_LINKS } from '../../constants';
 
 const Hero: React.FC = () => {
   const fadeInUp = {
@@ -28,7 +29,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 pb-16 px-4 md:px-6 overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 md:px-6 overflow-hidden bg-black">
       {/* Three.js Monochromatic Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <ThreeScene />
@@ -42,7 +43,7 @@ const Hero: React.FC = () => {
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="space-y-8 flex flex-col items-center max-w-4xl"
+          className="space-y-7 flex flex-col items-center max-w-4xl"
         >
           {/* Badge de Status Minimalista */}
           <motion.div
@@ -58,76 +59,95 @@ const Hero: React.FC = () => {
             </span>
           </motion.div>
 
-          {/* Logo Oficial — Hero central, branca e maior */}
+          {/* Marca */}
           <motion.div
             variants={fadeInUp}
-            className="relative flex flex-col justify-center items-center group py-4"
+            className="relative flex flex-col justify-center items-center group"
           >
             {/* brilho difuso atrás da logo */}
             <div className="absolute inset-0 bg-white/[0.06] rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 scale-150" />
             <img
               src="/assets/logo hero.png"
-              alt="ValeTech — Tecnologia & Inovação"
-              className="relative z-10 h-32 sm:h-40 md:h-48 lg:h-56 w-auto object-contain select-none
+              alt="ValeTech Soluções"
+              className="relative z-10 h-24 sm:h-28 md:h-32 w-auto object-contain select-none
                          brightness-0 invert
                          drop-shadow-[0_0_40px_rgba(255,255,255,0.25)]
-                         transition-transform duration-500 hover:scale-[1.02] mb-0 sm:mb-1"
+                         transition-transform duration-500 hover:scale-[1.02]"
               draggable={false}
             />
-            <div className="relative z-10 text-center flex flex-col items-center mt-0 w-full">
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 mb-1 sm:mb-2 leading-none w-full">
+            <div className="relative z-10 text-center flex flex-col items-center w-full">
+              <p className="font-display text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 leading-none w-full">
                 VALETECH
-              </h1>
-              <span className="font-sans text-[10px] sm:text-xs md:text-sm tracking-[0.5em] sm:tracking-[0.7em] md:tracking-[0.9em] uppercase text-zinc-500 font-medium pl-1 sm:pl-2">
+              </p>
+              <span className="font-sans text-[10px] sm:text-xs tracking-[0.5em] sm:tracking-[0.7em] uppercase text-zinc-500 font-medium pl-1 sm:pl-2 mt-1">
                 Soluções
               </span>
             </div>
           </motion.div>
 
-          {/* Mensagem Institucional de Posicionamento */}
+          {/* O que eu faço, em uma frase */}
+          <motion.h1
+            variants={fadeInUp}
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.15] max-w-3xl"
+          >
+            Sistemas, sites e aplicativos sob medida para o seu negócio{' '}
+            <span className="text-zinc-400 font-light">funcionar melhor.</span>
+          </motion.h1>
+
           <motion.p
             variants={fadeInUp}
             className="text-zinc-400 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto"
           >
-            Criamos soluções digitais inteligentes, sistemas personalizados e experiências tecnológicas para empresas que querem evoluir.
+            Sou o Luiz, desenvolvedor. Resolvo problemas do dia a dia da sua empresa, do controle de estoque ao site que traz clientes, com tecnologia feita só para você, sem template pronto.
           </motion.p>
 
-          {/* Botões de Ação Minimalistas */}
+          {/* Botões de Ação */}
           <motion.div
             variants={fadeInUp}
-            className="pt-2 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center items-center"
+            className="pt-1 flex flex-col items-center gap-4 w-full"
           >
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center items-center">
+              <a
+                href={SOCIAL_LINKS.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black font-semibold text-sm tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.2)] text-center"
+              >
+                Falar no WhatsApp
+              </a>
+
+              <button
+                onClick={() => handleScrollTo('projects')}
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/40 hover:bg-white/[0.06] text-white border border-white/20 hover:border-white/40 font-medium text-sm tracking-wider uppercase transition-all duration-300 backdrop-blur-md cursor-pointer"
+              >
+                Ver projetos
+              </button>
+            </div>
+
             <Link
               to="/briefing"
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black font-semibold text-sm tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.2)] text-center"
+              className="text-zinc-400 hover:text-white text-sm font-light underline underline-offset-4 decoration-white/20 hover:decoration-white transition-colors"
             >
-              Solicitar Projeto
+              Prefere escrever? Peça um orçamento pelo formulário
             </Link>
-
-            <button
-              onClick={() => handleScrollTo('projects')}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/40 hover:bg-white/[0.06] text-white border border-white/20 hover:border-white/40 font-medium text-sm tracking-wider uppercase transition-all duration-300 backdrop-blur-md cursor-pointer"
-            >
-              Conheça nossos projetos
-            </button>
           </motion.div>
 
-          {/* Métricas / Pilares Tecnológicos Minimalistas */}
+          {/* Pontos de confiança */}
           <motion.div
             variants={fadeInUp}
-            className="pt-12 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 border-t border-white/[0.08] w-full max-w-3xl"
+            className="pt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-12 border-t border-white/[0.08] w-full max-w-3xl"
           >
             <div className="space-y-1">
-              <span className="font-display text-xl sm:text-2xl font-bold text-white block">100% Sob Medida</span>
-              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">Zero Templates Genéricos</span>
+              <span className="font-display text-lg sm:text-xl font-bold text-white block">Sob medida</span>
+              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">Nada de template pronto</span>
             </div>
             <div className="space-y-1">
-              <span className="font-display text-xl sm:text-2xl font-bold text-white block">Core Web Vitals</span>
-              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">Performance & SEO Máximos</span>
+              <span className="font-display text-lg sm:text-xl font-bold text-white block">Direto comigo</span>
+              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">Sem atendente nem intermediário</span>
             </div>
-            <div className="space-y-1 col-span-2 md:col-span-1">
-              <span className="font-display text-xl sm:text-2xl font-bold text-white block">Full Stack & IA</span>
-              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">Sistemas & Automações</span>
+            <div className="space-y-1">
+              <span className="font-display text-lg sm:text-xl font-bold text-white block">Resposta em até 24h</span>
+              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">WhatsApp ou formulário</span>
             </div>
           </motion.div>
         </motion.div>
@@ -138,8 +158,8 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 6, 0] }}
         transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer"
-        onClick={() => handleScrollTo('about')}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer hidden sm:block"
+        onClick={() => handleScrollTo('services')}
         aria-label="Rolar para a próxima seção"
       >
         <div className="w-5 h-9 rounded-full border border-white/20 flex justify-center p-1">

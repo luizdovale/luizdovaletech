@@ -1,8 +1,10 @@
 export const BRAND_INFO = {
   name: "ValeTech",
-  fullName: "ValeTech — Tecnologia & Inovação",
-  tagline: "Tecnologia & Inovação",
-  description: "Desenvolvimento de sistemas sob medida, aplicações web de alta performance, aplicativos mobile e automações inteligentes para empresas que buscam liderar o mercado.",
+  fullName: "ValeTech Soluções",
+  tagline: "Sistemas, sites e aplicativos sob medida",
+  description: "Sistemas de gestão, sites, aplicativos e automações sob medida para empresas e profissionais que querem trabalhar melhor.",
+  founder: "Luiz Fernando",
+  founderPhoto: "/assets/luiz.jpg",
   contactEmail: "luizdovaletech@gmail.com",
   phone: "+55 (12) 97403-3027",
   location: "São Paulo, Brasil",
@@ -10,7 +12,7 @@ export const BRAND_INFO = {
 };
 
 export const SOCIAL_LINKS = {
-  whatsapp: "https://wa.me/5512974033027?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20um%20projeto%20com%20a%20ValeTech%20%E2%80%94%20Tecnologia%20%26%20Inova%C3%A7%C3%A3o.",
+  whatsapp: "https://wa.me/5512974033027?text=Ol%C3%A1%2C%20Luiz!%20Vi%20o%20site%20da%20ValeTech%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.",
   formAction: "https://formsubmit.co/luizdovaletech@gmail.com",
   web3formsKey: "aa00e3e1-13a8-4535-a695-894473969c24",
   github: "https://github.com/luizdovale",
@@ -18,243 +20,258 @@ export const SOCIAL_LINKS = {
   instagram: "https://instagram.com/luizdovaletech",
 };
 
-export type ProjectCategory = "sistemas" | "web" | "apps" | "solucoes";
+// Ids das seções da Home usados pelo menu e pelo rodapé.
+export const NAV_LINKS = [
+  { id: "services", label: "O que eu faço" },
+  { id: "projects", label: "Projetos" },
+  { id: "how", label: "Como funciona" },
+  { id: "about", label: "Sobre mim" },
+  { id: "faq", label: "Dúvidas" },
+];
+
+export type ProjectCategory = "sistemas" | "sites" | "apps";
+
+export const PROJECT_CATEGORY_LABEL: Record<ProjectCategory, string> = {
+  sistemas: "Sistema de gestão",
+  sites: "Site profissional",
+  apps: "Ferramenta / App",
+};
 
 export interface ProjectItem {
   id: string;
   title: string;
-  subtitle: string;
+  audience: string;
   desc: string;
   link: string;
   tags: string[];
   category: ProjectCategory;
   image: string;
-  featured?: boolean;
 }
 
 export const PROJECTS: ProjectItem[] = [
   {
     id: "jornada360",
     title: "Jornada360",
-    subtitle: "Sistema de Gestão de Jornada & PWA",
-    desc: "Plataforma avançada para controle de ponto digital, jornada de trabalho e gestão de horas extras em tempo real, com operação offline-first.",
+    audience: "Para quem precisa controlar horas de trabalho e horas extras",
+    desc: "Aplicativo para registrar a jornada de trabalho e acompanhar as horas extras em tempo real. Continua funcionando mesmo sem internet, e nenhum registro se perde.",
     link: "https://jornada360.vercel.app/",
-    tags: ["Sistema Web", "PWA", "Offline-First", "TypeScript"],
+    tags: ["Controle de ponto", "Funciona sem internet", "Instala no celular"],
     category: "sistemas",
-    featured: true,
-    image: "https://lh3.googleusercontent.com/pw/AP1GczMc_HmvB2iJ6y8lTk4SgwP9718_4gJD6g8c7HFlTu4j31sgxEii-L6nwpnLzF0pVa2nmL05Ymmkr3_4gq9bYIa1X14xj-DVeI2WvCUyAEowJ-VTFIqOaMYWL76GfMYDKMWpBJB9H3KhNz2unS0p7ic=w969-h595-s-no-gm?authuser=4"
+    image: "/projects/jornada360.jpg"
   },
   {
     id: "geartech",
     title: "GearTech",
-    subtitle: "ERP & Gestão para Auto Peças",
-    desc: "Software de gestão empresarial com controle inteligente de estoque, faturamento, emissão de ordens de serviço e relatórios analíticos.",
+    audience: "Para lojas e oficinas de autopeças",
+    desc: "Sistema que reúne estoque, vendas e ordens de serviço em um só lugar, com relatórios que mostram como o negócio está indo.",
     link: "https://geartechsytem.vercel.app/",
-    tags: ["ERP", "Gestão Empresarial", "Analytics", "Database"],
+    tags: ["Controle de estoque", "Vendas e faturamento", "Relatórios"],
     category: "sistemas",
-    featured: true,
-    image: "https://lh3.googleusercontent.com/pw/AP1GczNLD5LBZvcG6P0aQN6rc0hkdOIv5y7rFpGVaguufloS0PeGe7UWh-IPLHngDCy7flbvehRnCcAQtLhcqb5Vf8ClSE5FykTb13PkATntwYsfBhImdHdU0_LS78HgCyJtf4phLKTWCMQgW__d-AHAUPzK=w1137-h599-s-no-gm?authuser=1"
+    image: "/projects/geartech.png"
   },
   {
-    id: "smartnutri",
-    title: "SmartNutri",
-    subtitle: "Software Clínico & Prescrição Nutricional",
-    desc: "Ecossistema digital para profissionais de saúde com acompanhamento de pacientes, cálculos antropométricos e planos alimentares dinâmicos.",
+    id: "tatiane-nutricionista",
+    title: "Tatiane do Vale — Nutrição",
+    audience: "Para uma nutricionista",
+    desc: "Site profissional que apresenta o método de trabalho, os serviços e os resultados, e leva o paciente direto para o agendamento da consulta.",
     link: "https://tatianedovale.com.br",
-    tags: ["HealthTech", "SaaS", "Dashboard", "Alta Conversão"],
-    category: "web",
-    featured: true,
-    image: "https://lh3.googleusercontent.com/pw/AP1GczNomseUTg1qkHD1wIYQ4nVBwpZIqb49ZkY7MT9y4QpOiUC1_hm1aQqT1Jw1UqSXawVMgr6FGAxkZmc7aClT__AQm5vxt7b-vxeIsmTZwk3x07LmkjS7obqcaHj_VABIO7n1zSMQaznpClNGVklyVHE5=w1141-h599-s-no-gm?authuser=3"
+    tags: ["Site profissional", "Agendamento de consultas"],
+    category: "sites",
+    image: "/projects/tatiane-nutricionista.png"
   },
   {
     id: "churchflow",
     title: "ChurchFlow",
-    subtitle: "Plataforma SaaS de Gestão Eclesiástica",
-    desc: "Solução completa para administração de comunidades: cadastro de membros, tesouraria, fluxo financeiro, células e relatórios executivos.",
+    audience: "Para igrejas e comunidades",
+    desc: "Sistema para organizar a igreja: cadastro de membros, tesouraria e finanças, células e relatórios para a liderança.",
     link: "https://churchflowbr.vercel.app/",
-    tags: ["SaaS Multi-tenant", "Cloud Architecture", "Financeiro"],
+    tags: ["Cadastro de membros", "Finanças", "Feito para várias igrejas"],
     category: "sistemas",
-    featured: true,
-    image: "https://lh3.googleusercontent.com/pw/AP1GczMrFbsJmHOP8YSbUWgZ6BtWVuxNHBMXgs3HmxNmG0TkGKTCepUnNw-FZic2cNodfpRxf4V-hpexh0G8kc7JkosODkLPyttoIvzNt4OFIAGmQvxPtiA6K6mBOLUCgaLh4jxM2Dlz-Tls_ghdc2MvT5dv=w1352-h597-s-no-gm?authuser=2"
+    image: "/projects/churchflow.png"
   },
   {
     id: "gas-calculator",
     title: "Gas Calculator",
-    subtitle: "Aplicação Industrial de Engenharia",
-    desc: "Ferramenta técnica de alta precisão para dimensionamento, cálculo de vazão e logística de gases industriais e medicinais.",
+    audience: "Para profissionais que trabalham com gases industriais e medicinais",
+    desc: "Calculadora técnica que faz as contas de dimensionamento, vazão e logística de gases, com precisão e de forma simples de usar.",
     link: "https://luizdovale.github.io/gascalculatorweb/",
-    tags: ["Engenharia", "Algoritmos", "Mobile Application"],
+    tags: ["Cálculos técnicos", "Gases industriais e medicinais"],
     category: "apps",
-    image: "https://lh3.googleusercontent.com/pw/AP1GczMqSExG1zehlIT6hW4_IgNCa7Dbt-Hrt2Uyh8NOmDK8_pV1rIEJWhc5uuI6pn9bXq5xOO4Yw8VvCsWFU2MG4joHs3iYnsEHbSNI8L9bIRXw5GZm7l9UIeleVL4amaqsHB-5vS3HAFgSUpUuV77k9uc=w975-h607-s-no-gm?authuser=4"
+    image: "/projects/gas-calculator.jpg"
   },
   {
     id: "grigoleti",
     title: "Grigoleti Arquitetura",
-    subtitle: "Portal Digital de Alto Padrão",
-    desc: "Plataforma institucional de apresentação arquitetônica de luxo, com renderização de portfólio visual, blog integrado e SEO avançado.",
+    audience: "Para um escritório de arquitetura",
+    desc: "Site elegante que coloca os projetos do escritório em destaque, com blog próprio e preparado para ser encontrado no Google.",
     link: "https://grigoleti.com.br/",
-    tags: ["Experiência Imersiva", "SEO Avançado", "Design Minimalista"],
-    category: "web",
-    image: "https://lh3.googleusercontent.com/pw/AP1GczNW0I5-DESmGJ8Dy9JqwljwFNijUJpX6dAqLBO7Vx_Bi2ZIHG8hDEQYNbDq8ZtlxstxSKv0r7x5B8l5tUYqSFjO7w1IBZ1kIs17JK5MawMEOYHad3Ca-I4TDEh43hIPcrwfm6-676hRAAHZvpYUg50Y=w1363-h597-s-no-gm?authuser=2"
+    tags: ["Portfólio visual", "Blog", "Aparece no Google"],
+    category: "sites",
+    image: "/projects/grigoleti.png"
   },
   {
     id: "jps-autopecas",
     title: "JPS Auto Peças",
-    subtitle: "Hub Corporativo & Catálogo Digital",
-    desc: "Estrutura web moderna para distribuição de autopeças com geolocalização integrada, catálogo dinâmico e integração direta com força de vendas.",
+    audience: "Para uma distribuidora de autopeças",
+    desc: "Site com catálogo de produtos, localização da loja e contato direto com a equipe de vendas.",
     link: "https://jpsautopecas.vercel.app/",
-    tags: ["Catálogo Digital", "Geolocalização", "Performance"],
-    category: "web",
-    image: "https://lh3.googleusercontent.com/pw/AP1GczP8QmiB-yCVzRAJ4wH-VUv5Am3gauz6UJimM0bDJSQt0njSAatWZjn2im5VS9O2RHqM-t4tdxEkqTZBTkn5iEQcnrIcgbH9HOLfqRoz4SqRBmb_tPuyBTnFDlta8bTJoJ7s83fN3v__8kTm85WLS6w=w977-h607-s-no-gm?authuser=4"
+    tags: ["Catálogo de produtos", "Localização", "Contato com vendedores"],
+    category: "sites",
+    image: "/projects/jps-autopecas.jpg"
   }
 ];
 
 export interface ServiceItem {
-  number: string;
   id: string;
+  problem: string;
   title: string;
-  subtitle: string;
   desc: string;
-  icon?: string;
+  icon: string;
   items: string[];
-  techStack: string[];
 }
 
 export const SERVICES: ServiceItem[] = [
   {
-    number: "01",
     id: "sistemas",
-    title: "Desenvolvimento de Sistemas",
-    subtitle: "Arquitetura sob medida para operações complexas",
-    desc: "Projetamos e construímos softwares de gestão completos, ERPs, CRMs e painéis analíticos desenvolvidos especificamente para as regras do seu negócio.",
+    problem: "Quero organizar a minha empresa",
+    title: "Sistemas de gestão",
+    desc: "Troco planilhas, cadernos e mensagens soltas por um sistema feito para o jeito que a sua empresa trabalha: estoque, vendas, clientes e financeiro em um só lugar.",
     icon: "server",
     items: [
-      "ERPs e CRMs customizados",
-      "Dashboards gerenciais em tempo real",
-      "Autenticação de múltiplos níveis e RBAC",
-      "Banco de dados relacional e escalabilidade em nuvem"
-    ],
-    techStack: ["React", "Node.js", "PostgreSQL", "Supabase", "TypeScript"]
+      "Controle de estoque, vendas e financeiro",
+      "Relatórios claros para decidir com segurança",
+      "Cada pessoa da equipe vê só o que precisa",
+      "Acesso de qualquer lugar, no computador ou no celular"
+    ]
   },
   {
-    number: "02",
-    id: "web",
-    title: "Aplicações Web",
-    subtitle: "Portais e plataformas de alta performance",
-    desc: "Desenvolvemos sites corporativos, portais institucionais e landing pages com arquitetura moderna, pontuação máxima no Core Web Vitals e foco em conversão.",
+    id: "sites",
+    problem: "Quero ser encontrado por mais clientes",
+    title: "Sites e páginas de venda",
+    desc: "Site profissional que abre rápido, aparece nas buscas do Google e leva o cliente direto para o seu WhatsApp ou agendamento.",
     icon: "globe",
     items: [
-      "Websites corporativos e institucionais",
-      "Landing pages de alta conversão",
-      "SEO técnico avançado e estruturação semântica",
-      "PWA (Progressive Web Apps) de alto desempenho"
-    ],
-    techStack: ["Next.js", "Vite", "Tailwind CSS", "Edge Functions", "SEO"]
+      "Site institucional e catálogo de produtos",
+      "Página para captar clientes (landing page)",
+      "Preparado para aparecer no Google",
+      "Bonito e rápido no celular"
+    ]
   },
   {
-    number: "03",
-    id: "mobile",
-    title: "Aplicativos Mobile",
-    subtitle: "Experiências fluidas em iOS e Android",
-    desc: "Criação de aplicativos móveis nativos e híbridos com design ergonômico, sincronização em tempo real e experiência consistente entre plataformas.",
+    id: "apps",
+    problem: "Quero um aplicativo para o meu negócio",
+    title: "Aplicativos para celular",
+    desc: "Aplicativo que a sua equipe ou os seus clientes usam no dia a dia, no Android e no iPhone. Pode ser instalado direto do navegador ou pelas lojas.",
     icon: "mobile",
     items: [
-      "Aplicativos iOS e Android",
-      "Arquitetura Offline-First",
-      "Notificações push inteligentes",
-      "Publicação e homologação nas lojas App Store e Google Play"
-    ],
-    techStack: ["React Native", "Flutter", "PWA", "Push APIs"]
+      "Android e iPhone",
+      "Continua funcionando sem internet e sincroniza depois",
+      "Avisos (notificações) no celular",
+      "Publicação na Google Play e na App Store"
+    ]
   },
   {
-    number: "04",
     id: "automacao",
-    title: "Automação de Processos",
-    subtitle: "Inteligência Artificial e eficiência operacional",
-    desc: "Automatizamos fluxos operacionais repetitivos integrando APIs, agentes autônomos com modelos de linguagem (IA) e pipelines de dados inteligentes.",
+    problem: "Perco tempo com tarefas repetitivas",
+    title: "Automação e inteligência artificial",
+    desc: "Coloco a tecnologia para fazer o trabalho repetitivo: responder as dúvidas mais comuns, conectar sistemas que não conversam e organizar informações.",
     icon: "brain",
     items: [
-      "Integrações entre múltiplos sistemas via API",
-      "Agentes de IA e assistentes contextuais",
-      "Automação de atendimento e triagem",
-      "Pipelines de processamento de dados em segundo plano"
-    ],
-    techStack: ["OpenAI / Anthropic APIs", "Webhooks", "Edge Workers", "Serverless"]
-  },
-  {
-    number: "05",
-    id: "personalizadas",
-    title: "Soluções Personalizadas",
-    subtitle: "Engenharia de software focada no seu diferencial",
-    desc: "Quando soluções prontas de mercado limitam sua empresa, desenvolvemos produtos digitais proprietários desenhados para gerar vantagem competitiva.",
-    icon: "target",
-    items: [
-      "Produtos SaaS do zero à escala",
-      "Calculadoras e ferramentas de engenharia técnica",
-      "Migração de sistemas legados",
-      "Consultoria de arquitetura e infraestrutura"
-    ],
-    techStack: ["Cloud Architecture", "Docker", "CI/CD", "Security Hardening"]
+      "Assistente de IA que responde dúvidas dos clientes",
+      "Ligação entre sistemas que hoje não se falam",
+      "Triagem automática de pedidos e mensagens",
+      "Tarefas rodando sozinhas, sem ninguém apertar botão"
+    ]
   }
 ];
 
-export const VALETECH_PILLARS = [
+export const PROCESS_STEPS = [
   {
     number: "01",
-    title: "Engenharia de Alto Padrão",
-    desc: "Código limpo, arquitetura escalável e padrões de projeto que garantem durabilidade, segurança e facilidade de evolução contínua."
+    title: "A gente conversa",
+    desc: "Você me conta o que precisa, do seu jeito, pelo WhatsApp ou por um formulário curto. Sem termos técnicos."
   },
   {
     number: "02",
-    title: "Design Minimalista & Funcional",
-    desc: "Interfaces limpas, focadas no usuário, livres de distrações e pensadas para acelerar a tomada de decisão e a taxa de conversão."
+    title: "Você recebe o plano",
+    desc: "Envio a proposta com o que será feito, prazo e valor, e você vê como o projeto vai ficar antes de eu começar a programar."
   },
   {
     number: "03",
-    title: "Performance Extrema",
-    desc: "Carregamento ultrarrápido, otimização minuciosa de assets e estruturas prontas para atender aos mais altos padrões de SEO e Core Web Vitals."
-  },
-  {
-    number: "04",
-    title: "Comunicação Técnica Direta",
-    desc: "Sem intermediários ou burocracia. Alinhamento estratégico direto entre a liderança do seu projeto e especialistas em engenharia."
+    title: "Eu construo e entrego",
+    desc: "Desenvolvo em etapas e mostro o andamento. Entrego funcionando e continuo por perto para suporte e melhorias."
   }
 ];
 
-export const WHY_VALETECH_ALIAS = VALETECH_PILLARS;
-export const WHY_VALETECH = VALETECH_PILLARS.map(p => ({ title: p.title, desc: p.desc, icon: "⚡" }));
+export const DELIVERY_TIMES = [
+  { label: "Sites e páginas de venda", time: "1 a 3 semanas" },
+  { label: "Sistemas e aplicativos", time: "4 a 10 semanas" }
+];
+
+export const PRINCIPLES = [
+  {
+    title: "Sob medida de verdade",
+    desc: "Cada projeto parte do jeito que o seu negócio funciona. Não adapto um modelo pronto: construo o que a sua empresa precisa."
+  },
+  {
+    title: "Simples de usar",
+    desc: "Telas limpas e objetivas, para a sua equipe aprender rápido e o seu cliente não se perder."
+  },
+  {
+    title: "Rápido e seguro",
+    desc: "Sites e sistemas que carregam depressa, funcionam bem no celular e protegem os dados dos seus clientes."
+  },
+  {
+    title: "Conversa direta",
+    desc: "Você fala comigo, sem atendente nem intermediário, e acompanha cada etapa do projeto."
+  }
+];
 
 export const FAQ_ITEMS = [
   {
-    q: "Como a ValeTech desenvolve seus sistemas e aplicações?",
-    a: "Trabalhamos com metodologia de engenharia moderna: iniciamos com um briefing estratégico profundo, desenhamos a arquitetura do software e os protótipos visuais, executamos o desenvolvimento em ciclos ágeis com código sob medida e entregamos com deploy contínuo, monitoramento e garantia técnica."
+    q: "Como funciona o trabalho, do primeiro contato até a entrega?",
+    a: "Primeiro a gente conversa para eu entender o seu problema. Depois envio uma proposta com o que será feito, o prazo e o valor, e mostro como o projeto vai ficar. Com a proposta aprovada, desenvolvo em etapas curtas, mostrando o andamento, e entrego tudo funcionando, com acompanhamento depois."
   },
   {
-    q: "Qual a diferença entre uma solução sob medida e um template pronto?",
-    a: "Soluções sob medida são programadas linha por linha para atender exclusivamente aos fluxos, regras e diferenciais da sua empresa. Não há custos ocultos com plugins desnecessários, o código é 100% proprietário, a segurança é superior e a escalabilidade não possui limites."
+    q: "Quanto custa um projeto?",
+    a: "Depende do tamanho do projeto e do que você precisa, por isso não tenho uma tabela fixa. Você me conta a ideia e eu envio uma proposta com valor e prazo antes de começar."
   },
   {
-    q: "Quanto tempo leva o ciclo de desenvolvimento de um projeto?",
-    a: "Landing pages e websites institucionais de alto padrão são tipicamente entregues entre 1 e 3 semanas. Sistemas de gestão, plataformas SaaS e aplicativos completos demandam de 4 a 10 semanas conforme a densidade dos requisitos. O cronograma exato é estabelecido no alinhamento inicial."
+    q: "Quanto tempo leva para ficar pronto?",
+    a: "Sites e páginas de venda ficam prontos, em geral, entre 1 e 3 semanas. Sistemas e aplicativos levam de 4 a 10 semanas, dependendo do que precisam fazer. O prazo exato é combinado na proposta."
   },
   {
-    q: "A ValeTech desenvolve soluções com Inteligência Artificial?",
-    a: "Sim. Criamos integrações inteligentes com IA generativa, assistentes contextuais treinados na base da sua empresa, automação de atendimento e processamento analítico de documentos."
+    q: "Preciso entender de tecnologia para contratar?",
+    a: "Não. Você me explica o problema do seu jeito, com as palavras do seu dia a dia, e eu cuido da parte técnica, sem termos complicados."
   },
   {
-    q: "Como funciona o suporte e a evolução após a entrega?",
-    a: "Oferecemos acompanhamento pós-lançamento, garantia de funcionamento e planos de manutenção técnica contínua para manter seu sistema seguro, veloz e atualizado com as novas demandas do mercado."
+    q: "Qual a diferença entre \"sob medida\" e um modelo pronto (template)?",
+    a: "Um modelo pronto é igual para muita gente e você precisa se adaptar a ele. Sob medida significa que eu crio do zero, seguindo o jeito que a sua empresa trabalha: você não paga por recursos que não usa e o sistema pode crescer junto com o negócio."
   },
   {
-    q: "Como posso iniciar um projeto com a ValeTech?",
-    a: "Você pode clicar no botão 'Solicitar Orçamento' para preencher nosso briefing digital detalhado ou iniciar um contato direto pelo WhatsApp. Responderemos com uma análise técnica e proposta personalizada."
+    q: "Você trabalha com inteligência artificial?",
+    a: "Sim. Posso criar, por exemplo, um assistente que responde as dúvidas mais comuns dos seus clientes, ou automatizar tarefas repetitivas, como organizar pedidos, documentos e mensagens."
+  },
+  {
+    q: "E depois que o projeto for entregue?",
+    a: "Continuo por perto. Ofereço acompanhamento depois do lançamento, garantia de funcionamento e planos de manutenção para o sistema continuar seguro, rápido e atualizado."
+  },
+  {
+    q: "Como eu começo?",
+    a: "É simples: me chame no WhatsApp ou peça um orçamento pelo formulário curto, que leva cerca de 1 minuto. Eu respondo em até 24 horas."
   }
 ];
 
-export const TECH_STACK = {
-  frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "PWA Architecture"],
-  backend: ["Node.js", "PostgreSQL", "Supabase", "REST & GraphQL APIs", "Serverless Functions"],
-  infra: ["Vercel Edge", "Docker", "CI/CD Pipelines", "Cloudflare", "GitHub Actions", "SEO Técnico"]
-};
-
-export const SKILLS = TECH_STACK;
+// Ferramentas usadas nos projetos, mostradas só na página "Sobre mim".
+export const TOOLS = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "Node.js",
+  "PostgreSQL",
+  "Supabase",
+  "Flutter",
+  "Vercel",
+  "APIs de IA"
+];

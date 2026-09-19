@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luizdovaletech.vercel.app/sitemap.xml
+Sitemap: https://www.valetechsolucoes.com.br/sitemap.xml

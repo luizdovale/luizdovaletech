@@ -1,8 +1,8 @@
 {
-  "name": "ValeTech — Tecnologia & Inovação",
+  "name": "ValeTech Soluções",
   "short_name": "ValeTech",
-  "description": "Engenharia de Software, Sistemas Web Personalizados e Soluções Digitais.",
-  "start_url": "/#/",
+  "description": "Sistemas, sites e aplicativos sob medida para empresas e profissionais.",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",

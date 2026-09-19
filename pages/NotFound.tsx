@@ -2,12 +2,20 @@ import React from 'react';
 // @ts-ignore
 import { Link } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
+import PageMeta from '../components/PageMeta';
 
 const motion = m as any;
 
 const NotFound: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden px-6 pt-24 pb-12">
+      <PageMeta
+        title="Página não encontrada — ValeTech Soluções"
+        description="Esse endereço não existe ou mudou de lugar."
+        path="/404"
+        noindex
+      />
+
       {/* Background sutil */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]"></div>
 
@@ -23,10 +31,10 @@ const NotFound: React.FC = () => {
         
         <div className="space-y-2">
           <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-            Página Não Encontrada
+            Página não encontrada
           </span>
           <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed">
-            O recurso solicitado não existe ou foi realocado na nova arquitetura ValeTech.
+            Esse endereço não existe ou mudou de lugar. Volte para o início para continuar.
           </p>
         </div>
 
@@ -35,7 +43,7 @@ const NotFound: React.FC = () => {
             to="/"
             className="inline-block px-8 py-3.5 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)]"
           >
-            Retornar ao Início
+            Voltar ao início
           </Link>
         </div>
       </div>
