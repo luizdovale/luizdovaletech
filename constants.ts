@@ -90,14 +90,14 @@ export const PROJECTS: ProjectItem[] = [
     image: "/projects/tatiane-nutricionista.png"
   },
   {
-    id: "churchflow",
-    title: "ChurchFlow",
-    audience: "Para igrejas e comunidades",
-    desc: "Sistema para organizar a igreja: cadastro de membros, tesouraria e finanças, células e relatórios para a liderança.",
-    link: "https://churchflowbr.vercel.app/",
-    tags: ["Cadastro de membros", "Finanças", "Feito para várias igrejas"],
-    category: "sistemas",
-    image: "/projects/churchflow.png"
+    id: "climatizacao",
+    title: "Instalador de Ar Condicionado",
+    audience: "Para instaladores e lojas de ar condicionado",
+    desc: "Site institucional com layout moderno e responsivo, apresentação dos serviços, informações da empresa e canais de contato, proporcionando uma presença digital profissional e acessível.",
+    link: "https://instalador.valetechsolucoes.com.br",
+    tags: ["Site profissional", "Responsivo", "Canais de contato"],
+    category: "sites",
+    image: "/projects/climatizacao.png"
   },
   {
     id: "grigoleti",
