@@ -64,7 +64,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Gas Calculator",
     audience: "Para profissionais que trabalham com gases industriais e medicinais",
     desc: "Calculadora técnica que faz as contas de dimensionamento, vazão e logística de gases, com precisão e de forma simples de usar.",
-    link: "https://luizdovale.github.io/gascalculatorweb/",
+    link: "https://gascalculator.valetechsolucoes.com.br",
     tags: ["Cálculos técnicos", "Gases industriais e medicinais"],
     category: "apps",
     image: "/projects/gas-calculator.jpg"
