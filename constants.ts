@@ -60,11 +60,21 @@ export const PROJECTS: ProjectItem[] = [
     image: "/projects/jornada360.jpg"
   },
   {
+    id: "gas-calculator",
+    title: "Gas Calculator",
+    audience: "Para profissionais que trabalham com gases industriais e medicinais",
+    desc: "Calculadora técnica que faz as contas de dimensionamento, vazão e logística de gases, com precisão e de forma simples de usar.",
+    link: "https://luizdovale.github.io/gascalculatorweb/",
+    tags: ["Cálculos técnicos", "Gases industriais e medicinais"],
+    category: "apps",
+    image: "/projects/gas-calculator.jpg"
+  },
+  {
     id: "geartech",
     title: "GearTech",
-    audience: "Para lojas e oficinas de autopeças",
+    audience: "Para lojas de autopeças e oficinas",
     desc: "Sistema que reúne estoque, vendas e ordens de serviço em um só lugar, com relatórios que mostram como o negócio está indo.",
-    link: "https://geartechsytem.vercel.app/",
+    link: "https://geartech.valetechsolucoes.com.br",
     tags: ["Controle de estoque", "Vendas e faturamento", "Relatórios"],
     category: "sistemas",
     image: "/projects/geartech.png"
@@ -90,16 +100,6 @@ export const PROJECTS: ProjectItem[] = [
     image: "/projects/churchflow.png"
   },
   {
-    id: "gas-calculator",
-    title: "Gas Calculator",
-    audience: "Para profissionais que trabalham com gases industriais e medicinais",
-    desc: "Calculadora técnica que faz as contas de dimensionamento, vazão e logística de gases, com precisão e de forma simples de usar.",
-    link: "https://luizdovale.github.io/gascalculatorweb/",
-    tags: ["Cálculos técnicos", "Gases industriais e medicinais"],
-    category: "apps",
-    image: "/projects/gas-calculator.jpg"
-  },
-  {
     id: "grigoleti",
     title: "Grigoleti Arquitetura",
     audience: "Para um escritório de arquitetura",
@@ -118,6 +118,16 @@ export const PROJECTS: ProjectItem[] = [
     tags: ["Catálogo de produtos", "Localização", "Contato com vendedores"],
     category: "sites",
     image: "/projects/jps-autopecas.jpg"
+  },
+  {
+    id: "edusheets",
+    title: "EduSheets",
+    audience: "Para professores e escolas",
+    desc: "EduSheets é uma plataforma que automatiza o lançamento de notas e o preenchimento de planilhas, agilizando a rotina dos professores, reduzindo tarefas repetitivas e tornando o processo mais rápido e eficiente.",
+    link: "https://edusheets.valetechsolucoes.com.br",
+    tags: ["Professores", "Escolas", "Automatização"],
+    category: "sistemas",
+    image: "/projects/edusheets.png"
   }
 ];
 
