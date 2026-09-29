@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PROJECTS, PROJECT_CATEGORY_LABEL, SOCIAL_LINKS } from '../../constants';
+import { PROJECTS, PROJECT_CATEGORY_LABEL, SOCIAL_LINKS, type ProjectItem } from '../../constants';
 // @ts-ignore
 import { Link } from 'react-router-dom';
+import { useTilt } from '../../hooks/useTilt';
 
 const TABS = [
   { id: 'all', label: 'Todos' },
@@ -11,8 +12,122 @@ const TABS = [
   { id: 'apps', label: 'Apps e ferramentas' }
 ];
 
+interface ProjectCardProps {
+  project: ProjectItem;
+  index: number;
+}
+
+// AnimatePresence (mode="popLayout") precisa da ref do nó real para medir a saída
+// do card ao trocar de filtro; o hook de tilt também precisa da sua própria ref
+// para calcular a posição do ponteiro. Como só cabe uma ref no elemento, as duas
+// são combinadas aqui.
+function mergeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {
+  return (node: T | null) => {
+    refs.forEach((ref) => {
+      if (!ref) return;
+      if (typeof ref === 'function') ref(node);
+      else (ref as React.MutableRefObject<T | null>).current = node;
+    });
+  };
+}
+
+// Card com leve inclinação 3D que segue o ponteiro, tipo vidro reagindo à luz —
+// só no desktop (mouse fino) e só para quem não pediu menos movimento.
+const ProjectCard = React.forwardRef<HTMLAnchorElement, ProjectCardProps>(({ project, index }, forwardedRef) => {
+  const glareRef = useRef<HTMLDivElement>(null);
+  const tilt = useTilt<HTMLAnchorElement>({
+    max: 6,
+    onMove: (px, py) => {
+      glareRef.current?.style.setProperty('--mx', `${px * 100}%`);
+      glareRef.current?.style.setProperty('--my', `${py * 100}%`);
+    }
+  });
+
+  return (
+    <motion.a
+      layout
+      ref={mergeRefs(tilt.ref, forwardedRef)}
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      style={tilt.disabled ? undefined : tilt.style}
+      className="group relative flex flex-col glass-panel glass-panel-hover p-4 sm:p-5 rounded-2xl transition-all duration-300"
+    >
+      {/* Brilho que acompanha o ponteiro — some em touch/reduced motion junto com o tilt */}
+      {!tilt.disabled && (
+        <div
+          ref={glareRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ background: 'radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.08), transparent 55%)' }}
+        />
+      )}
+
+      {/* Imagem do Projeto */}
+      <div className="relative aspect-[16/10] bg-neutral-900 rounded-xl overflow-hidden border border-white/[0.06] mb-6">
+        <img
+          src={project.image}
+          alt={`Projeto ${project.title}, desenvolvido pela ValeTech Soluções`}
+          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+          loading="lazy"
+          width="640"
+          height="400"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+      </div>
+
+      {/* Detalhes do Projeto */}
+      <div className="relative px-2 pb-2 flex flex-col flex-1 space-y-3">
+        <div className="flex items-center justify-between gap-4">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-white group-hover:text-zinc-200 transition-colors">
+            {project.title}
+          </h3>
+          <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider text-right">
+            {PROJECT_CATEGORY_LABEL[project.category]}
+          </span>
+        </div>
+
+        <p className="text-zinc-300 text-sm font-medium leading-relaxed">
+          {project.audience}
+        </p>
+
+        <p className="text-zinc-400 text-sm font-light leading-relaxed">
+          {project.desc}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06]">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[11px] font-sans text-zinc-400 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Chamada visível também no celular, onde não existe hover */}
+        <span className="mt-auto pt-3 inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white">
+          Ver projeto no ar
+          <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
+      </div>
+    </motion.a>
+  );
+});
+ProjectCard.displayName = 'ProjectCard';
+
 const ProjectsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('all');
+  const [activeTab, setActiveTab] = React.useState<string>('all');
 
   const filteredProjects = activeTab === 'all'
     ? PROJECTS
@@ -71,71 +186,7 @@ const ProjectsSection: React.FC = () => {
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
-              <motion.a
-                layout
-                key={project.id}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group flex flex-col glass-panel glass-panel-hover p-4 sm:p-5 rounded-2xl transition-all duration-300"
-              >
-                {/* Imagem do Projeto */}
-                <div className="relative aspect-[16/10] bg-neutral-900 rounded-xl overflow-hidden border border-white/[0.06] mb-6">
-                  <img
-                    src={project.image}
-                    alt={`Projeto ${project.title}, desenvolvido pela ValeTech Soluções`}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
-                    loading="lazy"
-                    width="640"
-                    height="400"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                </div>
-
-                {/* Detalhes do Projeto */}
-                <div className="px-2 pb-2 flex flex-col flex-1 space-y-3">
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-white group-hover:text-zinc-200 transition-colors">
-                      {project.title}
-                    </h3>
-                    <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider text-right">
-                      {PROJECT_CATEGORY_LABEL[project.category]}
-                    </span>
-                  </div>
-
-                  <p className="text-zinc-300 text-sm font-medium leading-relaxed">
-                    {project.audience}
-                  </p>
-
-                  <p className="text-zinc-400 text-sm font-light leading-relaxed">
-                    {project.desc}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06]">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] font-sans text-zinc-400 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Chamada visível também no celular, onde não existe hover */}
-                  <span className="mt-auto pt-3 inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white">
-                    Ver projeto no ar
-                    <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </span>
-                </div>
-              </motion.a>
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </AnimatePresence>
         </motion.div>

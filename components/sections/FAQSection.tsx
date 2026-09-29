@@ -59,7 +59,7 @@ const FAQSection: React.FC = () => {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between p-6 sm:p-7 text-left focus:outline-none hover:bg-white/[0.03] transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-between p-6 sm:p-7 text-left hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-inset transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <span className="font-display text-base sm:text-lg font-semibold text-white pr-6">

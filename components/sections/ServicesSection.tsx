@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { SERVICES } from '../../constants';
 // @ts-ignore
 import { Link } from 'react-router-dom';
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 
 const ServicesSection: React.FC = () => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -13,11 +16,14 @@ const ServicesSection: React.FC = () => {
     }
   };
 
+  // Os cards "tombam" levemente para o lugar ao entrar — mesma linguagem 3D do resto da página,
+  // sem exagero (8°) e desligada para quem pede menos movimento.
   const itemVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { opacity: 0, y: 25, rotateX: prefersReducedMotion ? 0 : 8 },
     visible: {
       opacity: 1,
       y: 0,
+      rotateX: 0,
       transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
     }
   };
@@ -83,11 +89,13 @@ const ServicesSection: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
           className="grid md:grid-cols-2 xl:grid-cols-4 gap-6"
+          style={{ perspective: 1000 }}
         >
           {SERVICES.map((service) => (
             <motion.div
               key={service.id}
               variants={itemVariants}
+              style={{ transformPerspective: 1000 }}
               className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between group h-full"
             >
               <div>

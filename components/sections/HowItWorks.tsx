@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PROCESS_STEPS, DELIVERY_TIMES } from '../../constants';
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 
 const HowItWorks: React.FC = () => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   return (
     <section id="how" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
       {/* Luz ambiente sutil */}
@@ -24,14 +27,15 @@ const HowItWorks: React.FC = () => {
         </div>
 
         {/* Passos */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6" style={{ perspective: 1000 }}>
           {PROCESS_STEPS.map((step, idx) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 25, rotateX: prefersReducedMotion ? 0 : 8 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
+              style={{ transformPerspective: 1000 }}
               className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col space-y-4"
             >
               <span className="font-display text-4xl font-bold text-white/30">

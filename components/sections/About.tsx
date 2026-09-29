@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BRAND_INFO, SOCIAL_LINKS } from '../../constants';
 import FounderPhoto from '../FounderPhoto';
+import { useTilt } from '../../hooks/useTilt';
 
 const About: React.FC = () => {
   const highlights = [
@@ -11,6 +12,9 @@ const About: React.FC = () => {
     "Você acompanha cada etapa, do início à entrega",
     "Continuo por perto depois, para suporte e melhorias"
   ];
+
+  // Inclinação bem discreta na foto — mesma sensação dos cards de projeto, sem roubar a cena.
+  const tilt = useTilt<HTMLDivElement>({ max: 4 });
 
   return (
     <section id="about" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
@@ -28,7 +32,14 @@ const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="lg:col-span-4 max-w-sm w-full mx-auto lg:mx-0"
           >
-            <FounderPhoto className="w-full aspect-[4/5] rounded-2xl text-7xl" />
+            <motion.div
+              ref={tilt.ref}
+              onMouseMove={tilt.onMouseMove}
+              onMouseLeave={tilt.onMouseLeave}
+              style={tilt.disabled ? undefined : tilt.style}
+            >
+              <FounderPhoto className="w-full aspect-[4/5] rounded-2xl text-7xl shadow-[0_20px_60px_rgba(0,0,0,0.5)]" />
+            </motion.div>
           </motion.div>
 
           {/* Texto */}

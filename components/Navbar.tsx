@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion as m, AnimatePresence } from 'framer-motion';
+import { motion as m, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { LogoType } from './Logos';
 import { NAV_LINKS } from '../constants';
 
@@ -10,8 +10,12 @@ const motion = m as any;
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>('');
   const location = useLocation();
   const navigate = useNavigate();
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -19,14 +23,55 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Destaca no menu a seção que está no meio da tela — só existe o que seguir na Home.
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveId('');
+      return;
+    }
+
+    const ids = NAV_LINKS.map((link) => link.id);
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    // Guarda quem está na faixa observada agora (não só quem mudou neste callback),
+    // senão ao voltar pro topo — sem nenhuma seção entrando — o último link marcado fica preso.
+    const intersecting = new Set<string>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) intersecting.add(entry.target.id);
+          else intersecting.delete(entry.target.id);
+        });
+        setActiveId(ids.find((id) => intersecting.has(id)) ?? '');
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
   const navClasses = `fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${
     scrolled
       ? 'bg-black/80 backdrop-blur-2xl border-b border-white/[0.08] py-3.5 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
       : 'bg-transparent py-5'
   }`;
 
-  const linkClasses = "font-sans text-[13px] font-medium text-white/70 hover:text-white transition-colors tracking-wide relative group cursor-pointer py-1";
-  const activeHighlight = "absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full";
+  const getLinkClasses = (id: string) => {
+    const isActive = activeId === id;
+    return `font-sans text-[13px] font-medium tracking-wide relative group cursor-pointer py-1 transition-colors ${
+      isActive ? 'text-white' : 'text-white/70 hover:text-white'
+    }`;
+  };
+  const getHighlightClasses = (id: string) =>
+    `absolute bottom-0 left-0 h-[1px] bg-white transition-all duration-300 ${
+      activeId === id ? 'w-full' : 'w-0 group-hover:w-full'
+    }`;
 
   const handleScrollTo = (id: string) => {
     setIsOpen(false);
@@ -56,8 +101,8 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-7">
           {NAV_LINKS.map((link) => (
-            <button key={link.id} onClick={() => handleScrollTo(link.id)} className={linkClasses}>
-              {link.label} <span className={activeHighlight}></span>
+            <button key={link.id} onClick={() => handleScrollTo(link.id)} className={getLinkClasses(link.id)}>
+              {link.label} <span className={getHighlightClasses(link.id)}></span>
             </button>
           ))}
 
@@ -102,7 +147,9 @@ const Navbar: React.FC = () => {
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.id}
-                  className="text-left text-white/90 font-sans text-base py-2 hover:text-white"
+                  className={`text-left font-sans text-base py-2 transition-colors ${
+                    activeId === link.id ? 'text-white font-medium' : 'text-white/90 hover:text-white'
+                  }`}
                   onClick={() => handleScrollTo(link.id)}
                 >
                   {link.label}
@@ -119,6 +166,12 @@ const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Barra fina de progresso de leitura da página */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
+        style={{ scaleX: progress, width: '100%' }}
+      />
     </motion.nav>
   );
 };
