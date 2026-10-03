@@ -125,6 +125,23 @@ export async function getContract(id: string): Promise<{ contract: ContractFull;
   return { contract, events };
 }
 
+/**
+ * Contrato completo a partir do token de um assinante. Só funciona com o administrador logado (as tabelas são
+ * protegidas por RLS); para qualquer outra pessoa devolve null. Usado na tela pós-assinatura para oferecer
+ * "Enviar para o contratante" sem expor o link da outra parte a quem tem só o próprio link.
+ */
+export async function getContractByToken(token: string): Promise<ContractFull | null> {
+  try {
+    const { data: auth } = await supabase.auth.getSession();
+    if (!auth.session) return null; // sem login não há o que buscar (e o contratante nem chega a fazer essa chamada)
+    const { data } = await supabase.from('contract_signers').select('contract_id').eq('token', token).maybeSingle();
+    if (!data) return null;
+    return (await getContract(data.contract_id)).contract;
+  } catch {
+    return null;
+  }
+}
+
 export async function createContract(
   templateId: string,
   label: string,

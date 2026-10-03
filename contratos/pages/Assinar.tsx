@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getSigningData, signContract, SIGN_ERRORS } from '../api';
+import { Link, useParams } from 'react-router-dom';
+import { getContractByToken, getSigningData, signContract, SIGN_ERRORS } from '../api';
 import { formatDate, formatDateLong, formatDateTime, isValidCpf, maskCpf } from '../format';
-import type { SigningData } from '../types';
+import type { ContractFull, SigningData } from '../types';
 import SignaturePad, { SignaturePadHandle } from '../components/SignaturePad';
 import PartyBlock from '../components/PartyBlock';
-import { BrandMark, ContractDocument, FieldLabel, FullPageMessage, inputClass, Spinner } from '../components/ui';
+import SendToSigner from '../components/SendToSigner';
+import { BrandLogo, BrandMark, ContractDocument, FieldLabel, FullPageMessage, inputClass, Spinner } from '../components/ui';
 
 type Phase = 'loading' | 'error' | 'ready';
 
@@ -55,6 +56,20 @@ const Assinar: React.FC = () => {
   }, [token]);
 
   const state = data?.state;
+
+  // Quem emitiu o contrato (administrador logado) acabou de assinar e a outra parte ainda não: oferece o envio do link.
+  // Para qualquer outra pessoa a busca volta vazia e nada aparece.
+  const [adminContract, setAdminContract] = useState<ContractFull | null>(null);
+  const issuerWaitingOther = data?.state === 'assinado' && data.parties[0]?.is_you === true && data.contract.status !== 'assinado';
+  useEffect(() => {
+    if (!issuerWaitingOther) return;
+    let alive = true;
+    getContractByToken(token).then((c) => alive && setAdminContract(c));
+    return () => {
+      alive = false;
+    };
+  }, [issuerWaitingOther, token]);
+  const sendTarget = adminContract?.contract_signers.find((s) => !s.signed_at && s.token !== token) ?? null;
 
   // barra de progresso de leitura + liberação da assinatura.
   // A liberação checa a cada rolagem se o "fim do documento" já apareceu OU ficou para trás: quem rola rápido,
@@ -129,7 +144,7 @@ const Assinar: React.FC = () => {
 
   if (phase === 'loading') {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-white text-slate-400">
+      <div className="flex min-h-screen min-h-dvh items-center justify-center bg-white text-slate-400">
         <Spinner className="h-7 w-7" />
       </div>
     );
@@ -176,14 +191,16 @@ const Assinar: React.FC = () => {
   const unlocked = readToEnd;
 
   return (
-    <div className="min-h-screen bg-white pb-40 font-sans text-slate-900 print:min-h-0 print:pb-0">
+    <div className="min-h-screen min-h-dvh bg-white pb-40 font-sans text-slate-900 print:min-h-0 print:pb-0">
       {/* Cabeçalho fixo + barra de leitura */}
       <header className="no-print fixed inset-x-0 top-0 z-30 border-b border-slate-100 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-[760px] items-center gap-3 px-5 py-3.5">
-          <BrandMark size={36} />
-          <div className="leading-tight">
+        <div className="mx-auto flex max-w-[760px] items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-3.5">
+          <BrandLogo className="h-6 shrink-0 sm:h-8" />
+          <div className="min-w-0 text-right leading-tight">
             <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Contrato</div>
-            <div className="text-[13px] font-extrabold uppercase text-slate-800">{data.contract.title.split('—').pop()?.trim()}</div>
+            <div className="max-w-[34vw] truncate text-[12px] font-extrabold uppercase text-slate-800 sm:max-w-[300px] sm:text-[13px]">
+              {data.contract.title.split('—').pop()?.trim()}
+            </div>
           </div>
         </div>
         <div className="h-[3px] w-full bg-slate-100">
@@ -194,23 +211,39 @@ const Assinar: React.FC = () => {
         </div>
       </header>
 
-      <main className="mx-auto max-w-[760px] px-4 pt-[88px] print:max-w-none print:px-0 print:pt-0">
+      <main className="mx-auto max-w-[760px] px-4 pt-[80px] sm:pt-[92px] print:max-w-none print:px-0 print:pt-0">
         {/* Cartão de convite / confirmação */}
-        <section className="no-print rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.25)] sm:p-7">
+        <section className="no-print rounded-[28px] border border-slate-200/80 bg-white p-5 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.25)] sm:p-7">
           {signed ? (
-            <div className="flex items-start gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-2xl text-emerald-600 ring-1 ring-emerald-100">✓</div>
-              <div>
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-xl text-emerald-600 ring-1 ring-emerald-100 sm:h-14 sm:w-14 sm:text-2xl">✓</div>
+              <div className="min-w-0">
                 <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-600">Assinatura registrada</div>
-                <h1 className="mt-1 text-[22px] font-extrabold leading-snug text-slate-900">
+                <h1 className="mt-1 text-[19px] font-extrabold leading-snug text-slate-900 sm:text-[22px]">
                   Você assinou este contrato
                 </h1>
-                <p className="mt-2 text-[15px] leading-relaxed text-slate-500">
+                <p className="mt-2 text-[14px] leading-relaxed text-slate-500 sm:text-[15px]">
                   Assinado por <b className="text-slate-700">{data.you.name}</b> em {formatDateTime(data.you.signed_at)}.{' '}
                   {allSigned
                     ? 'Todas as partes já assinaram: o contrato está concluído.'
                     : 'Agora falta a assinatura da outra parte. Você pode guardar uma cópia em PDF.'}
                 </p>
+                {adminContract && sendTarget && (
+                  <div className="mt-4 rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
+                    <div className="text-[14px] font-extrabold text-slate-900">Próximo passo: envie ao contratante</div>
+                    <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
+                      Falta a assinatura de <b className="text-slate-700">{sendTarget.name}</b>. Mande o link agora.
+                    </p>
+                    <SendToSigner className="mt-3" contract={adminContract} signer={sendTarget}>
+                      <Link
+                        to={`/contratos/contrato/${adminContract.id}`}
+                        className="inline-flex min-h-[44px] items-center justify-center rounded-2xl px-3 py-2.5 text-sm font-semibold text-blue-600 hover:text-blue-700"
+                      >
+                        Ver no painel
+                      </Link>
+                    </SendToSigner>
+                  </div>
+                )}
                 {data.you.seal && (
                   <p className="mt-3 break-all rounded-xl bg-slate-50 px-3 py-2 font-mono text-[11px] text-slate-400">
                     Selo da assinatura: {data.you.seal}
@@ -218,39 +251,39 @@ const Assinar: React.FC = () => {
                 )}
                 <button
                   onClick={() => window.print()}
-                  className="mt-4 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                  className="mt-4 min-h-[44px] rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
                 >
                   Salvar cópia em PDF
                 </button>
               </div>
             </div>
           ) : (
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-3 sm:gap-4">
               <div className="relative shrink-0">
-                <BrandMark size={64} />
+                <BrandMark className="h-[52px] w-[52px] sm:h-16 sm:w-16" />
                 <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-[12px] text-white ring-2 ring-white">✓</span>
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-500">Convite para assinar</div>
-                <h1 className="mt-1 text-[22px] font-extrabold leading-snug text-slate-900">
+                <h1 className="mt-1 text-[19px] font-extrabold leading-snug text-slate-900 sm:text-[22px]">
                   {youAreIssuer
                     ? `Assine o contrato como ${data.you.label.toLowerCase()}`
                     : `${issuer?.name ?? 'Seu contratado'} enviou um contrato para você`}
                 </h1>
-                <p className="mt-2 text-[15px] leading-relaxed text-slate-500">
+                <p className="mt-2 text-[14px] leading-relaxed text-slate-500 sm:text-[15px]">
                   Leia com calma e assine quando estiver de acordo. A assinatura eletrônica fica registrada com data, hora e dados do dispositivo.
                 </p>
               </div>
             </div>
           )}
-          <div className="mt-5 flex flex-wrap gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3.5 py-2 text-[13px] font-bold text-slate-600">📄 Documento</span>
+          <div className="mt-4 flex flex-wrap gap-2 sm:mt-5">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-[12px] font-bold text-slate-600 sm:px-3.5 sm:py-2 sm:text-[13px]">📄 Documento</span>
             {!signed && (
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3.5 py-2 text-[13px] font-bold text-amber-700 ring-1 ring-amber-200">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-[12px] font-bold text-amber-700 ring-1 ring-amber-200 sm:px-3.5 sm:py-2 sm:text-[13px]">
                 ⏱ Válido até {formatDate(data.contract.expires_at)}
               </span>
             )}
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3.5 py-2 text-[13px] font-bold text-emerald-700 ring-1 ring-emerald-200">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-[12px] font-bold text-emerald-700 ring-1 ring-emerald-200 sm:px-3.5 sm:py-2 sm:text-[13px]">
               🛡 Lei 14.063/2020
             </span>
           </div>
@@ -264,8 +297,10 @@ const Assinar: React.FC = () => {
 
         <section
           ref={docRef}
-          className="print-plain mt-3 rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.25)] sm:p-9 print:mt-0"
+          className="print-plain -mx-4 mt-3 border-y border-slate-200/80 bg-white px-5 py-6 sm:mx-0 sm:rounded-[28px] sm:border sm:p-9 sm:shadow-[0_18px_50px_-30px_rgba(15,23,42,0.25)] print:mx-0 print:mt-0"
         >
+          {/* timbre: só aparece na cópia impressa/PDF (na tela a logo já está no cabeçalho) */}
+          <BrandLogo className="mb-6 hidden h-9 print:block" />
           <ContractDocument html={data.contract.body_html ?? ''} />
 
           <div className="avoid-break mt-10">
@@ -308,7 +343,7 @@ const Assinar: React.FC = () => {
             </div>
 
             <section
-              className={`no-print mt-3 rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.25)] transition sm:p-8 ${
+              className={`no-print mt-3 rounded-[28px] border border-slate-200/80 bg-white p-4 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.25)] transition sm:p-8 ${
                 unlocked ? '' : 'pointer-events-none select-none opacity-45 grayscale'
               }`}
               aria-disabled={!unlocked}

@@ -45,7 +45,7 @@ export const PrimaryButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElemen
 export const GhostButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ className = '', ...props }) => (
   <button
     {...props}
-    className={`inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+    className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
   />
 );
 
@@ -71,7 +71,7 @@ export const Card: React.FC<{ children: React.ReactNode; className?: string }> =
   </div>
 );
 
-export const CopyButton: React.FC<{ text: string; label?: string }> = ({ text, label = 'Copiar link' }) => {
+export const CopyButton: React.FC<{ text: string; label?: string; className?: string }> = ({ text, label = 'Copiar link', className = '' }) => {
   const [done, setDone] = useState(false);
   const copy = async () => {
     try {
@@ -88,20 +88,33 @@ export const CopyButton: React.FC<{ text: string; label?: string }> = ({ text, l
     window.setTimeout(() => setDone(false), 1800);
   };
   return (
-    <GhostButton type="button" onClick={copy}>
+    <GhostButton type="button" onClick={copy} className={className}>
       {done ? '✓ Copiado' : label}
     </GhostButton>
   );
 };
 
-export const BrandMark: React.FC<{ size?: number }> = ({ size = 40 }) => (
+/** Logo completa (a mesma do header do site) em versão para fundo claro: "ValeTech" em azul-marinho. */
+export const BrandLogo: React.FC<{ className?: string }> = ({ className = 'h-7' }) => (
+  <img
+    src="/assets/logo-fundo-claro.png"
+    alt="ValeTech Soluções"
+    width={1165}
+    height={171}
+    className={`w-auto select-none ${className}`}
+    draggable={false}
+  />
+);
+
+/** Ícone da marca. Passe `size` (px fixos) ou `className` com h-/w- responsivos. */
+export const BrandMark: React.FC<{ size?: number; className?: string }> = ({ size, className = '' }) => (
   <img
     src="/assets/icone%20valetech.png"
     alt=""
-    width={size}
-    height={size}
-    className="rounded-xl object-cover"
-    style={{ width: size, height: size }}
+    width={size ?? 64}
+    height={size ?? 64}
+    className={`rounded-xl object-cover ${className}`}
+    style={size ? { width: size, height: size } : undefined}
     draggable={false}
   />
 );
@@ -118,7 +131,7 @@ export const FullPageMessage: React.FC<{ title: string; children?: React.ReactNo
   children,
   icon = '⚠️',
 }) => (
-  <div className="flex min-h-screen items-center justify-center bg-white px-6">
+  <div className="flex min-h-screen min-h-dvh items-center justify-center bg-white px-6">
     <div className="max-w-md text-center">
       <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-2xl">{icon}</div>
       <h1 className="text-xl font-extrabold text-slate-900">{title}</h1>

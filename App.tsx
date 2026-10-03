@@ -40,7 +40,7 @@ const AppShell: React.FC = () => {
 
   if (isContracts) {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <Suspense fallback={<div className="min-h-screen min-h-dvh bg-white" />}>
         <ContratosApp />
       </Suspense>
     );

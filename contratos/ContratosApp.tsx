@@ -82,7 +82,7 @@ function useAuthState(): AuthState {
 }
 
 const AdminShell: React.FC<{ email: string }> = ({ email }) => (
-  <div className="min-h-screen bg-white font-sans text-slate-900">
+  <div className="min-h-screen min-h-dvh bg-white font-sans text-slate-900">
     <header className="no-print sticky top-0 z-20 border-b border-slate-200/70 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center gap-3 px-5 py-3.5">
         <Link to="/contratos" className="flex items-center gap-3">
@@ -116,7 +116,7 @@ const AdminArea: React.FC = () => {
 
   if (auth.status === 'loading') {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-white text-slate-400">
+      <div className="flex min-h-screen min-h-dvh items-center justify-center bg-white text-slate-400">
         <Spinner className="h-7 w-7" />
       </div>
     );

@@ -23,7 +23,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white px-5 font-sans">
+    <div className="flex min-h-screen min-h-dvh items-center justify-center bg-white px-5 font-sans">
       <div className="w-full max-w-[380px]">
         <div className="mb-8 flex flex-col items-center text-center">
           <BrandMark size={60} />

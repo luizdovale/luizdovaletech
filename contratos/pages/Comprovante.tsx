@@ -4,7 +4,7 @@ import { getContract } from '../api';
 import { formatDateTime } from '../format';
 import type { ContractEvent, ContractFull } from '../types';
 import PartyBlock from '../components/PartyBlock';
-import { ContractDocument, Spinner } from '../components/ui';
+import { BrandLogo, ContractDocument, Spinner } from '../components/ui';
 
 const EVENT_LABEL: Record<string, string> = {
   created: 'Contrato gerado',
@@ -30,7 +30,7 @@ const Comprovante: React.FC = () => {
   if (error) return <p className="p-8 text-red-600">{error}</p>;
   if (!data)
     return (
-      <div className="flex min-h-screen items-center justify-center text-slate-400">
+      <div className="flex min-h-screen min-h-dvh items-center justify-center text-slate-400">
         <Spinner className="h-7 w-7" />
       </div>
     );
@@ -39,10 +39,10 @@ const Comprovante: React.FC = () => {
   const labelOf = (signerId: string | null) => contract.contract_signers.find((s) => s.id === signerId)?.role_label ?? 'Administrador';
 
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900">
+    <div className="min-h-screen min-h-dvh bg-white font-sans text-slate-900">
       <div className="no-print sticky top-0 z-10 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-[820px] items-center gap-3 px-5 py-3">
-          <Link to={`/contratos/contrato/${contract.id}`} className="text-sm font-bold text-slate-500 hover:text-slate-800">← Voltar</Link>
+          <Link to={`/contratos/contrato/${contract.id}`} className="-ml-2 inline-flex min-h-[44px] items-center px-2 text-sm font-bold text-slate-500 hover:text-slate-800">← Voltar</Link>
           <button
             onClick={() => window.print()}
             className="ml-auto rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 px-5 py-2.5 text-sm font-bold text-white shadow"
@@ -53,6 +53,7 @@ const Comprovante: React.FC = () => {
       </div>
 
       <main className="mx-auto max-w-[820px] px-5 py-8 print:p-0">
+        <BrandLogo className="mb-6 h-9" />
         <ContractDocument html={contract.body_html} />
 
         <section className="avoid-break mt-10">

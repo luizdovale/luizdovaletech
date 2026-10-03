@@ -89,15 +89,17 @@ const Dashboard: React.FC = () => {
               <Link
                 key={c.id}
                 to={`/contratos/contrato/${c.id}`}
-                className="flex flex-wrap items-center gap-x-4 gap-y-1 px-5 py-4 transition first:rounded-t-3xl last:rounded-b-3xl hover:bg-slate-50"
+                className="flex flex-col gap-2 px-5 py-4 transition first:rounded-t-3xl last:rounded-b-3xl hover:bg-slate-50 sm:flex-row sm:items-center sm:gap-4"
               >
-                <div className="min-w-0 flex-1">
-                  <div className="truncate text-[15px] font-bold text-slate-900">{c.label}</div>
-                  <div className="text-xs text-slate-500">
+                <div className="min-w-0 sm:flex-1">
+                  <div className="line-clamp-2 break-words text-[15px] font-bold leading-snug text-slate-900 sm:line-clamp-1">{c.label}</div>
+                  <div className="mt-0.5 text-xs text-slate-500">
                     {nameOf(c.template_id)} · criado em {formatDate(c.created_at)}
                   </div>
                 </div>
-                <StatusChip status={c.status} expiresAt={c.expires_at} />
+                <div className="self-start sm:self-auto">
+                  <StatusChip status={c.status} expiresAt={c.expires_at} />
+                </div>
               </Link>
             ))}
           </div>

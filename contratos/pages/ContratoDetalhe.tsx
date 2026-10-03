@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { cancelContract, extendContract, getContract, signingUrl } from '../api';
-import { formatDate, formatDateTime, onlyDigits } from '../format';
+import { formatDate, formatDateTime } from '../format';
 import type { ContractEvent, ContractFull, SignerFull } from '../types';
 import { Card, ContractDocument, CopyButton, GhostButton, Spinner, StatusChip, effectiveStatus } from '../components/ui';
+import SendToSigner from '../components/SendToSigner';
 
 const EVENT_LABEL: Record<string, string> = {
   created: 'Contrato gerado',
@@ -13,14 +14,6 @@ const EVENT_LABEL: Record<string, string> = {
   cancelled: 'Contrato cancelado',
   extended: 'Validade do link prorrogada',
 };
-
-function whatsappShare(signer: SignerFull, contract: ContractFull): string {
-  const url = signingUrl(signer.token);
-  const text = `Olá! Segue o link para você ler e assinar o contrato (${contract.label}): ${url}`;
-  const phoneDigits = onlyDigits(contract.field_values.contratante_telefone ?? '');
-  const phone = phoneDigits.length >= 10 ? `55${phoneDigits}` : '';
-  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-}
 
 const ContratoDetalhe: React.FC = () => {
   const { id = '' } = useParams<{ id: string }>();
@@ -75,7 +68,7 @@ const ContratoDetalhe: React.FC = () => {
   return (
     <div className="space-y-6 pb-10">
       <div>
-        <Link to={`/contratos/modelo/${contract.template_slug}`} className="text-sm font-bold text-slate-500 hover:text-slate-800">
+        <Link to={`/contratos/modelo/${contract.template_slug}`} className="-ml-2 inline-flex min-h-[44px] items-center px-2 text-sm font-bold text-slate-500 hover:text-slate-800">
           ← {contract.template_slug}
         </Link>
         <div className="mt-4 flex flex-wrap items-start justify-between gap-3">
@@ -121,28 +114,23 @@ const ContratoDetalhe: React.FC = () => {
                 </div>
                 {!s.signed_at && open && (
                   <>
-                    <input
-                      readOnly
-                      value={url}
-                      onFocus={(e) => e.currentTarget.select()}
-                      className="mt-3 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 font-mono text-xs text-slate-600"
-                    />
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      <CopyButton text={url} />
-                      <Link to={`/contratos/assinar/${s.token}`} className="inline-flex items-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-                        {i === 0 ? 'Assinar agora' : 'Abrir'}
-                      </Link>
-                      {i > 0 && (
-                        <a
-                          href={whatsappShare(s, contract)}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-semibold text-emerald-700 hover:bg-emerald-100"
-                        >
-                          Enviar por WhatsApp
-                        </a>
-                      )}
+                    <div className="mt-3 select-all break-all rounded-xl border border-slate-200 bg-white px-3 py-2.5 font-mono text-xs leading-relaxed text-slate-600">
+                      {url}
                     </div>
+                    {i === 0 ? (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <CopyButton text={url} />
+                        <Link to={`/contratos/assinar/${s.token}`} className="inline-flex min-h-[44px] items-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+                          Assinar agora
+                        </Link>
+                      </div>
+                    ) : (
+                      <SendToSigner className="mt-3" contract={contract} signer={s}>
+                        <Link to={`/contratos/assinar/${s.token}`} className="inline-flex min-h-[44px] items-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+                          Abrir
+                        </Link>
+                      </SendToSigner>
+                    )}
                   </>
                 )}
               </div>
@@ -169,7 +157,7 @@ const ContratoDetalhe: React.FC = () => {
               href={`/contratos/comprovante/${contract.id}`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+              className="inline-flex min-h-[44px] items-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
             >
               Comprovante em PDF
             </a>

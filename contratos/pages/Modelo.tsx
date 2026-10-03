@@ -37,7 +37,7 @@ const Modelo: React.FC = () => {
 
   return (
     <div>
-      <Link to="/contratos" className="text-sm font-bold text-slate-500 hover:text-slate-800">← Painel</Link>
+      <Link to="/contratos" className="-ml-2 inline-flex min-h-[44px] items-center px-2 text-sm font-bold text-slate-500 hover:text-slate-800">← Painel</Link>
 
       <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
@@ -68,23 +68,26 @@ const Modelo: React.FC = () => {
               <Link
                 key={c.id}
                 to={`/contratos/contrato/${c.id}`}
-                className="flex flex-wrap items-center gap-x-5 gap-y-2 px-5 py-4 transition first:rounded-t-3xl last:rounded-b-3xl hover:bg-slate-50"
+                className="flex flex-col gap-2.5 px-5 py-4 transition first:rounded-t-3xl last:rounded-b-3xl hover:bg-slate-50 sm:flex-row sm:items-center sm:gap-x-5"
               >
-                <div className="min-w-0 flex-1">
-                  <div className="truncate text-[16px] font-bold text-slate-900">{c.label}</div>
-                  <div className="mt-0.5 text-xs text-slate-500">
+                {/* no celular o nome ocupa a linha toda (até 2 linhas); status e assinaturas vão para baixo */}
+                <div className="min-w-0 sm:flex-1">
+                  <div className="line-clamp-2 break-words text-[16px] font-bold leading-snug text-slate-900 sm:line-clamp-1">{c.label}</div>
+                  <div className="mt-1 text-xs leading-relaxed text-slate-500">
                     Criado em {formatDate(c.created_at)} · link válido até {formatDate(c.expires_at)}
                   </div>
                 </div>
-                <div className="flex items-center gap-3 text-xs font-semibold text-slate-500">
-                  {c.contract_signers.map((s) => (
-                    <span key={s.role} className="flex items-center gap-1">
-                      <span className={s.signed_at ? 'text-emerald-500' : 'text-slate-300'}>{s.signed_at ? '●' : '○'}</span>
-                      {s.role_label.charAt(0) + s.role_label.slice(1).toLowerCase()}
-                    </span>
-                  ))}
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <div className="flex items-center gap-3 text-xs font-semibold text-slate-500">
+                    {c.contract_signers.map((s) => (
+                      <span key={s.role} className="flex items-center gap-1">
+                        <span className={s.signed_at ? 'text-emerald-500' : 'text-slate-300'}>{s.signed_at ? '●' : '○'}</span>
+                        {s.role_label.charAt(0) + s.role_label.slice(1).toLowerCase()}
+                      </span>
+                    ))}
+                  </div>
+                  <StatusChip status={c.status} expiresAt={c.expires_at} />
                 </div>
-                <StatusChip status={c.status} expiresAt={c.expires_at} />
               </Link>
             ))}
           </div>

@@ -102,7 +102,7 @@ const NovoModelo: React.FC = () => {
 
   return (
     <div className="pb-10">
-      <Link to="/contratos" className="text-sm font-bold text-slate-500 hover:text-slate-800">← Painel</Link>
+      <Link to="/contratos" className="-ml-2 inline-flex min-h-[44px] items-center px-2 text-sm font-bold text-slate-500 hover:text-slate-800">← Painel</Link>
       <div className="mt-4 mb-8">
         <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-500">Novo modelo</div>
         <h1 className="mt-1 text-[28px] font-extrabold tracking-tight text-slate-900">Cadastrar outro contrato</h1>
@@ -153,7 +153,7 @@ const NovoModelo: React.FC = () => {
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-[13px] font-extrabold uppercase tracking-wide text-slate-800">Texto do contrato (HTML)</h2>
             {!body && (
-              <button type="button" onClick={() => setBody(EXAMPLE)} className="text-sm font-bold text-blue-600">Inserir exemplo</button>
+              <button type="button" onClick={() => setBody(EXAMPLE)} className="-mr-2 min-h-[44px] px-2 text-sm font-bold text-blue-600">Inserir exemplo</button>
             )}
           </div>
           <textarea
@@ -162,7 +162,7 @@ const NovoModelo: React.FC = () => {
             rows={16}
             spellCheck={false}
             placeholder="<h1>Título</h1> <p>Texto com {{campo}}…</p>"
-            className={`${inputClass} font-mono text-[13px] leading-relaxed`}
+            className={`${inputClass} font-mono text-base leading-relaxed sm:text-[13px]`}
           />
           <p className="mt-2 px-1 text-xs text-slate-400">Tags aceitas: h1, h2, h3, p, b, i, ol/li, table. O texto é congelado quando um contrato é gerado.</p>
         </Card>
@@ -176,13 +176,13 @@ const NovoModelo: React.FC = () => {
                 return (
                   <div key={key} className="grid items-center gap-3 rounded-2xl border border-slate-200 p-3 sm:grid-cols-[150px_1fr_130px_1fr_auto]">
                     <code className="truncate text-xs font-bold text-slate-500">{`{{${key}}}`}</code>
-                    <input aria-label={`Rótulo de ${key}`} value={c.label} onChange={(e) => update(key, { label: e.target.value })} className={`${inputClass} !py-2.5 !text-sm`} />
-                    <select aria-label={`Tipo de ${key}`} value={c.type} onChange={(e) => update(key, { type: e.target.value as FieldType })} className={`${inputClass} !py-2.5 !text-sm`}>
+                    <input aria-label={`Rótulo de ${key}`} value={c.label} onChange={(e) => update(key, { label: e.target.value })} className={`${inputClass} !py-2.5 sm:!text-sm`} />
+                    <select aria-label={`Tipo de ${key}`} value={c.type} onChange={(e) => update(key, { type: e.target.value as FieldType })} className={`${inputClass} !py-2.5 sm:!text-sm`}>
                       {TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
                     </select>
-                    <input aria-label={`Valor padrão de ${key}`} value={c.default} onChange={(e) => update(key, { default: e.target.value })} placeholder="Valor padrão" className={`${inputClass} !py-2.5 !text-sm`} />
-                    <label className="flex items-center gap-2 text-xs font-semibold text-slate-600">
-                      <input type="checkbox" checked={c.required} onChange={(e) => update(key, { required: e.target.checked })} className="h-4 w-4 rounded border-slate-300" />
+                    <input aria-label={`Valor padrão de ${key}`} value={c.default} onChange={(e) => update(key, { default: e.target.value })} placeholder="Valor padrão" className={`${inputClass} !py-2.5 sm:!text-sm`} />
+                    <label className="flex min-h-[44px] items-center gap-2 text-xs font-semibold text-slate-600">
+                      <input type="checkbox" checked={c.required} onChange={(e) => update(key, { required: e.target.checked })} className="h-5 w-5 rounded border-slate-300" />
                       Obrigatório
                     </label>
                   </div>
@@ -195,7 +195,7 @@ const NovoModelo: React.FC = () => {
         {error && <div role="alert" className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">{error}</div>}
 
         <div className="flex items-center justify-end gap-3 border-t border-slate-100 pt-6">
-          <Link to="/contratos" className="px-3 py-2 text-sm font-bold text-slate-500 hover:text-slate-800">Cancelar</Link>
+          <Link to="/contratos" className="inline-flex min-h-[44px] items-center px-3 text-sm font-bold text-slate-500 hover:text-slate-800">Cancelar</Link>
           <PrimaryButton type="button" onClick={save} disabled={busy}>
             {busy ? <><Spinner className="h-4 w-4" /> Salvando…</> : 'Salvar modelo'}
           </PrimaryButton>

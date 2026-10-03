@@ -98,7 +98,7 @@ const NovoContrato: React.FC = () => {
   }, [template]);
 
   const setField = (v: TemplateVariable, raw: string) => {
-    const masked = applyMask(v.type, raw);
+    const masked = applyMask(v.type, raw.replace(/\s*\n\s*/g, ' ')); // campos de texto longo são áreas de texto, mas o valor nunca leva quebra de linha
     setValues((prev) => {
       const next = { ...prev, [v.key]: masked };
       if (v.type === 'money') {
@@ -155,7 +155,7 @@ const NovoContrato: React.FC = () => {
 
   return (
     <div className="pb-10">
-      <Link to={`/contratos/modelo/${template.slug}`} className="text-sm font-bold text-slate-500 hover:text-slate-800">
+      <Link to={`/contratos/modelo/${template.slug}`} className="-ml-2 inline-flex min-h-[44px] items-center px-2 text-sm font-bold text-slate-500 hover:text-slate-800">
         ← {template.name}
       </Link>
       <div className="mt-4 mb-8">
@@ -207,13 +207,16 @@ const NovoContrato: React.FC = () => {
                     <FieldLabel required={v.required !== false} htmlFor={v.key}>{v.label}</FieldLabel>
                     <div className="relative">
                       {isMoney && <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">R$</span>}
-                      {v.type === 'textarea' ? (
+                      {v.type === 'textarea' || (wide && (v.type === 'text' || v.type === 'words')) ? (
                         <textarea
                           id={v.key}
-                          rows={3}
+                          rows={v.type === 'textarea' ? 3 : 2}
                           value={values[v.key] ?? ''}
                           onChange={(e) => setField(v, e.target.value)}
-                          className={inputClass}
+                          placeholder={v.placeholder ?? ''}
+                          className={`${inputClass} resize-none leading-snug ${
+                            showErrors && issue?.error ? 'border-red-300 bg-red-50/40' : ''
+                          }`}
                         />
                       ) : (
                         <input
@@ -259,7 +262,7 @@ const NovoContrato: React.FC = () => {
         )}
 
         <div className="flex flex-wrap items-center justify-end gap-3 border-t border-slate-100 pt-6">
-          <Link to={`/contratos/modelo/${template.slug}`} className="px-3 py-2 text-sm font-bold text-slate-500 hover:text-slate-800">
+          <Link to={`/contratos/modelo/${template.slug}`} className="inline-flex min-h-[44px] items-center px-3 text-sm font-bold text-slate-500 hover:text-slate-800">
             Cancelar
           </Link>
           <PrimaryButton type="button" onClick={submit} disabled={busy}>

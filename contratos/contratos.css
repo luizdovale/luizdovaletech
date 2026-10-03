@@ -18,7 +18,10 @@ html.contratos-theme select option { background-color: #ffffff !important; color
   font-size: 15px;
   line-height: 1.75;
   color: #334155;
-  overflow-wrap: anywhere;
+  /* "break-word" só quebra uma palavra quando ela sozinha não cabe (e-mail, hash); "anywhere" fazia as
+     colunas das tabelas encolherem e partir palavras no meio ("Gravida/de"). */
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 .contrato-doc h1 {
   font-size: 17px; font-weight: 800; text-align: center; text-transform: uppercase;
@@ -44,9 +47,13 @@ html.contratos-theme select option { background-color: #ffffff !important; color
   .contrato-doc p, .contrato-doc li { text-align: justify; }
 }
 @media (max-width: 639px) {
-  .contrato-doc { font-size: 14.5px; }
-  .contrato-doc table { font-size: 12.5px; }
+  .contrato-doc { font-size: 14.5px; line-height: 1.7; }
+  .contrato-doc h1 { font-size: 15.5px; }
+  .contrato-doc ol { padding-left: 20px; }
+  .contrato-doc table { font-size: 12.5px; line-height: 1.5; }
   .contrato-doc th, .contrato-doc td { padding: 6px 7px; }
+  /* o contrato define larguras em % nas colunas (pensadas para papel A4): no celular o navegador distribui sozinho */
+  .contrato-doc th[style*="width"] { width: auto !important; }
 }
 
 /* ───────── impressão / salvar em PDF ───────── */
