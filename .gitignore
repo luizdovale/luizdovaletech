@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Contratos e rascunhos com dados de clientes e valores: este repositório é público.
+contratos-privado/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

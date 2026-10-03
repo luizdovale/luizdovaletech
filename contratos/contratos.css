@@ -1,0 +1,62 @@
+/* Tema branco das páginas /contratos (o resto do site é escuro). Ativado pela classe "contratos-theme" no <html>. */
+
+html.contratos-theme,
+html.contratos-theme body {
+  background: #ffffff;
+  color: #0f172a;
+}
+html.contratos-theme ::-webkit-scrollbar-track { background: #f1f5f9; }
+html.contratos-theme ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+html.contratos-theme ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+html.contratos-theme ::selection { background: #bfdbfe; color: #0f172a; }
+/* o site tem um estilo global escuro para <select>: aqui volta ao claro */
+html.contratos-theme select option { background-color: #ffffff !important; color: #0f172a !important; }
+
+/* ───────── texto do contrato ───────── */
+.contrato-doc {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #334155;
+  overflow-wrap: anywhere;
+}
+.contrato-doc h1 {
+  font-size: 17px; font-weight: 800; text-align: center; text-transform: uppercase;
+  color: #0f172a; line-height: 1.4; margin: 0 0 4px;
+}
+.contrato-doc .subtitulo { text-align: center; color: #64748b; font-size: 13px; margin: 0 0 26px; }
+.contrato-doc h2 {
+  font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+  color: #0f172a; margin: 28px 0 8px;
+}
+.contrato-doc h3 { font-size: 14px; font-weight: 700; color: #0f172a; margin: 18px 0 6px; }
+.contrato-doc p { margin: 0 0 10px; }
+.contrato-doc b, .contrato-doc strong { color: #0f172a; font-weight: 700; }
+.contrato-doc ol { margin: 0 0 10px; padding-left: 22px; }
+.contrato-doc li { margin-bottom: 4px; }
+.contrato-doc table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; font-size: 13.5px; line-height: 1.55; }
+.contrato-doc th, .contrato-doc td { border: 1px solid #e2e8f0; padding: 8px 10px; vertical-align: top; text-align: left; }
+.contrato-doc th { background: #f8fafc; color: #0f172a; font-weight: 700; }
+/* a tabela de assinaturas em papel é substituída pelos blocos de assinatura eletrônica */
+.contrato-doc table.assinaturas { display: none; }
+.contrato-doc .anexo { margin-top: 36px; padding-top: 8px; border-top: 1px solid #e2e8f0; }
+@media (min-width: 640px) {
+  .contrato-doc p, .contrato-doc li { text-align: justify; }
+}
+@media (max-width: 639px) {
+  .contrato-doc { font-size: 14.5px; }
+  .contrato-doc table { font-size: 12.5px; }
+  .contrato-doc th, .contrato-doc td { padding: 6px 7px; }
+}
+
+/* ───────── impressão / salvar em PDF ───────── */
+@media print {
+  @page { size: A4; margin: 18mm 16mm; }
+  html.contratos-theme, html.contratos-theme body { background: #fff !important; }
+  .no-print { display: none !important; }
+  .print-plain { box-shadow: none !important; border: none !important; padding: 0 !important; border-radius: 0 !important; background: #fff !important; }
+  .contrato-doc { font-size: 10.5pt; line-height: 1.5; color: #111; }
+  .contrato-doc .anexo { break-before: page; border-top: none; margin-top: 0; }
+  .contrato-doc h2, .contrato-doc h3 { break-after: avoid; }
+  .avoid-break { break-inside: avoid; }
+}

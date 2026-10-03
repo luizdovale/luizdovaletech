@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 // @ts-ignore
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -11,6 +11,9 @@ import Success from './pages/Success';
 import NotFound from './pages/NotFound';
 import WhatsAppBtn from './components/WhatsAppBtn';
 import ParticleBackground from './components/ParticleBackground';
+
+// Área privada de contratos (/contratos): carregada só quando alguém acessa, para não pesar no site normal.
+const ContratosApp = React.lazy(() => import('./contratos/ContratosApp'));
 
 // Ao trocar de rota volta ao topo, ou rola até a seção pedida em navigate('/', { state: { scrollTo: id } }).
 const ScrollToTop: React.FC = () => {
@@ -30,6 +33,40 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
+// O site público é escuro e tem menu, rodapé e WhatsApp. As páginas /contratos são brancas e sem nada disso.
+const AppShell: React.FC = () => {
+  const { pathname } = useLocation();
+  const isContracts = pathname === '/contratos' || pathname.startsWith('/contratos/');
+
+  if (isContracts) {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-white" />}>
+        <ContratosApp />
+      </Suspense>
+    );
+  }
+
+  return (
+    <div className="font-sans bg-black min-h-screen text-zinc-200 selection:bg-white selection:text-black relative">
+      <ParticleBackground />
+      <Navbar />
+      <main className="relative z-10">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/briefing" element={<Briefing />} />
+          <Route path="/briefing-completo" element={<BriefingCompleto />} />
+          <Route path="/sucesso" element={<Success />} />
+          {/* Blog escondido até existir o primeiro artigo de verdade (pages/Blog.tsx e BlogPost.tsx continuam no projeto). */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <WhatsAppBtn />
+      <Footer />
+    </div>
+  );
+};
+
 const App: React.FC = () => {
   useEffect(() => {
     document.documentElement.classList.add('dark');
@@ -44,23 +81,7 @@ const App: React.FC = () => {
       }}
     >
       <ScrollToTop />
-      <div className="font-sans bg-black min-h-screen text-zinc-200 selection:bg-white selection:text-black relative">
-        <ParticleBackground />
-        <Navbar />
-        <main className="relative z-10">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/briefing" element={<Briefing />} />
-            <Route path="/briefing-completo" element={<BriefingCompleto />} />
-            <Route path="/sucesso" element={<Success />} />
-            {/* Blog escondido até existir o primeiro artigo de verdade (pages/Blog.tsx e BlogPost.tsx continuam no projeto). */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <WhatsAppBtn />
-        <Footer />
-      </div>
+      <AppShell />
     </Router>
   );
 };

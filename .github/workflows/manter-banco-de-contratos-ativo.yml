@@ -1,0 +1,22 @@
+# O plano gratuito do Supabase PAUSA projetos sem atividade por ~7 dias. Se o banco de contratos pausar,
+# os links de assinatura enviados aos clientes deixam de funcionar. Este job faz uma consulta leve a cada
+# 3 dias para evitar isso. A chave abaixo é a chave PÚBLICA (publishable) do projeto, feita para ficar exposta.
+# Se o projeto migrar para um plano pago, este arquivo pode ser apagado.
+name: Manter banco de contratos ativo
+
+on:
+  schedule:
+    - cron: '17 12 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consulta leve ao Supabase (valetech-contratos)
+        run: |
+          curl --fail --silent --show-error --max-time 30 \
+            -X POST 'https://uwmiwrovkbvjpkmugtpj.supabase.co/rest/v1/rpc/ping' \
+            -H 'apikey: sb_publishable_qFi421yLkPHuJ_lL_xSbGQ_Cd2YwB8h' \
+            -H 'Content-Type: application/json' \
+            -d '{}'
