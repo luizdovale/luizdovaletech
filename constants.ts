@@ -70,11 +70,11 @@ export const PROJECTS: ProjectItem[] = [
     image: "/projects/gas-calculator.jpg"
   },
   {
-    id: "geartech",
+    id: "jps-erp",
     title: "GearTech",
     audience: "Para lojas de autopeças e oficinas",
     desc: "Sistema que reúne estoque, vendas e ordens de serviço em um só lugar, com relatórios que mostram como o negócio está indo.",
-    link: "https://geartech.valetechsolucoes.com.br",
+    link: "https://jpserp.valetechsolucoes.com.br",
     tags: ["Controle de estoque", "Vendas e faturamento", "Relatórios"],
     category: "sistemas",
     image: "/projects/geartech.png"
