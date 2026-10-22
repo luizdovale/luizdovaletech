@@ -34,10 +34,6 @@ const Footer: React.FC = () => {
     { label: 'GitHub', href: SOCIAL_LINKS.github },
   ];
 
-  // "2020–2026" enquanto o ano corrente passa do ano de fundação; no primeiro ano, só o ano.
-  const copyrightYears =
-    BRAND_INFO.year > BRAND_INFO.foundedYear ? `${BRAND_INFO.foundedYear}–${BRAND_INFO.year}` : `${BRAND_INFO.year}`;
-
   return (
     <footer className="border-t border-line bg-white">
       <div className="container mx-auto max-w-7xl px-6 pb-8 pt-16 md:px-8">
@@ -110,7 +106,7 @@ const Footer: React.FC = () => {
         {/* Linha inferior */}
         <div className="flex flex-col gap-4 border-t border-line pt-6 text-[13px] text-muted md:flex-row md:items-center md:justify-between">
           <p>
-            © {copyrightYears} {BRAND_INFO.fullName}. Todos os direitos reservados.
+            © {BRAND_INFO.year} {BRAND_INFO.fullName}. Todos os direitos reservados.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span>

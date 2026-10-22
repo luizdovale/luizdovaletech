@@ -9,8 +9,6 @@ export const BRAND_INFO = {
   phone: "+55 (12) 97403-3027",
   location: "São José dos Campos, SP",
   coverage: "Atendimento em todo o Brasil",
-  // ano de fundação (mesmo valor do foundingDate no JSON-LD do index.html) e ano corrente, para o copyright "2020–2026"
-  foundedYear: 2020,
   year: new Date().getFullYear(),
 };
 
