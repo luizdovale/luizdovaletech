@@ -5,20 +5,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import PageMeta from '../components/PageMeta';
 
 /* ─── estilos reutilizáveis ─── */
-const inputClass =
-  'w-full bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm font-light placeholder:text-zinc-600 focus:border-white/40 focus:bg-white/[0.05] outline-none transition-all duration-200';
-
-const selectClass =
-  'w-full bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm font-light focus:border-white/40 focus:bg-white/[0.05] outline-none transition-all duration-200 appearance-none cursor-pointer';
-
-const labelClass = 'block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2';
+const inputClass = 'field';
+const selectClass = 'field cursor-pointer appearance-none';
+const labelClass = 'field-label';
 
 const SectionHeader: React.FC<{ num: string; title: string }> = ({ num, title }) => (
-  <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/[0.06]">
-    <span className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/[0.12] flex items-center justify-center text-xs font-mono font-bold text-white shrink-0">
+  <div className="mb-8 flex items-center gap-4 border-b border-line pb-6">
+    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-tint font-display text-sm font-extrabold text-accent">
       {num}
     </span>
-    <h3 className="font-display text-lg font-semibold text-white tracking-tight">{title}</h3>
+    <h3 className="font-display text-lg font-extrabold tracking-tight text-ink">{title}</h3>
   </div>
 );
 
@@ -59,7 +55,7 @@ const BriefingCompleto: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black pt-28 pb-24 px-4 md:px-6 relative">
+    <div className="relative min-h-screen bg-white px-4 pb-24 pt-32 md:px-6">
       <PageMeta
         title="Briefing completo — ValeTech Soluções"
         description="Formulário detalhado para projetos maiores. Quanto mais detalhes, mais precisa é a proposta."
@@ -67,16 +63,19 @@ const BriefingCompleto: React.FC = () => {
         noindex
       />
 
-      {/* luz de fundo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-white/[0.025] rounded-full blur-[140px] pointer-events-none" />
+      {/* tom azul-claro no topo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(50%_70%_at_50%_0%,rgb(var(--c-tint))_0%,transparent_75%)]"
+      />
 
-      <div className="container mx-auto max-w-3xl relative z-10">
+      <div className="container relative mx-auto max-w-3xl">
 
         {/* ── cabeçalho ── */}
         <div className="mb-14 text-center space-y-4">
           <Link
             to="/briefing"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors mb-2"
+            className="mb-2 inline-flex items-center gap-2 text-sm font-bold text-muted transition-colors hover:text-ink"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -84,16 +83,14 @@ const BriefingCompleto: React.FC = () => {
             Voltar para o formulário curto
           </Link>
 
-          <span className="block text-xs font-mono uppercase tracking-[0.25em] text-zinc-500">
-            Para projetos maiores
-          </span>
+          <span className="eyebrow block">Para projetos maiores</span>
 
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-5xl">
             Briefing{' '}
-            <span className="text-zinc-400 font-light">completo</span>
+            <span className="text-accent">completo</span>
           </h1>
 
-          <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
             Quanto mais detalhes, mais precisa é a proposta. Não sabe responder alguma coisa? Pode deixar em branco: a gente resolve conversando.
           </p>
         </div>
@@ -108,13 +105,13 @@ const BriefingCompleto: React.FC = () => {
 
           {/* erro de envio */}
           {submitError && (
-            <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl text-sm text-center">
+            <div role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-4 text-center text-sm font-medium text-red-700">
               {submitError}
             </div>
           )}
 
           {/* ── SEÇÃO 1: Dados de Contato ── */}
-          <div className="glass-panel p-8 rounded-2xl">
+          <div className="card p-6 sm:p-8">
             <SectionHeader num="01" title="Seus dados de contato" />
             <div className="grid md:grid-cols-2 gap-5">
               <div>
@@ -151,7 +148,7 @@ const BriefingCompleto: React.FC = () => {
           </div>
 
           {/* ── SEÇÃO 2: Visão do Projeto ── */}
-          <div className="glass-panel p-8 rounded-2xl">
+          <div className="card p-6 sm:p-8">
             <SectionHeader num="02" title="Sobre o projeto" />
 
             <div className="grid md:grid-cols-2 gap-5 mb-5">
@@ -191,14 +188,14 @@ const BriefingCompleto: React.FC = () => {
                 <label className={labelClass}>Onde vai ser usado?</label>
                 <div className="flex flex-wrap gap-4 pt-1">
                   {['Computador', 'Android', 'iPhone'].map((p) => (
-                    <label key={p} className="flex items-center gap-2 cursor-pointer group">
+                    <label key={p} className="group flex cursor-pointer items-center gap-2.5">
                       <input
                         type="checkbox"
                         name="4. Onde vai ser usado[]"
                         value={p}
-                        className="w-4 h-4 rounded border-white/20 bg-white/[0.03] accent-white cursor-pointer"
+                        className="h-5 w-5 cursor-pointer rounded border-line accent-accent"
                       />
-                      <span className="text-zinc-400 text-sm font-light group-hover:text-white transition-colors">{p}</span>
+                      <span className="text-[15px] text-muted transition-colors group-hover:text-ink">{p}</span>
                     </label>
                   ))}
                 </div>
@@ -238,7 +235,7 @@ const BriefingCompleto: React.FC = () => {
           </div>
 
           {/* ── SEÇÃO 3: Detalhes e Conteúdo ── */}
-          <div className="glass-panel p-8 rounded-2xl">
+          <div className="card p-6 sm:p-8">
             <SectionHeader num="03" title="Detalhes e conteúdo" />
 
             <div className="grid md:grid-cols-2 gap-5 mb-5">
@@ -289,7 +286,7 @@ const BriefingCompleto: React.FC = () => {
           </div>
 
           {/* ── SEÇÃO 4: Segurança e Crescimento ── */}
-          <div className="glass-panel p-8 rounded-2xl">
+          <div className="card p-6 sm:p-8">
             <SectionHeader num="04" title="Segurança e crescimento" />
 
             <div className="grid md:grid-cols-2 gap-5 mb-5">
@@ -342,7 +339,7 @@ const BriefingCompleto: React.FC = () => {
           </div>
 
           {/* ── SEÇÃO 5: Planejamento Final ── */}
-          <div className="glass-panel p-8 rounded-2xl">
+          <div className="card p-6 sm:p-8">
             <SectionHeader num="05" title="Planejamento final" />
 
             <div className="grid md:grid-cols-2 gap-5 mb-5">
@@ -391,11 +388,7 @@ const BriefingCompleto: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-5 rounded-2xl font-semibold text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 ${
-              isSubmitting
-                ? 'bg-white/10 text-zinc-500 cursor-not-allowed border border-white/[0.06]'
-                : 'bg-white text-black hover:bg-zinc-100 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] active:scale-[0.99]'
-            }`}
+            className="btn btn-primary w-full py-4"
           >
             {isSubmitting ? (
               <>
@@ -425,8 +418,12 @@ const BriefingCompleto: React.FC = () => {
           </button>
 
           {/* rodapé do form */}
-          <p className="text-center text-xs text-zinc-600 font-mono pb-4">
-            Suas informações são confidenciais e usadas só para preparar a proposta.
+          <p className="pb-4 text-center text-sm text-muted">
+            Suas informações são confidenciais e usadas só para preparar a proposta. Veja a{' '}
+            <Link to="/privacidade" className="font-bold text-ink underline decoration-line underline-offset-4 hover:decoration-ink/40">
+              política de privacidade
+            </Link>
+            .
           </p>
         </form>
       </div>

@@ -4,91 +4,75 @@ import { SERVICES } from '../../constants';
 // @ts-ignore
 import { Link } from 'react-router-dom';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
+import SectionHeader from '../SectionHeader';
+import { ArrowRightIcon, CheckIcon } from '../Icons';
+
+const getIcon = (icon: string) => {
+  const common = { className: 'h-6 w-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24', 'aria-hidden': true } as const;
+  switch (icon) {
+    case 'globe':
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="10" strokeWidth="1.6" />
+          <path strokeLinecap="round" strokeWidth="1.6" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+        </svg>
+      );
+    case 'server':
+      return (
+        <svg {...common}>
+          <rect x="2" y="3" width="20" height="7" rx="2" strokeWidth="1.6" />
+          <rect x="2" y="14" width="20" height="7" rx="2" strokeWidth="1.6" />
+          <line x1="6" y1="6.5" x2="6.01" y2="6.5" strokeWidth="2.2" strokeLinecap="round" />
+          <line x1="6" y1="17.5" x2="6.01" y2="17.5" strokeWidth="2.2" strokeLinecap="round" />
+        </svg>
+      );
+    case 'mobile':
+      return (
+        <svg {...common}>
+          <rect x="5" y="2" width="14" height="20" rx="3" strokeWidth="1.6" />
+          <line x1="11" y1="18" x2="13" y2="18" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...common}>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.6" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      );
+  }
+};
 
 const ServicesSection: React.FC = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
   };
 
-  // Os cards "tombam" levemente para o lugar ao entrar — mesma linguagem 3D do resto da página,
-  // sem exagero (8°) e desligada para quem pede menos movimento.
+  // Os cartões "tombam" levemente para o lugar ao entrar (8°), desligado para quem pede menos movimento.
   const itemVariants = {
     hidden: { opacity: 0, y: 25, rotateX: prefersReducedMotion ? 0 : 8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
-    }
-  };
-
-  const getIcon = (icon: string) => {
-    switch (icon) {
-      case 'globe':
-        return (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
-            <path strokeLinecap="round" strokeWidth="1.5" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-          </svg>
-        );
-      case 'server':
-        return (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <rect x="2" y="3" width="20" height="7" rx="2" strokeWidth="1.5" />
-            <rect x="2" y="14" width="20" height="7" rx="2" strokeWidth="1.5" />
-            <line x1="6" y1="6.5" x2="6.01" y2="6.5" strokeWidth="2" strokeLinecap="round" />
-            <line x1="6" y1="17.5" x2="6.01" y2="17.5" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        );
-      case 'mobile':
-        return (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <rect x="5" y="2" width="14" height="20" rx="3" strokeWidth="1.5" />
-            <line x1="11" y1="18" x2="13" y2="18" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        );
-      default:
-        return (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        );
-    }
+    visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
-    <section id="services" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
-      {/* Luz ambiente sutil */}
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-white/[0.02] rounded-full blur-[120px] pointer-events-none"></div>
+    <section id="services" className="bg-white py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
+        <SectionHeader
+          className="mb-14"
+          eyebrow="O que eu faço"
+          title="Como eu posso"
+          highlight="ajudar o seu negócio."
+          lead="Escolha o problema que mais se parece com o seu. Eu cuido da parte técnica."
+        />
 
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
-
-        {/* Header da Seção */}
-        <div className="max-w-3xl mb-16 space-y-4">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-            01 · O que eu faço
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-            Como eu posso <span className="text-zinc-400 font-light">ajudar o seu negócio.</span>
-          </h2>
-          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Escolha o problema que mais se parece com o seu. Eu cuido da parte técnica.
-          </p>
-        </div>
-
-        {/* Grid dos Serviços */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 xl:grid-cols-4 gap-6"
+          className="grid gap-5 md:grid-cols-2 xl:grid-cols-4"
           style={{ perspective: 1000 }}
         >
           {SERVICES.map((service) => (
@@ -96,35 +80,28 @@ const ServicesSection: React.FC = () => {
               key={service.id}
               variants={itemVariants}
               style={{ transformPerspective: 1000 }}
-              className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col justify-between group h-full"
+              className="card card-hover group flex h-full flex-col justify-between p-7"
             >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center text-white group-hover:border-white/30 group-hover:bg-white/[0.08] transition-all duration-300 mb-6">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-tint text-accent">
                   {getIcon(service.icon)}
                 </div>
 
-                <span className="text-sm font-display italic text-zinc-400 block mb-2">
-                  “{service.problem}”
-                </span>
+                <span className="mb-2 block text-sm font-bold text-accent">“{service.problem}”</span>
 
-                <h3 className="font-display text-xl font-bold text-white tracking-tight mb-3">
-                  {service.title}
-                </h3>
+                <h3 className="mb-3 font-display text-xl font-extrabold tracking-tight text-ink">{service.title}</h3>
 
-                <p className="text-zinc-400 text-sm font-light leading-relaxed mb-6">
-                  {service.desc}
-                </p>
+                <p className="mb-6 text-[15px] leading-relaxed text-muted">{service.desc}</p>
               </div>
 
-              {/* Lista de Features */}
-              <div className="pt-6 border-t border-white/[0.06] space-y-3">
-                {service.items.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-xs text-zinc-400 font-sans leading-relaxed">
-                    <span className="w-1 h-1 mt-1.5 shrink-0 rounded-full bg-white/40 group-hover:bg-white transition-colors"></span>
+              <ul className="space-y-3 border-t border-line pt-6">
+                {service.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink/80">
+                    <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                     <span>{item}</span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </motion.div>
@@ -135,22 +112,16 @@ const ServicesSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-16 text-center space-y-6"
+          className="mt-14 flex flex-col items-start justify-between gap-6 rounded-[24px] bg-surface p-7 md:flex-row md:items-center md:p-9"
         >
-          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Precisa de algo que não está na lista? Se nenhum programa pronto resolve o seu caso, eu construo a ferramenta certa, de calculadoras técnicas a sistemas para vender por assinatura.
+          <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            <strong className="font-bold text-ink">Precisa de algo que não está na lista?</strong> Se nenhum programa pronto resolve o seu caso, eu construo a ferramenta certa, de calculadoras técnicas a sistemas para vender por assinatura.
           </p>
-          <Link
-            to="/briefing"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-          >
-            <span>Pedir orçamento</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+          <Link to="/briefing" className="btn btn-dark shrink-0">
+            Pedir orçamento
+            <ArrowRightIcon />
           </Link>
         </motion.div>
-
       </div>
     </section>
   );

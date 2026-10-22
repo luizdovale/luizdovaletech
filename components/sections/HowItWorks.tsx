@@ -2,32 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PROCESS_STEPS, DELIVERY_TIMES } from '../../constants';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
+import SectionHeader from '../SectionHeader';
 
 const HowItWorks: React.FC = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <section id="how" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
-      {/* Luz ambiente sutil */}
-      <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-white/[0.02] rounded-full blur-[130px] pointer-events-none"></div>
-
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
-
-        {/* Header da Seção */}
-        <div className="max-w-3xl mb-16 space-y-4">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-            03 · Como funciona
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-            Do primeiro contato <span className="text-zinc-400 font-light">até o projeto no ar.</span>
-          </h2>
-          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Um caminho simples, em três passos e sem surpresas.
-          </p>
-        </div>
+    <section id="how" className="bg-white py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
+        <SectionHeader
+          className="mb-14"
+          eyebrow="Como funciona"
+          title="Do primeiro contato"
+          highlight="até o projeto no ar."
+          lead="Um caminho simples, em três passos e sem surpresas."
+        />
 
         {/* Passos */}
-        <div className="grid md:grid-cols-3 gap-6" style={{ perspective: 1000 }}>
+        <div className="grid gap-5 md:grid-cols-3" style={{ perspective: 1000 }}>
           {PROCESS_STEPS.map((step, idx) => (
             <motion.div
               key={step.number}
@@ -36,17 +28,13 @@ const HowItWorks: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               style={{ transformPerspective: 1000 }}
-              className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col space-y-4"
+              className="card card-hover flex flex-col space-y-4 p-8"
             >
-              <span className="font-display text-4xl font-bold text-white/30">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-tint font-display text-base font-extrabold text-accent">
                 {step.number}
               </span>
-              <h3 className="font-display text-xl font-bold text-white tracking-tight">
-                {step.title}
-              </h3>
-              <p className="text-zinc-400 text-sm font-light leading-relaxed">
-                {step.desc}
-              </p>
+              <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">{step.title}</h3>
+              <p className="text-[15px] leading-relaxed text-muted">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -57,24 +45,19 @@ const HowItWorks: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-10 glass-panel rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-12"
+          className="mt-8 flex flex-col gap-6 rounded-[24px] bg-surface p-7 sm:p-9 md:flex-row md:items-center md:gap-12"
         >
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500 font-semibold">
-            Prazos médios
-          </span>
-          <div className="grid sm:grid-cols-2 gap-6 md:gap-12 flex-1">
+          <span className="text-[13px] font-bold uppercase tracking-[0.1em] text-ink">Prazos médios</span>
+          <div className="grid flex-1 gap-6 sm:grid-cols-2 md:gap-12">
             {DELIVERY_TIMES.map((item) => (
-              <div key={item.label} className="space-y-1">
-                <span className="font-display text-xl font-bold text-white block">{item.time}</span>
-                <span className="text-zinc-400 text-sm font-light">{item.label}</span>
+              <div key={item.label}>
+                <span className="block font-display text-2xl font-extrabold tracking-tight text-ink">{item.time}</span>
+                <span className="text-[15px] text-muted">{item.label}</span>
               </div>
             ))}
           </div>
-          <span className="text-zinc-500 text-xs font-light md:max-w-[12rem]">
-            O prazo exato é combinado na proposta.
-          </span>
+          <span className="text-sm text-muted md:max-w-[12rem]">O prazo exato é combinado na proposta.</span>
         </motion.div>
-
       </div>
     </section>
   );

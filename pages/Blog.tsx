@@ -30,29 +30,25 @@ const Blog: React.FC = () => {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden bg-black pt-20 pb-28 min-h-[85vh]">
-      {/* Luz ambiente */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-white/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
+    <div className="relative min-h-[85vh] w-full overflow-hidden bg-white pb-28 pt-32">
 
-      <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-4xl">
+      <div className="container relative mx-auto max-w-4xl px-6 md:px-8">
         
         {/* Cabeçalho */}
         <div className="text-center space-y-4 mb-20">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-            Publicações Técnicas · ValeTech
-          </span>
+          <span className="eyebrow block">Publicações Técnicas · ValeTech</span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.15]"
+            className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-ink sm:text-5xl md:text-6xl"
           >
-            Insights de <span className="text-zinc-400 font-light">Tecnologia & Inovação</span>
+            Insights de <span className="text-muted">Tecnologia & Inovação</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed"
+            className="mx-auto max-w-xl text-base leading-relaxed text-muted sm:text-lg"
           >
             Artigos aprofundados sobre arquitetura de software, SEO técnico, interfaces de alta performance e escala empresarial.
           </motion.p>
@@ -66,24 +62,24 @@ const Blog: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-panel glass-panel-hover p-8 rounded-2xl flex flex-col sm:flex-row justify-between gap-6"
+              className="card card-hover flex flex-col justify-between gap-6 p-8 sm:flex-row"
             >
               <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-3 text-xs font-mono">
-                  <span className="text-white font-medium">{article.category}</span>
-                  <span className="text-zinc-600">/</span>
-                  <span className="text-zinc-400">{article.date}</span>
+                <div className="flex items-center gap-3 text-sm">
+                  <span className="font-bold text-accent">{article.category}</span>
+                  <span className="text-faint">/</span>
+                  <span className="text-muted">{article.date}</span>
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-semibold text-white tracking-tight">
+                <h3 className="font-display text-xl font-extrabold tracking-tight text-ink sm:text-2xl">
                   {article.title}
                 </h3>
-                <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                <p className="text-[15px] leading-relaxed text-muted">
                   {article.desc}
                 </p>
               </div>
 
               <div className="flex items-end">
-                <span className="text-[11px] font-mono text-zinc-400 font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02]">
+                <span className="rounded-full bg-surface px-3.5 py-1.5 text-xs font-bold text-muted">
                   Em breve
                 </span>
               </div>
@@ -96,19 +92,16 @@ const Blog: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-20 glass-panel p-8 sm:p-12 rounded-3xl text-center space-y-6"
+          className="mt-20 space-y-6 rounded-[28px] bg-surface p-8 text-center sm:p-12"
         >
-          <h2 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h2 className="font-display text-xl font-extrabold tracking-tight text-ink sm:text-2xl">
             Deseja acompanhar nossos lançamentos técnicos?
           </h2>
-          <p className="text-zinc-400 text-sm font-light max-w-md mx-auto">
+          <p className="mx-auto max-w-md text-[15px] text-muted">
             Novos conteúdos e estudos de caso de engenharia serão publicados regularmente.
           </p>
           <div>
-            <Link
-              to="/briefing"
-              className="inline-block px-8 py-3.5 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-            >
+            <Link to="/briefing" className="btn btn-dark">
               Iniciar um Projeto com a ValeTech
             </Link>
           </div>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { SOCIAL_LINKS, BRAND_INFO, NAV_LINKS } from '../constants';
+import { SOCIAL_LINKS, BRAND_INFO, NAV_LINKS, SERVICES } from '../constants';
 // @ts-ignore
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { LogoMain } from './Logos';
 
 const Footer: React.FC = () => {
   const location = useLocation();
@@ -11,8 +12,7 @@ const Footer: React.FC = () => {
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: id } });
     } else {
-      const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -24,98 +24,105 @@ const Footer: React.FC = () => {
     }
   };
 
-  const linkClasses = "text-zinc-400 hover:text-white text-sm font-light transition-colors text-left cursor-pointer w-fit group flex items-center gap-2";
-  const linkDash = <span className="w-3 h-[1px] bg-white/20 group-hover:w-5 group-hover:bg-white transition-all duration-300" />;
+  const linkClasses = 'cursor-pointer text-left text-[15px] text-muted transition-colors hover:text-ink';
 
   const contactLinks = [
     { label: 'WhatsApp', href: SOCIAL_LINKS.whatsapp },
     { label: 'E-mail', href: `mailto:${BRAND_INFO.contactEmail}` },
     { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin },
     { label: 'Instagram', href: SOCIAL_LINKS.instagram },
-    { label: 'GitHub', href: SOCIAL_LINKS.github }
+    { label: 'GitHub', href: SOCIAL_LINKS.github },
   ];
 
+  // "2020–2026" enquanto o ano corrente passa do ano de fundação; no primeiro ano, só o ano.
+  const copyrightYears =
+    BRAND_INFO.year > BRAND_INFO.foundedYear ? `${BRAND_INFO.foundedYear}–${BRAND_INFO.year}` : `${BRAND_INFO.year}`;
+
   return (
-    <footer className="border-t border-white/[0.08] pt-20 pb-10 relative overflow-hidden bg-black">
-      {/* Linha de luz superior */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl">
-        {/* Grid principal */}
-        <div className="grid md:grid-cols-12 gap-12 items-start mb-16">
-
-          {/* Coluna 1: Branding */}
-          <div className="md:col-span-5 space-y-6">
-            <button onClick={handleScrollToTop} className="inline-block cursor-pointer group" aria-label="Voltar ao topo">
-              <img
-                src="/assets/logo.png"
-                alt="ValeTech Soluções"
-                className="h-8 md:h-10 w-auto object-contain select-none brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                draggable={false}
-              />
+    <footer className="border-t border-line bg-white">
+      <div className="container mx-auto max-w-7xl px-6 pb-8 pt-16 md:px-8">
+        <div className="mb-14 grid gap-12 md:grid-cols-12">
+          {/* Marca */}
+          <div className="space-y-5 md:col-span-4">
+            <button onClick={handleScrollToTop} className="cursor-pointer" aria-label="Voltar ao topo">
+              <LogoMain className="h-8" />
             </button>
-            <p className="text-zinc-400 text-sm font-light leading-relaxed max-w-xs">
+            <p className="max-w-xs text-[15px] leading-relaxed text-muted">
               Sistemas, sites e aplicativos sob medida para empresas e profissionais que querem trabalhar melhor.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] text-zinc-400 font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              {BRAND_INFO.location}
-            </div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-medium text-ink">
+              <span className="h-2 w-2 rounded-full bg-ok" aria-hidden="true" />
+              Disponível para novos projetos
+            </span>
           </div>
 
-          {/* Coluna 2: Navegação */}
-          <div className="md:col-span-4 space-y-4">
-            <h4 className="text-[11px] uppercase tracking-[0.2em] text-zinc-500 font-semibold font-mono mb-5">Navegação</h4>
-            <nav className="flex flex-col space-y-3">
-              <button onClick={handleScrollToTop} className={linkClasses}>
-                {linkDash}
-                Início
-              </button>
+          {/* Navegação */}
+          <div className="md:col-span-2">
+            <h4 className="mb-4 text-[13px] font-bold uppercase tracking-[0.1em] text-ink">Navegação</h4>
+            <nav className="flex flex-col gap-3" aria-label="Rodapé">
+              <button onClick={handleScrollToTop} className={linkClasses}>Início</button>
               {NAV_LINKS.map((link) => (
                 <button key={link.id} onClick={() => handleScrollTo(link.id)} className={linkClasses}>
-                  {linkDash}
                   {link.label}
                 </button>
               ))}
-              <Link to="/sobre" className={linkClasses}>
-                {linkDash}
-                Minha história
-              </Link>
+              <Link to="/sobre" className={linkClasses}>Minha história</Link>
             </nav>
           </div>
 
-          {/* Coluna 3: Contato & Ação */}
-          <div className="md:col-span-3 space-y-6">
-            <h4 className="text-[11px] uppercase tracking-[0.2em] text-zinc-500 font-semibold font-mono">Fale comigo</h4>
-
-            <div className="flex flex-col space-y-3">
-              {contactLinks.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith('mailto:') ? undefined : '_blank'}
-                  rel="noreferrer"
-                  className={linkClasses}
-                >
-                  {linkDash}
-                  {item.label}
-                </a>
+          {/* Serviços */}
+          <div className="md:col-span-3">
+            <h4 className="mb-4 text-[13px] font-bold uppercase tracking-[0.1em] text-ink">Serviços</h4>
+            <ul className="flex flex-col gap-3">
+              {SERVICES.map((service) => (
+                <li key={service.id}>
+                  <button onClick={() => handleScrollTo('services')} className={linkClasses}>
+                    {service.title}
+                  </button>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
 
-            <Link
-              to="/briefing"
-              className="inline-block px-5 py-3 rounded-full border border-white/20 text-white hover:bg-white hover:text-black font-semibold text-xs tracking-wider uppercase transition-all duration-300"
-            >
+          {/* Contato */}
+          <div className="md:col-span-3">
+            <h4 className="mb-4 text-[13px] font-bold uppercase tracking-[0.1em] text-ink">Fale comigo</h4>
+            <ul className="flex flex-col gap-3">
+              {contactLinks.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+                    rel="noreferrer"
+                    className={linkClasses}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <Link to="/briefing" className="btn btn-dark btn-sm mt-6">
               Pedir orçamento
             </Link>
           </div>
         </div>
 
         {/* Linha inferior */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-zinc-600 font-mono">
-          <p>© {BRAND_INFO.year} {BRAND_INFO.fullName}. Todos os direitos reservados.</p>
-          <p>Desenvolvido por {BRAND_INFO.founder}</p>
+        <div className="flex flex-col gap-4 border-t border-line pt-6 text-[13px] text-muted md:flex-row md:items-center md:justify-between">
+          <p>
+            © {copyrightYears} {BRAND_INFO.fullName}. Todos os direitos reservados.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <span>
+              {BRAND_INFO.location} · {BRAND_INFO.coverage}
+            </span>
+            <Link to="/privacidade" className="transition-colors hover:text-ink">
+              Política de privacidade
+            </Link>
+            <button onClick={handleScrollToTop} className="cursor-pointer transition-colors hover:text-ink">
+              Voltar ao topo ↑
+            </button>
+          </div>
         </div>
       </div>
     </footer>

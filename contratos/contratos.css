@@ -1,16 +1,17 @@
-/* Tema branco das páginas /contratos (o resto do site é escuro). Ativado pela classe "contratos-theme" no <html>. */
+/* Tema próprio das páginas /contratos (slate + azul, fonte Inter), independente do visual do site público.
+   Ativado pela classe "contratos-theme" no <html>. */
 
 html.contratos-theme,
 html.contratos-theme body {
   background: #ffffff;
   color: #0f172a;
 }
+html.contratos-theme body,
+html.contratos-theme .font-sans { font-family: Inter, system-ui, sans-serif; }
 html.contratos-theme ::-webkit-scrollbar-track { background: #f1f5f9; }
 html.contratos-theme ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
 html.contratos-theme ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 html.contratos-theme ::selection { background: #bfdbfe; color: #0f172a; }
-/* o site tem um estilo global escuro para <select>: aqui volta ao claro */
-html.contratos-theme select option { background-color: #ffffff !important; color: #0f172a !important; }
 
 /* ───────── texto do contrato ───────── */
 .contrato-doc {

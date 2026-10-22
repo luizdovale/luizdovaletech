@@ -19,6 +19,12 @@ function usePrivatePage() {
     const html = document.documentElement;
     html.classList.add('contratos-theme');
 
+    // O site público usa DM Sans / Plus Jakarta Sans; a área de contratos mantém o Inter (carregado só aqui).
+    const font = document.createElement('link');
+    font.rel = 'stylesheet';
+    font.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
+    document.head.appendChild(font);
+
     const setMeta = (name: string, content: string) => {
       let el = document.head.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
       const created = !el;
@@ -42,6 +48,7 @@ function usePrivatePage() {
 
     return () => {
       html.classList.remove('contratos-theme');
+      font.remove();
       document.title = previousTitle;
       restoreRobots();
       restoreReferrer();

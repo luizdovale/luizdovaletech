@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion as m, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { motion as m, AnimatePresence } from 'framer-motion';
 import { LogoType } from './Logos';
 import { NAV_LINKS } from '../constants';
 
@@ -14,14 +14,21 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
-
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 16);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Fecha o menu do celular ao trocar de página ou apertar Esc.
+  useEffect(() => setIsOpen(false), [location.pathname]);
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setIsOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen]);
 
   // Destaca no menu a seção que está no meio da tela — só existe o que seguir na Home.
   useEffect(() => {
@@ -56,123 +63,99 @@ const Navbar: React.FC = () => {
     return () => observer.disconnect();
   }, [location.pathname]);
 
-  const navClasses = `fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${
-    scrolled
-      ? 'bg-black/80 backdrop-blur-2xl border-b border-white/[0.08] py-3.5 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
-      : 'bg-transparent py-5'
-  }`;
-
-  const getLinkClasses = (id: string) => {
-    const isActive = activeId === id;
-    return `font-sans text-[13px] font-medium tracking-wide relative group cursor-pointer py-1 transition-colors ${
-      isActive ? 'text-white' : 'text-white/70 hover:text-white'
-    }`;
-  };
-  const getHighlightClasses = (id: string) =>
-    `absolute bottom-0 left-0 h-[1px] bg-white transition-all duration-300 ${
-      activeId === id ? 'w-full' : 'w-0 group-hover:w-full'
-    }`;
-
   const handleScrollTo = (id: string) => {
     setIsOpen(false);
 
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: id } });
     } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  const linkClasses = (id: string) =>
+    `cursor-pointer rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+      activeId === id ? 'bg-surface text-ink' : 'text-muted hover:bg-surface hover:text-ink'
+    }`;
+
   return (
-    <motion.nav
+    <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={navClasses}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5"
     >
-      <div className="container mx-auto px-6 md:px-8 flex justify-between items-center max-w-7xl">
-        <Link to="/" className="flex items-center group">
-          <LogoType className="group-hover:opacity-90 transition-opacity" />
+      <nav
+        aria-label="Principal"
+        className={`relative mx-auto flex max-w-6xl items-center justify-between rounded-full border bg-white/85 py-2 pl-5 pr-2 backdrop-blur-xl transition-shadow duration-300 ${
+          scrolled ? 'border-line shadow-float' : 'border-line/70 shadow-soft'
+        }`}
+      >
+        <Link to="/" className="flex items-center" aria-label="ValeTech Soluções, página inicial">
+          <LogoType />
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center space-x-7">
+        {/* Menu do computador */}
+        <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => (
-            <button key={link.id} onClick={() => handleScrollTo(link.id)} className={getLinkClasses(link.id)}>
-              {link.label} <span className={getHighlightClasses(link.id)}></span>
+            <button key={link.id} onClick={() => handleScrollTo(link.id)} className={linkClasses(link.id)}>
+              {link.label}
             </button>
           ))}
-
-          <Link
-            to="/briefing"
-            className="px-5 py-2.5 rounded-full bg-white text-black font-semibold font-sans text-xs tracking-wider uppercase hover:bg-neutral-200 transition-all duration-300 transform hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-          >
+          <Link to="/briefing" className="btn btn-dark btn-sm ml-2">
             Pedir orçamento
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 lg:hidden">
-          <button
-            className="text-white p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
-            aria-expanded={isOpen}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
+        {/* Botão do menu no celular */}
+        <button
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:bg-surface lg:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={isOpen}
+          aria-controls="menu-mobile"
+        >
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            {isOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 7h16M4 12h16M4 17h16" />
+            )}
+          </svg>
+        </button>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-2xl border-b border-white/10 overflow-hidden shadow-2xl"
-          >
-            <div className="p-6 flex flex-col space-y-4">
-              {NAV_LINKS.map((link) => (
-                <button
-                  key={link.id}
-                  className={`text-left font-sans text-base py-2 transition-colors ${
-                    activeId === link.id ? 'text-white font-medium' : 'text-white/90 hover:text-white'
-                  }`}
-                  onClick={() => handleScrollTo(link.id)}
-                >
-                  {link.label}
-                </button>
-              ))}
-              <Link
-                to="/briefing"
-                onClick={() => setIsOpen(false)}
-                className="text-center py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-widest uppercase hover:bg-neutral-200 transition-colors mt-2"
-              >
-                Pedir orçamento
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Barra fina de progresso de leitura da página */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
-        style={{ scaleX: progress, width: '100%' }}
-      />
-    </motion.nav>
+        {/* Menu do celular */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              id="menu-mobile"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="card absolute left-0 right-0 top-full mt-2 p-3 lg:hidden"
+            >
+              <div className="flex flex-col">
+                {NAV_LINKS.map((link) => (
+                  <button
+                    key={link.id}
+                    className={`rounded-xl px-4 py-3 text-left text-base transition-colors ${
+                      activeId === link.id ? 'bg-surface font-bold text-ink' : 'font-medium text-muted hover:bg-surface hover:text-ink'
+                    }`}
+                    onClick={() => handleScrollTo(link.id)}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <Link to="/briefing" className="btn btn-primary mt-2">
+                  Pedir orçamento
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </motion.header>
   );
 };
 

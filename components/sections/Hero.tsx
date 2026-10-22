@@ -1,171 +1,146 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import ThreeScene from '../ThreeScene';
 import { SOCIAL_LINKS } from '../../constants';
+import { WhatsAppIcon } from '../Icons';
+import { useTilt } from '../../hooks/useTilt';
+
+const TRUST_POINTS = [
+  { title: 'Sob medida', desc: 'Nada de template pronto' },
+  { title: 'Direto comigo', desc: 'Sem atendente nem intermediário' },
+  { title: 'Resposta em até 24h', desc: 'Pelo WhatsApp ou formulário' },
+];
 
 const Hero: React.FC = () => {
   const fadeInUp = {
-    hidden: { opacity: 0, y: 25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, y: 22 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const staggerContainer = {
+  const stagger = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
   };
 
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // Inclinação discreta que segue o mouse, só no computador e só para quem não pediu menos movimento.
+  const tilt = useTilt<HTMLDivElement>({ max: 4 });
+
+  const handleScrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 md:px-6 overflow-hidden bg-black">
-      {/* Three.js Monochromatic Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <ThreeScene />
-      </div>
+    <section className="relative overflow-hidden pb-14 pt-28 sm:pt-32 md:pb-16">
+      {/* tom azul-claro no canto, no lugar das luzes e partículas do tema escuro */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_55%_at_88%_0%,rgb(var(--c-tint))_0%,transparent_70%)]"
+      />
 
-      {/* Iluminação Radial Branca Difusa */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_70%)] pointer-events-none z-0"></div>
-
-      <div className="container mx-auto max-w-5xl relative z-10 text-center flex flex-col items-center">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="space-y-7 flex flex-col items-center max-w-4xl"
-        >
-          {/* Badge de Status Minimalista */}
+      <div className="container relative mx-auto grid max-w-7xl items-center gap-14 px-6 md:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+        {/* Texto */}
+        <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-7">
           <motion.div
             variants={fadeInUp}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.12] backdrop-blur-xl"
+            className="inline-flex items-center gap-2.5 rounded-full border border-line bg-white px-3.5 py-1.5 text-[13px] font-medium text-muted shadow-soft"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ok opacity-50" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-ok" />
             </span>
-            <span className="text-zinc-300 font-mono text-[11px] tracking-[0.2em] uppercase font-medium">
-              Disponível para novos projetos
-            </span>
+            Disponível para novos projetos
           </motion.div>
 
-          {/* Marca */}
-          <motion.div
-            variants={fadeInUp}
-            className="relative flex flex-col justify-center items-center group"
-          >
-            {/* brilho difuso atrás da logo */}
-            <div className="absolute inset-0 bg-white/[0.06] rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 scale-150" />
-            <img
-              src="/assets/logo hero.png"
-              alt="ValeTech Soluções"
-              className="relative z-10 h-24 sm:h-28 md:h-32 w-auto object-contain select-none
-                         brightness-0 invert
-                         drop-shadow-[0_0_40px_rgba(255,255,255,0.25)]
-                         transition-transform duration-500 hover:scale-[1.02]"
-              draggable={false}
-            />
-            <div className="relative z-10 text-center flex flex-col items-center w-full">
-              <p className="font-display text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 leading-none w-full">
-                VALETECH
-              </p>
-              <span className="font-sans text-[10px] sm:text-xs tracking-[0.5em] sm:tracking-[0.7em] uppercase text-zinc-500 font-medium pl-1 sm:pl-2 mt-1">
-                Soluções
-              </span>
-            </div>
-          </motion.div>
-
-          {/* O que eu faço, em uma frase */}
           <motion.h1
             variants={fadeInUp}
-            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.15] max-w-3xl"
+            className="font-display text-[2.4rem] font-extrabold leading-[1.06] tracking-tight text-ink sm:text-5xl lg:text-[3.6rem]"
           >
             Sistemas, sites e aplicativos sob medida para o seu negócio{' '}
-            <span className="text-zinc-400 font-light">funcionar melhor.</span>
+            <span className="text-accent">funcionar melhor.</span>
           </motion.h1>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-zinc-400 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto"
-          >
+          <motion.p variants={fadeInUp} className="max-w-xl text-lg leading-relaxed text-muted">
             Sou o Luiz, desenvolvedor. Resolvo problemas do dia a dia da sua empresa, do controle de estoque ao site que traz clientes, com tecnologia feita só para você, sem template pronto.
           </motion.p>
 
-          {/* Botões de Ação */}
-          <motion.div
-            variants={fadeInUp}
-            className="pt-1 flex flex-col items-center gap-4 w-full"
-          >
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center items-center">
-              <a
-                href={SOCIAL_LINKS.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black font-semibold text-sm tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.2)] text-center"
-              >
+          <motion.div variants={fadeInUp} className="space-y-4">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="btn btn-primary">
+                <WhatsAppIcon className="h-[18px] w-[18px]" />
                 Falar no WhatsApp
               </a>
-
-              <button
-                onClick={() => handleScrollTo('projects')}
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/40 hover:bg-white/[0.06] text-white border border-white/20 hover:border-white/40 font-medium text-sm tracking-wider uppercase transition-all duration-300 backdrop-blur-md cursor-pointer"
-              >
+              <button onClick={() => handleScrollTo('projects')} className="btn btn-secondary">
                 Ver projetos
               </button>
             </div>
-
             <Link
               to="/briefing"
-              className="text-zinc-400 hover:text-white text-sm font-light underline underline-offset-4 decoration-white/20 hover:decoration-white transition-colors"
+              className="inline-block text-[15px] text-muted underline decoration-line decoration-2 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink/40"
             >
               Prefere escrever? Peça um orçamento pelo formulário
             </Link>
           </motion.div>
 
-          {/* Pontos de confiança */}
+          <motion.dl variants={fadeInUp} className="grid gap-5 border-t border-line pt-7 sm:grid-cols-3">
+            {TRUST_POINTS.map((point) => (
+              <div key={point.title}>
+                <dt className="font-display text-base font-bold text-ink">{point.title}</dt>
+                <dd className="mt-0.5 text-sm text-muted">{point.desc}</dd>
+              </div>
+            ))}
+          </motion.dl>
+        </motion.div>
+
+        {/* Prova real: captura do sistema no ar */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto w-full max-w-xl pb-8 lg:max-w-none"
+        >
           <motion.div
-            variants={fadeInUp}
-            className="pt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-12 border-t border-white/[0.08] w-full max-w-3xl"
+            ref={tilt.ref}
+            onMouseMove={tilt.onMouseMove}
+            onMouseLeave={tilt.onMouseLeave}
+            style={tilt.disabled ? undefined : tilt.style}
+            className="relative"
           >
-            <div className="space-y-1">
-              <span className="font-display text-lg sm:text-xl font-bold text-white block">Sob medida</span>
-              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">Nada de template pronto</span>
+            <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-float">
+              <div className="flex items-center gap-1.5 border-b border-line bg-surface px-4 py-2.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
+                <span className="ml-3 truncate rounded-full border border-line bg-white px-3 py-0.5 text-[11px] text-muted">
+                  jpserp.valetechsolucoes.com.br
+                </span>
+              </div>
+              <img
+                src="/projects/jps-erp.jpg"
+                alt="Painel do sistema GearTech, com faturamento, estoque e vendas de uma loja de autopeças"
+                width={1600}
+                height={808}
+                className="block h-auto w-full"
+                decoding="async"
+              />
             </div>
-            <div className="space-y-1">
-              <span className="font-display text-lg sm:text-xl font-bold text-white block">Direto comigo</span>
-              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">Sem atendente nem intermediário</span>
+
+            <div className="absolute -bottom-7 -left-2 w-[34%] overflow-hidden rounded-2xl border-[3px] border-white shadow-float sm:-left-5">
+              <img
+                src="/projects/jornada360.jpg"
+                alt="Aplicativo Jornada360, de controle de jornada e horas extras"
+                width={969}
+                height={595}
+                className="block h-auto w-full"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-            <div className="space-y-1">
-              <span className="font-display text-lg sm:text-xl font-bold text-white block">Resposta em até 24h</span>
-              <span className="text-zinc-500 text-xs font-mono uppercase tracking-wider">WhatsApp ou formulário</span>
+
+            <div className="absolute -bottom-4 right-3 flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-2 text-xs font-bold text-ink shadow-float sm:right-5">
+              <span className="h-2 w-2 rounded-full bg-ok" aria-hidden="true" />
+              GearTech · Sistema de gestão
             </div>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Indicador de Rolagem Minimalista */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 6, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer hidden sm:block"
-        onClick={() => handleScrollTo('services')}
-        aria-label="Rolar para a próxima seção"
-      >
-        <div className="w-5 h-9 rounded-full border border-white/20 flex justify-center p-1">
-          <div className="w-1 h-2 bg-white rounded-full animate-bounce"></div>
-        </div>
-      </motion.div>
     </section>
   );
 };

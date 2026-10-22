@@ -8,7 +8,7 @@ const motion = m as any;
 
 const NotFound: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden px-6 pt-24 pb-12">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-6 pb-12 pt-28">
       <PageMeta
         title="Página não encontrada — ValeTech Soluções"
         description="Esse endereço não existe ou mudou de lugar."
@@ -16,33 +16,30 @@ const NotFound: React.FC = () => {
         noindex
       />
 
-      {/* Background sutil */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]"></div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(50%_70%_at_50%_0%,rgb(var(--c-tint))_0%,transparent_75%)]"
+      />
 
-      <div className="text-center relative z-10 max-w-md space-y-6">
+      <div className="relative max-w-md space-y-6 text-center">
         <motion.h1 
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="font-mono text-8xl sm:text-9xl font-bold text-white tracking-tighter select-none"
+          className="select-none font-display text-8xl font-extrabold tracking-tighter text-accent sm:text-9xl"
         >
           404
         </motion.h1>
         
         <div className="space-y-2">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-            Página não encontrada
-          </span>
-          <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed">
+          <span className="eyebrow block">Página não encontrada</span>
+          <p className="text-base leading-relaxed text-muted">
             Esse endereço não existe ou mudou de lugar. Volte para o início para continuar.
           </p>
         </div>
 
         <div>
-          <Link 
-            to="/"
-            className="inline-block px-8 py-3.5 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-          >
+          <Link to="/" className="btn btn-dark">
             Voltar ao início
           </Link>
         </div>

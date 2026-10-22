@@ -7,7 +7,10 @@ export const BRAND_INFO = {
   founderPhoto: "/assets/luiz.jpg",
   contactEmail: "luizdovaletech@gmail.com",
   phone: "+55 (12) 97403-3027",
-  location: "São Paulo, Brasil",
+  location: "São José dos Campos, SP",
+  coverage: "Atendimento em todo o Brasil",
+  // ano de fundação (mesmo valor do foundingDate no JSON-LD do index.html) e ano corrente, para o copyright "2020–2026"
+  foundedYear: 2020,
   year: new Date().getFullYear(),
 };
 
@@ -77,7 +80,7 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://jpserp.valetechsolucoes.com.br",
     tags: ["Controle de estoque", "Vendas e faturamento", "Relatórios"],
     category: "sistemas",
-    image: "/projects/geartech.png"
+    image: "/projects/jps-erp.jpg"
   },
   {
     id: "tatiane-nutricionista",
@@ -87,7 +90,7 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://tatianedovale.com.br",
     tags: ["Site profissional", "Agendamento de consultas"],
     category: "sites",
-    image: "/projects/tatiane-nutricionista.png"
+    image: "/projects/tatiane-nutricionista.jpg"
   },
   {
     id: "climatizacao",
@@ -97,7 +100,7 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://instalador.valetechsolucoes.com.br",
     tags: ["Site profissional", "Responsivo", "Canais de contato"],
     category: "sites",
-    image: "/projects/climatizacao.png"
+    image: "/projects/climatizacao.jpg"
   },
   {
     id: "grigoleti",
@@ -107,7 +110,7 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://grigoleti.com.br/",
     tags: ["Portfólio visual", "Blog", "Aparece no Google"],
     category: "sites",
-    image: "/projects/grigoleti.png"
+    image: "/projects/grigoleti.jpg"
   },
   {
     id: "jps-autopecas",
@@ -127,7 +130,7 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://edusheets.valetechsolucoes.com.br",
     tags: ["Professores", "Escolas", "Automatização"],
     category: "sistemas",
-    image: "/projects/edusheets.png"
+    image: "/projects/edusheets.jpg"
   }
 ];
 

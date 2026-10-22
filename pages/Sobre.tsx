@@ -5,110 +5,88 @@ import { Link } from 'react-router-dom';
 import { PRINCIPLES, TOOLS, SOCIAL_LINKS, BRAND_INFO } from '../constants';
 import PageMeta from '../components/PageMeta';
 import FounderPhoto from '../components/FounderPhoto';
+import { WhatsAppIcon } from '../components/Icons';
 
 const Sobre: React.FC = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Página Inicial",
-        "item": "https://www.valetechsolucoes.com.br/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Sobre mim",
-        "item": "https://www.valetechsolucoes.com.br/sobre"
-      }
-    ]
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Página Inicial', item: 'https://www.valetechsolucoes.com.br/' },
+      { '@type': 'ListItem', position: 2, name: 'Sobre mim', item: 'https://www.valetechsolucoes.com.br/sobre' },
+    ],
   };
 
   return (
-    <div className="relative w-full overflow-hidden bg-black pt-28 pb-28 min-h-screen">
+    <div className="relative min-h-screen w-full overflow-hidden bg-white pb-24 pt-32 sm:pt-36">
       <PageMeta
         title="Sobre mim — Luiz Fernando, desenvolvedor | ValeTech Soluções"
         description="Sou o Luiz Fernando, desenvolvedor de software e fundador da ValeTech. Ajudo empresas e profissionais a resolver problemas do dia a dia com sistemas, sites e aplicativos sob medida."
         path="/sobre"
       />
 
-      {/* Schema.org Breadcrumbs */}
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
-      </script>
+      {/* Breadcrumbs para o Google */}
+      <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
 
-      {/* Luz ambiente sutil */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
+      {/* tom azul-claro no canto */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(60%_60%_at_88%_0%,rgb(var(--c-tint))_0%,transparent_70%)]"
+      />
 
-      <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-6xl">
-
+      <div className="container relative mx-auto max-w-6xl px-6 md:px-8">
         {/* Cabeçalho */}
         <motion.div
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="mb-24 text-center md:text-left flex flex-col md:flex-row justify-between items-center md:items-end gap-8 border-b border-white/[0.08] pb-16"
+          className="mb-20 border-b border-line pb-14"
         >
-          <motion.div variants={fadeInUp} className="space-y-4 max-w-3xl">
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-              Sobre mim · ValeTech Soluções
-            </span>
-            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.1]">
-              Oi, eu sou o <span className="text-zinc-400 font-light">{BRAND_INFO.founder}.</span>
+          <motion.div variants={fadeInUp} className="max-w-3xl space-y-5">
+            <span className="eyebrow block">Sobre mim · ValeTech Soluções</span>
+            <h1 className="font-display text-4xl font-extrabold leading-[1.06] tracking-tight text-ink sm:text-6xl">
+              Oi, eu sou o{' '}
+              <span className="text-accent">
+                {BRAND_INFO.founder}
+                <span className="-ml-[0.09em]">.</span>
+              </span>
             </h1>
-            <p className="text-zinc-400 text-lg sm:text-xl font-light leading-relaxed">
+            <p className="text-lg leading-relaxed text-muted sm:text-xl">
               Desenvolvedor de software e fundador da ValeTech. Ajudo empresas e profissionais a resolver problemas do dia a dia com sistemas, sites e aplicativos feitos sob medida.
             </p>
           </motion.div>
-
-          <div className="hidden lg:block">
-            <img
-              src="/assets/logo hero.png"
-              alt=""
-              aria-hidden="true"
-              className="h-36 w-auto object-contain select-none brightness-0 invert opacity-70"
-              draggable={false}
-            />
-          </div>
         </motion.div>
 
-        {/* História & cartão pessoal */}
-        <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-start mb-32">
+        {/* História e cartão pessoal */}
+        <div className="mb-28 grid items-start gap-12 md:grid-cols-12 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="md:col-span-7 space-y-6 text-zinc-400 text-base sm:text-lg font-light leading-relaxed"
+            className="space-y-6 text-base leading-relaxed text-muted sm:text-lg md:col-span-7"
           >
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
               Tecnologia que resolve problemas de verdade
             </h2>
-            <div className="w-12 h-[2px] bg-white"></div>
+            <div className="h-1 w-12 rounded-full bg-accent" />
             <p>
-              Muita empresa e muito profissional perdem tempo e dinheiro com planilhas, processos manuais e ferramentas que não foram feitas para o jeito deles de trabalhar. A <strong className="text-white font-semibold">ValeTech</strong> existe para mudar isso.
+              Muita empresa e muito profissional perdem tempo e dinheiro com planilhas, processos manuais e ferramentas que não foram feitas para o jeito deles de trabalhar. A <strong className="font-bold text-ink">ValeTech</strong> existe para mudar isso.
             </p>
             <p>
               Por isso eu não vendo modelos prontos. Escuto o seu problema, entendo como o seu negócio funciona e construo a solução certa: um sistema de gestão, um site que traz clientes, um aplicativo ou uma automação que tira as tarefas repetitivas do seu dia.
             </p>
-            <p>
-              Você fala direto comigo, do primeiro contato até a entrega, e depois dela também, para suporte e melhorias.
-            </p>
+            <p>Você fala direto comigo, do primeiro contato até a entrega, e depois dela também, para suporte e melhorias.</p>
           </motion.div>
 
           {/* Cartão pessoal */}
@@ -117,40 +95,40 @@ const Sobre: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="md:col-span-5 glass-panel p-8 rounded-2xl border border-white/[0.08] space-y-6"
+            className="card space-y-6 p-7 md:col-span-5"
           >
             <div className="flex items-center gap-4">
-              <FounderPhoto className="w-16 h-16 rounded-full text-lg shrink-0" />
+              <FounderPhoto className="h-16 w-16 shrink-0 rounded-full text-lg" />
               <div>
-                <h3 className="font-display text-lg font-bold text-white">{BRAND_INFO.founder}</h3>
-                <span className="text-xs text-zinc-400 font-sans">Desenvolvedor de software · Fundador da ValeTech</span>
+                <h3 className="font-display text-lg font-extrabold text-ink">{BRAND_INFO.founder}</h3>
+                <span className="text-sm text-muted">Desenvolvedor de software · Fundador da ValeTech</span>
               </div>
             </div>
-            <p className="text-zinc-400 text-sm font-light leading-relaxed italic">
+            <p className="text-[15px] italic leading-relaxed text-muted">
               "Boa tecnologia é a que o seu dia a dia realmente usa, e que resolve um problema de verdade."
             </p>
-            <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-zinc-400">
-              <span>{BRAND_INFO.location}</span>
-              <span className="flex items-center gap-4">
-                <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noreferrer" className="text-white hover:underline">LinkedIn</a>
-                <a href={SOCIAL_LINKS.github} target="_blank" rel="noreferrer" className="text-white hover:underline">GitHub</a>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-5 text-sm">
+              <span className="text-muted">{BRAND_INFO.location}</span>
+              <span className="flex items-center gap-5">
+                <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noreferrer" className="font-bold text-accent hover:underline">
+                  LinkedIn
+                </a>
+                <a href={SOCIAL_LINKS.github} target="_blank" rel="noreferrer" className="font-bold text-accent hover:underline">
+                  GitHub
+                </a>
               </span>
             </div>
           </motion.div>
         </div>
 
         {/* Como eu trabalho */}
-        <div className="mb-32">
-          <div className="text-center mb-16 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-              Como eu trabalho
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-              O que você pode esperar de mim
-            </h2>
+        <div className="mb-28">
+          <div className="mb-14 space-y-4 text-center">
+            <span className="eyebrow block">Como eu trabalho</span>
+            <h2 className="section-title">O que você pode esperar de mim</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {PRINCIPLES.map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -158,13 +136,13 @@ const Sobre: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                className="glass-panel glass-panel-hover p-6 rounded-2xl space-y-3"
+                className="card card-hover space-y-3 p-6"
               >
-                <span className="text-xs font-mono text-zinc-500 block font-semibold">
-                  0{idx + 1}
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-tint font-display text-sm font-extrabold text-accent">
+                  {idx + 1}
                 </span>
-                <h3 className="font-display text-lg font-bold text-white tracking-tight">{item.title}</h3>
-                <p className="text-zinc-400 text-sm font-light leading-relaxed">{item.desc}</p>
+                <h3 className="font-display text-lg font-extrabold tracking-tight text-ink">{item.title}</h3>
+                <p className="text-[15px] leading-relaxed text-muted">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -175,15 +153,15 @@ const Sobre: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-panel p-8 rounded-2xl space-y-5 mb-32"
+          className="mb-28 space-y-5 rounded-[24px] bg-surface p-7 sm:p-9"
         >
-          <h3 className="font-display text-xl font-bold text-white">Ferramentas que eu uso</h3>
-          <p className="text-zinc-400 text-sm font-light leading-relaxed">
+          <h3 className="font-display text-xl font-extrabold text-ink">Ferramentas que eu uso</h3>
+          <p className="max-w-3xl text-[15px] leading-relaxed text-muted">
             Para quem é da área, ou só tem curiosidade: estas são as tecnologias por trás dos meus projetos. São ferramentas consolidadas, o que facilita a manutenção no futuro.
           </p>
           <div className="flex flex-wrap gap-2">
             {TOOLS.map((tool) => (
-              <span key={tool} className="px-3 py-1.5 bg-white/[0.03] text-zinc-300 text-xs font-mono rounded-lg border border-white/[0.08]">
+              <span key={tool} className="rounded-full border border-line bg-white px-3.5 py-1.5 text-sm font-medium text-ink">
                 {tool}
               </span>
             ))}
@@ -195,32 +173,26 @@ const Sobre: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-panel p-10 md:p-16 rounded-3xl text-center space-y-8 max-w-4xl mx-auto"
+          className="relative mx-auto max-w-4xl overflow-hidden rounded-[32px] border border-line bg-surface px-6 py-14 text-center sm:px-12 md:py-16"
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Vamos conversar sobre o seu projeto?
-          </h2>
-          <p className="text-zinc-400 text-base font-light max-w-xl mx-auto">
-            Me conte o que você precisa. Eu respondo em até 24 horas.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <a
-              href={SOCIAL_LINKS.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="flex-1 px-8 py-4 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)] text-center"
-            >
-              Falar no WhatsApp
-            </a>
-            <Link
-              to="/briefing"
-              className="flex-1 px-8 py-4 bg-black/60 text-white border border-white/20 hover:border-white/40 font-semibold text-xs tracking-wider uppercase rounded-full transition-all duration-300 text-center"
-            >
-              Pedir orçamento
-            </Link>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_50%_0%,rgb(var(--c-tint))_0%,transparent_75%)]"
+          />
+          <div className="relative space-y-6">
+            <h2 className="section-title">Vamos conversar sobre o seu projeto?</h2>
+            <p className="mx-auto max-w-xl text-base text-muted sm:text-lg">Me conte o que você precisa. Eu respondo em até 24 horas.</p>
+            <div className="mx-auto flex max-w-md flex-col justify-center gap-3 sm:flex-row">
+              <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="btn btn-primary flex-1">
+                <WhatsAppIcon className="h-[18px] w-[18px]" />
+                Falar no WhatsApp
+              </a>
+              <Link to="/briefing" className="btn btn-secondary flex-1">
+                Pedir orçamento
+              </Link>
+            </div>
           </div>
         </motion.div>
-
       </div>
     </div>
   );

@@ -4,10 +4,8 @@ import { SOCIAL_LINKS } from '../constants';
 import { Link, useNavigate } from 'react-router-dom';
 import PageMeta from '../components/PageMeta';
 
-const inputClass =
-  'w-full bg-white/[0.03] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm font-light placeholder:text-zinc-600 focus:border-white/40 focus:bg-white/[0.05] outline-none transition-all duration-200';
-
-const labelClass = 'block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2';
+const inputClass = 'field';
+const labelClass = 'field-label';
 
 const Briefing: React.FC = () => {
   const navigate = useNavigate();
@@ -44,23 +42,26 @@ const Briefing: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black pt-28 pb-24 px-4 md:px-6 relative">
+    <div className="relative min-h-screen bg-white px-4 pb-24 pt-32 md:px-6">
       <PageMeta
         title="Pedir orçamento — ValeTech Soluções"
         description="Conte o que você precisa em um formulário curto. Respondo em até 24 horas com o melhor caminho para o seu projeto."
         path="/briefing"
       />
 
-      {/* luz de fundo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-white/[0.025] rounded-full blur-[140px] pointer-events-none" />
+      {/* tom azul-claro no topo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(50%_70%_at_50%_0%,rgb(var(--c-tint))_0%,transparent_75%)]"
+      />
 
-      <div className="container mx-auto max-w-2xl relative z-10">
+      <div className="container relative mx-auto max-w-2xl">
 
         {/* cabeçalho */}
         <div className="mb-12 text-center space-y-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors mb-2"
+            className="mb-2 inline-flex items-center gap-2 text-sm font-bold text-muted transition-colors hover:text-ink"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -68,22 +69,23 @@ const Briefing: React.FC = () => {
             Voltar para o início
           </Link>
 
-          <span className="block text-xs font-mono uppercase tracking-[0.25em] text-zinc-500">
-            Pedir orçamento
-          </span>
+          <span className="eyebrow block">Pedir orçamento</span>
 
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-5xl">
             Me conte o que você{' '}
-            <span className="text-zinc-400 font-light">precisa.</span>
+            <span className="text-accent">
+              precisa
+              <span className="-ml-[0.09em]">.</span>
+            </span>
           </h1>
 
-          <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
             Leva cerca de 1 minuto. Não precisa saber termos técnicos: escreva do seu jeito. Eu respondo em até 24 horas.
           </p>
         </div>
 
         {/* formulário */}
-        <form onSubmit={handleSubmit} className="glass-panel p-8 rounded-2xl space-y-6">
+        <form onSubmit={handleSubmit} className="card space-y-6 p-6 sm:p-8">
 
           {/* campos ocultos Web3Forms */}
           <input type="hidden" name="access_key" value={SOCIAL_LINKS.web3formsKey} />
@@ -92,7 +94,7 @@ const Briefing: React.FC = () => {
 
           {/* erro de envio */}
           {submitError && (
-            <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl text-sm text-center">
+            <div role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-4 text-center text-sm font-medium text-red-700">
               {submitError}
             </div>
           )}
@@ -138,11 +140,8 @@ const Briefing: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-5 rounded-2xl font-semibold text-sm tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center gap-3 ${
-              isSubmitting
-                ? 'bg-white/10 text-zinc-500 cursor-not-allowed border border-white/[0.06]'
-                : 'bg-white text-black hover:bg-zinc-100 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] active:scale-[0.99]'
-            }`}
+            className="btn btn-primary w-full py-4"
+
           >
             {isSubmitting ? (
               <>
@@ -171,22 +170,26 @@ const Briefing: React.FC = () => {
             )}
           </button>
 
-          <p className="text-center text-xs text-zinc-600 font-mono">
-            Seus dados são usados só para eu te responder.
+          <p className="text-center text-sm text-muted">
+            Seus dados são usados só para eu te responder. Veja a{' '}
+            <Link to="/privacidade" className="font-bold text-ink underline decoration-line underline-offset-4 hover:decoration-ink/40">
+              política de privacidade
+            </Link>
+            .
           </p>
         </form>
 
         {/* outros caminhos */}
-        <div className="mt-10 text-center space-y-3 text-sm font-light text-zinc-400">
+        <div className="mt-10 space-y-3 text-center text-[15px] text-muted">
           <p>
             Prefere conversar agora?{' '}
-            <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="text-white underline underline-offset-4 decoration-white/30 hover:decoration-white">
+            <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="font-bold text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-ink/40">
               Falar no WhatsApp
             </a>
           </p>
           <p>
             Tem um projeto maior e quer detalhar tudo?{' '}
-            <Link to="/briefing-completo" className="text-white underline underline-offset-4 decoration-white/30 hover:decoration-white">
+            <Link to="/briefing-completo" className="font-bold text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-ink/40">
               Preencher o briefing completo
             </Link>
           </p>

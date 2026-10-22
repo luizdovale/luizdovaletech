@@ -11,37 +11,33 @@ const BlogPost: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden bg-black pt-20 pb-28 min-h-[85vh] flex items-center justify-center">
-      {/* Luz ambiente */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-white/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
+    <div className="relative flex min-h-[85vh] w-full items-center justify-center overflow-hidden bg-white pb-28 pt-32">
 
-      <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-2xl text-center space-y-8">
-        <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-          Artigo Técnico · ValeTech
-        </span>
+      <div className="container relative mx-auto max-w-2xl space-y-8 px-6 text-center md:px-8">
+        <span className="eyebrow block">Artigo Técnico · ValeTech</span>
 
-        <h1 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
-          Publicação: <span className="text-zinc-400 font-light">"{slug}"</span>
+        <h1 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
+          Publicação: <span className="text-muted">"{slug}"</span>
         </h1>
 
-        <p className="text-zinc-400 text-base font-light leading-relaxed">
+        <p className="text-base leading-relaxed text-muted">
           Este artigo está em fase de revisão técnica e diagramação para publicação em nosso portal.
         </p>
 
-        <div className="glass-panel p-6 rounded-2xl space-y-4">
-          <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">Tópicos em Destaque</span>
+        <div className="space-y-4 rounded-card bg-surface p-6">
+          <span className="block text-sm font-bold text-ink">Tópicos em Destaque</span>
           <div className="flex flex-wrap gap-2 justify-center">
-            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Arquitetura de Software</span>
-            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Core Web Vitals</span>
-            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Design de Sistemas</span>
-            <span className="px-3 py-1 bg-white/[0.03] text-zinc-300 text-xs rounded-md border border-white/[0.08]">Engenharia Web</span>
+            <span className="rounded-full border border-line bg-white px-3 py-1 text-xs font-medium text-ink">Arquitetura de Software</span>
+            <span className="rounded-full border border-line bg-white px-3 py-1 text-xs font-medium text-ink">Core Web Vitals</span>
+            <span className="rounded-full border border-line bg-white px-3 py-1 text-xs font-medium text-ink">Design de Sistemas</span>
+            <span className="rounded-full border border-line bg-white px-3 py-1 text-xs font-medium text-ink">Engenharia Web</span>
           </div>
         </div>
 
         <div>
           <Link 
             to="/blog" 
-            className="inline-flex items-center gap-2 text-white hover:text-zinc-300 text-xs font-mono uppercase tracking-wider transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-bold text-accent transition-colors hover:text-accent-hover"
           >
             ← Voltar para o Blog
           </Link>

@@ -14,7 +14,7 @@ const FounderPhoto: React.FC<FounderPhotoProps> = ({ className = '' }) => {
       <div
         role="img"
         aria-label={BRAND_INFO.founder}
-        className={`bg-neutral-900 border border-white/20 flex items-center justify-center text-white font-display font-bold select-none ${className}`}
+        className={`flex select-none items-center justify-center bg-surface font-display font-bold text-ink ${className}`}
       >
         LF
       </div>

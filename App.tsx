@@ -10,7 +10,7 @@ import BriefingCompleto from './pages/BriefingCompleto';
 import Success from './pages/Success';
 import NotFound from './pages/NotFound';
 import WhatsAppBtn from './components/WhatsAppBtn';
-import ParticleBackground from './components/ParticleBackground';
+import Privacidade from './pages/Privacidade';
 
 // Área privada de contratos (/contratos): carregada só quando alguém acessa, para não pesar no site normal.
 const ContratosApp = React.lazy(() => import('./contratos/ContratosApp'));
@@ -33,10 +33,12 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
-// O site público é escuro e tem menu, rodapé e WhatsApp. As páginas /contratos são brancas e sem nada disso.
+// O site público tem menu, rodapé e WhatsApp. As páginas /contratos têm tema próprio e não têm nada disso.
 const AppShell: React.FC = () => {
   const { pathname } = useLocation();
   const isContracts = pathname === '/contratos' || pathname.startsWith('/contratos/');
+  // nas páginas de formulário o botão flutuante cobriria os campos (e a própria página já oferece o WhatsApp)
+  const hideWhatsApp = pathname.startsWith('/briefing') || pathname === '/sucesso';
 
   if (isContracts) {
     return (
@@ -47,32 +49,27 @@ const AppShell: React.FC = () => {
   }
 
   return (
-    <div className="font-sans bg-black min-h-screen text-zinc-200 selection:bg-white selection:text-black relative">
-      <ParticleBackground />
+    <div className="relative min-h-screen bg-white font-sans text-ink">
       <Navbar />
-      <main className="relative z-10">
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/briefing" element={<Briefing />} />
           <Route path="/briefing-completo" element={<BriefingCompleto />} />
           <Route path="/sucesso" element={<Success />} />
+          <Route path="/privacidade" element={<Privacidade />} />
           {/* Blog escondido até existir o primeiro artigo de verdade (pages/Blog.tsx e BlogPost.tsx continuam no projeto). */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <WhatsAppBtn />
+      {!hideWhatsApp && <WhatsAppBtn />}
       <Footer />
     </div>
   );
 };
 
 const App: React.FC = () => {
-  useEffect(() => {
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  }, []);
-
   return (
     <Router
       future={{

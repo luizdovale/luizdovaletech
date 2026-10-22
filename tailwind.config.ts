@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+// Cores como "tokens" semânticos (valores em index.css, :root). Trocar a aparência do site = mudar lá, em um lugar só.
+const token = (name: string) => `rgb(var(--c-${name}) / <alpha-value>)`;
+
 export default {
   content: [
     "./index.html",
@@ -11,35 +14,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        tech: {
-          dark: '#000000',
-          surface: '#0A0A0A',
-          card: '#111111',
-          border: 'rgba(255, 255, 255, 0.08)',
-          gray: '#A1A1A1',
-          muted: '#71717A',
-          white: '#FFFFFF',
-          accent: '#FFFFFF'
-        }
+        surface: token('surface'),
+        tint: token('tint'),
+        line: token('line'),
+        ink: token('ink'),
+        muted: token('muted'),
+        faint: token('faint'),
+        ok: token('ok'),
+        accent: {
+          DEFAULT: token('accent'),
+          hover: token('accent-hover'),
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+        sans: ['"DM Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', '"DM Sans"', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        soft: '0 1px 2px rgba(20, 24, 33, 0.04), 0 12px 32px -12px rgba(20, 24, 33, 0.12)',
+        lift: '0 1px 2px rgba(20, 24, 33, 0.04), 0 26px 48px -20px rgba(20, 24, 33, 0.22)',
+        float: '0 1px 2px rgba(20, 24, 33, 0.05), 0 22px 44px -22px rgba(20, 24, 33, 0.32)',
+        glow: '0 10px 22px -10px rgba(47, 102, 240, 0.7)',
+      },
+      borderRadius: {
+        card: '20px',
+      },
+      // "tight" mais suave que o padrão do Tailwind (-0.025em), que deixava as palavras dos títulos quase coladas
+      letterSpacing: {
+        tight: '-0.015em',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(-10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        subtleGlow: {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.8' }
-        }
       },
       animation: {
-        'fadeIn': 'fadeIn 0.4s ease-out forwards',
-        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'subtleGlow': 'subtleGlow 5s ease-in-out infinite'
+        fadeIn: 'fadeIn 0.4s ease-out forwards',
       }
     }
   },

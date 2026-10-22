@@ -10,7 +10,7 @@ import FinalCTA from '../components/sections/FinalCTA';
 
 const Home: React.FC = () => {
   return (
-    <div className="relative w-full overflow-hidden bg-black select-none md:select-auto">
+    <div className="relative w-full overflow-hidden select-none md:select-auto">
       <PageMeta
         title="ValeTech Soluções — Sistemas, sites e aplicativos sob medida | Luiz Fernando"
         description="Sou o Luiz, desenvolvedor. Crio sistemas de gestão, sites, aplicativos e automações sob medida para empresas e profissionais. Fale comigo no WhatsApp ou peça um orçamento."

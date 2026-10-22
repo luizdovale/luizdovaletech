@@ -4,6 +4,8 @@ import { PROJECTS, PROJECT_CATEGORY_LABEL, SOCIAL_LINKS, type ProjectItem } from
 // @ts-ignore
 import { Link } from 'react-router-dom';
 import { useTilt } from '../../hooks/useTilt';
+import SectionHeader from '../SectionHeader';
+import { ArrowRightIcon, WhatsAppIcon } from '../Icons';
 
 const TABS = [
   { id: 'all', label: 'Todos' },
@@ -31,7 +33,7 @@ function mergeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {
   };
 }
 
-// Card com leve inclinação 3D que segue o ponteiro, tipo vidro reagindo à luz —
+// Card com leve inclinação 3D que segue o ponteiro, tipo cartão físico reagindo à luz —
 // só no desktop (mouse fino) e só para quem não pediu menos movimento.
 const ProjectCard = React.forwardRef<HTMLAnchorElement, ProjectCardProps>(({ project, index }, forwardedRef) => {
   const glareRef = useRef<HTMLDivElement>(null);
@@ -57,56 +59,55 @@ const ProjectCard = React.forwardRef<HTMLAnchorElement, ProjectCardProps>(({ pro
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
       style={tilt.disabled ? undefined : tilt.style}
-      className="group relative flex flex-col glass-panel glass-panel-hover p-4 sm:p-5 rounded-2xl transition-all duration-300"
+      className="card card-hover group relative flex flex-col p-4 sm:p-5"
     >
       {/* Brilho que acompanha o ponteiro — some em touch/reduced motion junto com o tilt */}
       {!tilt.disabled && (
         <div
           ref={glareRef}
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{ background: 'radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.08), transparent 55%)' }}
+          className="pointer-events-none absolute inset-0 rounded-card opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ background: 'radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(47,102,240,0.07), transparent 55%)' }}
         />
       )}
 
       {/* Imagem do Projeto */}
-      <div className="relative aspect-[16/10] bg-neutral-900 rounded-xl overflow-hidden border border-white/[0.06] mb-6">
+      <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-2xl border border-line bg-surface">
         <img
           src={project.image}
           alt={`Projeto ${project.title}, desenvolvido pela ValeTech Soluções`}
-          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+          className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           loading="lazy"
           width="640"
           height="400"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
       </div>
 
       {/* Detalhes do Projeto */}
-      <div className="relative px-2 pb-2 flex flex-col flex-1 space-y-3">
+      <div className="relative flex flex-1 flex-col space-y-3 px-2 pb-2">
         <div className="flex items-center justify-between gap-4">
-          <h3 className="font-display text-xl sm:text-2xl font-bold text-white group-hover:text-zinc-200 transition-colors">
+          <h3 className="font-display text-xl font-extrabold tracking-tight text-ink sm:text-2xl">
             {project.title}
           </h3>
-          <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider text-right">
+          <span className="shrink-0 rounded-full bg-tint px-3 py-1 text-xs font-bold text-accent">
             {PROJECT_CATEGORY_LABEL[project.category]}
           </span>
         </div>
 
-        <p className="text-zinc-300 text-sm font-medium leading-relaxed">
+        <p className="text-[15px] font-bold leading-relaxed text-ink">
           {project.audience}
         </p>
 
-        <p className="text-zinc-400 text-sm font-light leading-relaxed">
+        <p className="text-[15px] leading-relaxed text-muted">
           {project.desc}
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06]">
+        <div className="flex flex-wrap gap-2 border-t border-line pt-4">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] font-sans text-zinc-400 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06]"
+              className="rounded-full bg-surface px-3 py-1 text-xs font-medium text-muted"
             >
               {tag}
             </span>
@@ -114,11 +115,9 @@ const ProjectCard = React.forwardRef<HTMLAnchorElement, ProjectCardProps>(({ pro
         </div>
 
         {/* Chamada visível também no celular, onde não existe hover */}
-        <span className="mt-auto pt-3 inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white">
+        <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm font-bold text-accent">
           Ver projeto no ar
-          <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
+          <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </span>
       </div>
     </motion.a>
@@ -134,43 +133,37 @@ const ProjectsSection: React.FC = () => {
     : PROJECTS.filter(project => project.category === activeTab);
 
   return (
-    <section id="projects" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
-      {/* Luz ambiente sutil */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-white/[0.02] rounded-full blur-[150px] pointer-events-none"></div>
-
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
-
-        {/* Header da Seção */}
+    <section id="projects" className="bg-surface py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="space-y-4 max-w-2xl mb-16"
         >
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-            02 · Projetos
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-            Projetos que já entreguei <span className="text-zinc-400 font-light">e estão no ar.</span>
-          </h2>
-          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Cada um nasceu de um problema real. Clique para ver funcionando.
-          </p>
+          <SectionHeader
+            className="mb-12"
+            eyebrow="Projetos"
+            title="Projetos que já entreguei"
+            highlight="e estão no ar."
+            lead="Cada um nasceu de um problema real. Clique para ver funcionando."
+          />
         </motion.div>
 
-        {/* Tabs de Filtro Minimalistas */}
-        <div className="flex flex-wrap gap-2.5 mb-14 border-b border-white/[0.06] pb-6">
+        {/* Filtro por tipo de projeto */}
+        <div className="mb-12 flex flex-wrap gap-2.5" role="tablist" aria-label="Filtrar projetos">
           {TABS.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-5 py-2 rounded-full font-sans text-xs tracking-wide transition-all duration-300 cursor-pointer ${
+                className={`cursor-pointer rounded-full px-5 py-2.5 text-sm font-bold transition-all duration-200 ${
                   isActive
-                    ? 'text-black bg-white font-semibold shadow-[0_0_15px_rgba(255,255,255,0.2)]'
-                    : 'text-zinc-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08]'
+                    ? 'bg-ink text-white shadow-soft'
+                    : 'border border-line bg-white text-muted hover:border-ink/25 hover:text-ink'
                 }`}
               >
                 {tab.label}
@@ -179,11 +172,8 @@ const ProjectsSection: React.FC = () => {
           })}
         </div>
 
-        {/* Grid de Projetos */}
-        <motion.div
-          layout
-          className="grid md:grid-cols-2 gap-8 lg:gap-10"
-        >
+        {/* Grade de projetos */}
+        <motion.div layout className="grid gap-7 md:grid-cols-2 lg:gap-9">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
@@ -197,29 +187,21 @@ const ProjectsSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 text-center space-y-6"
+          className="mt-16 flex flex-col items-start justify-between gap-6 rounded-[24px] border border-line bg-white p-7 shadow-soft md:flex-row md:items-center md:p-9"
         >
-          <p className="font-display text-xl sm:text-2xl font-semibold text-white tracking-tight">
+          <p className="font-display text-xl font-extrabold tracking-tight text-ink sm:text-2xl">
             Tem um problema parecido com algum desses?
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href={SOCIAL_LINKS.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-            >
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="btn btn-primary">
+              <WhatsAppIcon className="h-[18px] w-[18px]" />
               Falar no WhatsApp
             </a>
-            <Link
-              to="/briefing"
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/50 hover:bg-white/[0.06] text-white border border-white/20 hover:border-white/40 font-semibold text-xs tracking-wider uppercase transition-all duration-300"
-            >
+            <Link to="/briefing" className="btn btn-secondary">
               Pedir orçamento
             </Link>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

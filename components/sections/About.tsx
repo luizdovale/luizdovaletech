@@ -5,32 +5,30 @@ import { Link } from 'react-router-dom';
 import { BRAND_INFO, SOCIAL_LINKS } from '../../constants';
 import FounderPhoto from '../FounderPhoto';
 import { useTilt } from '../../hooks/useTilt';
+import SectionHeader from '../SectionHeader';
+import { CheckIcon, WhatsAppIcon } from '../Icons';
 
 const About: React.FC = () => {
   const highlights = [
-    "Atendo empresas e profissionais de todo o Brasil",
-    "Você acompanha cada etapa, do início à entrega",
-    "Continuo por perto depois, para suporte e melhorias"
+    'Atendo empresas e profissionais de todo o Brasil',
+    'Você acompanha cada etapa, do início à entrega',
+    'Continuo por perto depois, para suporte e melhorias',
   ];
 
-  // Inclinação bem discreta na foto — mesma sensação dos cards de projeto, sem roubar a cena.
+  // Inclinação bem discreta na foto, a mesma sensação dos cartões de projeto.
   const tilt = useTilt<HTMLDivElement>({ max: 4 });
 
   return (
-    <section id="about" className="py-28 md:py-36 relative overflow-hidden bg-black border-t border-white/[0.06]">
-      {/* Luz ambiente sutil */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-white/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
-
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
+    <section id="about" className="bg-surface py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Foto */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-4 max-w-sm w-full mx-auto lg:mx-0"
+            className="mx-auto w-full max-w-sm lg:col-span-4 lg:mx-0"
           >
             <motion.div
               ref={tilt.ref}
@@ -38,7 +36,7 @@ const About: React.FC = () => {
               onMouseLeave={tilt.onMouseLeave}
               style={tilt.disabled ? undefined : tilt.style}
             >
-              <FounderPhoto className="w-full aspect-[4/5] rounded-2xl text-7xl shadow-[0_20px_60px_rgba(0,0,0,0.5)]" />
+              <FounderPhoto className="aspect-[4/5] w-full rounded-[28px] border-[6px] border-white text-7xl shadow-float" />
             </motion.div>
           </motion.div>
 
@@ -48,53 +46,44 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="lg:col-span-8 space-y-6"
+            className="space-y-6 lg:col-span-8"
           >
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 block font-semibold">
-              04 · Quem sou eu
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
-              Você fala direto com quem <span className="text-zinc-400 font-light">programa o seu projeto.</span>
-            </h2>
+            <SectionHeader
+              eyebrow="Quem sou eu"
+              title="Você fala direto com quem"
+              highlight="programa o seu projeto."
+            />
 
-            <div className="space-y-5 text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
+            <div className="space-y-5 text-base leading-relaxed text-muted sm:text-lg">
               <p>
-                Sou o <strong className="text-white font-semibold">{BRAND_INFO.founder}</strong>, desenvolvedor de software e fundador da ValeTech. Transformo problemas do dia a dia de empresas e profissionais em sistemas, sites e aplicativos que funcionam de verdade.
+                Sou o <strong className="font-bold text-ink">{BRAND_INFO.founder}</strong>, desenvolvedor de software e fundador da ValeTech. Transformo problemas do dia a dia de empresas e profissionais em sistemas, sites e aplicativos que funcionam de verdade.
               </p>
               <p>
                 Comigo não tem atendente, gerente de contas nem intermediário: você explica o que precisa, eu digo qual é o melhor caminho e acompanho tudo até o projeto estar no ar.
               </p>
             </div>
 
-            <ul className="space-y-3 pt-2">
+            <ul className="space-y-3 pt-1">
               {highlights.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-zinc-300 font-sans">
-                  <svg className="w-4 h-4 mt-0.5 shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                <li key={item} className="flex items-start gap-3 text-[15px] text-ink">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-tint text-accent">
+                    <CheckIcon className="h-3 w-3" />
+                  </span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a
-                href={SOCIAL_LINKS.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_25px_rgba(255,255,255,0.15)] text-center"
-              >
+            <div className="flex flex-col gap-3 pt-3 sm:flex-row">
+              <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="btn btn-primary">
+                <WhatsAppIcon className="h-[18px] w-[18px]" />
                 Falar no WhatsApp
               </a>
-              <Link
-                to="/sobre"
-                className="px-8 py-4 rounded-full bg-black/50 hover:bg-white/[0.06] text-white border border-white/20 hover:border-white/40 font-semibold text-xs tracking-wider uppercase transition-all duration-300 text-center"
-              >
+              <Link to="/sobre" className="btn btn-secondary">
                 Conhecer minha história
               </Link>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
