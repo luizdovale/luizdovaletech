@@ -57,7 +57,7 @@ export const PROJECTS: ProjectItem[] = [
     desc: "Aplicativo para registrar a jornada de trabalho e acompanhar as horas extras em tempo real. Continua funcionando mesmo sem internet, e nenhum registro se perde.",
     link: "https://jornada360.vercel.app/",
     tags: ["Controle de ponto", "Funciona sem internet", "Instala no celular"],
-    category: "sistemas",
+    category: "apps",
     image: "/projects/jornada360.jpg"
   },
   {

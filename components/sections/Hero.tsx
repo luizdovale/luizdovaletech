@@ -11,6 +11,15 @@ const TRUST_POINTS = [
   { title: 'Resposta em até 24h', desc: 'Pelo WhatsApp ou formulário' },
 ];
 
+// Etiqueta que identifica de qual projeto é cada imagem (sem ela, duas telas juntas parecem o mesmo produto).
+const ProjectTag: React.FC<{ name: string; kind: string }> = ({ name, kind }) => (
+  <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-2 text-xs shadow-soft">
+    <span className="h-2 w-2 rounded-full bg-ok" aria-hidden="true" />
+    <span className="font-bold text-ink">{name}</span>
+    <span className="text-muted">{kind}</span>
+  </div>
+);
+
 const Hero: React.FC = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 22 },
@@ -94,50 +103,57 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto w-full max-w-xl pb-8 lg:max-w-none"
+          className="mx-auto w-full max-w-xl lg:max-w-none"
         >
           <motion.div
             ref={tilt.ref}
             onMouseMove={tilt.onMouseMove}
             onMouseLeave={tilt.onMouseLeave}
             style={tilt.disabled ? undefined : tilt.style}
-            className="relative"
+            className="space-y-6"
           >
-            <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-float">
-              <div className="flex items-center gap-1.5 border-b border-line bg-surface px-4 py-2.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
-                <span className="ml-3 truncate rounded-full border border-line bg-white px-3 py-0.5 text-[11px] text-muted">
-                  jpserp.valetechsolucoes.com.br
-                </span>
+            {/* Sistema para computador */}
+            <figure>
+              <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-float">
+                <div className="flex items-center gap-1.5 border-b border-line bg-surface px-4 py-2.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
+                  <span className="ml-3 truncate rounded-full border border-line bg-white px-3 py-0.5 text-[11px] text-muted">
+                    jpserp.valetechsolucoes.com.br
+                  </span>
+                </div>
+                <img
+                  src="/projects/jps-erp.jpg"
+                  alt="Painel do sistema GearTech, com faturamento, estoque e vendas de uma loja de autopeças"
+                  width={1600}
+                  height={808}
+                  className="block h-auto w-full"
+                  decoding="async"
+                />
               </div>
-              <img
-                src="/projects/jps-erp.jpg"
-                alt="Painel do sistema GearTech, com faturamento, estoque e vendas de uma loja de autopeças"
-                width={1600}
-                height={808}
-                className="block h-auto w-full"
-                decoding="async"
-              />
-            </div>
+              <figcaption className="mt-3">
+                <ProjectTag name="GearTech" kind="Sistema de gestão" />
+              </figcaption>
+            </figure>
 
-            <div className="absolute -bottom-7 -left-2 w-[34%] overflow-hidden rounded-2xl border-[3px] border-white shadow-float sm:-left-5">
-              <img
-                src="/projects/jornada360.jpg"
-                alt="Aplicativo Jornada360, de controle de jornada e horas extras"
-                width={969}
-                height={595}
-                className="block h-auto w-full"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="absolute -bottom-4 right-3 flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-2 text-xs font-bold text-ink shadow-float sm:right-5">
-              <span className="h-2 w-2 rounded-full bg-ok" aria-hidden="true" />
-              GearTech · Sistema de gestão
-            </div>
+            {/* Aplicativo: outro projeto, separado e com etiqueta própria */}
+            <figure className="ml-auto w-[64%] sm:w-[56%]">
+              <div className="overflow-hidden rounded-[20px] border border-line bg-white shadow-float">
+                <img
+                  src="/projects/jornada360.jpg"
+                  alt="Aplicativo Jornada360, de controle de jornada e horas extras"
+                  width={969}
+                  height={595}
+                  className="block h-auto w-full"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption className="mt-3 flex justify-end">
+                <ProjectTag name="Jornada360" kind="Aplicativo" />
+              </figcaption>
+            </figure>
           </motion.div>
         </motion.div>
       </div>
