@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_55%_at_88%_0%,rgb(var(--c-tint))_0%,transparent_70%)]"
       />
 
-      <div className="container relative mx-auto grid max-w-7xl items-center gap-14 px-6 md:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+      <div className="container relative mx-auto grid max-w-7xl items-center gap-14 px-6 md:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         {/* Texto */}
         <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-7">
           <motion.div
@@ -110,10 +110,10 @@ const Hero: React.FC = () => {
             onMouseMove={tilt.onMouseMove}
             onMouseLeave={tilt.onMouseLeave}
             style={tilt.disabled ? undefined : tilt.style}
-            className="space-y-6"
+            className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-[4%]"
           >
             {/* Sistema para computador */}
-            <figure>
+            <figure className="sm:w-[70%]">
               <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-float">
                 <div className="flex items-center gap-1.5 border-b border-line bg-surface px-4 py-2.5">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#D3D8E0]" />
@@ -137,15 +137,19 @@ const Hero: React.FC = () => {
               </figcaption>
             </figure>
 
-            {/* Aplicativo: outro projeto, separado e com etiqueta própria */}
-            <figure className="ml-auto w-[64%] sm:w-[56%]">
-              <div className="overflow-hidden rounded-[20px] border border-line bg-white shadow-float">
+            {/* Aplicativo: outro projeto, em celular, separado e com etiqueta própria */}
+            <figure className="ml-auto w-[44%] sm:ml-0 sm:mt-14 sm:w-[26%]">
+              <div className="relative rounded-[28px] border-4 border-ink bg-ink shadow-float">
+                <span
+                  aria-hidden="true"
+                  className="absolute left-1/2 top-[6px] z-10 h-[7px] w-[30%] -translate-x-1/2 rounded-full bg-ink"
+                />
                 <img
-                  src="/projects/jornada360.jpg"
-                  alt="Aplicativo Jornada360, de controle de jornada e horas extras"
-                  width={969}
-                  height={595}
-                  className="block h-auto w-full"
+                  src="/projects/jornada360-celular.jpg"
+                  alt="Aplicativo Jornada360 aberto no celular, com o resumo do ciclo de horas e as últimas jornadas"
+                  width={600}
+                  height={1197}
+                  className="block h-auto w-full rounded-[24px]"
                   loading="lazy"
                   decoding="async"
                 />
