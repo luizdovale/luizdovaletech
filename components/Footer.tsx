@@ -31,7 +31,6 @@ const Footer: React.FC = () => {
     { label: 'E-mail', href: `mailto:${BRAND_INFO.contactEmail}` },
     { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin },
     { label: 'Instagram', href: SOCIAL_LINKS.instagram },
-    { label: 'GitHub', href: SOCIAL_LINKS.github },
   ];
 
   return (

@@ -16,7 +16,6 @@ export const SOCIAL_LINKS = {
   whatsapp: "https://wa.me/5512974033027?text=Ol%C3%A1%2C%20Luiz!%20Vi%20o%20site%20da%20ValeTech%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.",
   formAction: "https://formsubmit.co/luizdovaletech@gmail.com",
   web3formsKey: "aa00e3e1-13a8-4535-a695-894473969c24",
-  github: "https://github.com/luizdovale",
   linkedin: "https://www.linkedin.com/in/luiz-fernando-macedo-do-vale-76940016b/",
   instagram: "https://www.instagram.com/fernando_valee/",
 };

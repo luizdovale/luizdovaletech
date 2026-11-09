@@ -113,9 +113,6 @@ const Sobre: React.FC = () => {
                 <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noreferrer" className="font-bold text-accent hover:underline">
                   LinkedIn
                 </a>
-                <a href={SOCIAL_LINKS.github} target="_blank" rel="noreferrer" className="font-bold text-accent hover:underline">
-                  GitHub
-                </a>
               </span>
             </div>
           </motion.div>
