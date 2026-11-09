@@ -17,8 +17,8 @@ export const SOCIAL_LINKS = {
   formAction: "https://formsubmit.co/luizdovaletech@gmail.com",
   web3formsKey: "aa00e3e1-13a8-4535-a695-894473969c24",
   github: "https://github.com/luizdovale",
-  linkedin: "https://linkedin.com/in/luizdovale",
-  instagram: "https://instagram.com/luizdovaletech",
+  linkedin: "https://www.linkedin.com/in/luiz-fernando-macedo-do-vale-76940016b/",
+  instagram: "https://www.instagram.com/fernando_valee/",
 };
 
 // Ids das seções da Home usados pelo menu e pelo rodapé.
